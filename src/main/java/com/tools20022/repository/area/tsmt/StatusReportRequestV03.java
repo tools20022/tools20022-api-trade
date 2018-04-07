@@ -24,10 +24,11 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.BICIdentification1;
 import com.tools20022.repository.msg.MessageIdentification1;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -80,15 +81,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "StatusReportRequestV03", propOrder = {"requestIdentification", "entitiesToBeReported"})
 public class StatusReportRequestV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqId", required = true)
 	protected MessageIdentification1 requestIdentification;
 	/**
-	 * Identifies the request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -109,7 +111,7 @@ public class StatusReportRequestV03 {
 	 * definition} = "Identifies the request message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusReportRequestV03, MessageIdentification1> mmRequestIdentification = new MMMessageBuildingBlock<StatusReportRequestV03, MessageIdentification1>() {
 		{
 			xmlTag = "ReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,19 +122,21 @@ public class StatusReportRequestV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusReportRequestV03.class.getMethod("getRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(StatusReportRequestV03 obj) {
+			return obj.getRequestIdentification();
+		}
+
+		@Override
+		public void setValue(StatusReportRequestV03 obj, MessageIdentification1 value) {
+			obj.setRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "NttiesToBeRptd")
 	protected List<BICIdentification1> entitiesToBeReported;
 	/**
-	 * Specifies the entities of the submitter for which the transactions have
-	 * to be reported.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -151,26 +155,28 @@ public class StatusReportRequestV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Specifies the entities of the submitter for which the transactions have to be reported. "
+	 * "Specifies the entities of the submitter for which the transactions have to be reported."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEntitiesToBeReported = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusReportRequestV03, List<BICIdentification1>> mmEntitiesToBeReported = new MMMessageBuildingBlock<StatusReportRequestV03, List<BICIdentification1>>() {
 		{
 			xmlTag = "NttiesToBeRptd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EntitiesToBeReported";
-			definition = "Specifies the entities of the submitter for which the transactions have to be reported. ";
+			definition = "Specifies the entities of the submitter for which the transactions have to be reported.";
 			minOccurs = 0;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusReportRequestV03.class.getMethod("getEntitiesToBeReported", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<BICIdentification1> getValue(StatusReportRequestV03 obj) {
+			return obj.getEntitiesToBeReported();
+		}
+
+		@Override
+		public void setValue(StatusReportRequestV03 obj, List<BICIdentification1> value) {
+			obj.setEntitiesToBeReported(value);
 		}
 	};
 
@@ -202,25 +208,25 @@ public class StatusReportRequestV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqId", required = true)
 	public MessageIdentification1 getRequestIdentification() {
 		return requestIdentification;
 	}
 
-	public void setRequestIdentification(MessageIdentification1 requestIdentification) {
-		this.requestIdentification = requestIdentification;
+	public StatusReportRequestV03 setRequestIdentification(MessageIdentification1 requestIdentification) {
+		this.requestIdentification = Objects.requireNonNull(requestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "NttiesToBeRptd")
 	public List<BICIdentification1> getEntitiesToBeReported() {
-		return entitiesToBeReported;
+		return entitiesToBeReported == null ? entitiesToBeReported = new ArrayList<>() : entitiesToBeReported;
 	}
 
-	public void setEntitiesToBeReported(List<BICIdentification1> entitiesToBeReported) {
-		this.entitiesToBeReported = entitiesToBeReported;
+	public StatusReportRequestV03 setEntitiesToBeReported(List<BICIdentification1> entitiesToBeReported) {
+		this.entitiesToBeReported = Objects.requireNonNull(entitiesToBeReported);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.038.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.038.001.03")
 	static public class Document {
 		@XmlElement(name = "StsRptReq", required = true)
 		public StatusReportRequestV03 messageBody;

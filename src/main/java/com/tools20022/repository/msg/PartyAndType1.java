@@ -23,8 +23,11 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.choice.PartyType1Choice;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.PartyIdentification43;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -62,15 +65,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Party type and party identification information."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PartyAndType1", propOrder = {"type", "party"})
 public class PartyAndType1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected PartyType1Choice type;
 	/**
-	 * Type of additional party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -95,28 +99,39 @@ public class PartyAndType1 {
 	 * name} = "Type"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Type of additional party. "</li>
+	 * definition} = "Type of additional party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmType = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PartyAndType1, PartyType1Choice> mmType = new MMMessageAssociationEnd<PartyAndType1, PartyType1Choice>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> PartyAndType1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PartyAndType1.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Type";
-			definition = "Type of additional party. ";
+			definition = "Type of additional party.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
 			type_lazy = () -> PartyType1Choice.mmObject();
 		}
+
+		@Override
+		public PartyType1Choice getValue(PartyAndType1 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(PartyAndType1 obj, PartyType1Choice value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "Pty")
 	protected PartyIdentification43 party;
 	/**
-	 * Details related to the additional party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -144,10 +159,10 @@ public class PartyAndType1 {
 	 * definition} = "Details related to the additional party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmParty = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PartyAndType1, Optional<PartyIdentification43>> mmParty = new MMMessageAssociationEnd<PartyAndType1, Optional<PartyIdentification43>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> PartyAndType1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PartyAndType1.mmObject();
 			isDerived = false;
 			xmlTag = "Pty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -156,16 +171,26 @@ public class PartyAndType1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification43.mmObject();
+			type_lazy = () -> PartyIdentification43.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification43> getValue(PartyAndType1 obj) {
+			return obj.getParty();
+		}
+
+		@Override
+		public void setValue(PartyAndType1 obj, Optional<PartyIdentification43> value) {
+			obj.setParty(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(PartyAndType1.mmType, PartyAndType1.mmParty);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.PartyAndType1.mmType, com.tools20022.repository.msg.PartyAndType1.mmParty);
 				trace_lazy = () -> Party.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PartyAndType1";
 				definition = "Party type and party identification information.";
@@ -174,21 +199,21 @@ public class PartyAndType1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public PartyType1Choice getType() {
 		return type;
 	}
 
-	public void setType(PartyType1Choice type) {
-		this.type = type;
+	public PartyAndType1 setType(PartyType1Choice type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "Pty")
-	public PartyIdentification43 getParty() {
-		return party;
+	public Optional<PartyIdentification43> getParty() {
+		return party == null ? Optional.empty() : Optional.of(party);
 	}
 
-	public void setParty(com.tools20022.repository.msg.PartyIdentification43 party) {
+	public PartyAndType1 setParty(PartyIdentification43 party) {
 		this.party = party;
+		return this;
 	}
 }

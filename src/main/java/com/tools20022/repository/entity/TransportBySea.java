@@ -27,9 +27,9 @@ import com.tools20022.repository.datatype.Max70Text;
 import com.tools20022.repository.entity.Transport;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Information related for the transportation of goods by sea.
@@ -94,8 +94,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -111,8 +111,8 @@ public class TransportBySea extends Transport {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected Max35Text vesselName;
 	/**
-	 * Name of a vessel.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -149,7 +149,7 @@ public class TransportBySea extends Transport {
 	 * definition} = "Name of a vessel."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmVesselName = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Max35Text> mmVesselName = new MMBusinessAttribute<TransportBySea, Max35Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea4.mmVesselName, TransportBySea5.mmVesselName, TransportBySea6.mmVesselName);
 			isDerived = false;
@@ -162,18 +162,20 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getVesselName", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max35Text getValue(TransportBySea obj) {
+			return obj.getVesselName();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Max35Text value) {
+			obj.setVesselName(value);
 		}
 	};
 	protected Max35Text voyageNumber;
 	/**
-	 * Identifies the voyage.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -204,7 +206,7 @@ public class TransportBySea extends Transport {
 	 * definition} = "Identifies the voyage."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmVoyageNumber = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Max35Text> mmVoyageNumber = new MMBusinessAttribute<TransportBySea, Max35Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea5.mmVoyageNumber);
 			isDerived = false;
@@ -217,18 +219,20 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getVoyageNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max35Text getValue(TransportBySea obj) {
+			return obj.getVoyageNumber();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Max35Text value) {
+			obj.setVoyageNumber(value);
 		}
 	};
 	protected Max70Text chartererName;
 	/**
-	 * Name of the company or individual that acts in the capacity of charterer.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -261,7 +265,7 @@ public class TransportBySea extends Transport {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmChartererName = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Max70Text> mmChartererName = new MMBusinessAttribute<TransportBySea, Max70Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea5.mmChartererName);
 			isDerived = false;
@@ -274,18 +278,20 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getChartererName", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max70Text getValue(TransportBySea obj) {
+			return obj.getChartererName();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Max70Text value) {
+			obj.setChartererName(value);
 		}
 	};
 	protected Max70Text masterName;
 	/**
-	 * Name of the master or captain of a vessel.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -316,7 +322,7 @@ public class TransportBySea extends Transport {
 	 * definition} = "Name of the master or captain of a vessel."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmMasterName = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Max70Text> mmMasterName = new MMBusinessAttribute<TransportBySea, Max70Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea5.mmMasterName);
 			isDerived = false;
@@ -329,18 +335,20 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getMasterName", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max70Text getValue(TransportBySea obj) {
+			return obj.getMasterName();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Max70Text value) {
+			obj.setMasterName(value);
 		}
 	};
 	protected Max70Text ownerName;
 	/**
-	 * Name of the company or individual that acts in the capacity of owner.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -372,7 +380,7 @@ public class TransportBySea extends Transport {
 	 * "Name of the company or individual that acts in the capacity of owner."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmOwnerName = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Max70Text> mmOwnerName = new MMBusinessAttribute<TransportBySea, Max70Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea5.mmOwnerName);
 			isDerived = false;
@@ -385,21 +393,20 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getOwnerName", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max70Text getValue(TransportBySea obj) {
+			return obj.getOwnerName();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Max70Text value) {
+			obj.setOwnerName(value);
 		}
 	};
 	protected Exact7NumericText iMONumber;
 	/**
-	 * International Maritime Organisation identification of a ship. This is a
-	 * unique seven digit number that is assigned to vessels and aids banks in
-	 * determining whether a vessel is subject to an order that would not permit
-	 * a bank to handle a certain transaction under local or international laws.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -433,7 +440,7 @@ public class TransportBySea extends Transport {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmIMONumber = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportBySea, Exact7NumericText> mmIMONumber = new MMBusinessAttribute<TransportBySea, Exact7NumericText>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TransportBySea5.mmIMONumber);
 			isDerived = false;
@@ -446,19 +453,21 @@ public class TransportBySea extends Transport {
 			simpleType_lazy = () -> Exact7NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportBySea.class.getMethod("getIMONumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Exact7NumericText getValue(TransportBySea obj) {
+			return obj.getIMONumber();
+		}
+
+		@Override
+		public void setValue(TransportBySea obj, Exact7NumericText value) {
+			obj.setIMONumber(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TransportBySea";
 				definition = "Information related for the transportation of goods by sea.";
@@ -482,47 +491,53 @@ public class TransportBySea extends Transport {
 		return vesselName;
 	}
 
-	public void setVesselName(Max35Text vesselName) {
-		this.vesselName = vesselName;
+	public TransportBySea setVesselName(Max35Text vesselName) {
+		this.vesselName = Objects.requireNonNull(vesselName);
+		return this;
 	}
 
 	public Max35Text getVoyageNumber() {
 		return voyageNumber;
 	}
 
-	public void setVoyageNumber(Max35Text voyageNumber) {
-		this.voyageNumber = voyageNumber;
+	public TransportBySea setVoyageNumber(Max35Text voyageNumber) {
+		this.voyageNumber = Objects.requireNonNull(voyageNumber);
+		return this;
 	}
 
 	public Max70Text getChartererName() {
 		return chartererName;
 	}
 
-	public void setChartererName(Max70Text chartererName) {
-		this.chartererName = chartererName;
+	public TransportBySea setChartererName(Max70Text chartererName) {
+		this.chartererName = Objects.requireNonNull(chartererName);
+		return this;
 	}
 
 	public Max70Text getMasterName() {
 		return masterName;
 	}
 
-	public void setMasterName(Max70Text masterName) {
-		this.masterName = masterName;
+	public TransportBySea setMasterName(Max70Text masterName) {
+		this.masterName = Objects.requireNonNull(masterName);
+		return this;
 	}
 
 	public Max70Text getOwnerName() {
 		return ownerName;
 	}
 
-	public void setOwnerName(Max70Text ownerName) {
-		this.ownerName = ownerName;
+	public TransportBySea setOwnerName(Max70Text ownerName) {
+		this.ownerName = Objects.requireNonNull(ownerName);
+		return this;
 	}
 
 	public Exact7NumericText getIMONumber() {
 		return iMONumber;
 	}
 
-	public void setIMONumber(Exact7NumericText iMONumber) {
-		this.iMONumber = iMONumber;
+	public TransportBySea setIMONumber(Exact7NumericText iMONumber) {
+		this.iMONumber = Objects.requireNonNull(iMONumber);
+		return this;
 	}
 }

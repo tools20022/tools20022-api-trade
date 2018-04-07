@@ -38,10 +38,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.NotificationType1Code#MustWithdrawFromTransaction
- * NotificationType1Code.mmMustWithdrawFromTransaction}</li>
+ * NotificationType1Code.MustWithdrawFromTransaction}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.NotificationType1Code#CannotSubmitDataSet
- * NotificationType1Code.mmCannotSubmitDataSet}</li>
+ * NotificationType1Code.CannotSubmitDataSet}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -50,8 +50,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -129,7 +129,7 @@ public class NotificationType1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("MWFT");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "NotificationType1Code";

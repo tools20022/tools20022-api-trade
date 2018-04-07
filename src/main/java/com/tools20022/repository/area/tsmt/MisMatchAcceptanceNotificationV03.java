@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -94,16 +92,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "MisMatchAcceptanceNotificationV03", propOrder = {"notificationIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference",
 		"dataSetMatchReportReference", "requestForAction"})
 public class MisMatchAcceptanceNotificationV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NtfctnId", required = true)
 	protected MessageIdentification1 notificationIdentification;
 	/**
-	 * Identifies the notification message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -124,7 +123,7 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * definition} = "Identifies the notification message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotificationIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, MessageIdentification1> mmNotificationIdentification = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, MessageIdentification1>() {
 		{
 			xmlTag = "NtfctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -135,20 +134,21 @@ public class MisMatchAcceptanceNotificationV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getNotificationIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getNotificationIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, MessageIdentification1 value) {
+			obj.setNotificationIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -167,34 +167,36 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -213,33 +215,36 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established. "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, DocumentIdentification3> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, DocumentIdentification3>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established. ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification3 getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, DocumentIdentification3 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -261,7 +266,7 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -272,19 +277,21 @@ public class MisMatchAcceptanceNotificationV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for each financial institution which is a
-	 * party to the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -307,7 +314,7 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -318,19 +325,21 @@ public class MisMatchAcceptanceNotificationV03 {
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	protected MessageIdentification1 dataSetMatchReportReference;
 	/**
-	 * Reference to the identification of the report that contained the
-	 * difference.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -349,33 +358,36 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Reference to the identification of the report that contained the difference. "
+	 * "Reference to the identification of the report that contained the difference."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDataSetMatchReportReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, MessageIdentification1> mmDataSetMatchReportReference = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, MessageIdentification1>() {
 		{
 			xmlTag = "DataSetMtchRptRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "DataSetMatchReportReference";
-			definition = "Reference to the identification of the report that contained the difference. ";
+			definition = "Reference to the identification of the report that contained the difference.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getDataSetMatchReportReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getDataSetMatchReportReference();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, MessageIdentification1 value) {
+			obj.setDataSetMatchReportReference(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -396,7 +408,7 @@ public class MisMatchAcceptanceNotificationV03 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<MisMatchAcceptanceNotificationV03, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -407,12 +419,14 @@ public class MisMatchAcceptanceNotificationV03 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceNotificationV03.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(MisMatchAcceptanceNotificationV03 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceNotificationV03 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -447,70 +461,70 @@ public class MisMatchAcceptanceNotificationV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NtfctnId", required = true)
 	public MessageIdentification1 getNotificationIdentification() {
 		return notificationIdentification;
 	}
 
-	public void setNotificationIdentification(MessageIdentification1 notificationIdentification) {
-		this.notificationIdentification = notificationIdentification;
+	public MisMatchAcceptanceNotificationV03 setNotificationIdentification(MessageIdentification1 notificationIdentification) {
+		this.notificationIdentification = Objects.requireNonNull(notificationIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public MisMatchAcceptanceNotificationV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification3 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public MisMatchAcceptanceNotificationV03 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public MisMatchAcceptanceNotificationV03 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public MisMatchAcceptanceNotificationV03 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	public MessageIdentification1 getDataSetMatchReportReference() {
 		return dataSetMatchReportReference;
 	}
 
-	public void setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
-		this.dataSetMatchReportReference = dataSetMatchReportReference;
+	public MisMatchAcceptanceNotificationV03 setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
+		this.dataSetMatchReportReference = Objects.requireNonNull(dataSetMatchReportReference);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public MisMatchAcceptanceNotificationV03 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.021.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.021.001.03")
 	static public class Document {
 		@XmlElement(name = "MisMtchAccptncNtfctn", required = true)
 		public MisMatchAcceptanceNotificationV03 messageBody;

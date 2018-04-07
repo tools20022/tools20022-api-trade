@@ -24,10 +24,11 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.ReportLine1;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -80,15 +81,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "IntentToPayReportV01", propOrder = {"reportIdentification", "reportedItems"})
 public class IntentToPayReportV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RptId", required = true)
 	protected MessageIdentification1 reportIdentification;
 	/**
-	 * Identifies the report message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -109,7 +111,7 @@ public class IntentToPayReportV01 {
 	 * definition} = "Identifies the report message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayReportV01, MessageIdentification1> mmReportIdentification = new MMMessageBuildingBlock<IntentToPayReportV01, MessageIdentification1>() {
 		{
 			xmlTag = "RptId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,18 +122,21 @@ public class IntentToPayReportV01 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayReportV01.class.getMethod("getReportIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(IntentToPayReportV01 obj) {
+			return obj.getReportIdentification();
+		}
+
+		@Override
+		public void setValue(IntentToPayReportV01 obj, MessageIdentification1 value) {
+			obj.setReportIdentification(value);
 		}
 	};
+	@XmlElement(name = "RptdItms")
 	protected List<ReportLine1> reportedItems;
 	/**
-	 * Reports on the intention to pay per purchase order.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -151,7 +156,7 @@ public class IntentToPayReportV01 {
 	 * definition} = "Reports on the intention to pay per purchase order."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportedItems = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayReportV01, List<ReportLine1>> mmReportedItems = new MMMessageBuildingBlock<IntentToPayReportV01, List<ReportLine1>>() {
 		{
 			xmlTag = "RptdItms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -161,12 +166,14 @@ public class IntentToPayReportV01 {
 			complexType_lazy = () -> ReportLine1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayReportV01.class.getMethod("getReportedItems", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ReportLine1> getValue(IntentToPayReportV01 obj) {
+			return obj.getReportedItems();
+		}
+
+		@Override
+		public void setValue(IntentToPayReportV01 obj, List<ReportLine1> value) {
+			obj.setReportedItems(value);
 		}
 	};
 
@@ -198,25 +205,25 @@ public class IntentToPayReportV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RptId", required = true)
 	public MessageIdentification1 getReportIdentification() {
 		return reportIdentification;
 	}
 
-	public void setReportIdentification(MessageIdentification1 reportIdentification) {
-		this.reportIdentification = reportIdentification;
+	public IntentToPayReportV01 setReportIdentification(MessageIdentification1 reportIdentification) {
+		this.reportIdentification = Objects.requireNonNull(reportIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RptdItms")
 	public List<ReportLine1> getReportedItems() {
-		return reportedItems;
+		return reportedItems == null ? reportedItems = new ArrayList<>() : reportedItems;
 	}
 
-	public void setReportedItems(List<ReportLine1> reportedItems) {
-		this.reportedItems = reportedItems;
+	public IntentToPayReportV01 setReportedItems(List<ReportLine1> reportedItems) {
+		this.reportedItems = Objects.requireNonNull(reportedItems);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.046.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.046.001.01")
 	static public class Document {
 		@XmlElement(name = "InttToPayRpt", required = true)
 		public IntentToPayReportV01 messageBody;

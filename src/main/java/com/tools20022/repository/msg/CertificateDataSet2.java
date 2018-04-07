@@ -28,9 +28,9 @@ import com.tools20022.repository.codeset.TradeCertificateType1Code;
 import com.tools20022.repository.datatype.*;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -112,8 +112,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -126,16 +126,17 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "CertificateDataSet2", propOrder = {"dataSetIdentification", "certificateType", "lineItem", "certifiedCharacteristics", "issueDate", "placeOfIssue", "issuer", "inspectionDate", "authorisedInspectorIndicator",
 		"certificateIdentification", "transport", "goodsDescription", "consignor", "consignee", "manufacturer", "additionalInformation"})
 public class CertificateDataSet2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "DataSetId", required = true)
 	protected DocumentIdentification1 dataSetIdentification;
 	/**
-	 * Identifies the certificate data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -165,10 +166,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Identifies the certificate data set."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDataSetIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, DocumentIdentification1> mmDataSetIdentification = new MMMessageAssociationEnd<CertificateDataSet2, DocumentIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "DataSetId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,13 +178,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification1.mmObject();
+			type_lazy = () -> DocumentIdentification1.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification1 getValue(CertificateDataSet2 obj) {
+			return obj.getDataSetIdentification();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, DocumentIdentification1 value) {
+			obj.setDataSetIdentification(value);
 		}
 	};
+	@XmlElement(name = "CertTp", required = true)
 	protected TradeCertificateType1Code certificateType;
 	/**
-	 * Specifies the type of the certificate.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -214,10 +226,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Specifies the type of the certificate."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCertificateType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, TradeCertificateType1Code> mmCertificateType = new MMMessageAttribute<CertificateDataSet2, TradeCertificateType1Code>() {
 		{
 			businessElementTrace_lazy = () -> TradeCertificate.mmCertificateType;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "CertTp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -227,12 +239,22 @@ public class CertificateDataSet2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> TradeCertificateType1Code.mmObject();
 		}
+
+		@Override
+		public TradeCertificateType1Code getValue(CertificateDataSet2 obj) {
+			return obj.getCertificateType();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, TradeCertificateType1Code value) {
+			obj.setCertificateType(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.LineItemAndPOIdentification1> lineItem;
+	@XmlElement(name = "LineItm")
+	protected List<LineItemAndPOIdentification1> lineItem;
 	/**
-	 * Specifies if the certificate data set is required in relation to specific
-	 * line items, and which line items.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -265,24 +287,34 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLineItem = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, List<LineItemAndPOIdentification1>> mmLineItem = new MMMessageAttribute<CertificateDataSet2, List<LineItemAndPOIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmLineItem;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "LineItm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "LineItem";
 			definition = "Specifies if the certificate data set is required in relation to specific line items, and which line items.";
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.LineItemAndPOIdentification1.mmObject();
+			complexType_lazy = () -> LineItemAndPOIdentification1.mmObject();
+		}
+
+		@Override
+		public List<LineItemAndPOIdentification1> getValue(CertificateDataSet2 obj) {
+			return obj.getLineItem();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, List<LineItemAndPOIdentification1> value) {
+			obj.setLineItem(value);
 		}
 	};
+	@XmlElement(name = "CertfdChrtcs", required = true)
 	protected CertifiedCharacteristics2Choice certifiedCharacteristics;
 	/**
-	 * Characteristics of the goods that are certified, in the context of a
-	 * commercial trade transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -314,10 +346,10 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCertifiedCharacteristics = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, CertifiedCharacteristics2Choice> mmCertifiedCharacteristics = new MMMessageAssociationEnd<CertificateDataSet2, CertifiedCharacteristics2Choice>() {
 		{
 			businessElementTrace_lazy = () -> ProductDelivery.mmProduct;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "CertfdChrtcs";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -328,11 +360,22 @@ public class CertificateDataSet2 {
 			isComposite = true;
 			type_lazy = () -> CertifiedCharacteristics2Choice.mmObject();
 		}
+
+		@Override
+		public CertifiedCharacteristics2Choice getValue(CertificateDataSet2 obj) {
+			return obj.getCertifiedCharacteristics();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, CertifiedCharacteristics2Choice value) {
+			obj.setCertifiedCharacteristics(value);
+		}
 	};
+	@XmlElement(name = "IsseDt", required = true)
 	protected ISODate issueDate;
 	/**
-	 * Issue date of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -362,10 +405,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Issue date of the document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIssueDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, ISODate> mmIssueDate = new MMMessageAttribute<CertificateDataSet2, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmIssueDate;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "IsseDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -375,11 +418,22 @@ public class CertificateDataSet2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(CertificateDataSet2 obj) {
+			return obj.getIssueDate();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, ISODate value) {
+			obj.setIssueDate(value);
+		}
 	};
+	@XmlElement(name = "PlcOfIsse")
 	protected PostalAddress5 placeOfIssue;
 	/**
-	 * Place where the certificate was issued.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -409,10 +463,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Place where the certificate was issued."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlaceOfIssue = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, Optional<PostalAddress5>> mmPlaceOfIssue = new MMMessageAttribute<CertificateDataSet2, Optional<PostalAddress5>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmPlaceOfIssue;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "PlcOfIsse";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -420,13 +474,24 @@ public class CertificateDataSet2 {
 			definition = "Place where the certificate was issued.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.PostalAddress5.mmObject();
+			complexType_lazy = () -> PostalAddress5.mmObject();
+		}
+
+		@Override
+		public Optional<PostalAddress5> getValue(CertificateDataSet2 obj) {
+			return obj.getPlaceOfIssue();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<PostalAddress5> value) {
+			obj.setPlaceOfIssue(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Issr", required = true)
 	protected PartyIdentification26 issuer;
 	/**
-	 * Issuer of the certificate, typically the inspection company or its agent.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -457,10 +522,10 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIssuer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, PartyIdentification26> mmIssuer = new MMMessageAssociationEnd<CertificateDataSet2, PartyIdentification26>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "Issr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -469,13 +534,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public PartyIdentification26 getValue(CertificateDataSet2 obj) {
+			return obj.getIssuer();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, PartyIdentification26 value) {
+			obj.setIssuer(value);
 		}
 	};
+	@XmlElement(name = "InspctnDt")
 	protected DatePeriodDetails inspectionDate;
 	/**
-	 * Date(s) at which inspection of the goods took place.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -506,10 +582,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Date(s) at which inspection of the goods took place."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInspectionDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, Optional<DatePeriodDetails>> mmInspectionDate = new MMMessageAttribute<CertificateDataSet2, Optional<DatePeriodDetails>>() {
 		{
 			businessElementTrace_lazy = () -> TradeCertificate.mmInspectionDate;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "InspctnDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -517,14 +593,24 @@ public class CertificateDataSet2 {
 			definition = "Date(s) at which inspection of the goods took place.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.DatePeriodDetails.mmObject();
+			complexType_lazy = () -> DatePeriodDetails.mmObject();
+		}
+
+		@Override
+		public Optional<DatePeriodDetails> getValue(CertificateDataSet2 obj) {
+			return obj.getInspectionDate();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<DatePeriodDetails> value) {
+			obj.setInspectionDate(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AuthrsdInspctrInd")
 	protected YesNoIndicator authorisedInspectorIndicator;
 	/**
-	 * Indicates that the inspection has been performed by an authorised
-	 * inspector.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -552,9 +638,9 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAuthorisedInspectorIndicator = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, Optional<YesNoIndicator>> mmAuthorisedInspectorIndicator = new MMMessageAttribute<CertificateDataSet2, Optional<YesNoIndicator>>() {
 		{
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "AuthrsdInspctrInd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -564,11 +650,22 @@ public class CertificateDataSet2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public Optional<YesNoIndicator> getValue(CertificateDataSet2 obj) {
+			return obj.getAuthorisedInspectorIndicator();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<YesNoIndicator> value) {
+			obj.setAuthorisedInspectorIndicator(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "CertId", required = true)
 	protected Max35Text certificateIdentification;
 	/**
-	 * Unique identifier of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -598,10 +695,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Unique identifier of the document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCertificateIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, Max35Text> mmCertificateIdentification = new MMMessageAttribute<CertificateDataSet2, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "CertId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -611,12 +708,22 @@ public class CertificateDataSet2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(CertificateDataSet2 obj) {
+			return obj.getCertificateIdentification();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Max35Text value) {
+			obj.setCertificateIdentification(value);
+		}
 	};
+	@XmlElement(name = "Trnsprt")
 	protected SingleTransport3 transport;
 	/**
-	 * Transport information relative to the goods that are covered by the
-	 * certificate.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -647,10 +754,10 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTransport = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, Optional<SingleTransport3>> mmTransport = new MMMessageAssociationEnd<CertificateDataSet2, Optional<SingleTransport3>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmTransport;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "Trnsprt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -659,13 +766,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SingleTransport3.mmObject();
+			type_lazy = () -> SingleTransport3.mmObject();
+		}
+
+		@Override
+		public Optional<SingleTransport3> getValue(CertificateDataSet2 obj) {
+			return obj.getTransport();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<SingleTransport3> value) {
+			obj.setTransport(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "GoodsDesc")
 	protected Max70Text goodsDescription;
 	/**
-	 * Information about the goods and/or services of a trade transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -696,10 +814,10 @@ public class CertificateDataSet2 {
 	 * "Information about the goods and/or services of a trade transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmGoodsDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, Optional<Max70Text>> mmGoodsDescription = new MMMessageAttribute<CertificateDataSet2, Optional<Max70Text>>() {
 		{
 			businessElementTrace_lazy = () -> Product.mmDescription;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "GoodsDesc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -709,11 +827,22 @@ public class CertificateDataSet2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max70Text> getValue(CertificateDataSet2 obj) {
+			return obj.getGoodsDescription();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<Max70Text> value) {
+			obj.setGoodsDescription(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Consgnr")
 	protected PartyIdentification26 consignor;
 	/**
-	 * Party responsible for dispatching the goods.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -742,10 +871,10 @@ public class CertificateDataSet2 {
 	 * definition} = "Party responsible for dispatching the goods."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmConsignor = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>> mmConsignor = new MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "Consgnr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -754,14 +883,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(CertificateDataSet2 obj) {
+			return obj.getConsignor();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<PartyIdentification26> value) {
+			obj.setConsignor(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Consgn")
 	protected PartyIdentification26 consignee;
 	/**
-	 * Party to whom the goods (which are the subject of the certificate) must
-	 * be delivered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -792,10 +931,10 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmConsignee = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>> mmConsignee = new MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "Consgn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -804,13 +943,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(CertificateDataSet2 obj) {
+			return obj.getConsignee();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<PartyIdentification26> value) {
+			obj.setConsignee(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Manfctr")
 	protected PartyIdentification26 manufacturer;
 	/**
-	 * Manufacturer of the goods which are the subject of the certificate.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -840,10 +990,10 @@ public class CertificateDataSet2 {
 	 * "Manufacturer of the goods which are the subject of the certificate."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmManufacturer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>> mmManufacturer = new MMMessageAssociationEnd<CertificateDataSet2, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "Manfctr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -852,14 +1002,24 @@ public class CertificateDataSet2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(CertificateDataSet2 obj) {
+			return obj.getManufacturer();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, Optional<PartyIdentification26> value) {
+			obj.setManufacturer(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max350Text> additionalInformation;
 	/**
-	 * Additional and important information that could not be captured by
-	 * structured fields.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -886,9 +1046,9 @@ public class CertificateDataSet2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<CertificateDataSet2, List<Max350Text>> mmAdditionalInformation = new MMMessageAttribute<CertificateDataSet2, List<Max350Text>>() {
 		{
-			componentContext_lazy = () -> CertificateDataSet2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.CertificateDataSet2.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -897,18 +1057,30 @@ public class CertificateDataSet2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max350Text.mmObject();
 		}
+
+		@Override
+		public List<Max350Text> getValue(CertificateDataSet2 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(CertificateDataSet2 obj, List<Max350Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(CertificateDataSet2.mmDataSetIdentification, CertificateDataSet2.mmCertificateType, CertificateDataSet2.mmLineItem, CertificateDataSet2.mmCertifiedCharacteristics,
-						CertificateDataSet2.mmIssueDate, CertificateDataSet2.mmPlaceOfIssue, CertificateDataSet2.mmIssuer, CertificateDataSet2.mmInspectionDate, CertificateDataSet2.mmAuthorisedInspectorIndicator,
-						CertificateDataSet2.mmCertificateIdentification, CertificateDataSet2.mmTransport, CertificateDataSet2.mmGoodsDescription, CertificateDataSet2.mmConsignor, CertificateDataSet2.mmConsignee,
-						CertificateDataSet2.mmManufacturer, CertificateDataSet2.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.CertificateDataSet2.mmDataSetIdentification, com.tools20022.repository.msg.CertificateDataSet2.mmCertificateType,
+						com.tools20022.repository.msg.CertificateDataSet2.mmLineItem, com.tools20022.repository.msg.CertificateDataSet2.mmCertifiedCharacteristics, com.tools20022.repository.msg.CertificateDataSet2.mmIssueDate,
+						com.tools20022.repository.msg.CertificateDataSet2.mmPlaceOfIssue, com.tools20022.repository.msg.CertificateDataSet2.mmIssuer, com.tools20022.repository.msg.CertificateDataSet2.mmInspectionDate,
+						com.tools20022.repository.msg.CertificateDataSet2.mmAuthorisedInspectorIndicator, com.tools20022.repository.msg.CertificateDataSet2.mmCertificateIdentification,
+						com.tools20022.repository.msg.CertificateDataSet2.mmTransport, com.tools20022.repository.msg.CertificateDataSet2.mmGoodsDescription, com.tools20022.repository.msg.CertificateDataSet2.mmConsignor,
+						com.tools20022.repository.msg.CertificateDataSet2.mmConsignee, com.tools20022.repository.msg.CertificateDataSet2.mmManufacturer, com.tools20022.repository.msg.CertificateDataSet2.mmAdditionalInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(ForwardDataSetSubmissionReportV05.mmCertificateDataSet, DataSetSubmissionV05.mmCertificateDataSet);
 				trace_lazy = () -> TradeCertificate.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "CertificateDataSet2";
 				definition = "Formal document used to record a fact and used as proof of the fact, in the context of a commercial trade transaction.";
@@ -917,147 +1089,147 @@ public class CertificateDataSet2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "DataSetId", required = true)
 	public DocumentIdentification1 getDataSetIdentification() {
 		return dataSetIdentification;
 	}
 
-	public void setDataSetIdentification(com.tools20022.repository.msg.DocumentIdentification1 dataSetIdentification) {
-		this.dataSetIdentification = dataSetIdentification;
+	public CertificateDataSet2 setDataSetIdentification(DocumentIdentification1 dataSetIdentification) {
+		this.dataSetIdentification = Objects.requireNonNull(dataSetIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "CertTp", required = true)
 	public TradeCertificateType1Code getCertificateType() {
 		return certificateType;
 	}
 
-	public void setCertificateType(TradeCertificateType1Code certificateType) {
-		this.certificateType = certificateType;
+	public CertificateDataSet2 setCertificateType(TradeCertificateType1Code certificateType) {
+		this.certificateType = Objects.requireNonNull(certificateType);
+		return this;
 	}
 
-	@XmlElement(name = "LineItm")
 	public List<LineItemAndPOIdentification1> getLineItem() {
-		return lineItem;
+		return lineItem == null ? lineItem = new ArrayList<>() : lineItem;
 	}
 
-	public void setLineItem(List<com.tools20022.repository.msg.LineItemAndPOIdentification1> lineItem) {
-		this.lineItem = lineItem;
+	public CertificateDataSet2 setLineItem(List<LineItemAndPOIdentification1> lineItem) {
+		this.lineItem = Objects.requireNonNull(lineItem);
+		return this;
 	}
 
-	@XmlElement(name = "CertfdChrtcs", required = true)
 	public CertifiedCharacteristics2Choice getCertifiedCharacteristics() {
 		return certifiedCharacteristics;
 	}
 
-	public void setCertifiedCharacteristics(CertifiedCharacteristics2Choice certifiedCharacteristics) {
-		this.certifiedCharacteristics = certifiedCharacteristics;
+	public CertificateDataSet2 setCertifiedCharacteristics(CertifiedCharacteristics2Choice certifiedCharacteristics) {
+		this.certifiedCharacteristics = Objects.requireNonNull(certifiedCharacteristics);
+		return this;
 	}
 
-	@XmlElement(name = "IsseDt", required = true)
 	public ISODate getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(ISODate issueDate) {
-		this.issueDate = issueDate;
+	public CertificateDataSet2 setIssueDate(ISODate issueDate) {
+		this.issueDate = Objects.requireNonNull(issueDate);
+		return this;
 	}
 
-	@XmlElement(name = "PlcOfIsse")
-	public PostalAddress5 getPlaceOfIssue() {
-		return placeOfIssue;
+	public Optional<PostalAddress5> getPlaceOfIssue() {
+		return placeOfIssue == null ? Optional.empty() : Optional.of(placeOfIssue);
 	}
 
-	public void setPlaceOfIssue(com.tools20022.repository.msg.PostalAddress5 placeOfIssue) {
+	public CertificateDataSet2 setPlaceOfIssue(PostalAddress5 placeOfIssue) {
 		this.placeOfIssue = placeOfIssue;
+		return this;
 	}
 
-	@XmlElement(name = "Issr", required = true)
 	public PartyIdentification26 getIssuer() {
 		return issuer;
 	}
 
-	public void setIssuer(com.tools20022.repository.msg.PartyIdentification26 issuer) {
-		this.issuer = issuer;
+	public CertificateDataSet2 setIssuer(PartyIdentification26 issuer) {
+		this.issuer = Objects.requireNonNull(issuer);
+		return this;
 	}
 
-	@XmlElement(name = "InspctnDt")
-	public DatePeriodDetails getInspectionDate() {
-		return inspectionDate;
+	public Optional<DatePeriodDetails> getInspectionDate() {
+		return inspectionDate == null ? Optional.empty() : Optional.of(inspectionDate);
 	}
 
-	public void setInspectionDate(com.tools20022.repository.msg.DatePeriodDetails inspectionDate) {
+	public CertificateDataSet2 setInspectionDate(DatePeriodDetails inspectionDate) {
 		this.inspectionDate = inspectionDate;
+		return this;
 	}
 
-	@XmlElement(name = "AuthrsdInspctrInd")
-	public YesNoIndicator getAuthorisedInspectorIndicator() {
-		return authorisedInspectorIndicator;
+	public Optional<YesNoIndicator> getAuthorisedInspectorIndicator() {
+		return authorisedInspectorIndicator == null ? Optional.empty() : Optional.of(authorisedInspectorIndicator);
 	}
 
-	public void setAuthorisedInspectorIndicator(YesNoIndicator authorisedInspectorIndicator) {
+	public CertificateDataSet2 setAuthorisedInspectorIndicator(YesNoIndicator authorisedInspectorIndicator) {
 		this.authorisedInspectorIndicator = authorisedInspectorIndicator;
+		return this;
 	}
 
-	@XmlElement(name = "CertId", required = true)
 	public Max35Text getCertificateIdentification() {
 		return certificateIdentification;
 	}
 
-	public void setCertificateIdentification(Max35Text certificateIdentification) {
-		this.certificateIdentification = certificateIdentification;
+	public CertificateDataSet2 setCertificateIdentification(Max35Text certificateIdentification) {
+		this.certificateIdentification = Objects.requireNonNull(certificateIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "Trnsprt")
-	public SingleTransport3 getTransport() {
-		return transport;
+	public Optional<SingleTransport3> getTransport() {
+		return transport == null ? Optional.empty() : Optional.of(transport);
 	}
 
-	public void setTransport(com.tools20022.repository.msg.SingleTransport3 transport) {
+	public CertificateDataSet2 setTransport(SingleTransport3 transport) {
 		this.transport = transport;
+		return this;
 	}
 
-	@XmlElement(name = "GoodsDesc")
-	public Max70Text getGoodsDescription() {
-		return goodsDescription;
+	public Optional<Max70Text> getGoodsDescription() {
+		return goodsDescription == null ? Optional.empty() : Optional.of(goodsDescription);
 	}
 
-	public void setGoodsDescription(Max70Text goodsDescription) {
+	public CertificateDataSet2 setGoodsDescription(Max70Text goodsDescription) {
 		this.goodsDescription = goodsDescription;
+		return this;
 	}
 
-	@XmlElement(name = "Consgnr")
-	public PartyIdentification26 getConsignor() {
-		return consignor;
+	public Optional<PartyIdentification26> getConsignor() {
+		return consignor == null ? Optional.empty() : Optional.of(consignor);
 	}
 
-	public void setConsignor(com.tools20022.repository.msg.PartyIdentification26 consignor) {
+	public CertificateDataSet2 setConsignor(PartyIdentification26 consignor) {
 		this.consignor = consignor;
+		return this;
 	}
 
-	@XmlElement(name = "Consgn")
-	public PartyIdentification26 getConsignee() {
-		return consignee;
+	public Optional<PartyIdentification26> getConsignee() {
+		return consignee == null ? Optional.empty() : Optional.of(consignee);
 	}
 
-	public void setConsignee(com.tools20022.repository.msg.PartyIdentification26 consignee) {
+	public CertificateDataSet2 setConsignee(PartyIdentification26 consignee) {
 		this.consignee = consignee;
+		return this;
 	}
 
-	@XmlElement(name = "Manfctr")
-	public PartyIdentification26 getManufacturer() {
-		return manufacturer;
+	public Optional<PartyIdentification26> getManufacturer() {
+		return manufacturer == null ? Optional.empty() : Optional.of(manufacturer);
 	}
 
-	public void setManufacturer(com.tools20022.repository.msg.PartyIdentification26 manufacturer) {
+	public CertificateDataSet2 setManufacturer(PartyIdentification26 manufacturer) {
 		this.manufacturer = manufacturer;
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max350Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max350Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public CertificateDataSet2 setAdditionalInformation(List<Max350Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

@@ -29,12 +29,14 @@ import com.tools20022.repository.codeset.InsuranceClauses1Code;
 import com.tools20022.repository.datatype.*;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.DocumentIdentification1;
+import com.tools20022.repository.msg.PartyIdentification26;
+import com.tools20022.repository.msg.PostalAddress5;
+import com.tools20022.repository.msg.SingleTransport3;
 import java.text.DateFormat;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.Date;
 import java.util.function.Supplier;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -108,8 +110,16 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssueDateOrEffectiveDateRule#forInsuranceDataSet1
+ * ConstraintIssueDateOrEffectiveDateRule.forInsuranceDataSet1}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} = com.tools20022.metamodel.MMRegistrationStatus.OBSOLETE</li>
@@ -123,16 +133,17 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InsuranceDataSet1", propOrder = {"dataSetIdentification", "issuer", "issueDate", "effectiveDate", "placeOfIssue", "insuranceDocumentIdentification", "transport", "insuredAmount", "insuredGoodsDescription",
 		"insuranceConditions", "insuranceClauses", "assured", "claimsPayableAt", "claimsPayableIn"})
 public class InsuranceDataSet1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "DataSetId", required = true)
 	protected DocumentIdentification1 dataSetIdentification;
 	/**
-	 * Identifies the insurancedata set
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -154,27 +165,38 @@ public class InsuranceDataSet1 {
 	 * name} = "DataSetIdentification"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Identifies the insurancedata set"</li>
+	 * definition} = "Identifies the insurancedata set."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDataSetIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InsuranceDataSet1, DocumentIdentification1> mmDataSetIdentification = new MMMessageAssociationEnd<InsuranceDataSet1, DocumentIdentification1>() {
 		{
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "DataSetId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "DataSetIdentification";
-			definition = "Identifies the insurancedata set";
+			definition = "Identifies the insurancedata set.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification1.mmObject();
+			type_lazy = () -> DocumentIdentification1.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification1 getValue(InsuranceDataSet1 obj) {
+			return obj.getDataSetIdentification();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, DocumentIdentification1 value) {
+			obj.setDataSetIdentification(value);
 		}
 	};
+	@XmlElement(name = "Issr", required = true)
 	protected PartyIdentification26 issuer;
 	/**
-	 * Issuer of the certificate, typically the insurance company or its agent.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -205,10 +227,10 @@ public class InsuranceDataSet1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIssuer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InsuranceDataSet1, PartyIdentification26> mmIssuer = new MMMessageAssociationEnd<InsuranceDataSet1, PartyIdentification26>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "Issr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -217,13 +239,24 @@ public class InsuranceDataSet1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public PartyIdentification26 getValue(InsuranceDataSet1 obj) {
+			return obj.getIssuer();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, PartyIdentification26 value) {
+			obj.setIssuer(value);
 		}
 	};
+	@XmlElement(name = "IsseDt", required = true)
 	protected ISODate issueDate;
 	/**
-	 * Issue date of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -253,10 +286,10 @@ public class InsuranceDataSet1 {
 	 * definition} = "Issue date of the document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIssueDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, ISODate> mmIssueDate = new MMMessageAttribute<InsuranceDataSet1, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmIssueDate;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "IsseDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -266,11 +299,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(InsuranceDataSet1 obj) {
+			return obj.getIssueDate();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, ISODate value) {
+			obj.setIssueDate(value);
+		}
 	};
+	@XmlElement(name = "FctvDt")
 	protected ISODate effectiveDate;
 	/**
-	 * Date upon which cover under an insurance policy becomes effective.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -301,10 +345,10 @@ public class InsuranceDataSet1 {
 	 * "Date upon which cover under an insurance policy becomes effective."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmEffectiveDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, Optional<ISODate>> mmEffectiveDate = new MMMessageAttribute<InsuranceDataSet1, Optional<ISODate>>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmEffectiveDate;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "FctvDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -314,11 +358,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public Optional<ISODate> getValue(InsuranceDataSet1 obj) {
+			return obj.getEffectiveDate();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Optional<ISODate> value) {
+			obj.setEffectiveDate(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "PlcOfIsse")
 	protected PostalAddress5 placeOfIssue;
 	/**
-	 * Place where the insurance certificate was issued.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -348,10 +403,10 @@ public class InsuranceDataSet1 {
 	 * definition} = "Place where the insurance certificate was issued."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlaceOfIssue = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, Optional<PostalAddress5>> mmPlaceOfIssue = new MMMessageAttribute<InsuranceDataSet1, Optional<PostalAddress5>>() {
 		{
 			businessElementTrace_lazy = () -> Location.mmAddress;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "PlcOfIsse";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -359,13 +414,24 @@ public class InsuranceDataSet1 {
 			definition = "Place where the insurance certificate was issued.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.PostalAddress5.mmObject();
+			complexType_lazy = () -> PostalAddress5.mmObject();
+		}
+
+		@Override
+		public Optional<PostalAddress5> getValue(InsuranceDataSet1 obj) {
+			return obj.getPlaceOfIssue();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Optional<PostalAddress5> value) {
+			obj.setPlaceOfIssue(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "InsrncDocId", required = true)
 	protected Max35Text insuranceDocumentIdentification;
 	/**
-	 * Unique identifier of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -395,10 +461,10 @@ public class InsuranceDataSet1 {
 	 * definition} = "Unique identifier of the document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInsuranceDocumentIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, Max35Text> mmInsuranceDocumentIdentification = new MMMessageAttribute<InsuranceDataSet1, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "InsrncDocId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -408,12 +474,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(InsuranceDataSet1 obj) {
+			return obj.getInsuranceDocumentIdentification();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Max35Text value) {
+			obj.setInsuranceDocumentIdentification(value);
+		}
 	};
+	@XmlElement(name = "Trnsprt")
 	protected SingleTransport3 transport;
 	/**
-	 * Transport information relative to the goods that are insured under the
-	 * insurance policy.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -444,10 +520,10 @@ public class InsuranceDataSet1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTransport = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InsuranceDataSet1, Optional<SingleTransport3>> mmTransport = new MMMessageAssociationEnd<InsuranceDataSet1, Optional<SingleTransport3>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmTransport;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "Trnsprt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -456,13 +532,24 @@ public class InsuranceDataSet1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SingleTransport3.mmObject();
+			type_lazy = () -> SingleTransport3.mmObject();
+		}
+
+		@Override
+		public Optional<SingleTransport3> getValue(InsuranceDataSet1 obj) {
+			return obj.getTransport();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Optional<SingleTransport3> value) {
+			obj.setTransport(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "InsrdAmt", required = true)
 	protected CurrencyAndAmount insuredAmount;
 	/**
-	 * Value of the goods as insured under the insurance policy.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -494,10 +581,10 @@ public class InsuranceDataSet1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInsuredAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, CurrencyAndAmount> mmInsuredAmount = new MMMessageAttribute<InsuranceDataSet1, CurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmInsuredAmount;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "InsrdAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -507,11 +594,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> CurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public CurrencyAndAmount getValue(InsuranceDataSet1 obj) {
+			return obj.getInsuredAmount();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, CurrencyAndAmount value) {
+			obj.setInsuredAmount(value);
+		}
 	};
+	@XmlElement(name = "InsrdGoodsDesc")
 	protected Max70Text insuredGoodsDescription;
 	/**
-	 * Information about the goods and/or services of a trade transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -542,10 +640,10 @@ public class InsuranceDataSet1 {
 	 * "Information about the goods and/or services of a trade transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInsuredGoodsDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, Optional<Max70Text>> mmInsuredGoodsDescription = new MMMessageAttribute<InsuranceDataSet1, Optional<Max70Text>>() {
 		{
 			businessElementTrace_lazy = () -> Product.mmDescription;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "InsrdGoodsDesc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -555,12 +653,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max70Text> getValue(InsuranceDataSet1 obj) {
+			return obj.getInsuredGoodsDescription();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Optional<Max70Text> value) {
+			obj.setInsuredGoodsDescription(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "InsrncConds")
 	protected List<Max350Text> insuranceConditions;
 	/**
-	 * Description of the conditions and exclusion clauses under which insurance
-	 * is granted.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -592,10 +700,10 @@ public class InsuranceDataSet1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInsuranceConditions = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, List<Max350Text>> mmInsuranceConditions = new MMMessageAttribute<InsuranceDataSet1, List<Max350Text>>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmInsuranceConditions;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "InsrncConds";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -604,12 +712,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max350Text.mmObject();
 		}
+
+		@Override
+		public List<Max350Text> getValue(InsuranceDataSet1 obj) {
+			return obj.getInsuranceConditions();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, List<Max350Text> value) {
+			obj.setInsuranceConditions(value);
+		}
 	};
+	@XmlElement(name = "InsrncClauses")
 	protected List<InsuranceClauses1Code> insuranceClauses;
 	/**
-	 * Standard insurance clauses defined by the Institute of London
-	 * Underwriters (or the American Institute of marine Underwriters).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -642,10 +760,10 @@ public class InsuranceDataSet1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInsuranceClauses = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, List<InsuranceClauses1Code>> mmInsuranceClauses = new MMMessageAttribute<InsuranceDataSet1, List<InsuranceClauses1Code>>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmInsuranceClauses;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "InsrncClauses";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -654,11 +772,22 @@ public class InsuranceDataSet1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> InsuranceClauses1Code.mmObject();
 		}
+
+		@Override
+		public List<InsuranceClauses1Code> getValue(InsuranceDataSet1 obj) {
+			return obj.getInsuranceClauses();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, List<InsuranceClauses1Code> value) {
+			obj.setInsuranceClauses(value);
+		}
 	};
+	@XmlElement(name = "Assrd", required = true)
 	protected PartyIdentification29Choice assured;
 	/**
-	 * Party that is covered under the assurance policy.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -688,10 +817,10 @@ public class InsuranceDataSet1 {
 	 * definition} = "Party that is covered under the assurance policy."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAssured = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InsuranceDataSet1, PartyIdentification29Choice> mmAssured = new MMMessageAssociationEnd<InsuranceDataSet1, PartyIdentification29Choice>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "Assrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -702,11 +831,22 @@ public class InsuranceDataSet1 {
 			isComposite = true;
 			type_lazy = () -> PartyIdentification29Choice.mmObject();
 		}
+
+		@Override
+		public PartyIdentification29Choice getValue(InsuranceDataSet1 obj) {
+			return obj.getAssured();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, PartyIdentification29Choice value) {
+			obj.setAssured(value);
+		}
 	};
+	@XmlElement(name = "ClmsPyblAt", required = true)
 	protected PostalAddress5 claimsPayableAt;
 	/**
-	 * Place where claims under the insurance policy will be paid.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -737,10 +877,10 @@ public class InsuranceDataSet1 {
 	 * "Place where claims under the insurance policy will be paid."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmClaimsPayableAt = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, PostalAddress5> mmClaimsPayableAt = new MMMessageAttribute<InsuranceDataSet1, PostalAddress5>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmClaimsPayableAt;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "ClmsPyblAt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -748,13 +888,24 @@ public class InsuranceDataSet1 {
 			definition = "Place where claims under the insurance policy will be paid.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			complexType_lazy = () -> com.tools20022.repository.msg.PostalAddress5.mmObject();
+			complexType_lazy = () -> PostalAddress5.mmObject();
+		}
+
+		@Override
+		public PostalAddress5 getValue(InsuranceDataSet1 obj) {
+			return obj.getClaimsPayableAt();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, PostalAddress5 value) {
+			obj.setClaimsPayableAt(value);
 		}
 	};
+	@XmlElement(name = "ClmsPyblIn")
 	protected CurrencyCode claimsPayableIn;
 	/**
-	 * Currency in which claims, if valid, will be paid.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -784,10 +935,10 @@ public class InsuranceDataSet1 {
 	 * definition} = "Currency in which claims, if valid, will be paid."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmClaimsPayableIn = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InsuranceDataSet1, Optional<CurrencyCode>> mmClaimsPayableIn = new MMMessageAttribute<InsuranceDataSet1, Optional<CurrencyCode>>() {
 		{
 			businessElementTrace_lazy = () -> InsuranceCertificate.mmClaimsPayableIn;
-			componentContext_lazy = () -> InsuranceDataSet1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InsuranceDataSet1.mmObject();
 			isDerived = false;
 			xmlTag = "ClmsPyblIn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -797,17 +948,30 @@ public class InsuranceDataSet1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CurrencyCode.mmObject();
 		}
+
+		@Override
+		public Optional<CurrencyCode> getValue(InsuranceDataSet1 obj) {
+			return obj.getClaimsPayableIn();
+		}
+
+		@Override
+		public void setValue(InsuranceDataSet1 obj, Optional<CurrencyCode> value) {
+			obj.setClaimsPayableIn(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(InsuranceDataSet1.mmDataSetIdentification, InsuranceDataSet1.mmIssuer, InsuranceDataSet1.mmIssueDate, InsuranceDataSet1.mmEffectiveDate, InsuranceDataSet1.mmPlaceOfIssue,
-						InsuranceDataSet1.mmInsuranceDocumentIdentification, InsuranceDataSet1.mmTransport, InsuranceDataSet1.mmInsuredAmount, InsuranceDataSet1.mmInsuredGoodsDescription, InsuranceDataSet1.mmInsuranceConditions,
-						InsuranceDataSet1.mmInsuranceClauses, InsuranceDataSet1.mmAssured, InsuranceDataSet1.mmClaimsPayableAt, InsuranceDataSet1.mmClaimsPayableIn);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.InsuranceDataSet1.mmDataSetIdentification, com.tools20022.repository.msg.InsuranceDataSet1.mmIssuer,
+						com.tools20022.repository.msg.InsuranceDataSet1.mmIssueDate, com.tools20022.repository.msg.InsuranceDataSet1.mmEffectiveDate, com.tools20022.repository.msg.InsuranceDataSet1.mmPlaceOfIssue,
+						com.tools20022.repository.msg.InsuranceDataSet1.mmInsuranceDocumentIdentification, com.tools20022.repository.msg.InsuranceDataSet1.mmTransport, com.tools20022.repository.msg.InsuranceDataSet1.mmInsuredAmount,
+						com.tools20022.repository.msg.InsuranceDataSet1.mmInsuredGoodsDescription, com.tools20022.repository.msg.InsuranceDataSet1.mmInsuranceConditions, com.tools20022.repository.msg.InsuranceDataSet1.mmInsuranceClauses,
+						com.tools20022.repository.msg.InsuranceDataSet1.mmAssured, com.tools20022.repository.msg.InsuranceDataSet1.mmClaimsPayableAt, com.tools20022.repository.msg.InsuranceDataSet1.mmClaimsPayableIn);
 				messageBuildingBlock_lazy = () -> Arrays.asList(ForwardDataSetSubmissionReportV05.mmInsuranceDataSet, DataSetSubmissionV05.mmInsuranceDataSet);
 				trace_lazy = () -> InsuranceCertificate.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintIssueDateOrEffectiveDateRule.forInsuranceDataSet1);
 				registrationStatus = MMRegistrationStatus.OBSOLETE;
 				removalDate = ((Supplier<Date>) (() -> {
 					try {
@@ -823,129 +987,129 @@ public class InsuranceDataSet1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "DataSetId", required = true)
 	public DocumentIdentification1 getDataSetIdentification() {
 		return dataSetIdentification;
 	}
 
-	public void setDataSetIdentification(com.tools20022.repository.msg.DocumentIdentification1 dataSetIdentification) {
-		this.dataSetIdentification = dataSetIdentification;
+	public InsuranceDataSet1 setDataSetIdentification(DocumentIdentification1 dataSetIdentification) {
+		this.dataSetIdentification = Objects.requireNonNull(dataSetIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "Issr", required = true)
 	public PartyIdentification26 getIssuer() {
 		return issuer;
 	}
 
-	public void setIssuer(com.tools20022.repository.msg.PartyIdentification26 issuer) {
-		this.issuer = issuer;
+	public InsuranceDataSet1 setIssuer(PartyIdentification26 issuer) {
+		this.issuer = Objects.requireNonNull(issuer);
+		return this;
 	}
 
-	@XmlElement(name = "IsseDt", required = true)
 	public ISODate getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(ISODate issueDate) {
-		this.issueDate = issueDate;
+	public InsuranceDataSet1 setIssueDate(ISODate issueDate) {
+		this.issueDate = Objects.requireNonNull(issueDate);
+		return this;
 	}
 
-	@XmlElement(name = "FctvDt")
-	public ISODate getEffectiveDate() {
-		return effectiveDate;
+	public Optional<ISODate> getEffectiveDate() {
+		return effectiveDate == null ? Optional.empty() : Optional.of(effectiveDate);
 	}
 
-	public void setEffectiveDate(ISODate effectiveDate) {
+	public InsuranceDataSet1 setEffectiveDate(ISODate effectiveDate) {
 		this.effectiveDate = effectiveDate;
+		return this;
 	}
 
-	@XmlElement(name = "PlcOfIsse")
-	public PostalAddress5 getPlaceOfIssue() {
-		return placeOfIssue;
+	public Optional<PostalAddress5> getPlaceOfIssue() {
+		return placeOfIssue == null ? Optional.empty() : Optional.of(placeOfIssue);
 	}
 
-	public void setPlaceOfIssue(com.tools20022.repository.msg.PostalAddress5 placeOfIssue) {
+	public InsuranceDataSet1 setPlaceOfIssue(PostalAddress5 placeOfIssue) {
 		this.placeOfIssue = placeOfIssue;
+		return this;
 	}
 
-	@XmlElement(name = "InsrncDocId", required = true)
 	public Max35Text getInsuranceDocumentIdentification() {
 		return insuranceDocumentIdentification;
 	}
 
-	public void setInsuranceDocumentIdentification(Max35Text insuranceDocumentIdentification) {
-		this.insuranceDocumentIdentification = insuranceDocumentIdentification;
+	public InsuranceDataSet1 setInsuranceDocumentIdentification(Max35Text insuranceDocumentIdentification) {
+		this.insuranceDocumentIdentification = Objects.requireNonNull(insuranceDocumentIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "Trnsprt")
-	public SingleTransport3 getTransport() {
-		return transport;
+	public Optional<SingleTransport3> getTransport() {
+		return transport == null ? Optional.empty() : Optional.of(transport);
 	}
 
-	public void setTransport(com.tools20022.repository.msg.SingleTransport3 transport) {
+	public InsuranceDataSet1 setTransport(SingleTransport3 transport) {
 		this.transport = transport;
+		return this;
 	}
 
-	@XmlElement(name = "InsrdAmt", required = true)
 	public CurrencyAndAmount getInsuredAmount() {
 		return insuredAmount;
 	}
 
-	public void setInsuredAmount(CurrencyAndAmount insuredAmount) {
-		this.insuredAmount = insuredAmount;
+	public InsuranceDataSet1 setInsuredAmount(CurrencyAndAmount insuredAmount) {
+		this.insuredAmount = Objects.requireNonNull(insuredAmount);
+		return this;
 	}
 
-	@XmlElement(name = "InsrdGoodsDesc")
-	public Max70Text getInsuredGoodsDescription() {
-		return insuredGoodsDescription;
+	public Optional<Max70Text> getInsuredGoodsDescription() {
+		return insuredGoodsDescription == null ? Optional.empty() : Optional.of(insuredGoodsDescription);
 	}
 
-	public void setInsuredGoodsDescription(Max70Text insuredGoodsDescription) {
+	public InsuranceDataSet1 setInsuredGoodsDescription(Max70Text insuredGoodsDescription) {
 		this.insuredGoodsDescription = insuredGoodsDescription;
+		return this;
 	}
 
-	@XmlElement(name = "InsrncConds")
 	public List<Max350Text> getInsuranceConditions() {
-		return insuranceConditions;
+		return insuranceConditions == null ? insuranceConditions = new ArrayList<>() : insuranceConditions;
 	}
 
-	public void setInsuranceConditions(List<Max350Text> insuranceConditions) {
-		this.insuranceConditions = insuranceConditions;
+	public InsuranceDataSet1 setInsuranceConditions(List<Max350Text> insuranceConditions) {
+		this.insuranceConditions = Objects.requireNonNull(insuranceConditions);
+		return this;
 	}
 
-	@XmlElement(name = "InsrncClauses")
 	public List<InsuranceClauses1Code> getInsuranceClauses() {
-		return insuranceClauses;
+		return insuranceClauses == null ? insuranceClauses = new ArrayList<>() : insuranceClauses;
 	}
 
-	public void setInsuranceClauses(List<InsuranceClauses1Code> insuranceClauses) {
-		this.insuranceClauses = insuranceClauses;
+	public InsuranceDataSet1 setInsuranceClauses(List<InsuranceClauses1Code> insuranceClauses) {
+		this.insuranceClauses = Objects.requireNonNull(insuranceClauses);
+		return this;
 	}
 
-	@XmlElement(name = "Assrd", required = true)
 	public PartyIdentification29Choice getAssured() {
 		return assured;
 	}
 
-	public void setAssured(PartyIdentification29Choice assured) {
-		this.assured = assured;
+	public InsuranceDataSet1 setAssured(PartyIdentification29Choice assured) {
+		this.assured = Objects.requireNonNull(assured);
+		return this;
 	}
 
-	@XmlElement(name = "ClmsPyblAt", required = true)
 	public PostalAddress5 getClaimsPayableAt() {
 		return claimsPayableAt;
 	}
 
-	public void setClaimsPayableAt(com.tools20022.repository.msg.PostalAddress5 claimsPayableAt) {
-		this.claimsPayableAt = claimsPayableAt;
+	public InsuranceDataSet1 setClaimsPayableAt(PostalAddress5 claimsPayableAt) {
+		this.claimsPayableAt = Objects.requireNonNull(claimsPayableAt);
+		return this;
 	}
 
-	@XmlElement(name = "ClmsPyblIn")
-	public CurrencyCode getClaimsPayableIn() {
-		return claimsPayableIn;
+	public Optional<CurrencyCode> getClaimsPayableIn() {
+		return claimsPayableIn == null ? Optional.empty() : Optional.of(claimsPayableIn);
 	}
 
-	public void setClaimsPayableIn(CurrencyCode claimsPayableIn) {
+	public InsuranceDataSet1 setClaimsPayableIn(CurrencyCode claimsPayableIn) {
 		this.claimsPayableIn = claimsPayableIn;
+		return this;
 	}
 }

@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -108,16 +106,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ActionReminderV03", propOrder = {"reminderIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference", "messageRequiringAction",
 		"pendingRequestForAction"})
 public class ActionReminderV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RmndrId", required = true)
 	protected MessageIdentification1 reminderIdentification;
 	/**
-	 * Identifies the reminder message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -138,7 +137,7 @@ public class ActionReminderV03 {
 	 * definition} = "Identifies the reminder message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReminderIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, MessageIdentification1> mmReminderIdentification = new MMMessageBuildingBlock<ActionReminderV03, MessageIdentification1>() {
 		{
 			xmlTag = "RmndrId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -149,20 +148,21 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getReminderIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(ActionReminderV03 obj) {
+			return obj.getReminderIdentification();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, MessageIdentification1 value) {
+			obj.setReminderIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -185,7 +185,7 @@ public class ActionReminderV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<ActionReminderV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -196,19 +196,21 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(ActionReminderV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId")
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -227,33 +229,36 @@ public class ActionReminderV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established. "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, Optional<DocumentIdentification3>> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<ActionReminderV03, Optional<DocumentIdentification3>>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established. ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DocumentIdentification3> getValue(ActionReminderV03 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, Optional<DocumentIdentification3> value) {
+			obj.setEstablishedBaselineIdentification(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -275,7 +280,7 @@ public class ActionReminderV03 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<ActionReminderV03, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -286,19 +291,21 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(ActionReminderV03 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for each financial institution which is a
-	 * party to the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -321,7 +328,7 @@ public class ActionReminderV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<ActionReminderV03, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -332,18 +339,21 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(ActionReminderV03 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "MsgReqrngActn", required = true)
 	protected MessageIdentification1 messageRequiringAction;
 	/**
-	 * Identifies the message for which an action is required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -364,7 +374,7 @@ public class ActionReminderV03 {
 	 * definition} = "Identifies the message for which an action is required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmMessageRequiringAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, MessageIdentification1> mmMessageRequiringAction = new MMMessageBuildingBlock<ActionReminderV03, MessageIdentification1>() {
 		{
 			xmlTag = "MsgReqrngActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -375,18 +385,21 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getMessageRequiringAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(ActionReminderV03 obj) {
+			return obj.getMessageRequiringAction();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, MessageIdentification1 value) {
+			obj.setMessageRequiringAction(value);
 		}
 	};
+	@XmlElement(name = "PdgReqForActn", required = true)
 	protected PendingActivity2 pendingRequestForAction;
 	/**
-	 * Next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -407,7 +420,7 @@ public class ActionReminderV03 {
 	 * definition} = "Next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmPendingRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActionReminderV03, PendingActivity2> mmPendingRequestForAction = new MMMessageBuildingBlock<ActionReminderV03, PendingActivity2>() {
 		{
 			xmlTag = "PdgReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -418,12 +431,14 @@ public class ActionReminderV03 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActionReminderV03.class.getMethod("getPendingRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PendingActivity2 getValue(ActionReminderV03 obj) {
+			return obj.getPendingRequestForAction();
+		}
+
+		@Override
+		public void setValue(ActionReminderV03 obj, PendingActivity2 value) {
+			obj.setPendingRequestForAction(value);
 		}
 	};
 
@@ -458,70 +473,70 @@ public class ActionReminderV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RmndrId", required = true)
 	public MessageIdentification1 getReminderIdentification() {
 		return reminderIdentification;
 	}
 
-	public void setReminderIdentification(MessageIdentification1 reminderIdentification) {
-		this.reminderIdentification = reminderIdentification;
+	public ActionReminderV03 setReminderIdentification(MessageIdentification1 reminderIdentification) {
+		this.reminderIdentification = Objects.requireNonNull(reminderIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public ActionReminderV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId")
-	public DocumentIdentification3 getEstablishedBaselineIdentification() {
-		return establishedBaselineIdentification;
+	public Optional<DocumentIdentification3> getEstablishedBaselineIdentification() {
+		return establishedBaselineIdentification == null ? Optional.empty() : Optional.of(establishedBaselineIdentification);
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+	public ActionReminderV03 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
 		this.establishedBaselineIdentification = establishedBaselineIdentification;
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public ActionReminderV03 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public ActionReminderV03 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "MsgReqrngActn", required = true)
 	public MessageIdentification1 getMessageRequiringAction() {
 		return messageRequiringAction;
 	}
 
-	public void setMessageRequiringAction(MessageIdentification1 messageRequiringAction) {
-		this.messageRequiringAction = messageRequiringAction;
+	public ActionReminderV03 setMessageRequiringAction(MessageIdentification1 messageRequiringAction) {
+		this.messageRequiringAction = Objects.requireNonNull(messageRequiringAction);
+		return this;
 	}
 
-	@XmlElement(name = "PdgReqForActn", required = true)
 	public PendingActivity2 getPendingRequestForAction() {
 		return pendingRequestForAction;
 	}
 
-	public void setPendingRequestForAction(PendingActivity2 pendingRequestForAction) {
-		this.pendingRequestForAction = pendingRequestForAction;
+	public ActionReminderV03 setPendingRequestForAction(PendingActivity2 pendingRequestForAction) {
+		this.pendingRequestForAction = Objects.requireNonNull(pendingRequestForAction);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.024.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.024.001.03")
 	static public class Document {
 		@XmlElement(name = "ActnRmndr", required = true)
 		public ActionReminderV03 messageBody;

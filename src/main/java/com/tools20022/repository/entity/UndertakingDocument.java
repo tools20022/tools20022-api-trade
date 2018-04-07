@@ -25,12 +25,14 @@ import com.tools20022.repository.choice.UndertakingDocumentType2Choice;
 import com.tools20022.repository.codeset.ExternalDocumentFormatCode;
 import com.tools20022.repository.codeset.ExternalUndertakingDocumentTypeCode;
 import com.tools20022.repository.datatype.YesNoIndicator;
+import com.tools20022.repository.entity.Demand;
 import com.tools20022.repository.entity.FinancialDocument;
+import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Document presented.
@@ -113,8 +115,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -130,8 +132,8 @@ public class UndertakingDocument extends FinancialDocument {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected ExternalUndertakingDocumentTypeCode documentType;
 	/**
-	 * Type of document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -178,7 +180,7 @@ public class UndertakingDocument extends FinancialDocument {
 	 * definition} = "Type of document."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmDocumentType = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingDocument, ExternalUndertakingDocumentTypeCode> mmDocumentType = new MMBusinessAttribute<UndertakingDocument, ExternalUndertakingDocumentTypeCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(UndertakingDocumentType1Choice.mmCode, UndertakingDocumentType1Choice.mmProprietary, Document9.mmType, UndertakingDocumentType2Choice.mmCode, UndertakingDocumentType2Choice.mmProprietary,
 					Document10.mmDocumentType, Document8.mmType);
@@ -192,18 +194,20 @@ public class UndertakingDocument extends FinancialDocument {
 			simpleType_lazy = () -> ExternalUndertakingDocumentTypeCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingDocument.class.getMethod("getDocumentType", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ExternalUndertakingDocumentTypeCode getValue(UndertakingDocument obj) {
+			return obj.getDocumentType();
+		}
+
+		@Override
+		public void setValue(UndertakingDocument obj, ExternalUndertakingDocumentTypeCode value) {
+			obj.setDocumentType(value);
 		}
 	};
 	protected ExternalDocumentFormatCode format;
 	/**
-	 * Format of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -253,7 +257,7 @@ public class UndertakingDocument extends FinancialDocument {
 	 * definition} = "Format of the document."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmFormat = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingDocument, ExternalDocumentFormatCode> mmFormat = new MMBusinessAttribute<UndertakingDocument, ExternalDocumentFormatCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(DocumentFormat1Choice.mmCode, DocumentFormat1Choice.mmProprietary, Document9.mmFormat, PresentationDocumentFormat1Choice.mmCode, PresentationDocumentFormat1Choice.mmProprietary,
 					Presentation3.mmFormat, Document11.mmType, Document10.mmDocumentFormat);
@@ -267,18 +271,20 @@ public class UndertakingDocument extends FinancialDocument {
 			simpleType_lazy = () -> ExternalDocumentFormatCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingDocument.class.getMethod("getFormat", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ExternalDocumentFormatCode getValue(UndertakingDocument obj) {
+			return obj.getFormat();
+		}
+
+		@Override
+		public void setValue(UndertakingDocument obj, ExternalDocumentFormatCode value) {
+			obj.setFormat(value);
 		}
 	};
 	protected Undertaking undertaking;
 	/**
-	 * Undertaking for which document content is specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -309,7 +315,7 @@ public class UndertakingDocument extends FinancialDocument {
 	 * definition} = "Undertaking for which document content is specified."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmUndertaking = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<UndertakingDocument, com.tools20022.repository.entity.Undertaking> mmUndertaking = new MMBusinessAssociationEnd<UndertakingDocument, com.tools20022.repository.entity.Undertaking>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.UndertakingDocument.mmObject();
@@ -322,11 +328,21 @@ public class UndertakingDocument extends FinancialDocument {
 			aggregation = MMAggregation.NONE;
 			type_lazy = () -> com.tools20022.repository.entity.Undertaking.mmObject();
 		}
+
+		@Override
+		public com.tools20022.repository.entity.Undertaking getValue(UndertakingDocument obj) {
+			return obj.getUndertaking();
+		}
+
+		@Override
+		public void setValue(UndertakingDocument obj, com.tools20022.repository.entity.Undertaking value) {
+			obj.setUndertaking(value);
+		}
 	};
 	protected YesNoIndicator copyIndicator;
 	/**
-	 * Indicates whether the document is a copy.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -357,7 +373,7 @@ public class UndertakingDocument extends FinancialDocument {
 	 * definition} = "Indicates whether the document is a copy."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCopyIndicator = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingDocument, YesNoIndicator> mmCopyIndicator = new MMBusinessAttribute<UndertakingDocument, YesNoIndicator>() {
 		{
 			derivation_lazy = () -> Arrays.asList(Document10.mmCopyIndicator);
 			isDerived = false;
@@ -370,18 +386,20 @@ public class UndertakingDocument extends FinancialDocument {
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingDocument.class.getMethod("getCopyIndicator", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public YesNoIndicator getValue(UndertakingDocument obj) {
+			return obj.getCopyIndicator();
+		}
+
+		@Override
+		public void setValue(UndertakingDocument obj, YesNoIndicator value) {
+			obj.setCopyIndicator(value);
 		}
 	};
 	protected Demand demand;
 	/**
-	 * Demand for which associated documents are specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -411,7 +429,7 @@ public class UndertakingDocument extends FinancialDocument {
 	 * definition} = "Demand for which associated documents are specified."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmDemand = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<UndertakingDocument, com.tools20022.repository.entity.Demand> mmDemand = new MMBusinessAssociationEnd<UndertakingDocument, com.tools20022.repository.entity.Demand>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.UndertakingDocument.mmObject();
@@ -424,12 +442,22 @@ public class UndertakingDocument extends FinancialDocument {
 			aggregation = MMAggregation.NONE;
 			type_lazy = () -> com.tools20022.repository.entity.Demand.mmObject();
 		}
+
+		@Override
+		public com.tools20022.repository.entity.Demand getValue(UndertakingDocument obj) {
+			return obj.getDemand();
+		}
+
+		@Override
+		public void setValue(UndertakingDocument obj, com.tools20022.repository.entity.Demand value) {
+			obj.setDemand(value);
+		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingDocument";
 				definition = "Document presented.";
@@ -454,39 +482,44 @@ public class UndertakingDocument extends FinancialDocument {
 		return documentType;
 	}
 
-	public void setDocumentType(ExternalUndertakingDocumentTypeCode documentType) {
-		this.documentType = documentType;
+	public UndertakingDocument setDocumentType(ExternalUndertakingDocumentTypeCode documentType) {
+		this.documentType = Objects.requireNonNull(documentType);
+		return this;
 	}
 
 	public ExternalDocumentFormatCode getFormat() {
 		return format;
 	}
 
-	public void setFormat(ExternalDocumentFormatCode format) {
-		this.format = format;
+	public UndertakingDocument setFormat(ExternalDocumentFormatCode format) {
+		this.format = Objects.requireNonNull(format);
+		return this;
 	}
 
 	public Undertaking getUndertaking() {
 		return undertaking;
 	}
 
-	public void setUndertaking(com.tools20022.repository.entity.Undertaking undertaking) {
-		this.undertaking = undertaking;
+	public UndertakingDocument setUndertaking(com.tools20022.repository.entity.Undertaking undertaking) {
+		this.undertaking = Objects.requireNonNull(undertaking);
+		return this;
 	}
 
 	public YesNoIndicator getCopyIndicator() {
 		return copyIndicator;
 	}
 
-	public void setCopyIndicator(YesNoIndicator copyIndicator) {
-		this.copyIndicator = copyIndicator;
+	public UndertakingDocument setCopyIndicator(YesNoIndicator copyIndicator) {
+		this.copyIndicator = Objects.requireNonNull(copyIndicator);
+		return this;
 	}
 
 	public Demand getDemand() {
 		return demand;
 	}
 
-	public void setDemand(com.tools20022.repository.entity.Demand demand) {
-		this.demand = demand;
+	public UndertakingDocument setDemand(com.tools20022.repository.entity.Demand demand) {
+		this.demand = Objects.requireNonNull(demand);
+		return this;
 	}
 }

@@ -38,13 +38,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus2Code#Accepted
- * TaxReportingStatus2Code.mmAccepted}</li>
+ * TaxReportingStatus2Code.Accepted}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus2Code#Rejected
- * TaxReportingStatus2Code.mmRejected}</li>
+ * TaxReportingStatus2Code.Rejected}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus2Code#Warning
- * TaxReportingStatus2Code.mmWarning}</li>
+ * TaxReportingStatus2Code.Warning}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -53,8 +53,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -149,7 +149,7 @@ public class TaxReportingStatus2Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TaxReportingStatus2Code";
 				definition = "Specifies the status of a single tax reporting transaction.";

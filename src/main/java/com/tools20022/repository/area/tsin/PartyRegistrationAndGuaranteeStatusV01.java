@@ -27,10 +27,8 @@ import com.tools20022.repository.datatype.Max15NumericText;
 import com.tools20022.repository.msg.BusinessLetter1;
 import com.tools20022.repository.msg.EncapsulatedBusinessMessage1;
 import com.tools20022.repository.msg.FinancingAgreementList1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -102,16 +100,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PartyRegistrationAndGuaranteeStatusV01", propOrder = {"header", "agreementList", "agreementCount", "itemCount", "controlSum", "attachedMessage"})
 public class PartyRegistrationAndGuaranteeStatusV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Hdr", required = true)
 	protected BusinessLetter1 header;
 	/**
-	 * Set of characteristics that unambiguously identify the status, common
-	 * parameters, documents and identifications.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -133,7 +131,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, BusinessLetter1> mmHeader = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, BusinessLetter1>() {
 		{
 			xmlTag = "Hdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -144,18 +142,21 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			complexType_lazy = () -> BusinessLetter1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BusinessLetter1 getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getHeader();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, BusinessLetter1 value) {
+			obj.setHeader(value);
 		}
 	};
+	@XmlElement(name = "AgrmtList", required = true)
 	protected List<FinancingAgreementList1> agreementList;
 	/**
-	 * List of agreements.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -176,7 +177,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * definition} = "List of agreements."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAgreementList = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, List<FinancingAgreementList1>> mmAgreementList = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, List<FinancingAgreementList1>>() {
 		{
 			xmlTag = "AgrmtList";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -186,18 +187,21 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			complexType_lazy = () -> FinancingAgreementList1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getAgreementList", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<FinancingAgreementList1> getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getAgreementList();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, List<FinancingAgreementList1> value) {
+			obj.setAgreementList(value);
 		}
 	};
+	@XmlElement(name = "AgrmtCnt")
 	protected Max15NumericText agreementCount;
 	/**
-	 * Number of agreement lists as control value.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -218,7 +222,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * definition} = "Number of agreement lists as control value."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAgreementCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<Max15NumericText>> mmAgreementCount = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "AgrmtCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -229,18 +233,21 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getAgreementCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getAgreementCount();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, Optional<Max15NumericText> value) {
+			obj.setAgreementCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ItmCnt")
 	protected Max15NumericText itemCount;
 	/**
-	 * Total number of individual items in all lists.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -261,7 +268,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * definition} = "Total number of individual items in all lists."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmItemCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<Max15NumericText>> mmItemCount = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "ItmCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -272,19 +279,21 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getItemCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getItemCount();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, Optional<Max15NumericText> value) {
+			obj.setItemCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CtrlSum")
 	protected DecimalNumber controlSum;
 	/**
-	 * Total of all individual amounts included in all lists, irrespective of
-	 * currencies or direction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -307,7 +316,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmControlSum = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<DecimalNumber>> mmControlSum = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, Optional<DecimalNumber>>() {
 		{
 			xmlTag = "CtrlSum";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -318,18 +327,21 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getControlSum", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DecimalNumber> getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getControlSum();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, Optional<DecimalNumber> value) {
+			obj.setControlSum(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AttchdMsg")
 	protected List<EncapsulatedBusinessMessage1> attachedMessage;
 	/**
-	 * Referenced or related business message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -350,7 +362,7 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 	 * definition} = "Referenced or related business message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAttachedMessage = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, List<EncapsulatedBusinessMessage1>> mmAttachedMessage = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeStatusV01, List<EncapsulatedBusinessMessage1>>() {
 		{
 			xmlTag = "AttchdMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -360,12 +372,14 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 			complexType_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeStatusV01.class.getMethod("getAttachedMessage", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<EncapsulatedBusinessMessage1> getValue(PartyRegistrationAndGuaranteeStatusV01 obj) {
+			return obj.getAttachedMessage();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeStatusV01 obj, List<EncapsulatedBusinessMessage1> value) {
+			obj.setAttachedMessage(value);
 		}
 	};
 
@@ -400,61 +414,61 @@ public class PartyRegistrationAndGuaranteeStatusV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Hdr", required = true)
 	public BusinessLetter1 getHeader() {
 		return header;
 	}
 
-	public void setHeader(BusinessLetter1 header) {
-		this.header = header;
+	public PartyRegistrationAndGuaranteeStatusV01 setHeader(BusinessLetter1 header) {
+		this.header = Objects.requireNonNull(header);
+		return this;
 	}
 
-	@XmlElement(name = "AgrmtList", required = true)
 	public List<FinancingAgreementList1> getAgreementList() {
-		return agreementList;
+		return agreementList == null ? agreementList = new ArrayList<>() : agreementList;
 	}
 
-	public void setAgreementList(List<FinancingAgreementList1> agreementList) {
-		this.agreementList = agreementList;
+	public PartyRegistrationAndGuaranteeStatusV01 setAgreementList(List<FinancingAgreementList1> agreementList) {
+		this.agreementList = Objects.requireNonNull(agreementList);
+		return this;
 	}
 
-	@XmlElement(name = "AgrmtCnt")
-	public Max15NumericText getAgreementCount() {
-		return agreementCount;
+	public Optional<Max15NumericText> getAgreementCount() {
+		return agreementCount == null ? Optional.empty() : Optional.of(agreementCount);
 	}
 
-	public void setAgreementCount(Max15NumericText agreementCount) {
+	public PartyRegistrationAndGuaranteeStatusV01 setAgreementCount(Max15NumericText agreementCount) {
 		this.agreementCount = agreementCount;
+		return this;
 	}
 
-	@XmlElement(name = "ItmCnt")
-	public Max15NumericText getItemCount() {
-		return itemCount;
+	public Optional<Max15NumericText> getItemCount() {
+		return itemCount == null ? Optional.empty() : Optional.of(itemCount);
 	}
 
-	public void setItemCount(Max15NumericText itemCount) {
+	public PartyRegistrationAndGuaranteeStatusV01 setItemCount(Max15NumericText itemCount) {
 		this.itemCount = itemCount;
+		return this;
 	}
 
-	@XmlElement(name = "CtrlSum")
-	public DecimalNumber getControlSum() {
-		return controlSum;
+	public Optional<DecimalNumber> getControlSum() {
+		return controlSum == null ? Optional.empty() : Optional.of(controlSum);
 	}
 
-	public void setControlSum(DecimalNumber controlSum) {
+	public PartyRegistrationAndGuaranteeStatusV01 setControlSum(DecimalNumber controlSum) {
 		this.controlSum = controlSum;
+		return this;
 	}
 
-	@XmlElement(name = "AttchdMsg")
 	public List<EncapsulatedBusinessMessage1> getAttachedMessage() {
-		return attachedMessage;
+		return attachedMessage == null ? attachedMessage = new ArrayList<>() : attachedMessage;
 	}
 
-	public void setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
-		this.attachedMessage = attachedMessage;
+	public PartyRegistrationAndGuaranteeStatusV01 setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
+		this.attachedMessage = Objects.requireNonNull(attachedMessage);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.010.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.010.001.01")
 	static public class Document {
 		@XmlElement(name = "PtyRegnAndGrntSts", required = true)
 		public PartyRegistrationAndGuaranteeStatusV01 messageBody;

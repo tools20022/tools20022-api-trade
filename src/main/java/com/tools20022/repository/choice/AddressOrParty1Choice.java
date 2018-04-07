@@ -27,6 +27,7 @@ import com.tools20022.repository.msg.NameAndAddress10;
 import com.tools20022.repository.msg.PostalAddress6;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +67,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Choice of either address, or name and address."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AddressOrParty1Choice", propOrder = {"newAddress", "newBeneficiary"})
 public class AddressOrParty1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NewAdr", required = true)
 	protected PostalAddress6 newAddress;
 	/**
-	 * New beneficiary address.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -104,10 +106,10 @@ public class AddressOrParty1Choice {
 	 * definition} = "New beneficiary address."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewAddress = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AddressOrParty1Choice, PostalAddress6> mmNewAddress = new MMMessageAttribute<AddressOrParty1Choice, PostalAddress6>() {
 		{
 			businessComponentTrace_lazy = () -> PostalAddress.mmObject();
-			componentContext_lazy = () -> AddressOrParty1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AddressOrParty1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "NewAdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -117,11 +119,22 @@ public class AddressOrParty1Choice {
 			minOccurs = 1;
 			complexType_lazy = () -> PostalAddress6.mmObject();
 		}
+
+		@Override
+		public PostalAddress6 getValue(AddressOrParty1Choice obj) {
+			return obj.getNewAddress();
+		}
+
+		@Override
+		public void setValue(AddressOrParty1Choice obj, PostalAddress6 value) {
+			obj.setNewAddress(value);
+		}
 	};
+	@XmlElement(name = "NewBnfcry", required = true)
 	protected NameAndAddress10 newBeneficiary;
 	/**
-	 * New beneficiary.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -152,10 +165,10 @@ public class AddressOrParty1Choice {
 	 * definition} = "New beneficiary."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewBeneficiary = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AddressOrParty1Choice, NameAndAddress10> mmNewBeneficiary = new MMMessageAttribute<AddressOrParty1Choice, NameAndAddress10>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> AddressOrParty1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AddressOrParty1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "NewBnfcry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -165,14 +178,24 @@ public class AddressOrParty1Choice {
 			minOccurs = 1;
 			complexType_lazy = () -> NameAndAddress10.mmObject();
 		}
+
+		@Override
+		public NameAndAddress10 getValue(AddressOrParty1Choice obj) {
+			return obj.getNewBeneficiary();
+		}
+
+		@Override
+		public void setValue(AddressOrParty1Choice obj, NameAndAddress10 value) {
+			obj.setNewBeneficiary(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AddressOrParty1Choice.mmNewAddress, AddressOrParty1Choice.mmNewBeneficiary);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.AddressOrParty1Choice.mmNewAddress, com.tools20022.repository.choice.AddressOrParty1Choice.mmNewBeneficiary);
 				trace_lazy = () -> Party.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AddressOrParty1Choice";
 				definition = "Choice of either address, or name and address.";
@@ -181,21 +204,21 @@ public class AddressOrParty1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NewAdr", required = true)
 	public PostalAddress6 getNewAddress() {
 		return newAddress;
 	}
 
-	public void setNewAddress(PostalAddress6 newAddress) {
-		this.newAddress = newAddress;
+	public AddressOrParty1Choice setNewAddress(PostalAddress6 newAddress) {
+		this.newAddress = Objects.requireNonNull(newAddress);
+		return this;
 	}
 
-	@XmlElement(name = "NewBnfcry", required = true)
 	public NameAndAddress10 getNewBeneficiary() {
 		return newBeneficiary;
 	}
 
-	public void setNewBeneficiary(NameAndAddress10 newBeneficiary) {
-		this.newBeneficiary = newBeneficiary;
+	public AddressOrParty1Choice setNewBeneficiary(NameAndAddress10 newBeneficiary) {
+		this.newBeneficiary = Objects.requireNonNull(newBeneficiary);
+		return this;
 	}
 }

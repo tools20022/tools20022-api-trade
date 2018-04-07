@@ -26,8 +26,11 @@ import com.tools20022.repository.entity.CashSettlement;
 import com.tools20022.repository.entity.CreditInstrument;
 import com.tools20022.repository.entity.PaymentInstruction;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.CashAccount7;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,8 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -69,16 +72,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Payment terms and conditions related to a single invoice to be financed."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PaymentInformation15", propOrder = {"paymentMethod", "paymentAccount"})
 public class PaymentInformation15 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "PmtMtd", required = true)
 	protected PaymentMethod4Code paymentMethod;
 	/**
-	 * Payment method that will be used for invoice payment to transfer the
-	 * funds to the creditor.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -111,10 +114,10 @@ public class PaymentInformation15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPaymentMethod = new MMMessageAttribute() {
+	public static final MMMessageAttribute<PaymentInformation15, PaymentMethod4Code> mmPaymentMethod = new MMMessageAttribute<PaymentInformation15, PaymentMethod4Code>() {
 		{
 			businessElementTrace_lazy = () -> CreditInstrument.mmMethod;
-			componentContext_lazy = () -> PaymentInformation15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PaymentInformation15.mmObject();
 			isDerived = false;
 			xmlTag = "PmtMtd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -124,11 +127,22 @@ public class PaymentInformation15 {
 			minOccurs = 1;
 			simpleType_lazy = () -> PaymentMethod4Code.mmObject();
 		}
+
+		@Override
+		public PaymentMethod4Code getValue(PaymentInformation15 obj) {
+			return obj.getPaymentMethod();
+		}
+
+		@Override
+		public void setValue(PaymentInformation15 obj, PaymentMethod4Code value) {
+			obj.setPaymentMethod(value);
+		}
 	};
+	@XmlElement(name = "PmtAcct")
 	protected CashAccount7 paymentAccount;
 	/**
-	 * Unambiguous identification of the account used for payment settlement.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -158,10 +172,10 @@ public class PaymentInformation15 {
 	 * "Unambiguous identification of the account used for payment settlement."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPaymentAccount = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PaymentInformation15, Optional<CashAccount7>> mmPaymentAccount = new MMMessageAssociationEnd<PaymentInformation15, Optional<CashAccount7>>() {
 		{
 			businessElementTrace_lazy = () -> CashSettlement.mmSettlementAccount;
-			componentContext_lazy = () -> PaymentInformation15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PaymentInformation15.mmObject();
 			isDerived = false;
 			xmlTag = "PmtAcct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -170,16 +184,26 @@ public class PaymentInformation15 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.CashAccount7.mmObject();
+			type_lazy = () -> CashAccount7.mmObject();
+		}
+
+		@Override
+		public Optional<CashAccount7> getValue(PaymentInformation15 obj) {
+			return obj.getPaymentAccount();
+		}
+
+		@Override
+		public void setValue(PaymentInformation15 obj, Optional<CashAccount7> value) {
+			obj.setPaymentAccount(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(PaymentInformation15.mmPaymentMethod, PaymentInformation15.mmPaymentAccount);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.PaymentInformation15.mmPaymentMethod, com.tools20022.repository.msg.PaymentInformation15.mmPaymentAccount);
 				trace_lazy = () -> PaymentInstruction.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentInformation15";
 				definition = "Payment terms and conditions related to a single invoice to be financed.";
@@ -188,21 +212,21 @@ public class PaymentInformation15 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "PmtMtd", required = true)
 	public PaymentMethod4Code getPaymentMethod() {
 		return paymentMethod;
 	}
 
-	public void setPaymentMethod(PaymentMethod4Code paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public PaymentInformation15 setPaymentMethod(PaymentMethod4Code paymentMethod) {
+		this.paymentMethod = Objects.requireNonNull(paymentMethod);
+		return this;
 	}
 
-	@XmlElement(name = "PmtAcct")
-	public CashAccount7 getPaymentAccount() {
-		return paymentAccount;
+	public Optional<CashAccount7> getPaymentAccount() {
+		return paymentAccount == null ? Optional.empty() : Optional.of(paymentAccount);
 	}
 
-	public void setPaymentAccount(com.tools20022.repository.msg.CashAccount7 paymentAccount) {
+	public PaymentInformation15 setPaymentAccount(CashAccount7 paymentAccount) {
 		this.paymentAccount = paymentAccount;
+		return this;
 	}
 }

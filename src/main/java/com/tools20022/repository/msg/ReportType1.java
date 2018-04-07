@@ -25,6 +25,7 @@ import com.tools20022.repository.codeset.ReportType1Code;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -67,16 +68,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Specifies the type of report."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ReportType1", propOrder = "type")
 public class ReportType1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected ReportType1Code type;
 	/**
-	 * Specifies whether the pushed through baseline is a new one or an
-	 * amendment or a resubmission.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -103,9 +104,9 @@ public class ReportType1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ReportType1, ReportType1Code> mmType = new MMMessageAttribute<ReportType1, ReportType1Code>() {
 		{
-			componentContext_lazy = () -> ReportType1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ReportType1.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -115,14 +116,24 @@ public class ReportType1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ReportType1Code.mmObject();
 		}
+
+		@Override
+		public ReportType1Code getValue(ReportType1 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(ReportType1 obj, ReportType1Code value) {
+			obj.setType(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ReportType1.mmType);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.ReportType1.mmType);
 				messageBuildingBlock_lazy = () -> Arrays.asList(FullPushThroughReportV05.mmReportPurpose);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "ReportType1";
 				definition = "Specifies the type of report.";
@@ -131,12 +142,12 @@ public class ReportType1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public ReportType1Code getType() {
 		return type;
 	}
 
-	public void setType(ReportType1Code type) {
-		this.type = type;
+	public ReportType1 setType(ReportType1Code type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 }

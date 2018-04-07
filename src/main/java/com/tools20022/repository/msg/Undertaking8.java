@@ -25,8 +25,11 @@ import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingIssuer;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.PartyIdentification43;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -59,8 +62,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -71,16 +74,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information about an undertaking."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Undertaking8", propOrder = {"identification", "issuer", "applicantReferenceNumber", "beneficiaryReferenceNumber"})
 public class Undertaking8 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Unique and unambiguous identifier assigned by the issuer to the
-	 * undertaking, for example the guarantee or standby number.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -111,10 +114,10 @@ public class Undertaking8 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking8, Max35Text> mmIdentification = new MMMessageAttribute<Undertaking8, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmIdentification;
-			componentContext_lazy = () -> Undertaking8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking8.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -124,11 +127,22 @@ public class Undertaking8 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(Undertaking8 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(Undertaking8 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "Issr", required = true)
 	protected PartyIdentification43 issuer;
 	/**
-	 * Party that issues the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -156,10 +170,10 @@ public class Undertaking8 {
 	 * definition} = "Party that issues the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIssuer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Undertaking8, PartyIdentification43> mmIssuer = new MMMessageAssociationEnd<Undertaking8, PartyIdentification43>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingIssuer.mmObject();
-			componentContext_lazy = () -> Undertaking8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking8.mmObject();
 			isDerived = false;
 			xmlTag = "Issr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -168,14 +182,24 @@ public class Undertaking8 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification43.mmObject();
+			type_lazy = () -> PartyIdentification43.mmObject();
+		}
+
+		@Override
+		public PartyIdentification43 getValue(Undertaking8 obj) {
+			return obj.getIssuer();
+		}
+
+		@Override
+		public void setValue(Undertaking8 obj, PartyIdentification43 value) {
+			obj.setIssuer(value);
 		}
 	};
+	@XmlElement(name = "ApplcntRefNb")
 	protected Max35Text applicantReferenceNumber;
 	/**
-	 * Unique and unambiguous identifier assigned by the applicant to the
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -201,9 +225,9 @@ public class Undertaking8 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmApplicantReferenceNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking8, Optional<Max35Text>> mmApplicantReferenceNumber = new MMMessageAttribute<Undertaking8, Optional<Max35Text>>() {
 		{
-			componentContext_lazy = () -> Undertaking8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking8.mmObject();
 			isDerived = false;
 			xmlTag = "ApplcntRefNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -213,12 +237,22 @@ public class Undertaking8 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(Undertaking8 obj) {
+			return obj.getApplicantReferenceNumber();
+		}
+
+		@Override
+		public void setValue(Undertaking8 obj, Optional<Max35Text> value) {
+			obj.setApplicantReferenceNumber(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "BnfcryRefNb")
 	protected Max35Text beneficiaryReferenceNumber;
 	/**
-	 * Unique and unambiguous identifier assigned by the beneficiary to the
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -244,9 +278,9 @@ public class Undertaking8 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmBeneficiaryReferenceNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking8, Optional<Max35Text>> mmBeneficiaryReferenceNumber = new MMMessageAttribute<Undertaking8, Optional<Max35Text>>() {
 		{
-			componentContext_lazy = () -> Undertaking8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking8.mmObject();
 			isDerived = false;
 			xmlTag = "BnfcryRefNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -256,14 +290,25 @@ public class Undertaking8 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(Undertaking8 obj) {
+			return obj.getBeneficiaryReferenceNumber();
+		}
+
+		@Override
+		public void setValue(Undertaking8 obj, Optional<Max35Text> value) {
+			obj.setBeneficiaryReferenceNumber(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Undertaking8.mmIdentification, Undertaking8.mmIssuer, Undertaking8.mmApplicantReferenceNumber, Undertaking8.mmBeneficiaryReferenceNumber);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Undertaking8.mmIdentification, com.tools20022.repository.msg.Undertaking8.mmIssuer,
+						com.tools20022.repository.msg.Undertaking8.mmApplicantReferenceNumber, com.tools20022.repository.msg.Undertaking8.mmBeneficiaryReferenceNumber);
 				trace_lazy = () -> Undertaking.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Undertaking8";
 				definition = "Information about an undertaking.";
@@ -272,39 +317,39 @@ public class Undertaking8 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public Undertaking8 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Issr", required = true)
 	public PartyIdentification43 getIssuer() {
 		return issuer;
 	}
 
-	public void setIssuer(com.tools20022.repository.msg.PartyIdentification43 issuer) {
-		this.issuer = issuer;
+	public Undertaking8 setIssuer(PartyIdentification43 issuer) {
+		this.issuer = Objects.requireNonNull(issuer);
+		return this;
 	}
 
-	@XmlElement(name = "ApplcntRefNb")
-	public Max35Text getApplicantReferenceNumber() {
-		return applicantReferenceNumber;
+	public Optional<Max35Text> getApplicantReferenceNumber() {
+		return applicantReferenceNumber == null ? Optional.empty() : Optional.of(applicantReferenceNumber);
 	}
 
-	public void setApplicantReferenceNumber(Max35Text applicantReferenceNumber) {
+	public Undertaking8 setApplicantReferenceNumber(Max35Text applicantReferenceNumber) {
 		this.applicantReferenceNumber = applicantReferenceNumber;
+		return this;
 	}
 
-	@XmlElement(name = "BnfcryRefNb")
-	public Max35Text getBeneficiaryReferenceNumber() {
-		return beneficiaryReferenceNumber;
+	public Optional<Max35Text> getBeneficiaryReferenceNumber() {
+		return beneficiaryReferenceNumber == null ? Optional.empty() : Optional.of(beneficiaryReferenceNumber);
 	}
 
-	public void setBeneficiaryReferenceNumber(Max35Text beneficiaryReferenceNumber) {
+	public Undertaking8 setBeneficiaryReferenceNumber(Max35Text beneficiaryReferenceNumber) {
 		this.beneficiaryReferenceNumber = beneficiaryReferenceNumber;
+		return this;
 	}
 }

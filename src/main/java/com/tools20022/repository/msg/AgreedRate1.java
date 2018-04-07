@@ -29,6 +29,8 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.Date;
 import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -57,8 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} = com.tools20022.metamodel.MMRegistrationStatus.OBSOLETE</li>
@@ -71,17 +73,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Information needed to process a currency exchange or conversion."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AgreedRate1", propOrder = {"exchangeRate", "unitCurrency", "quotedCurrency"})
 public class AgreedRate1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "XchgRate", required = true)
 	protected BaseOneRate exchangeRate;
 	/**
-	 * The value of one currency expressed in relation to another currency.
-	 * ExchangeRate expresses the ratio between UnitCurrency and QuotedCurrency
-	 * (ExchangeRate = UnitCurrency/QuotedCurrency).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -112,10 +113,10 @@ public class AgreedRate1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmExchangeRate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AgreedRate1, BaseOneRate> mmExchangeRate = new MMMessageAttribute<AgreedRate1, BaseOneRate>() {
 		{
 			businessElementTrace_lazy = () -> CurrencyExchange.mmExchangeRate;
-			componentContext_lazy = () -> AgreedRate1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AgreedRate1.mmObject();
 			isDerived = false;
 			xmlTag = "XchgRate";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -125,12 +126,22 @@ public class AgreedRate1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> BaseOneRate.mmObject();
 		}
+
+		@Override
+		public BaseOneRate getValue(AgreedRate1 obj) {
+			return obj.getExchangeRate();
+		}
+
+		@Override
+		public void setValue(AgreedRate1 obj, BaseOneRate value) {
+			obj.setExchangeRate(value);
+		}
 	};
+	@XmlElement(name = "UnitCcy")
 	protected CurrencyCode unitCurrency;
 	/**
-	 * Currency in which the rate of exchange is expressed in a currency
-	 * exchange. In the example 1GBP = xxxCUR, the unit currency is GBP.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -161,10 +172,10 @@ public class AgreedRate1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmUnitCurrency = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AgreedRate1, Optional<CurrencyCode>> mmUnitCurrency = new MMMessageAttribute<AgreedRate1, Optional<CurrencyCode>>() {
 		{
 			businessElementTrace_lazy = () -> CurrencyExchange.mmUnitCurrency;
-			componentContext_lazy = () -> AgreedRate1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AgreedRate1.mmObject();
 			isDerived = false;
 			xmlTag = "UnitCcy";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -174,12 +185,22 @@ public class AgreedRate1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CurrencyCode.mmObject();
 		}
+
+		@Override
+		public Optional<CurrencyCode> getValue(AgreedRate1 obj) {
+			return obj.getUnitCurrency();
+		}
+
+		@Override
+		public void setValue(AgreedRate1 obj, Optional<CurrencyCode> value) {
+			obj.setUnitCurrency(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "QtdCcy")
 	protected CurrencyCode quotedCurrency;
 	/**
-	 * Currency into which the base currency is converted, in a currency
-	 * exchange.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -210,10 +231,10 @@ public class AgreedRate1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmQuotedCurrency = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AgreedRate1, Optional<CurrencyCode>> mmQuotedCurrency = new MMMessageAttribute<AgreedRate1, Optional<CurrencyCode>>() {
 		{
 			businessElementTrace_lazy = () -> CurrencyExchange.mmQuotedCurrency;
-			componentContext_lazy = () -> AgreedRate1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AgreedRate1.mmObject();
 			isDerived = false;
 			xmlTag = "QtdCcy";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -223,14 +244,24 @@ public class AgreedRate1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CurrencyCode.mmObject();
 		}
+
+		@Override
+		public Optional<CurrencyCode> getValue(AgreedRate1 obj) {
+			return obj.getQuotedCurrency();
+		}
+
+		@Override
+		public void setValue(AgreedRate1 obj, Optional<CurrencyCode> value) {
+			obj.setQuotedCurrency(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AgreedRate1.mmExchangeRate, AgreedRate1.mmUnitCurrency, AgreedRate1.mmQuotedCurrency);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.AgreedRate1.mmExchangeRate, com.tools20022.repository.msg.AgreedRate1.mmUnitCurrency, com.tools20022.repository.msg.AgreedRate1.mmQuotedCurrency);
 				trace_lazy = () -> CurrencyExchange.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.OBSOLETE;
 				removalDate = ((Supplier<Date>) (() -> {
 					try {
@@ -246,30 +277,30 @@ public class AgreedRate1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "XchgRate", required = true)
 	public BaseOneRate getExchangeRate() {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(BaseOneRate exchangeRate) {
-		this.exchangeRate = exchangeRate;
+	public AgreedRate1 setExchangeRate(BaseOneRate exchangeRate) {
+		this.exchangeRate = Objects.requireNonNull(exchangeRate);
+		return this;
 	}
 
-	@XmlElement(name = "UnitCcy")
-	public CurrencyCode getUnitCurrency() {
-		return unitCurrency;
+	public Optional<CurrencyCode> getUnitCurrency() {
+		return unitCurrency == null ? Optional.empty() : Optional.of(unitCurrency);
 	}
 
-	public void setUnitCurrency(CurrencyCode unitCurrency) {
+	public AgreedRate1 setUnitCurrency(CurrencyCode unitCurrency) {
 		this.unitCurrency = unitCurrency;
+		return this;
 	}
 
-	@XmlElement(name = "QtdCcy")
-	public CurrencyCode getQuotedCurrency() {
-		return quotedCurrency;
+	public Optional<CurrencyCode> getQuotedCurrency() {
+		return quotedCurrency == null ? Optional.empty() : Optional.of(quotedCurrency);
 	}
 
-	public void setQuotedCurrency(CurrencyCode quotedCurrency) {
+	public AgreedRate1 setQuotedCurrency(CurrencyCode quotedCurrency) {
 		this.quotedCurrency = quotedCurrency;
+		return this;
 	}
 }

@@ -27,10 +27,8 @@ import com.tools20022.repository.datatype.Max15NumericText;
 import com.tools20022.repository.msg.BusinessLetter1;
 import com.tools20022.repository.msg.EncapsulatedBusinessMessage1;
 import com.tools20022.repository.msg.FinancingAgreementList1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -92,16 +90,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PartyRegistrationAndGuaranteeAcknowledgementV01", propOrder = {"header", "acknowledgementList", "acknowledgementCount", "itemCount", "controlSum", "attachedMessage"})
 public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Hdr", required = true)
 	protected BusinessLetter1 header;
 	/**
-	 * Set of characteristics that unambiguously identify the acknowlegement,
-	 * common parameters, documents and identifications.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -123,7 +121,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, BusinessLetter1> mmHeader = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, BusinessLetter1>() {
 		{
 			xmlTag = "Hdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -134,18 +132,21 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			complexType_lazy = () -> BusinessLetter1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BusinessLetter1 getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getHeader();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, BusinessLetter1 value) {
+			obj.setHeader(value);
 		}
 	};
+	@XmlElement(name = "AckList", required = true)
 	protected List<FinancingAgreementList1> acknowledgementList;
 	/**
-	 * List of party management acknowledgements.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -166,7 +167,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * definition} = "List of party management acknowledgements."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcknowledgementList = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, List<FinancingAgreementList1>> mmAcknowledgementList = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, List<FinancingAgreementList1>>() {
 		{
 			xmlTag = "AckList";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -176,18 +177,21 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			complexType_lazy = () -> FinancingAgreementList1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getAcknowledgementList", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<FinancingAgreementList1> getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getAcknowledgementList();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, List<FinancingAgreementList1> value) {
+			obj.setAcknowledgementList(value);
 		}
 	};
+	@XmlElement(name = "AckCnt", required = true)
 	protected Max15NumericText acknowledgementCount;
 	/**
-	 * Number of acknowledgement lists as control value.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -208,7 +212,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * definition} = "Number of acknowledgement lists as control value."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcknowledgementCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Max15NumericText> mmAcknowledgementCount = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Max15NumericText>() {
 		{
 			xmlTag = "AckCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -219,18 +223,21 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getAcknowledgementCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max15NumericText getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getAcknowledgementCount();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, Max15NumericText value) {
+			obj.setAcknowledgementCount(value);
 		}
 	};
+	@XmlElement(name = "ItmCnt")
 	protected Max15NumericText itemCount;
 	/**
-	 * Total number of individual items in all lists.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -251,7 +258,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * definition} = "Total number of individual items in all lists."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmItemCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Optional<Max15NumericText>> mmItemCount = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "ItmCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -262,19 +269,21 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getItemCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getItemCount();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, Optional<Max15NumericText> value) {
+			obj.setItemCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CtrlSum")
 	protected DecimalNumber controlSum;
 	/**
-	 * Total of all individual amounts included in all lists, irrespective of
-	 * currencies or direction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -297,7 +306,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmControlSum = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Optional<DecimalNumber>> mmControlSum = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, Optional<DecimalNumber>>() {
 		{
 			xmlTag = "CtrlSum";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -308,18 +317,21 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getControlSum", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DecimalNumber> getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getControlSum();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, Optional<DecimalNumber> value) {
+			obj.setControlSum(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AttchdMsg")
 	protected List<EncapsulatedBusinessMessage1> attachedMessage;
 	/**
-	 * Referenced or related business message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -340,7 +352,7 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 	 * definition} = "Referenced or related business message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAttachedMessage = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, List<EncapsulatedBusinessMessage1>> mmAttachedMessage = new MMMessageBuildingBlock<PartyRegistrationAndGuaranteeAcknowledgementV01, List<EncapsulatedBusinessMessage1>>() {
 		{
 			xmlTag = "AttchdMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -350,12 +362,14 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 			complexType_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PartyRegistrationAndGuaranteeAcknowledgementV01.class.getMethod("getAttachedMessage", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<EncapsulatedBusinessMessage1> getValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj) {
+			return obj.getAttachedMessage();
+		}
+
+		@Override
+		public void setValue(PartyRegistrationAndGuaranteeAcknowledgementV01 obj, List<EncapsulatedBusinessMessage1> value) {
+			obj.setAttachedMessage(value);
 		}
 	};
 
@@ -390,61 +404,61 @@ public class PartyRegistrationAndGuaranteeAcknowledgementV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Hdr", required = true)
 	public BusinessLetter1 getHeader() {
 		return header;
 	}
 
-	public void setHeader(BusinessLetter1 header) {
-		this.header = header;
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setHeader(BusinessLetter1 header) {
+		this.header = Objects.requireNonNull(header);
+		return this;
 	}
 
-	@XmlElement(name = "AckList", required = true)
 	public List<FinancingAgreementList1> getAcknowledgementList() {
-		return acknowledgementList;
+		return acknowledgementList == null ? acknowledgementList = new ArrayList<>() : acknowledgementList;
 	}
 
-	public void setAcknowledgementList(List<FinancingAgreementList1> acknowledgementList) {
-		this.acknowledgementList = acknowledgementList;
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setAcknowledgementList(List<FinancingAgreementList1> acknowledgementList) {
+		this.acknowledgementList = Objects.requireNonNull(acknowledgementList);
+		return this;
 	}
 
-	@XmlElement(name = "AckCnt", required = true)
 	public Max15NumericText getAcknowledgementCount() {
 		return acknowledgementCount;
 	}
 
-	public void setAcknowledgementCount(Max15NumericText acknowledgementCount) {
-		this.acknowledgementCount = acknowledgementCount;
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setAcknowledgementCount(Max15NumericText acknowledgementCount) {
+		this.acknowledgementCount = Objects.requireNonNull(acknowledgementCount);
+		return this;
 	}
 
-	@XmlElement(name = "ItmCnt")
-	public Max15NumericText getItemCount() {
-		return itemCount;
+	public Optional<Max15NumericText> getItemCount() {
+		return itemCount == null ? Optional.empty() : Optional.of(itemCount);
 	}
 
-	public void setItemCount(Max15NumericText itemCount) {
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setItemCount(Max15NumericText itemCount) {
 		this.itemCount = itemCount;
+		return this;
 	}
 
-	@XmlElement(name = "CtrlSum")
-	public DecimalNumber getControlSum() {
-		return controlSum;
+	public Optional<DecimalNumber> getControlSum() {
+		return controlSum == null ? Optional.empty() : Optional.of(controlSum);
 	}
 
-	public void setControlSum(DecimalNumber controlSum) {
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setControlSum(DecimalNumber controlSum) {
 		this.controlSum = controlSum;
+		return this;
 	}
 
-	@XmlElement(name = "AttchdMsg")
 	public List<EncapsulatedBusinessMessage1> getAttachedMessage() {
-		return attachedMessage;
+		return attachedMessage == null ? attachedMessage = new ArrayList<>() : attachedMessage;
 	}
 
-	public void setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
-		this.attachedMessage = attachedMessage;
+	public PartyRegistrationAndGuaranteeAcknowledgementV01 setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
+		this.attachedMessage = Objects.requireNonNull(attachedMessage);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.012.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.012.001.01")
 	static public class Document {
 		@XmlElement(name = "PtyRegnAndGrntAck", required = true)
 		public PartyRegistrationAndGuaranteeAcknowledgementV01 messageBody;

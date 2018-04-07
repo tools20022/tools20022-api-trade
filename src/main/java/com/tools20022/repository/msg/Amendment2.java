@@ -26,9 +26,12 @@ import com.tools20022.repository.entity.AmendmentOfUndertaking;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingAdvisingParty;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.AdvisingPartyAdditionalInformation1;
+import com.tools20022.repository.msg.PartyAndSignature2;
+import com.tools20022.repository.msg.UndertakingAmendmentMessage1;
+import com.tools20022.repository.msg.UndertakingConfirmation1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -74,8 +77,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -86,15 +89,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details of the amendment."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Amendment2", propOrder = {"undertakingAmendmentMessage", "firstAdvisingPartyAdditionalInformation", "secondAdvisingPartyAdditionalInformation", "confirmationDetails", "digitalSignature"})
 public class Amendment2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgAmdmntMsg", required = true)
 	protected UndertakingAmendmentMessage1 undertakingAmendmentMessage;
 	/**
-	 * Contents of the related Undertaking Amendment message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -123,10 +127,10 @@ public class Amendment2 {
 	 * definition} = "Contents of the related Undertaking Amendment message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingAmendmentMessage = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment2, UndertakingAmendmentMessage1> mmUndertakingAmendmentMessage = new MMMessageAssociationEnd<Amendment2, UndertakingAmendmentMessage1>() {
 		{
 			businessComponentTrace_lazy = () -> AmendmentOfUndertaking.mmObject();
-			componentContext_lazy = () -> Amendment2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment2.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgAmdmntMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -135,13 +139,24 @@ public class Amendment2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingAmendmentMessage1.mmObject();
+			type_lazy = () -> UndertakingAmendmentMessage1.mmObject();
+		}
+
+		@Override
+		public UndertakingAmendmentMessage1 getValue(Amendment2 obj) {
+			return obj.getUndertakingAmendmentMessage();
+		}
+
+		@Override
+		public void setValue(Amendment2 obj, UndertakingAmendmentMessage1 value) {
+			obj.setUndertakingAmendmentMessage(value);
 		}
 	};
+	@XmlElement(name = "FrstAdvsgPtyAddtlInf")
 	protected AdvisingPartyAdditionalInformation1 firstAdvisingPartyAdditionalInformation;
 	/**
-	 * Additional information related to the first advising party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -172,10 +187,10 @@ public class Amendment2 {
 	 * "Additional information related to the first advising party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFirstAdvisingPartyAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amendment2, Optional<AdvisingPartyAdditionalInformation1>> mmFirstAdvisingPartyAdditionalInformation = new MMMessageAttribute<Amendment2, Optional<AdvisingPartyAdditionalInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingAdvisingParty.mmObject();
-			componentContext_lazy = () -> Amendment2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment2.mmObject();
 			isDerived = false;
 			xmlTag = "FrstAdvsgPtyAddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -183,13 +198,24 @@ public class Amendment2 {
 			definition = "Additional information related to the first advising party.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.AdvisingPartyAdditionalInformation1.mmObject();
+			complexType_lazy = () -> AdvisingPartyAdditionalInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<AdvisingPartyAdditionalInformation1> getValue(Amendment2 obj) {
+			return obj.getFirstAdvisingPartyAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(Amendment2 obj, Optional<AdvisingPartyAdditionalInformation1> value) {
+			obj.setFirstAdvisingPartyAdditionalInformation(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ScndAdvsgPtyAddtlInf")
 	protected AdvisingPartyAdditionalInformation1 secondAdvisingPartyAdditionalInformation;
 	/**
-	 * Additional information related to the second advising party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -220,10 +246,10 @@ public class Amendment2 {
 	 * "Additional information related to the second advising party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmSecondAdvisingPartyAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amendment2, Optional<AdvisingPartyAdditionalInformation1>> mmSecondAdvisingPartyAdditionalInformation = new MMMessageAttribute<Amendment2, Optional<AdvisingPartyAdditionalInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingAdvisingParty.mmObject();
-			componentContext_lazy = () -> Amendment2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment2.mmObject();
 			isDerived = false;
 			xmlTag = "ScndAdvsgPtyAddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -231,13 +257,24 @@ public class Amendment2 {
 			definition = "Additional information related to the second advising party.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.AdvisingPartyAdditionalInformation1.mmObject();
+			complexType_lazy = () -> AdvisingPartyAdditionalInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<AdvisingPartyAdditionalInformation1> getValue(Amendment2 obj) {
+			return obj.getSecondAdvisingPartyAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(Amendment2 obj, Optional<AdvisingPartyAdditionalInformation1> value) {
+			obj.setSecondAdvisingPartyAdditionalInformation(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ConfDtls")
 	protected UndertakingConfirmation1 confirmationDetails;
 	/**
-	 * Details concerning the confirmation of the proposed amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -267,10 +304,10 @@ public class Amendment2 {
 	 * "Details concerning the confirmation of the proposed amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmConfirmationDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment2, Optional<UndertakingConfirmation1>> mmConfirmationDetails = new MMMessageAssociationEnd<Amendment2, Optional<UndertakingConfirmation1>>() {
 		{
 			businessElementTrace_lazy = () -> AmendmentOfUndertaking.mmUndertaking;
-			componentContext_lazy = () -> Amendment2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment2.mmObject();
 			isDerived = false;
 			xmlTag = "ConfDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -279,14 +316,24 @@ public class Amendment2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingConfirmation1.mmObject();
+			type_lazy = () -> UndertakingConfirmation1.mmObject();
+		}
+
+		@Override
+		public Optional<UndertakingConfirmation1> getValue(Amendment2 obj) {
+			return obj.getConfirmationDetails();
+		}
+
+		@Override
+		public void setValue(Amendment2 obj, Optional<UndertakingConfirmation1> value) {
+			obj.setConfirmationDetails(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.PartyAndSignature2> digitalSignature;
+	@XmlElement(name = "DgtlSgntr")
+	protected List<PartyAndSignature2> digitalSignature;
 	/**
-	 * Digital signature of the party providing additional undertaking amendment
-	 * advice details.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -316,10 +363,10 @@ public class Amendment2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDigitalSignature = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment2, List<PartyAndSignature2>> mmDigitalSignature = new MMMessageAssociationEnd<Amendment2, List<PartyAndSignature2>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmElectronicSignature;
-			componentContext_lazy = () -> Amendment2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment2.mmObject();
 			isDerived = false;
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -328,18 +375,28 @@ public class Amendment2 {
 			maxOccurs = 3;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyAndSignature2.mmObject();
+			type_lazy = () -> PartyAndSignature2.mmObject();
+		}
+
+		@Override
+		public List<PartyAndSignature2> getValue(Amendment2 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(Amendment2 obj, List<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Amendment2.mmUndertakingAmendmentMessage, Amendment2.mmFirstAdvisingPartyAdditionalInformation, Amendment2.mmSecondAdvisingPartyAdditionalInformation,
-						Amendment2.mmConfirmationDetails, Amendment2.mmDigitalSignature);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Amendment2.mmUndertakingAmendmentMessage, com.tools20022.repository.msg.Amendment2.mmFirstAdvisingPartyAdditionalInformation,
+						com.tools20022.repository.msg.Amendment2.mmSecondAdvisingPartyAdditionalInformation, com.tools20022.repository.msg.Amendment2.mmConfirmationDetails, com.tools20022.repository.msg.Amendment2.mmDigitalSignature);
 				messageBuildingBlock_lazy = () -> Arrays.asList(UndertakingAmendmentAdviceV01.mmUndertakingAmendmentAdviceDetails);
 				trace_lazy = () -> AmendmentOfUndertaking.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Amendment2";
 				definition = "Details of the amendment.";
@@ -348,48 +405,48 @@ public class Amendment2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgAmdmntMsg", required = true)
 	public UndertakingAmendmentMessage1 getUndertakingAmendmentMessage() {
 		return undertakingAmendmentMessage;
 	}
 
-	public void setUndertakingAmendmentMessage(com.tools20022.repository.msg.UndertakingAmendmentMessage1 undertakingAmendmentMessage) {
-		this.undertakingAmendmentMessage = undertakingAmendmentMessage;
+	public Amendment2 setUndertakingAmendmentMessage(UndertakingAmendmentMessage1 undertakingAmendmentMessage) {
+		this.undertakingAmendmentMessage = Objects.requireNonNull(undertakingAmendmentMessage);
+		return this;
 	}
 
-	@XmlElement(name = "FrstAdvsgPtyAddtlInf")
-	public AdvisingPartyAdditionalInformation1 getFirstAdvisingPartyAdditionalInformation() {
-		return firstAdvisingPartyAdditionalInformation;
+	public Optional<AdvisingPartyAdditionalInformation1> getFirstAdvisingPartyAdditionalInformation() {
+		return firstAdvisingPartyAdditionalInformation == null ? Optional.empty() : Optional.of(firstAdvisingPartyAdditionalInformation);
 	}
 
-	public void setFirstAdvisingPartyAdditionalInformation(com.tools20022.repository.msg.AdvisingPartyAdditionalInformation1 firstAdvisingPartyAdditionalInformation) {
+	public Amendment2 setFirstAdvisingPartyAdditionalInformation(AdvisingPartyAdditionalInformation1 firstAdvisingPartyAdditionalInformation) {
 		this.firstAdvisingPartyAdditionalInformation = firstAdvisingPartyAdditionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "ScndAdvsgPtyAddtlInf")
-	public AdvisingPartyAdditionalInformation1 getSecondAdvisingPartyAdditionalInformation() {
-		return secondAdvisingPartyAdditionalInformation;
+	public Optional<AdvisingPartyAdditionalInformation1> getSecondAdvisingPartyAdditionalInformation() {
+		return secondAdvisingPartyAdditionalInformation == null ? Optional.empty() : Optional.of(secondAdvisingPartyAdditionalInformation);
 	}
 
-	public void setSecondAdvisingPartyAdditionalInformation(com.tools20022.repository.msg.AdvisingPartyAdditionalInformation1 secondAdvisingPartyAdditionalInformation) {
+	public Amendment2 setSecondAdvisingPartyAdditionalInformation(AdvisingPartyAdditionalInformation1 secondAdvisingPartyAdditionalInformation) {
 		this.secondAdvisingPartyAdditionalInformation = secondAdvisingPartyAdditionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "ConfDtls")
-	public UndertakingConfirmation1 getConfirmationDetails() {
-		return confirmationDetails;
+	public Optional<UndertakingConfirmation1> getConfirmationDetails() {
+		return confirmationDetails == null ? Optional.empty() : Optional.of(confirmationDetails);
 	}
 
-	public void setConfirmationDetails(com.tools20022.repository.msg.UndertakingConfirmation1 confirmationDetails) {
+	public Amendment2 setConfirmationDetails(UndertakingConfirmation1 confirmationDetails) {
 		this.confirmationDetails = confirmationDetails;
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
 	public List<PartyAndSignature2> getDigitalSignature() {
-		return digitalSignature;
+		return digitalSignature == null ? digitalSignature = new ArrayList<>() : digitalSignature;
 	}
 
-	public void setDigitalSignature(List<com.tools20022.repository.msg.PartyAndSignature2> digitalSignature) {
-		this.digitalSignature = digitalSignature;
+	public Amendment2 setDigitalSignature(List<PartyAndSignature2> digitalSignature) {
+		this.digitalSignature = Objects.requireNonNull(digitalSignature);
+		return this;
 	}
 }

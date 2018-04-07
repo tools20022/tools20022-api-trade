@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.choice.RejectionReason1Choice;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -93,15 +94,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "MisMatchRejectionV02", propOrder = {"rejectionIdentification", "transactionIdentification", "submitterTransactionReference", "dataSetMatchReportReference", "rejectionReason"})
 public class MisMatchRejectionV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RjctnId", required = true)
 	protected MessageIdentification1 rejectionIdentification;
 	/**
-	 * Identifies the rejection message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -122,7 +124,7 @@ public class MisMatchRejectionV02 {
 	 * definition} = "Identifies the rejection message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchRejectionV02, MessageIdentification1> mmRejectionIdentification = new MMMessageBuildingBlock<MisMatchRejectionV02, MessageIdentification1>() {
 		{
 			xmlTag = "RjctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -133,20 +135,21 @@ public class MisMatchRejectionV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchRejectionV02.class.getMethod("getRejectionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchRejectionV02 obj) {
+			return obj.getRejectionIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchRejectionV02 obj, MessageIdentification1 value) {
+			obj.setRejectionIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -169,7 +172,7 @@ public class MisMatchRejectionV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchRejectionV02, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<MisMatchRejectionV02, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -180,18 +183,21 @@ public class MisMatchRejectionV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchRejectionV02.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(MisMatchRejectionV02 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchRejectionV02 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -213,7 +219,7 @@ public class MisMatchRejectionV02 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchRejectionV02, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<MisMatchRejectionV02, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -224,19 +230,21 @@ public class MisMatchRejectionV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchRejectionV02.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(MisMatchRejectionV02 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(MisMatchRejectionV02 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	protected MessageIdentification1 dataSetMatchReportReference;
 	/**
-	 * Reference to the identification of the report that contained the
-	 * difference.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -255,33 +263,36 @@ public class MisMatchRejectionV02 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Reference to the identification of the report that contained the difference. "
+	 * "Reference to the identification of the report that contained the difference."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDataSetMatchReportReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchRejectionV02, MessageIdentification1> mmDataSetMatchReportReference = new MMMessageBuildingBlock<MisMatchRejectionV02, MessageIdentification1>() {
 		{
 			xmlTag = "DataSetMtchRptRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "DataSetMatchReportReference";
-			definition = "Reference to the identification of the report that contained the difference. ";
+			definition = "Reference to the identification of the report that contained the difference.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchRejectionV02.class.getMethod("getDataSetMatchReportReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchRejectionV02 obj) {
+			return obj.getDataSetMatchReportReference();
+		}
+
+		@Override
+		public void setValue(MisMatchRejectionV02 obj, MessageIdentification1 value) {
+			obj.setDataSetMatchReportReference(value);
 		}
 	};
+	@XmlElement(name = "RjctnRsn", required = true)
 	protected RejectionReason1Choice rejectionReason;
 	/**
-	 * Reason why the user cannot accept the request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -302,7 +313,7 @@ public class MisMatchRejectionV02 {
 	 * definition} = "Reason why the user cannot accept the request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectionReason = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchRejectionV02, RejectionReason1Choice> mmRejectionReason = new MMMessageBuildingBlock<MisMatchRejectionV02, RejectionReason1Choice>() {
 		{
 			xmlTag = "RjctnRsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -313,12 +324,14 @@ public class MisMatchRejectionV02 {
 			complexType_lazy = () -> RejectionReason1Choice.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchRejectionV02.class.getMethod("getRejectionReason", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public RejectionReason1Choice getValue(MisMatchRejectionV02 obj) {
+			return obj.getRejectionReason();
+		}
+
+		@Override
+		public void setValue(MisMatchRejectionV02 obj, RejectionReason1Choice value) {
+			obj.setRejectionReason(value);
 		}
 	};
 
@@ -352,52 +365,52 @@ public class MisMatchRejectionV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RjctnId", required = true)
 	public MessageIdentification1 getRejectionIdentification() {
 		return rejectionIdentification;
 	}
 
-	public void setRejectionIdentification(MessageIdentification1 rejectionIdentification) {
-		this.rejectionIdentification = rejectionIdentification;
+	public MisMatchRejectionV02 setRejectionIdentification(MessageIdentification1 rejectionIdentification) {
+		this.rejectionIdentification = Objects.requireNonNull(rejectionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public MisMatchRejectionV02 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public MisMatchRejectionV02 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	public MessageIdentification1 getDataSetMatchReportReference() {
 		return dataSetMatchReportReference;
 	}
 
-	public void setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
-		this.dataSetMatchReportReference = dataSetMatchReportReference;
+	public MisMatchRejectionV02 setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
+		this.dataSetMatchReportReference = Objects.requireNonNull(dataSetMatchReportReference);
+		return this;
 	}
 
-	@XmlElement(name = "RjctnRsn", required = true)
 	public RejectionReason1Choice getRejectionReason() {
 		return rejectionReason;
 	}
 
-	public void setRejectionReason(RejectionReason1Choice rejectionReason) {
-		this.rejectionReason = rejectionReason;
+	public MisMatchRejectionV02 setRejectionReason(RejectionReason1Choice rejectionReason) {
+		this.rejectionReason = Objects.requireNonNull(rejectionReason);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.022.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.022.001.02")
 	static public class Document {
 		@XmlElement(name = "MisMtchRjctn", required = true)
 		public MisMatchRejectionV02 messageBody;

@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -89,15 +90,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "MisMatchAcceptanceV02", propOrder = {"acceptanceIdentification", "transactionIdentification", "submitterTransactionReference", "dataSetMatchReportReference"})
 public class MisMatchAcceptanceV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AccptncId", required = true)
 	protected MessageIdentification1 acceptanceIdentification;
 	/**
-	 * Identifies the acceptance message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -118,7 +120,7 @@ public class MisMatchAcceptanceV02 {
 	 * definition} = "Identifies the acceptance message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcceptanceIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceV02, MessageIdentification1> mmAcceptanceIdentification = new MMMessageBuildingBlock<MisMatchAcceptanceV02, MessageIdentification1>() {
 		{
 			xmlTag = "AccptncId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,20 +131,21 @@ public class MisMatchAcceptanceV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceV02.class.getMethod("getAcceptanceIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchAcceptanceV02 obj) {
+			return obj.getAcceptanceIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceV02 obj, MessageIdentification1 value) {
+			obj.setAcceptanceIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -165,7 +168,7 @@ public class MisMatchAcceptanceV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceV02, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<MisMatchAcceptanceV02, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -176,18 +179,21 @@ public class MisMatchAcceptanceV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceV02.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(MisMatchAcceptanceV02 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceV02 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -209,7 +215,7 @@ public class MisMatchAcceptanceV02 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceV02, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<MisMatchAcceptanceV02, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -220,19 +226,21 @@ public class MisMatchAcceptanceV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceV02.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(MisMatchAcceptanceV02 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceV02 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	protected MessageIdentification1 dataSetMatchReportReference;
 	/**
-	 * Reference to the identification of the report that contained the
-	 * difference.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -251,27 +259,29 @@ public class MisMatchAcceptanceV02 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Reference to the identification of the report that contained the difference. "
+	 * "Reference to the identification of the report that contained the difference."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDataSetMatchReportReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<MisMatchAcceptanceV02, MessageIdentification1> mmDataSetMatchReportReference = new MMMessageBuildingBlock<MisMatchAcceptanceV02, MessageIdentification1>() {
 		{
 			xmlTag = "DataSetMtchRptRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "DataSetMatchReportReference";
-			definition = "Reference to the identification of the report that contained the difference. ";
+			definition = "Reference to the identification of the report that contained the difference.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return MisMatchAcceptanceV02.class.getMethod("getDataSetMatchReportReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(MisMatchAcceptanceV02 obj) {
+			return obj.getDataSetMatchReportReference();
+		}
+
+		@Override
+		public void setValue(MisMatchAcceptanceV02 obj, MessageIdentification1 value) {
+			obj.setDataSetMatchReportReference(value);
 		}
 	};
 
@@ -304,43 +314,43 @@ public class MisMatchAcceptanceV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AccptncId", required = true)
 	public MessageIdentification1 getAcceptanceIdentification() {
 		return acceptanceIdentification;
 	}
 
-	public void setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
-		this.acceptanceIdentification = acceptanceIdentification;
+	public MisMatchAcceptanceV02 setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
+		this.acceptanceIdentification = Objects.requireNonNull(acceptanceIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public MisMatchAcceptanceV02 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public MisMatchAcceptanceV02 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "DataSetMtchRptRef", required = true)
 	public MessageIdentification1 getDataSetMatchReportReference() {
 		return dataSetMatchReportReference;
 	}
 
-	public void setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
-		this.dataSetMatchReportReference = dataSetMatchReportReference;
+	public MisMatchAcceptanceV02 setDataSetMatchReportReference(MessageIdentification1 dataSetMatchReportReference) {
+		this.dataSetMatchReportReference = Objects.requireNonNull(dataSetMatchReportReference);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.020.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.020.001.02")
 	static public class Document {
 		@XmlElement(name = "MisMtchAccptnc", required = true)
 		public MisMatchAcceptanceV02 messageBody;

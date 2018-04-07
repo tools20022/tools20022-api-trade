@@ -25,10 +25,11 @@ import com.tools20022.repository.area.AuthoritiesLatestVersion;
 import com.tools20022.repository.msg.SupplementaryData1;
 import com.tools20022.repository.msg.TaxReport1;
 import com.tools20022.repository.msg.TaxReportHeader1;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -77,16 +78,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceTaxReportV01", propOrder = {"invoiceTaxReportHeader", "taxReport", "supplementaryData"})
 public class InvoiceTaxReportV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "InvcTaxRptHdr", required = true)
 	protected TaxReportHeader1 invoiceTaxReportHeader;
 	/**
-	 * Defines message level identification, number of individual tax reports
-	 * and tax authority.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -109,7 +110,7 @@ public class InvoiceTaxReportV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInvoiceTaxReportHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportV01, TaxReportHeader1> mmInvoiceTaxReportHeader = new MMMessageBuildingBlock<InvoiceTaxReportV01, TaxReportHeader1>() {
 		{
 			xmlTag = "InvcTaxRptHdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,21 +121,21 @@ public class InvoiceTaxReportV01 {
 			complexType_lazy = () -> TaxReportHeader1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportV01.class.getMethod("getInvoiceTaxReportHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TaxReportHeader1 getValue(InvoiceTaxReportV01 obj) {
+			return obj.getInvoiceTaxReportHeader();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportV01 obj, TaxReportHeader1 value) {
+			obj.setInvoiceTaxReportHeader(value);
 		}
 	};
+	@XmlElement(name = "TaxRpt", required = true)
 	protected List<TaxReport1> taxReport;
 	/**
-	 * Contains all needed party details for tax agency (sender of the
-	 * TaxReport) and tax authority (receiver of the TaxReport) and the details
-	 * of the reported sales transaction and calculated tax related that
-	 * specific business transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -156,7 +157,7 @@ public class InvoiceTaxReportV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTaxReport = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportV01, List<TaxReport1>> mmTaxReport = new MMMessageBuildingBlock<InvoiceTaxReportV01, List<TaxReport1>>() {
 		{
 			xmlTag = "TaxRpt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,19 +167,21 @@ public class InvoiceTaxReportV01 {
 			complexType_lazy = () -> TaxReport1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportV01.class.getMethod("getTaxReport", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<TaxReport1> getValue(InvoiceTaxReportV01 obj) {
+			return obj.getTaxReport();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportV01 obj, List<TaxReport1> value) {
+			obj.setTaxReport(value);
 		}
 	};
+	@XmlElement(name = "SplmtryData")
 	protected List<SupplementaryData1> supplementaryData;
 	/**
-	 * Additional information that can not be captured in the structured fields
-	 * and/or any other specific block.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -197,26 +200,28 @@ public class InvoiceTaxReportV01 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Additional information that can not be captured in the structured fields and/or any other specific block. "
+	 * "Additional information that can not be captured in the structured fields and/or any other specific block."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSupplementaryData = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportV01, List<SupplementaryData1>> mmSupplementaryData = new MMMessageBuildingBlock<InvoiceTaxReportV01, List<SupplementaryData1>>() {
 		{
 			xmlTag = "SplmtryData";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SupplementaryData";
-			definition = "Additional information that can not be captured in the structured fields and/or any other specific block. ";
+			definition = "Additional information that can not be captured in the structured fields and/or any other specific block.";
 			minOccurs = 0;
 			complexType_lazy = () -> SupplementaryData1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportV01.class.getMethod("getSupplementaryData", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<SupplementaryData1> getValue(InvoiceTaxReportV01 obj) {
+			return obj.getSupplementaryData();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportV01 obj, List<SupplementaryData1> value) {
+			obj.setSupplementaryData(value);
 		}
 	};
 
@@ -249,34 +254,34 @@ public class InvoiceTaxReportV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "InvcTaxRptHdr", required = true)
 	public TaxReportHeader1 getInvoiceTaxReportHeader() {
 		return invoiceTaxReportHeader;
 	}
 
-	public void setInvoiceTaxReportHeader(TaxReportHeader1 invoiceTaxReportHeader) {
-		this.invoiceTaxReportHeader = invoiceTaxReportHeader;
+	public InvoiceTaxReportV01 setInvoiceTaxReportHeader(TaxReportHeader1 invoiceTaxReportHeader) {
+		this.invoiceTaxReportHeader = Objects.requireNonNull(invoiceTaxReportHeader);
+		return this;
 	}
 
-	@XmlElement(name = "TaxRpt", required = true)
 	public List<TaxReport1> getTaxReport() {
-		return taxReport;
+		return taxReport == null ? taxReport = new ArrayList<>() : taxReport;
 	}
 
-	public void setTaxReport(List<TaxReport1> taxReport) {
-		this.taxReport = taxReport;
+	public InvoiceTaxReportV01 setTaxReport(List<TaxReport1> taxReport) {
+		this.taxReport = Objects.requireNonNull(taxReport);
+		return this;
 	}
 
-	@XmlElement(name = "SplmtryData")
 	public List<SupplementaryData1> getSupplementaryData() {
-		return supplementaryData;
+		return supplementaryData == null ? supplementaryData = new ArrayList<>() : supplementaryData;
 	}
 
-	public void setSupplementaryData(List<SupplementaryData1> supplementaryData) {
-		this.supplementaryData = supplementaryData;
+	public InvoiceTaxReportV01 setSupplementaryData(List<SupplementaryData1> supplementaryData) {
+		this.supplementaryData = Objects.requireNonNull(supplementaryData);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:auth.034.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:auth.034.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcTaxRpt", required = true)
 		public InvoiceTaxReportV01 messageBody;

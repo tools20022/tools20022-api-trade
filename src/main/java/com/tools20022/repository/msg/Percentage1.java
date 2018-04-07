@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.Payment;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -63,15 +64,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Rate information."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Percentage1", propOrder = {"rate", "relativeTo"})
 public class Percentage1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Rate", required = true)
 	protected PercentageRate rate;
 	/**
-	 * Percentage of an amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -96,9 +98,9 @@ public class Percentage1 {
 	 * definition} = "Percentage of an amount."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Percentage1, PercentageRate> mmRate = new MMMessageAttribute<Percentage1, PercentageRate>() {
 		{
-			componentContext_lazy = () -> Percentage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Percentage1.mmObject();
 			isDerived = false;
 			xmlTag = "Rate";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -108,11 +110,22 @@ public class Percentage1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> PercentageRate.mmObject();
 		}
+
+		@Override
+		public PercentageRate getValue(Percentage1 obj) {
+			return obj.getRate();
+		}
+
+		@Override
+		public void setValue(Percentage1 obj, PercentageRate value) {
+			obj.setRate(value);
+		}
 	};
+	@XmlElement(name = "RltvTo", required = true)
 	protected ExternalRelativeTo1Code relativeTo;
 	/**
-	 * Indication of what the percentage is relative to.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -137,9 +150,9 @@ public class Percentage1 {
 	 * definition} = "Indication of what the percentage is relative to."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRelativeTo = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Percentage1, ExternalRelativeTo1Code> mmRelativeTo = new MMMessageAttribute<Percentage1, ExternalRelativeTo1Code>() {
 		{
-			componentContext_lazy = () -> Percentage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Percentage1.mmObject();
 			isDerived = false;
 			xmlTag = "RltvTo";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -149,14 +162,24 @@ public class Percentage1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalRelativeTo1Code.mmObject();
 		}
+
+		@Override
+		public ExternalRelativeTo1Code getValue(Percentage1 obj) {
+			return obj.getRelativeTo();
+		}
+
+		@Override
+		public void setValue(Percentage1 obj, ExternalRelativeTo1Code value) {
+			obj.setRelativeTo(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Percentage1.mmRate, Percentage1.mmRelativeTo);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Percentage1.mmRate, com.tools20022.repository.msg.Percentage1.mmRelativeTo);
 				trace_lazy = () -> Payment.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Percentage1";
 				definition = "Rate information.";
@@ -165,21 +188,21 @@ public class Percentage1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Rate", required = true)
 	public PercentageRate getRate() {
 		return rate;
 	}
 
-	public void setRate(PercentageRate rate) {
-		this.rate = rate;
+	public Percentage1 setRate(PercentageRate rate) {
+		this.rate = Objects.requireNonNull(rate);
+		return this;
 	}
 
-	@XmlElement(name = "RltvTo", required = true)
 	public ExternalRelativeTo1Code getRelativeTo() {
 		return relativeTo;
 	}
 
-	public void setRelativeTo(ExternalRelativeTo1Code relativeTo) {
-		this.relativeTo = relativeTo;
+	public Percentage1 setRelativeTo(ExternalRelativeTo1Code relativeTo) {
+		this.relativeTo = Objects.requireNonNull(relativeTo);
+		return this;
 	}
 }

@@ -29,9 +29,10 @@ import com.tools20022.repository.entity.LineItem;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.entity.TradeCertificate;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.BICIdentification1;
+import com.tools20022.repository.msg.PartyIdentification27;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -81,8 +82,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -95,16 +96,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "RequiredSubmission4", propOrder = {"submitter", "certificateType", "matchIssuer", "matchIssueDate", "matchInspectionDate", "authorisedInspectorIndicator", "matchConsignee", "matchManufacturer", "lineItemIdentification"})
 public class RequiredSubmission4 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
-	protected List<com.tools20022.repository.msg.BICIdentification1> submitter;
+	@XmlElement(name = "Submitr", required = true)
+	protected List<BICIdentification1> submitter;
 	/**
-	 * Specifies with party(ies) is authorised to submit the data set as part of
-	 * the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -135,10 +136,10 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSubmitter = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<RequiredSubmission4, List<BICIdentification1>> mmSubmitter = new MMMessageAssociationEnd<RequiredSubmission4, List<BICIdentification1>>() {
 		{
 			businessComponentTrace_lazy = () -> FinancialInstitution.mmObject();
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "Submitr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -146,13 +147,24 @@ public class RequiredSubmission4 {
 			definition = "Specifies with party(ies) is authorised to submit the data set as part of the transaction.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public List<BICIdentification1> getValue(RequiredSubmission4 obj) {
+			return obj.getSubmitter();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, List<BICIdentification1> value) {
+			obj.setSubmitter(value);
 		}
 	};
+	@XmlElement(name = "CertTp", required = true)
 	protected TradeCertificateType1Code certificateType;
 	/**
-	 * Specifies the type of the certificate.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -183,10 +195,10 @@ public class RequiredSubmission4 {
 	 * definition} = "Specifies the type of the certificate."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCertificateType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, TradeCertificateType1Code> mmCertificateType = new MMMessageAttribute<RequiredSubmission4, TradeCertificateType1Code>() {
 		{
 			businessElementTrace_lazy = () -> TradeCertificate.mmCertificateType;
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "CertTp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -196,12 +208,22 @@ public class RequiredSubmission4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> TradeCertificateType1Code.mmObject();
 		}
+
+		@Override
+		public TradeCertificateType1Code getValue(RequiredSubmission4 obj) {
+			return obj.getCertificateType();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, TradeCertificateType1Code value) {
+			obj.setCertificateType(value);
+		}
 	};
+	@XmlElement(name = "MtchIssr")
 	protected PartyIdentification27 matchIssuer;
 	/**
-	 * Specifies if the issuer must be matched as part of the validation of the
-	 * data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -232,10 +254,10 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmMatchIssuer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<RequiredSubmission4, Optional<PartyIdentification27>> mmMatchIssuer = new MMMessageAssociationEnd<RequiredSubmission4, Optional<PartyIdentification27>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "MtchIssr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -244,14 +266,24 @@ public class RequiredSubmission4 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification27.mmObject();
+			type_lazy = () -> PartyIdentification27.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification27> getValue(RequiredSubmission4 obj) {
+			return obj.getMatchIssuer();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, Optional<PartyIdentification27> value) {
+			obj.setMatchIssuer(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "MtchIsseDt", required = true)
 	protected YesNoIndicator matchIssueDate;
 	/**
-	 * Specifies if the issue date must be matched as part of the validation of
-	 * the data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -279,9 +311,9 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMatchIssueDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, YesNoIndicator> mmMatchIssueDate = new MMMessageAttribute<RequiredSubmission4, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "MtchIsseDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -291,12 +323,22 @@ public class RequiredSubmission4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(RequiredSubmission4 obj) {
+			return obj.getMatchIssueDate();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, YesNoIndicator value) {
+			obj.setMatchIssueDate(value);
+		}
 	};
+	@XmlElement(name = "MtchInspctnDt", required = true)
 	protected YesNoIndicator matchInspectionDate;
 	/**
-	 * Specifies if the inspection date must be matched as part of the
-	 * validation of the data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -324,9 +366,9 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMatchInspectionDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, YesNoIndicator> mmMatchInspectionDate = new MMMessageAttribute<RequiredSubmission4, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "MtchInspctnDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -336,12 +378,22 @@ public class RequiredSubmission4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(RequiredSubmission4 obj) {
+			return obj.getMatchInspectionDate();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, YesNoIndicator value) {
+			obj.setMatchInspectionDate(value);
+		}
 	};
+	@XmlElement(name = "AuthrsdInspctrInd", required = true)
 	protected YesNoIndicator authorisedInspectorIndicator;
 	/**
-	 * Specifies if the indication of an authorised inspector must be present as
-	 * part of the validation of the data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -369,9 +421,9 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAuthorisedInspectorIndicator = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, YesNoIndicator> mmAuthorisedInspectorIndicator = new MMMessageAttribute<RequiredSubmission4, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "AuthrsdInspctrInd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -381,12 +433,22 @@ public class RequiredSubmission4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(RequiredSubmission4 obj) {
+			return obj.getAuthorisedInspectorIndicator();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, YesNoIndicator value) {
+			obj.setAuthorisedInspectorIndicator(value);
+		}
 	};
+	@XmlElement(name = "MtchConsgn", required = true)
 	protected YesNoIndicator matchConsignee;
 	/**
-	 * Specifies if the consignee must be matched as part of the validation of
-	 * the data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -414,9 +476,9 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMatchConsignee = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, YesNoIndicator> mmMatchConsignee = new MMMessageAttribute<RequiredSubmission4, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "MtchConsgn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -426,12 +488,22 @@ public class RequiredSubmission4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(RequiredSubmission4 obj) {
+			return obj.getMatchConsignee();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, YesNoIndicator value) {
+			obj.setMatchConsignee(value);
+		}
 	};
+	@XmlElement(name = "MtchManfctr")
 	protected PartyIdentification27 matchManufacturer;
 	/**
-	 * Specifies if the manufacturer must be matched as part of the validation
-	 * of the data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -462,10 +534,10 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmMatchManufacturer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<RequiredSubmission4, Optional<PartyIdentification27>> mmMatchManufacturer = new MMMessageAssociationEnd<RequiredSubmission4, Optional<PartyIdentification27>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "MtchManfctr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -474,14 +546,24 @@ public class RequiredSubmission4 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification27.mmObject();
+			type_lazy = () -> PartyIdentification27.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification27> getValue(RequiredSubmission4 obj) {
+			return obj.getMatchManufacturer();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, Optional<PartyIdentification27> value) {
+			obj.setMatchManufacturer(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "LineItmId")
 	protected List<Max70Text> lineItemIdentification;
 	/**
-	 * Specifies if the certificate data set is required in relation to specific
-	 * line items, and which line items.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -513,10 +595,10 @@ public class RequiredSubmission4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLineItemIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<RequiredSubmission4, List<Max70Text>> mmLineItemIdentification = new MMMessageAttribute<RequiredSubmission4, List<Max70Text>>() {
 		{
 			businessElementTrace_lazy = () -> LineItem.mmIdentification;
-			componentContext_lazy = () -> RequiredSubmission4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
 			isDerived = false;
 			xmlTag = "LineItmId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -525,16 +607,27 @@ public class RequiredSubmission4 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public List<Max70Text> getValue(RequiredSubmission4 obj) {
+			return obj.getLineItemIdentification();
+		}
+
+		@Override
+		public void setValue(RequiredSubmission4 obj, List<Max70Text> value) {
+			obj.setLineItemIdentification(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(RequiredSubmission4.mmSubmitter, RequiredSubmission4.mmCertificateType, RequiredSubmission4.mmMatchIssuer, RequiredSubmission4.mmMatchIssueDate,
-						RequiredSubmission4.mmMatchInspectionDate, RequiredSubmission4.mmAuthorisedInspectorIndicator, RequiredSubmission4.mmMatchConsignee, RequiredSubmission4.mmMatchManufacturer,
-						RequiredSubmission4.mmLineItemIdentification);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.RequiredSubmission4.mmSubmitter, com.tools20022.repository.msg.RequiredSubmission4.mmCertificateType,
+						com.tools20022.repository.msg.RequiredSubmission4.mmMatchIssuer, com.tools20022.repository.msg.RequiredSubmission4.mmMatchIssueDate, com.tools20022.repository.msg.RequiredSubmission4.mmMatchInspectionDate,
+						com.tools20022.repository.msg.RequiredSubmission4.mmAuthorisedInspectorIndicator, com.tools20022.repository.msg.RequiredSubmission4.mmMatchConsignee,
+						com.tools20022.repository.msg.RequiredSubmission4.mmMatchManufacturer, com.tools20022.repository.msg.RequiredSubmission4.mmLineItemIdentification);
 				trace_lazy = () -> TradeCertificate.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "RequiredSubmission4";
 				definition = "Specifies the details relative to the submission of the certificate data set.";
@@ -543,84 +636,84 @@ public class RequiredSubmission4 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Submitr", required = true)
 	public List<BICIdentification1> getSubmitter() {
-		return submitter;
+		return submitter == null ? submitter = new ArrayList<>() : submitter;
 	}
 
-	public void setSubmitter(List<com.tools20022.repository.msg.BICIdentification1> submitter) {
-		this.submitter = submitter;
+	public RequiredSubmission4 setSubmitter(List<BICIdentification1> submitter) {
+		this.submitter = Objects.requireNonNull(submitter);
+		return this;
 	}
 
-	@XmlElement(name = "CertTp", required = true)
 	public TradeCertificateType1Code getCertificateType() {
 		return certificateType;
 	}
 
-	public void setCertificateType(TradeCertificateType1Code certificateType) {
-		this.certificateType = certificateType;
+	public RequiredSubmission4 setCertificateType(TradeCertificateType1Code certificateType) {
+		this.certificateType = Objects.requireNonNull(certificateType);
+		return this;
 	}
 
-	@XmlElement(name = "MtchIssr")
-	public PartyIdentification27 getMatchIssuer() {
-		return matchIssuer;
+	public Optional<PartyIdentification27> getMatchIssuer() {
+		return matchIssuer == null ? Optional.empty() : Optional.of(matchIssuer);
 	}
 
-	public void setMatchIssuer(com.tools20022.repository.msg.PartyIdentification27 matchIssuer) {
+	public RequiredSubmission4 setMatchIssuer(PartyIdentification27 matchIssuer) {
 		this.matchIssuer = matchIssuer;
+		return this;
 	}
 
-	@XmlElement(name = "MtchIsseDt", required = true)
 	public YesNoIndicator getMatchIssueDate() {
 		return matchIssueDate;
 	}
 
-	public void setMatchIssueDate(YesNoIndicator matchIssueDate) {
-		this.matchIssueDate = matchIssueDate;
+	public RequiredSubmission4 setMatchIssueDate(YesNoIndicator matchIssueDate) {
+		this.matchIssueDate = Objects.requireNonNull(matchIssueDate);
+		return this;
 	}
 
-	@XmlElement(name = "MtchInspctnDt", required = true)
 	public YesNoIndicator getMatchInspectionDate() {
 		return matchInspectionDate;
 	}
 
-	public void setMatchInspectionDate(YesNoIndicator matchInspectionDate) {
-		this.matchInspectionDate = matchInspectionDate;
+	public RequiredSubmission4 setMatchInspectionDate(YesNoIndicator matchInspectionDate) {
+		this.matchInspectionDate = Objects.requireNonNull(matchInspectionDate);
+		return this;
 	}
 
-	@XmlElement(name = "AuthrsdInspctrInd", required = true)
 	public YesNoIndicator getAuthorisedInspectorIndicator() {
 		return authorisedInspectorIndicator;
 	}
 
-	public void setAuthorisedInspectorIndicator(YesNoIndicator authorisedInspectorIndicator) {
-		this.authorisedInspectorIndicator = authorisedInspectorIndicator;
+	public RequiredSubmission4 setAuthorisedInspectorIndicator(YesNoIndicator authorisedInspectorIndicator) {
+		this.authorisedInspectorIndicator = Objects.requireNonNull(authorisedInspectorIndicator);
+		return this;
 	}
 
-	@XmlElement(name = "MtchConsgn", required = true)
 	public YesNoIndicator getMatchConsignee() {
 		return matchConsignee;
 	}
 
-	public void setMatchConsignee(YesNoIndicator matchConsignee) {
-		this.matchConsignee = matchConsignee;
+	public RequiredSubmission4 setMatchConsignee(YesNoIndicator matchConsignee) {
+		this.matchConsignee = Objects.requireNonNull(matchConsignee);
+		return this;
 	}
 
-	@XmlElement(name = "MtchManfctr")
-	public PartyIdentification27 getMatchManufacturer() {
-		return matchManufacturer;
+	public Optional<PartyIdentification27> getMatchManufacturer() {
+		return matchManufacturer == null ? Optional.empty() : Optional.of(matchManufacturer);
 	}
 
-	public void setMatchManufacturer(com.tools20022.repository.msg.PartyIdentification27 matchManufacturer) {
+	public RequiredSubmission4 setMatchManufacturer(PartyIdentification27 matchManufacturer) {
 		this.matchManufacturer = matchManufacturer;
+		return this;
 	}
 
-	@XmlElement(name = "LineItmId")
 	public List<Max70Text> getLineItemIdentification() {
-		return lineItemIdentification;
+		return lineItemIdentification == null ? lineItemIdentification = new ArrayList<>() : lineItemIdentification;
 	}
 
-	public void setLineItemIdentification(List<Max70Text> lineItemIdentification) {
-		this.lineItemIdentification = lineItemIdentification;
+	public RequiredSubmission4 setLineItemIdentification(List<Max70Text> lineItemIdentification) {
+		this.lineItemIdentification = Objects.requireNonNull(lineItemIdentification);
+		return this;
 	}
 }

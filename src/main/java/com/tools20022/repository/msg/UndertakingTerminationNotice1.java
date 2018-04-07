@@ -26,9 +26,14 @@ import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingStatus;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.Document9;
+import com.tools20022.repository.msg.Undertaking9;
+import com.tools20022.repository.msg.UndertakingTermination3;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -73,8 +78,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -86,15 +91,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Information about the notification of the termination of an undertaking."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingTerminationNotice1", propOrder = {"undertakingIdentification", "terminationDetails", "enclosedFile", "additionalInformation"})
 public class UndertakingTerminationNotice1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgId", required = true)
 	protected Undertaking9 undertakingIdentification;
 	/**
-	 * Details related to the identification of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -124,10 +130,10 @@ public class UndertakingTerminationNotice1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingTerminationNotice1, Undertaking9> mmUndertakingIdentification = new MMMessageAssociationEnd<UndertakingTerminationNotice1, Undertaking9>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatus.mmUndertaking;
-			componentContext_lazy = () -> UndertakingTerminationNotice1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTerminationNotice1.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -136,13 +142,24 @@ public class UndertakingTerminationNotice1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Undertaking9.mmObject();
+			type_lazy = () -> Undertaking9.mmObject();
+		}
+
+		@Override
+		public Undertaking9 getValue(UndertakingTerminationNotice1 obj) {
+			return obj.getUndertakingIdentification();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotice1 obj, Undertaking9 value) {
+			obj.setUndertakingIdentification(value);
 		}
 	};
+	@XmlElement(name = "TermntnDtls", required = true)
 	protected UndertakingTermination3 terminationDetails;
 	/**
-	 * Details related to the termination of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -172,10 +189,10 @@ public class UndertakingTerminationNotice1 {
 	 * definition} = "Details related to the termination of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTerminationDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingTerminationNotice1, UndertakingTermination3> mmTerminationDetails = new MMMessageAssociationEnd<UndertakingTerminationNotice1, UndertakingTermination3>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingStatus.mmObject();
-			componentContext_lazy = () -> UndertakingTerminationNotice1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTerminationNotice1.mmObject();
 			isDerived = false;
 			xmlTag = "TermntnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -184,13 +201,24 @@ public class UndertakingTerminationNotice1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingTermination3.mmObject();
+			type_lazy = () -> UndertakingTermination3.mmObject();
+		}
+
+		@Override
+		public UndertakingTermination3 getValue(UndertakingTerminationNotice1 obj) {
+			return obj.getTerminationDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotice1 obj, UndertakingTermination3 value) {
+			obj.setTerminationDetails(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.Document9> enclosedFile;
+	@XmlElement(name = "NclsdFile")
+	protected List<Document9> enclosedFile;
 	/**
-	 * Document or template enclosed in the termination notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -216,27 +244,38 @@ public class UndertakingTerminationNotice1 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Document or template enclosed in the termination notification. "</li>
+	 * "Document or template enclosed in the termination notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmEnclosedFile = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingTerminationNotice1, List<Document9>> mmEnclosedFile = new MMMessageAssociationEnd<UndertakingTerminationNotice1, List<Document9>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmSpecifiedDocument;
-			componentContext_lazy = () -> UndertakingTerminationNotice1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTerminationNotice1.mmObject();
 			isDerived = false;
 			xmlTag = "NclsdFile";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EnclosedFile";
-			definition = "Document or template enclosed in the termination notification. ";
+			definition = "Document or template enclosed in the termination notification.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Document9.mmObject();
+			type_lazy = () -> Document9.mmObject();
+		}
+
+		@Override
+		public List<Document9> getValue(UndertakingTerminationNotice1 obj) {
+			return obj.getEnclosedFile();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotice1 obj, List<Document9> value) {
+			obj.setEnclosedFile(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -261,9 +300,9 @@ public class UndertakingTerminationNotice1 {
 	 * definition} = "Additional information related to the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingTerminationNotice1, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<UndertakingTerminationNotice1, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> UndertakingTerminationNotice1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTerminationNotice1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -273,16 +312,26 @@ public class UndertakingTerminationNotice1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(UndertakingTerminationNotice1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotice1 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UndertakingTerminationNotice1.mmUndertakingIdentification, UndertakingTerminationNotice1.mmTerminationDetails, UndertakingTerminationNotice1.mmEnclosedFile,
-						UndertakingTerminationNotice1.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UndertakingTerminationNotice1.mmUndertakingIdentification, com.tools20022.repository.msg.UndertakingTerminationNotice1.mmTerminationDetails,
+						com.tools20022.repository.msg.UndertakingTerminationNotice1.mmEnclosedFile, com.tools20022.repository.msg.UndertakingTerminationNotice1.mmAdditionalInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(UndertakingTerminationNotificationV01.mmUndertakingTerminationNotificationDetails);
 				trace_lazy = () -> UndertakingStatus.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingTerminationNotice1";
 				definition = "Information about the notification of the termination of an undertaking.";
@@ -291,39 +340,39 @@ public class UndertakingTerminationNotice1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgId", required = true)
 	public Undertaking9 getUndertakingIdentification() {
 		return undertakingIdentification;
 	}
 
-	public void setUndertakingIdentification(com.tools20022.repository.msg.Undertaking9 undertakingIdentification) {
-		this.undertakingIdentification = undertakingIdentification;
+	public UndertakingTerminationNotice1 setUndertakingIdentification(Undertaking9 undertakingIdentification) {
+		this.undertakingIdentification = Objects.requireNonNull(undertakingIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TermntnDtls", required = true)
 	public UndertakingTermination3 getTerminationDetails() {
 		return terminationDetails;
 	}
 
-	public void setTerminationDetails(com.tools20022.repository.msg.UndertakingTermination3 terminationDetails) {
-		this.terminationDetails = terminationDetails;
+	public UndertakingTerminationNotice1 setTerminationDetails(UndertakingTermination3 terminationDetails) {
+		this.terminationDetails = Objects.requireNonNull(terminationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "NclsdFile")
 	public List<Document9> getEnclosedFile() {
-		return enclosedFile;
+		return enclosedFile == null ? enclosedFile = new ArrayList<>() : enclosedFile;
 	}
 
-	public void setEnclosedFile(List<com.tools20022.repository.msg.Document9> enclosedFile) {
-		this.enclosedFile = enclosedFile;
+	public UndertakingTerminationNotice1 setEnclosedFile(List<Document9> enclosedFile) {
+		this.enclosedFile = Objects.requireNonNull(enclosedFile);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public UndertakingTerminationNotice1 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

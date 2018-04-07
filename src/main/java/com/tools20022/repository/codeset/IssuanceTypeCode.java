@@ -38,19 +38,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceTypeCode#UndertakingIssuedDirect
- * IssuanceTypeCode.mmUndertakingIssuedDirect}</li>
+ * IssuanceTypeCode.UndertakingIssuedDirect}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceTypeCode#UndertakingViaAdvisingParty
- * IssuanceTypeCode.mmUndertakingViaAdvisingParty}</li>
+ * IssuanceTypeCode.UndertakingViaAdvisingParty}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceTypeCode#UndertakingIssuedViaConfirmingParty
- * IssuanceTypeCode.mmUndertakingIssuedViaConfirmingParty}</li>
+ * IssuanceTypeCode.UndertakingIssuedViaConfirmingParty}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceTypeCode#CounterUndertakingRequestForLocalUndertaking
- * IssuanceTypeCode.mmCounterUndertakingRequestForLocalUndertaking}</li>
+ * IssuanceTypeCode.CounterUndertakingRequestForLocalUndertaking}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceTypeCode#CounterUndertakingRequestForCounterUndertaking
- * IssuanceTypeCode.mmCounterUndertakingRequestForCounterUndertaking}</li>
+ * IssuanceTypeCode.CounterUndertakingRequestForCounterUndertaking}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getDerivation derivation}
@@ -63,8 +63,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -103,14 +103,14 @@ public class IssuanceTypeCode extends MMCode {
 	 * name} = "UndertakingIssuedDirect"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Undertaking issued direct to the beneficiary. "</li>
+	 * definition} = "Undertaking issued direct to the beneficiary."</li>
 	 * </ul>
 	 */
 	public static final IssuanceTypeCode UndertakingIssuedDirect = new IssuanceTypeCode() {
 		{
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "UndertakingIssuedDirect";
-			definition = "Undertaking issued direct to the beneficiary. ";
+			definition = "Undertaking issued direct to the beneficiary.";
 			owner_lazy = () -> com.tools20022.repository.codeset.IssuanceTypeCode.mmObject();
 			codeName = "ISSU";
 		}
@@ -197,7 +197,7 @@ public class IssuanceTypeCode extends MMCode {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Counter-undertaking issued to a correspondent with a request to issue a local undertaking. "
+	 * "Counter-undertaking issued to a correspondent with a request to issue a local undertaking."
 	 * </li>
 	 * </ul>
 	 */
@@ -205,7 +205,7 @@ public class IssuanceTypeCode extends MMCode {
 		{
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "CounterUndertakingRequestForLocalUndertaking";
-			definition = "Counter-undertaking issued to a correspondent with a request to issue a local undertaking. ";
+			definition = "Counter-undertaking issued to a correspondent with a request to issue a local undertaking.";
 			owner_lazy = () -> com.tools20022.repository.codeset.IssuanceTypeCode.mmObject();
 			codeName = "CRQL";
 		}
@@ -251,7 +251,7 @@ public class IssuanceTypeCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("ISSU");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "IssuanceTypeCode";

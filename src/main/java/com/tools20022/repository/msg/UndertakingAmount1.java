@@ -25,9 +25,8 @@ import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.datatype.PercentageRate;
 import com.tools20022.repository.entity.UndertakingAmount;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -58,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -70,15 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information about an amount."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingAmount1", propOrder = {"amount", "plusTolerance", "additionalInformation"})
 public class UndertakingAmount1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Amt", required = true)
 	protected ActiveCurrencyAndAmount amount;
 	/**
-	 * Amount and currency of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -109,10 +109,10 @@ public class UndertakingAmount1 {
 	 * definition} = "Amount and currency of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAmount1, ActiveCurrencyAndAmount> mmAmount = new MMMessageAttribute<UndertakingAmount1, ActiveCurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingAmount.mmAmount;
-			componentContext_lazy = () -> UndertakingAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "Amt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -122,12 +122,22 @@ public class UndertakingAmount1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(UndertakingAmount1 obj) {
+			return obj.getAmount();
+		}
+
+		@Override
+		public void setValue(UndertakingAmount1 obj, ActiveCurrencyAndAmount value) {
+			obj.setAmount(value);
+		}
 	};
+	@XmlElement(name = "PlusTlrnce")
 	protected PercentageRate plusTolerance;
 	/**
-	 * Percentage by which the amount claimed under the undertaking may be more
-	 * than the undertaking amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -160,10 +170,10 @@ public class UndertakingAmount1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlusTolerance = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAmount1, Optional<PercentageRate>> mmPlusTolerance = new MMMessageAttribute<UndertakingAmount1, Optional<PercentageRate>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingAmount.mmTolerance;
-			componentContext_lazy = () -> UndertakingAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "PlusTlrnce";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -173,11 +183,22 @@ public class UndertakingAmount1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> PercentageRate.mmObject();
 		}
+
+		@Override
+		public Optional<PercentageRate> getValue(UndertakingAmount1 obj) {
+			return obj.getPlusTolerance();
+		}
+
+		@Override
+		public void setValue(UndertakingAmount1 obj, Optional<PercentageRate> value) {
+			obj.setPlusTolerance(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information concerning the undertaking amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -199,30 +220,41 @@ public class UndertakingAmount1 {
 	 * name} = "AdditionalInformation"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} =
-	 * "Additional information concerning the undertaking amount. "</li>
+	 * definition} = "Additional information concerning the undertaking amount."
+	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAmount1, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<UndertakingAmount1, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> UndertakingAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "AdditionalInformation";
-			definition = "Additional information concerning the undertaking amount. ";
+			definition = "Additional information concerning the undertaking amount.";
 			maxOccurs = 5;
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
+		}
+
+		@Override
+		public List<Max2000Text> getValue(UndertakingAmount1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingAmount1 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UndertakingAmount1.mmAmount, UndertakingAmount1.mmPlusTolerance, UndertakingAmount1.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UndertakingAmount1.mmAmount, com.tools20022.repository.msg.UndertakingAmount1.mmPlusTolerance,
+						com.tools20022.repository.msg.UndertakingAmount1.mmAdditionalInformation);
 				trace_lazy = () -> UndertakingAmount.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingAmount1";
 				definition = "Information about an amount.";
@@ -231,30 +263,30 @@ public class UndertakingAmount1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Amt", required = true)
 	public ActiveCurrencyAndAmount getAmount() {
 		return amount;
 	}
 
-	public void setAmount(ActiveCurrencyAndAmount amount) {
-		this.amount = amount;
+	public UndertakingAmount1 setAmount(ActiveCurrencyAndAmount amount) {
+		this.amount = Objects.requireNonNull(amount);
+		return this;
 	}
 
-	@XmlElement(name = "PlusTlrnce")
-	public PercentageRate getPlusTolerance() {
-		return plusTolerance;
+	public Optional<PercentageRate> getPlusTolerance() {
+		return plusTolerance == null ? Optional.empty() : Optional.of(plusTolerance);
 	}
 
-	public void setPlusTolerance(PercentageRate plusTolerance) {
+	public UndertakingAmount1 setPlusTolerance(PercentageRate plusTolerance) {
 		this.plusTolerance = plusTolerance;
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public UndertakingAmount1 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

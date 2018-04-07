@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.codeset.ISO2ALanguageCode;
 import com.tools20022.repository.entity.ModelForm;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.ModelFormIdentification1;
+import com.tools20022.repository.msg.Narrative1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -58,8 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -72,16 +73,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingWording1", propOrder = {"modelForm", "requestedWordingLanguage", "undertakingTermsAndConditions"})
 public class UndertakingWording1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "MdlForm")
 	protected ModelFormIdentification1 modelForm;
 	/**
-	 * Wording template for the undertaking content made available for use with
-	 * certain governance rules or made available by particular institutions.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -108,29 +109,40 @@ public class UndertakingWording1 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Wording template for the undertaking content made available for use with certain governance rules or made available by particular institutions. "
+	 * "Wording template for the undertaking content made available for use with certain governance rules or made available by particular institutions."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmModelForm = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingWording1, Optional<ModelFormIdentification1>> mmModelForm = new MMMessageAssociationEnd<UndertakingWording1, Optional<ModelFormIdentification1>>() {
 		{
 			businessComponentTrace_lazy = () -> ModelForm.mmObject();
-			componentContext_lazy = () -> UndertakingWording1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingWording1.mmObject();
 			isDerived = false;
 			xmlTag = "MdlForm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ModelForm";
-			definition = "Wording template for the undertaking content made available for use with certain governance rules or made available by particular institutions. ";
+			definition = "Wording template for the undertaking content made available for use with certain governance rules or made available by particular institutions.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ModelFormIdentification1.mmObject();
+			type_lazy = () -> ModelFormIdentification1.mmObject();
+		}
+
+		@Override
+		public Optional<ModelFormIdentification1> getValue(UndertakingWording1 obj) {
+			return obj.getModelForm();
+		}
+
+		@Override
+		public void setValue(UndertakingWording1 obj, Optional<ModelFormIdentification1> value) {
+			obj.setModelForm(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ReqdWrdgLang")
 	protected ISO2ALanguageCode requestedWordingLanguage;
 	/**
-	 * Language of the standard wording provided by the issuer.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -161,10 +173,10 @@ public class UndertakingWording1 {
 	 * definition} = "Language of the standard wording provided by the issuer."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRequestedWordingLanguage = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingWording1, Optional<ISO2ALanguageCode>> mmRequestedWordingLanguage = new MMMessageAttribute<UndertakingWording1, Optional<ISO2ALanguageCode>>() {
 		{
 			businessElementTrace_lazy = () -> ModelForm.mmRequestedWordingLanguage;
-			componentContext_lazy = () -> UndertakingWording1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingWording1.mmObject();
 			isDerived = false;
 			xmlTag = "ReqdWrdgLang";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -174,11 +186,22 @@ public class UndertakingWording1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ISO2ALanguageCode.mmObject();
 		}
+
+		@Override
+		public Optional<ISO2ALanguageCode> getValue(UndertakingWording1 obj) {
+			return obj.getRequestedWordingLanguage();
+		}
+
+		@Override
+		public void setValue(UndertakingWording1 obj, Optional<ISO2ALanguageCode> value) {
+			obj.setRequestedWordingLanguage(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Narrative1> undertakingTermsAndConditions;
+	@XmlElement(name = "UdrtkgTermsAndConds")
+	protected List<Narrative1> undertakingTermsAndConditions;
 	/**
-	 * Terms and conditions of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -201,9 +224,9 @@ public class UndertakingWording1 {
 	 * definition} = "Terms and conditions of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingTermsAndConditions = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingWording1, List<Narrative1>> mmUndertakingTermsAndConditions = new MMMessageAssociationEnd<UndertakingWording1, List<Narrative1>>() {
 		{
-			componentContext_lazy = () -> UndertakingWording1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingWording1.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgTermsAndConds";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -211,16 +234,27 @@ public class UndertakingWording1 {
 			definition = "Terms and conditions of the undertaking.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Narrative1.mmObject();
+			type_lazy = () -> Narrative1.mmObject();
+		}
+
+		@Override
+		public List<Narrative1> getValue(UndertakingWording1 obj) {
+			return obj.getUndertakingTermsAndConditions();
+		}
+
+		@Override
+		public void setValue(UndertakingWording1 obj, List<Narrative1> value) {
+			obj.setUndertakingTermsAndConditions(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UndertakingWording1.mmModelForm, UndertakingWording1.mmRequestedWordingLanguage, UndertakingWording1.mmUndertakingTermsAndConditions);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UndertakingWording1.mmModelForm, com.tools20022.repository.msg.UndertakingWording1.mmRequestedWordingLanguage,
+						com.tools20022.repository.msg.UndertakingWording1.mmUndertakingTermsAndConditions);
 				trace_lazy = () -> ModelForm.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingWording1";
 				definition = "Information about the wording for a demand guarantee, standby letter of credit or other undertaking.";
@@ -229,30 +263,30 @@ public class UndertakingWording1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "MdlForm")
-	public ModelFormIdentification1 getModelForm() {
-		return modelForm;
+	public Optional<ModelFormIdentification1> getModelForm() {
+		return modelForm == null ? Optional.empty() : Optional.of(modelForm);
 	}
 
-	public void setModelForm(com.tools20022.repository.msg.ModelFormIdentification1 modelForm) {
+	public UndertakingWording1 setModelForm(ModelFormIdentification1 modelForm) {
 		this.modelForm = modelForm;
+		return this;
 	}
 
-	@XmlElement(name = "ReqdWrdgLang")
-	public ISO2ALanguageCode getRequestedWordingLanguage() {
-		return requestedWordingLanguage;
+	public Optional<ISO2ALanguageCode> getRequestedWordingLanguage() {
+		return requestedWordingLanguage == null ? Optional.empty() : Optional.of(requestedWordingLanguage);
 	}
 
-	public void setRequestedWordingLanguage(ISO2ALanguageCode requestedWordingLanguage) {
+	public UndertakingWording1 setRequestedWordingLanguage(ISO2ALanguageCode requestedWordingLanguage) {
 		this.requestedWordingLanguage = requestedWordingLanguage;
+		return this;
 	}
 
-	@XmlElement(name = "UdrtkgTermsAndConds")
 	public List<Narrative1> getUndertakingTermsAndConditions() {
-		return undertakingTermsAndConditions;
+		return undertakingTermsAndConditions == null ? undertakingTermsAndConditions = new ArrayList<>() : undertakingTermsAndConditions;
 	}
 
-	public void setUndertakingTermsAndConditions(List<com.tools20022.repository.msg.Narrative1> undertakingTermsAndConditions) {
-		this.undertakingTermsAndConditions = undertakingTermsAndConditions;
+	public UndertakingWording1 setUndertakingTermsAndConditions(List<Narrative1> undertakingTermsAndConditions) {
+		this.undertakingTermsAndConditions = Objects.requireNonNull(undertakingTermsAndConditions);
+		return this;
 	}
 }

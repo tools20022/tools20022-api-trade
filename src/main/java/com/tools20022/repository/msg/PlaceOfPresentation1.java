@@ -28,6 +28,8 @@ import com.tools20022.repository.entity.UndertakingDeliveryToParty;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,8 +57,16 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintPlaceOfPresentation2Rule#forPlaceOfPresentation1
+ * ConstraintPlaceOfPresentation2Rule.forPlaceOfPresentation1}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -67,15 +77,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Location of a presentation."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PlaceOfPresentation1", propOrder = {"place", "country"})
 public class PlaceOfPresentation1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Plc", required = true)
 	protected ExternalTypeOfParty1Code place;
 	/**
-	 * Place of the presentation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -106,10 +117,10 @@ public class PlaceOfPresentation1 {
 	 * definition} = "Place of the presentation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlace = new MMMessageAttribute() {
+	public static final MMMessageAttribute<PlaceOfPresentation1, ExternalTypeOfParty1Code> mmPlace = new MMMessageAttribute<PlaceOfPresentation1, ExternalTypeOfParty1Code>() {
 		{
 			businessElementTrace_lazy = () -> PartyIdentificationInformation.mmPartyType;
-			componentContext_lazy = () -> PlaceOfPresentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PlaceOfPresentation1.mmObject();
 			isDerived = false;
 			xmlTag = "Plc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -119,11 +130,22 @@ public class PlaceOfPresentation1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalTypeOfParty1Code.mmObject();
 		}
+
+		@Override
+		public ExternalTypeOfParty1Code getValue(PlaceOfPresentation1 obj) {
+			return obj.getPlace();
+		}
+
+		@Override
+		public void setValue(PlaceOfPresentation1 obj, ExternalTypeOfParty1Code value) {
+			obj.setPlace(value);
+		}
 	};
+	@XmlElement(name = "Ctry")
 	protected CountryCode country;
 	/**
-	 * Country where a presentation is to be made.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -150,30 +172,41 @@ public class PlaceOfPresentation1 {
 	 * name} = "Country"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Country where a presentation is to be made. "</li>
+	 * definition} = "Country where a presentation is to be made."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCountry = new MMMessageAttribute() {
+	public static final MMMessageAttribute<PlaceOfPresentation1, Optional<CountryCode>> mmCountry = new MMMessageAttribute<PlaceOfPresentation1, Optional<CountryCode>>() {
 		{
 			businessElementTrace_lazy = () -> Country.mmCode;
-			componentContext_lazy = () -> PlaceOfPresentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PlaceOfPresentation1.mmObject();
 			isDerived = false;
 			xmlTag = "Ctry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Country";
-			definition = "Country where a presentation is to be made. ";
+			definition = "Country where a presentation is to be made.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			simpleType_lazy = () -> CountryCode.mmObject();
+		}
+
+		@Override
+		public Optional<CountryCode> getValue(PlaceOfPresentation1 obj) {
+			return obj.getCountry();
+		}
+
+		@Override
+		public void setValue(PlaceOfPresentation1 obj, Optional<CountryCode> value) {
+			obj.setCountry(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(PlaceOfPresentation1.mmPlace, PlaceOfPresentation1.mmCountry);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.PlaceOfPresentation1.mmPlace, com.tools20022.repository.msg.PlaceOfPresentation1.mmCountry);
 				trace_lazy = () -> UndertakingDeliveryToParty.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintPlaceOfPresentation2Rule.forPlaceOfPresentation1);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PlaceOfPresentation1";
 				definition = "Location of a presentation.";
@@ -182,21 +215,21 @@ public class PlaceOfPresentation1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Plc", required = true)
 	public ExternalTypeOfParty1Code getPlace() {
 		return place;
 	}
 
-	public void setPlace(ExternalTypeOfParty1Code place) {
-		this.place = place;
+	public PlaceOfPresentation1 setPlace(ExternalTypeOfParty1Code place) {
+		this.place = Objects.requireNonNull(place);
+		return this;
 	}
 
-	@XmlElement(name = "Ctry")
-	public CountryCode getCountry() {
-		return country;
+	public Optional<CountryCode> getCountry() {
+		return country == null ? Optional.empty() : Optional.of(country);
 	}
 
-	public void setCountry(CountryCode country) {
+	public PlaceOfPresentation1 setCountry(CountryCode country) {
 		this.country = country;
+		return this;
 	}
 }

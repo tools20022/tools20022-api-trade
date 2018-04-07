@@ -26,8 +26,11 @@ import com.tools20022.repository.codeset.DemandStatus1Code;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingStatus;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.Demand4;
+import com.tools20022.repository.msg.Undertaking9;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -67,8 +70,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -79,15 +82,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Undertaking extend or pay query details."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ExtendOrPayQuery2", propOrder = {"undertakingIdentification", "demandDetails", "status"})
 public class ExtendOrPayQuery2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgId", required = true)
 	protected Undertaking9 undertakingIdentification;
 	/**
-	 * Details related to the identification of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -117,10 +121,10 @@ public class ExtendOrPayQuery2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<ExtendOrPayQuery2, Undertaking9> mmUndertakingIdentification = new MMMessageAssociationEnd<ExtendOrPayQuery2, Undertaking9>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatus.mmUndertaking;
-			componentContext_lazy = () -> ExtendOrPayQuery2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ExtendOrPayQuery2.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,13 +133,24 @@ public class ExtendOrPayQuery2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Undertaking9.mmObject();
+			type_lazy = () -> Undertaking9.mmObject();
+		}
+
+		@Override
+		public Undertaking9 getValue(ExtendOrPayQuery2 obj) {
+			return obj.getUndertakingIdentification();
+		}
+
+		@Override
+		public void setValue(ExtendOrPayQuery2 obj, Undertaking9 value) {
+			obj.setUndertakingIdentification(value);
 		}
 	};
+	@XmlElement(name = "DmndDtls", required = true)
 	protected Demand4 demandDetails;
 	/**
-	 * Details related to the demand.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -163,10 +178,10 @@ public class ExtendOrPayQuery2 {
 	 * definition} = "Details related to the demand."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDemandDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<ExtendOrPayQuery2, Demand4> mmDemandDetails = new MMMessageAssociationEnd<ExtendOrPayQuery2, Demand4>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmDemand;
-			componentContext_lazy = () -> ExtendOrPayQuery2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ExtendOrPayQuery2.mmObject();
 			isDerived = false;
 			xmlTag = "DmndDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -175,13 +190,24 @@ public class ExtendOrPayQuery2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Demand4.mmObject();
+			type_lazy = () -> Demand4.mmObject();
+		}
+
+		@Override
+		public Demand4 getValue(ExtendOrPayQuery2 obj) {
+			return obj.getDemandDetails();
+		}
+
+		@Override
+		public void setValue(ExtendOrPayQuery2 obj, Demand4 value) {
+			obj.setDemandDetails(value);
 		}
 	};
+	@XmlElement(name = "Sts", required = true)
 	protected DemandStatus1Code status;
 	/**
-	 * Processing status reported by the applicant.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,10 +238,10 @@ public class ExtendOrPayQuery2 {
 	 * definition} = "Processing status reported by the applicant."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmStatus = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ExtendOrPayQuery2, DemandStatus1Code> mmStatus = new MMMessageAttribute<ExtendOrPayQuery2, DemandStatus1Code>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatus.mmDemandStatus;
-			componentContext_lazy = () -> ExtendOrPayQuery2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ExtendOrPayQuery2.mmObject();
 			isDerived = false;
 			xmlTag = "Sts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -225,15 +251,26 @@ public class ExtendOrPayQuery2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> DemandStatus1Code.mmObject();
 		}
+
+		@Override
+		public DemandStatus1Code getValue(ExtendOrPayQuery2 obj) {
+			return obj.getStatus();
+		}
+
+		@Override
+		public void setValue(ExtendOrPayQuery2 obj, DemandStatus1Code value) {
+			obj.setStatus(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ExtendOrPayQuery2.mmUndertakingIdentification, ExtendOrPayQuery2.mmDemandDetails, ExtendOrPayQuery2.mmStatus);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.ExtendOrPayQuery2.mmUndertakingIdentification, com.tools20022.repository.msg.ExtendOrPayQuery2.mmDemandDetails,
+						com.tools20022.repository.msg.ExtendOrPayQuery2.mmStatus);
 				messageBuildingBlock_lazy = () -> Arrays.asList(ExtendOrPayResponseV01.mmExtendOrPayResponseDetails);
 				trace_lazy = () -> UndertakingStatus.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "ExtendOrPayQuery2";
 				definition = "Undertaking extend or pay query details.";
@@ -242,30 +279,30 @@ public class ExtendOrPayQuery2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgId", required = true)
 	public Undertaking9 getUndertakingIdentification() {
 		return undertakingIdentification;
 	}
 
-	public void setUndertakingIdentification(com.tools20022.repository.msg.Undertaking9 undertakingIdentification) {
-		this.undertakingIdentification = undertakingIdentification;
+	public ExtendOrPayQuery2 setUndertakingIdentification(Undertaking9 undertakingIdentification) {
+		this.undertakingIdentification = Objects.requireNonNull(undertakingIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "DmndDtls", required = true)
 	public Demand4 getDemandDetails() {
 		return demandDetails;
 	}
 
-	public void setDemandDetails(com.tools20022.repository.msg.Demand4 demandDetails) {
-		this.demandDetails = demandDetails;
+	public ExtendOrPayQuery2 setDemandDetails(Demand4 demandDetails) {
+		this.demandDetails = Objects.requireNonNull(demandDetails);
+		return this;
 	}
 
-	@XmlElement(name = "Sts", required = true)
 	public DemandStatus1Code getStatus() {
 		return status;
 	}
 
-	public void setStatus(DemandStatus1Code status) {
-		this.status = status;
+	public ExtendOrPayQuery2 setStatus(DemandStatus1Code status) {
+		this.status = Objects.requireNonNull(status);
+		return this;
 	}
 }

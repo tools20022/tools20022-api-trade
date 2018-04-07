@@ -27,6 +27,7 @@ import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.GenericIdentification20;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +67,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TradeMarket1Choice", propOrder = {"code", "proprietary"})
 public class TradeMarket1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Cd", required = true)
 	protected ExternalTradeMarket1Code code;
 	/**
-	 * Standard trade market code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -105,10 +107,10 @@ public class TradeMarket1Choice {
 	 * definition} = "Standard trade market code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCode = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TradeMarket1Choice, ExternalTradeMarket1Code> mmCode = new MMMessageAttribute<TradeMarket1Choice, ExternalTradeMarket1Code>() {
 		{
 			businessElementTrace_lazy = () -> Market.mmIdentification;
-			componentContext_lazy = () -> TradeMarket1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.TradeMarket1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Cd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,11 +120,22 @@ public class TradeMarket1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalTradeMarket1Code.mmObject();
 		}
+
+		@Override
+		public ExternalTradeMarket1Code getValue(TradeMarket1Choice obj) {
+			return obj.getCode();
+		}
+
+		@Override
+		public void setValue(TradeMarket1Choice obj, ExternalTradeMarket1Code value) {
+			obj.setCode(value);
+		}
 	};
+	@XmlElement(name = "Prtry", required = true)
 	protected GenericIdentification20 proprietary;
 	/**
-	 * Trade market expressed as proprietary identification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -152,10 +165,10 @@ public class TradeMarket1Choice {
 	 * definition} = "Trade market expressed as proprietary identification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmProprietary = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TradeMarket1Choice, GenericIdentification20> mmProprietary = new MMMessageAssociationEnd<TradeMarket1Choice, GenericIdentification20>() {
 		{
 			businessElementTrace_lazy = () -> Market.mmIdentification;
-			componentContext_lazy = () -> TradeMarket1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.TradeMarket1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Prtry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,13 +179,23 @@ public class TradeMarket1Choice {
 			isComposite = true;
 			type_lazy = () -> GenericIdentification20.mmObject();
 		}
+
+		@Override
+		public GenericIdentification20 getValue(TradeMarket1Choice obj) {
+			return obj.getProprietary();
+		}
+
+		@Override
+		public void setValue(TradeMarket1Choice obj, GenericIdentification20 value) {
+			obj.setProprietary(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TradeMarket1Choice.mmCode, TradeMarket1Choice.mmProprietary);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.TradeMarket1Choice.mmCode, com.tools20022.repository.choice.TradeMarket1Choice.mmProprietary);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TradeMarket1Choice";
 				definition = "Trade market identification using a externally defined code or proprietary identification.";
@@ -181,21 +204,21 @@ public class TradeMarket1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Cd", required = true)
 	public ExternalTradeMarket1Code getCode() {
 		return code;
 	}
 
-	public void setCode(ExternalTradeMarket1Code code) {
-		this.code = code;
+	public TradeMarket1Choice setCode(ExternalTradeMarket1Code code) {
+		this.code = Objects.requireNonNull(code);
+		return this;
 	}
 
-	@XmlElement(name = "Prtry", required = true)
 	public GenericIdentification20 getProprietary() {
 		return proprietary;
 	}
 
-	public void setProprietary(GenericIdentification20 proprietary) {
-		this.proprietary = proprietary;
+	public TradeMarket1Choice setProprietary(GenericIdentification20 proprietary) {
+		this.proprietary = Objects.requireNonNull(proprietary);
+		return this;
 	}
 }

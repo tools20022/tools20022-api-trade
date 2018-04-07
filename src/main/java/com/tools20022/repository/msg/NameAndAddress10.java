@@ -25,8 +25,10 @@ import com.tools20022.repository.entity.PartyIdentificationInformation;
 import com.tools20022.repository.entity.PartyName;
 import com.tools20022.repository.entity.PostalAddress;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.PostalAddress6;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,16 +68,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information that locates and identifies a party."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "NameAndAddress10", propOrder = {"name", "address"})
 public class NameAndAddress10 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Nm", required = true)
 	protected Max140Text name;
 	/**
-	 * Name by which a party is known and is usually used to identify that
-	 * identity.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -103,28 +105,39 @@ public class NameAndAddress10 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Name by which a party is known and is usually used to identify that identity."
+	 * "Name by which a party is known and is usually used to identify that party."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmName = new MMMessageAttribute() {
+	public static final MMMessageAttribute<NameAndAddress10, Max140Text> mmName = new MMMessageAttribute<NameAndAddress10, Max140Text>() {
 		{
 			businessElementTrace_lazy = () -> PartyName.mmName;
-			componentContext_lazy = () -> NameAndAddress10.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.NameAndAddress10.mmObject();
 			isDerived = false;
 			xmlTag = "Nm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Name";
-			definition = "Name by which a party is known and is usually used to identify that identity.";
+			definition = "Name by which a party is known and is usually used to identify that party.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Max140Text getValue(NameAndAddress10 obj) {
+			return obj.getName();
+		}
+
+		@Override
+		public void setValue(NameAndAddress10 obj, Max140Text value) {
+			obj.setName(value);
+		}
 	};
+	@XmlElement(name = "Adr", required = true)
 	protected PostalAddress6 address;
 	/**
-	 * Postal address of a party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -154,10 +167,10 @@ public class NameAndAddress10 {
 	 * definition} = "Postal address of a party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAddress = new MMMessageAttribute() {
+	public static final MMMessageAttribute<NameAndAddress10, PostalAddress6> mmAddress = new MMMessageAttribute<NameAndAddress10, PostalAddress6>() {
 		{
 			businessComponentTrace_lazy = () -> PostalAddress.mmObject();
-			componentContext_lazy = () -> NameAndAddress10.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.NameAndAddress10.mmObject();
 			isDerived = false;
 			xmlTag = "Adr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -165,16 +178,26 @@ public class NameAndAddress10 {
 			definition = "Postal address of a party.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			complexType_lazy = () -> com.tools20022.repository.msg.PostalAddress6.mmObject();
+			complexType_lazy = () -> PostalAddress6.mmObject();
+		}
+
+		@Override
+		public PostalAddress6 getValue(NameAndAddress10 obj) {
+			return obj.getAddress();
+		}
+
+		@Override
+		public void setValue(NameAndAddress10 obj, PostalAddress6 value) {
+			obj.setAddress(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(NameAndAddress10.mmName, NameAndAddress10.mmAddress);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.NameAndAddress10.mmName, com.tools20022.repository.msg.NameAndAddress10.mmAddress);
 				trace_lazy = () -> PartyIdentificationInformation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "NameAndAddress10";
 				definition = "Information that locates and identifies a party.";
@@ -183,21 +206,21 @@ public class NameAndAddress10 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Nm", required = true)
 	public Max140Text getName() {
 		return name;
 	}
 
-	public void setName(Max140Text name) {
-		this.name = name;
+	public NameAndAddress10 setName(Max140Text name) {
+		this.name = Objects.requireNonNull(name);
+		return this;
 	}
 
-	@XmlElement(name = "Adr", required = true)
 	public PostalAddress6 getAddress() {
 		return address;
 	}
 
-	public void setAddress(com.tools20022.repository.msg.PostalAddress6 address) {
-		this.address = address;
+	public NameAndAddress10 setAddress(PostalAddress6 address) {
+		this.address = Objects.requireNonNull(address);
+		return this;
 	}
 }

@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.UndertakingAmount;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +67,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Choice of amounts."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Amount1Choice", propOrder = {"increaseAmount", "decreaseAmount"})
 public class Amount1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "IncrAmt", required = true)
 	protected ActiveCurrencyAndAmount increaseAmount;
 	/**
-	 * Amount of increase, and currency.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -105,10 +107,10 @@ public class Amount1Choice {
 	 * definition} = "Amount of increase, and currency."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIncreaseAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amount1Choice, ActiveCurrencyAndAmount> mmIncreaseAmount = new MMMessageAttribute<Amount1Choice, ActiveCurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> AmendmentOfUndertaking.mmChangeOfAmount;
-			componentContext_lazy = () -> Amount1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.Amount1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "IncrAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,11 +120,22 @@ public class Amount1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(Amount1Choice obj) {
+			return obj.getIncreaseAmount();
+		}
+
+		@Override
+		public void setValue(Amount1Choice obj, ActiveCurrencyAndAmount value) {
+			obj.setIncreaseAmount(value);
+		}
 	};
+	@XmlElement(name = "DcrAmt", required = true)
 	protected ActiveCurrencyAndAmount decreaseAmount;
 	/**
-	 * Amount of decrease, and currency.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -153,10 +166,10 @@ public class Amount1Choice {
 	 * definition} = "Amount of decrease, and currency."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDecreaseAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amount1Choice, ActiveCurrencyAndAmount> mmDecreaseAmount = new MMMessageAttribute<Amount1Choice, ActiveCurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> AmendmentOfUndertaking.mmChangeOfAmount;
-			componentContext_lazy = () -> Amount1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.Amount1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "DcrAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,14 +179,24 @@ public class Amount1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(Amount1Choice obj) {
+			return obj.getDecreaseAmount();
+		}
+
+		@Override
+		public void setValue(Amount1Choice obj, ActiveCurrencyAndAmount value) {
+			obj.setDecreaseAmount(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Amount1Choice.mmIncreaseAmount, Amount1Choice.mmDecreaseAmount);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.Amount1Choice.mmIncreaseAmount, com.tools20022.repository.choice.Amount1Choice.mmDecreaseAmount);
 				trace_lazy = () -> UndertakingAmount.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Amount1Choice";
 				definition = "Choice of amounts.";
@@ -182,21 +205,21 @@ public class Amount1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "IncrAmt", required = true)
 	public ActiveCurrencyAndAmount getIncreaseAmount() {
 		return increaseAmount;
 	}
 
-	public void setIncreaseAmount(ActiveCurrencyAndAmount increaseAmount) {
-		this.increaseAmount = increaseAmount;
+	public Amount1Choice setIncreaseAmount(ActiveCurrencyAndAmount increaseAmount) {
+		this.increaseAmount = Objects.requireNonNull(increaseAmount);
+		return this;
 	}
 
-	@XmlElement(name = "DcrAmt", required = true)
 	public ActiveCurrencyAndAmount getDecreaseAmount() {
 		return decreaseAmount;
 	}
 
-	public void setDecreaseAmount(ActiveCurrencyAndAmount decreaseAmount) {
-		this.decreaseAmount = decreaseAmount;
+	public Amount1Choice setDecreaseAmount(ActiveCurrencyAndAmount decreaseAmount) {
+		this.decreaseAmount = Objects.requireNonNull(decreaseAmount);
+		return this;
 	}
 }

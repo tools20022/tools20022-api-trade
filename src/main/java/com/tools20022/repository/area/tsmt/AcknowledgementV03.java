@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -93,16 +91,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AcknowledgementV03", propOrder = {"acknowledgementIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference", "acknowledgedMessageReference",
 		"requestForAction"})
 public class AcknowledgementV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AckId", required = true)
 	protected MessageIdentification1 acknowledgementIdentification;
 	/**
-	 * Identifies the acknowledgement message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -123,7 +122,7 @@ public class AcknowledgementV03 {
 	 * definition} = "Identifies the acknowledgement message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcknowledgementIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, MessageIdentification1> mmAcknowledgementIdentification = new MMMessageBuildingBlock<AcknowledgementV03, MessageIdentification1>() {
 		{
 			xmlTag = "AckId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -134,20 +133,21 @@ public class AcknowledgementV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getAcknowledgementIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AcknowledgementV03 obj) {
+			return obj.getAcknowledgementIdentification();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, MessageIdentification1 value) {
+			obj.setAcknowledgementIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId")
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -170,7 +170,7 @@ public class AcknowledgementV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, Optional<SimpleIdentificationInformation>> mmTransactionIdentification = new MMMessageBuildingBlock<AcknowledgementV03, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -181,19 +181,21 @@ public class AcknowledgementV03 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(AcknowledgementV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setTransactionIdentification(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId")
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,33 +214,36 @@ public class AcknowledgementV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established. "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, Optional<DocumentIdentification3>> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<AcknowledgementV03, Optional<DocumentIdentification3>>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established. ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DocumentIdentification3> getValue(AcknowledgementV03 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, Optional<DocumentIdentification3> value) {
+			obj.setEstablishedBaselineIdentification(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "TxSts")
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -260,7 +265,7 @@ public class AcknowledgementV03 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, Optional<TransactionStatus4>> mmTransactionStatus = new MMMessageBuildingBlock<AcknowledgementV03, Optional<TransactionStatus4>>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -271,19 +276,21 @@ public class AcknowledgementV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<TransactionStatus4> getValue(AcknowledgementV03 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, Optional<TransactionStatus4> value) {
+			obj.setTransactionStatus(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for the financial institution that is the
-	 * sender of the acknowledged message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -302,33 +309,36 @@ public class AcknowledgementV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Reference to the transaction for the financial institution that is the sender of the acknowledged message. "
+	 * "Reference to the transaction for the financial institution that is the sender of the acknowledged message."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<AcknowledgementV03, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "UserTransactionReference";
-			definition = "Reference to the transaction for the financial institution that is the sender of the acknowledged message. ";
+			definition = "Reference to the transaction for the financial institution that is the sender of the acknowledged message.";
 			maxOccurs = 2;
 			minOccurs = 0;
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(AcknowledgementV03 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "AckdMsgRef", required = true)
 	protected MessageIdentification1 acknowledgedMessageReference;
 	/**
-	 * Reference to the identification of the acknowledged message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -350,7 +360,7 @@ public class AcknowledgementV03 {
 	 * "Reference to the identification of the acknowledged message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcknowledgedMessageReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, MessageIdentification1> mmAcknowledgedMessageReference = new MMMessageBuildingBlock<AcknowledgementV03, MessageIdentification1>() {
 		{
 			xmlTag = "AckdMsgRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -361,18 +371,21 @@ public class AcknowledgementV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getAcknowledgedMessageReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AcknowledgementV03 obj) {
+			return obj.getAcknowledgedMessageReference();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, MessageIdentification1 value) {
+			obj.setAcknowledgedMessageReference(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -393,7 +406,7 @@ public class AcknowledgementV03 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AcknowledgementV03, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<AcknowledgementV03, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -404,12 +417,14 @@ public class AcknowledgementV03 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AcknowledgementV03.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(AcknowledgementV03 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(AcknowledgementV03 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -444,70 +459,70 @@ public class AcknowledgementV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AckId", required = true)
 	public MessageIdentification1 getAcknowledgementIdentification() {
 		return acknowledgementIdentification;
 	}
 
-	public void setAcknowledgementIdentification(MessageIdentification1 acknowledgementIdentification) {
-		this.acknowledgementIdentification = acknowledgementIdentification;
+	public AcknowledgementV03 setAcknowledgementIdentification(MessageIdentification1 acknowledgementIdentification) {
+		this.acknowledgementIdentification = Objects.requireNonNull(acknowledgementIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId")
-	public SimpleIdentificationInformation getTransactionIdentification() {
-		return transactionIdentification;
+	public Optional<SimpleIdentificationInformation> getTransactionIdentification() {
+		return transactionIdentification == null ? Optional.empty() : Optional.of(transactionIdentification);
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+	public AcknowledgementV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
 		this.transactionIdentification = transactionIdentification;
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId")
-	public DocumentIdentification3 getEstablishedBaselineIdentification() {
-		return establishedBaselineIdentification;
+	public Optional<DocumentIdentification3> getEstablishedBaselineIdentification() {
+		return establishedBaselineIdentification == null ? Optional.empty() : Optional.of(establishedBaselineIdentification);
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+	public AcknowledgementV03 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
 		this.establishedBaselineIdentification = establishedBaselineIdentification;
+		return this;
 	}
 
-	@XmlElement(name = "TxSts")
-	public TransactionStatus4 getTransactionStatus() {
-		return transactionStatus;
+	public Optional<TransactionStatus4> getTransactionStatus() {
+		return transactionStatus == null ? Optional.empty() : Optional.of(transactionStatus);
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
+	public AcknowledgementV03 setTransactionStatus(TransactionStatus4 transactionStatus) {
 		this.transactionStatus = transactionStatus;
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public AcknowledgementV03 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "AckdMsgRef", required = true)
 	public MessageIdentification1 getAcknowledgedMessageReference() {
 		return acknowledgedMessageReference;
 	}
 
-	public void setAcknowledgedMessageReference(MessageIdentification1 acknowledgedMessageReference) {
-		this.acknowledgedMessageReference = acknowledgedMessageReference;
+	public AcknowledgementV03 setAcknowledgedMessageReference(MessageIdentification1 acknowledgedMessageReference) {
+		this.acknowledgedMessageReference = Objects.requireNonNull(acknowledgedMessageReference);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public AcknowledgementV03 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.001.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.001.001.03")
 	static public class Document {
 		@XmlElement(name = "Ack", required = true)
 		public AcknowledgementV03 messageBody;

@@ -31,6 +31,8 @@ import com.tools20022.repository.entity.Charges;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -63,8 +65,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -81,15 +83,16 @@ import javax.xml.bind.annotation.XmlType;
  * PaymentObligation2}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Charges5", propOrder = {"chargesPayer", "chargesPayee", "amount", "percentage", "type"})
 public class Charges5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ChrgsPyer", required = true)
 	protected BankRole1Code chargesPayer;
 	/**
-	 * Bank which will pay the charges.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -118,10 +121,10 @@ public class Charges5 {
 	 * definition} = "Bank which will pay the charges."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmChargesPayer = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charges5, BankRole1Code> mmChargesPayer = new MMMessageAttribute<Charges5, BankRole1Code>() {
 		{
 			businessComponentTrace_lazy = () -> ChargeBearer.mmObject();
-			componentContext_lazy = () -> Charges5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charges5.mmObject();
 			isDerived = false;
 			xmlTag = "ChrgsPyer";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,11 +134,22 @@ public class Charges5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> BankRole1Code.mmObject();
 		}
+
+		@Override
+		public BankRole1Code getValue(Charges5 obj) {
+			return obj.getChargesPayer();
+		}
+
+		@Override
+		public void setValue(Charges5 obj, BankRole1Code value) {
+			obj.setChargesPayer(value);
+		}
 	};
+	@XmlElement(name = "ChrgsPyee", required = true)
 	protected BankRole1Code chargesPayee;
 	/**
-	 * Bank which will receive the charges.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -165,10 +179,10 @@ public class Charges5 {
 	 * definition} = "Bank which will receive the charges."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmChargesPayee = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charges5, BankRole1Code> mmChargesPayee = new MMMessageAttribute<Charges5, BankRole1Code>() {
 		{
 			businessComponentTrace_lazy = () -> ChargeRecipient.mmObject();
-			componentContext_lazy = () -> Charges5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charges5.mmObject();
 			isDerived = false;
 			xmlTag = "ChrgsPyee";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -178,11 +192,22 @@ public class Charges5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> BankRole1Code.mmObject();
 		}
+
+		@Override
+		public BankRole1Code getValue(Charges5 obj) {
+			return obj.getChargesPayee();
+		}
+
+		@Override
+		public void setValue(Charges5 obj, BankRole1Code value) {
+			obj.setChargesPayee(value);
+		}
 	};
+	@XmlElement(name = "Amt")
 	protected CurrencyAndAmount amount;
 	/**
-	 * Amount of the charges taken by the payer.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,10 +237,10 @@ public class Charges5 {
 	 * definition} = "Amount of the charges taken by the payer."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charges5, Optional<CurrencyAndAmount>> mmAmount = new MMMessageAttribute<Charges5, Optional<CurrencyAndAmount>>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmAmount;
-			componentContext_lazy = () -> Charges5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charges5.mmObject();
 			isDerived = false;
 			xmlTag = "Amt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -225,12 +250,22 @@ public class Charges5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public Optional<CurrencyAndAmount> getValue(Charges5 obj) {
+			return obj.getAmount();
+		}
+
+		@Override
+		public void setValue(Charges5 obj, Optional<CurrencyAndAmount> value) {
+			obj.setAmount(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Pctg")
 	protected PercentageRate percentage;
 	/**
-	 * Amount of the charges expressed as a percentage of the amount paid by the
-	 * obligor bank.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -262,10 +297,10 @@ public class Charges5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPercentage = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charges5, Optional<PercentageRate>> mmPercentage = new MMMessageAttribute<Charges5, Optional<PercentageRate>>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmChargeRate;
-			componentContext_lazy = () -> Charges5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charges5.mmObject();
 			isDerived = false;
 			xmlTag = "Pctg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -275,12 +310,22 @@ public class Charges5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> PercentageRate.mmObject();
 		}
+
+		@Override
+		public Optional<PercentageRate> getValue(Charges5 obj) {
+			return obj.getPercentage();
+		}
+
+		@Override
+		public void setValue(Charges5 obj, Optional<PercentageRate> value) {
+			obj.setPercentage(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Tp")
 	protected Max35Text type;
 	/**
-	 * Type of charges. For example: transaction charges, financing charges,
-	 * deferred payment, interests.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -311,10 +356,10 @@ public class Charges5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charges5, Optional<Max35Text>> mmType = new MMMessageAttribute<Charges5, Optional<Max35Text>>() {
 		{
 			businessElementTrace_lazy = () -> Charges.mmChargeType;
-			componentContext_lazy = () -> Charges5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charges5.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -324,14 +369,25 @@ public class Charges5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(Charges5 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(Charges5 obj, Optional<Max35Text> value) {
+			obj.setType(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Charges5.mmChargesPayer, Charges5.mmChargesPayee, Charges5.mmAmount, Charges5.mmPercentage, Charges5.mmType);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Charges5.mmChargesPayer, com.tools20022.repository.msg.Charges5.mmChargesPayee, com.tools20022.repository.msg.Charges5.mmAmount,
+						com.tools20022.repository.msg.Charges5.mmPercentage, com.tools20022.repository.msg.Charges5.mmType);
 				trace_lazy = () -> Charges.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Charges5";
 				definition = "Charges related to a payment obligation contracted between two financial institutions related to the financing of a commercial transaction.";
@@ -341,48 +397,48 @@ public class Charges5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ChrgsPyer", required = true)
 	public BankRole1Code getChargesPayer() {
 		return chargesPayer;
 	}
 
-	public void setChargesPayer(BankRole1Code chargesPayer) {
-		this.chargesPayer = chargesPayer;
+	public Charges5 setChargesPayer(BankRole1Code chargesPayer) {
+		this.chargesPayer = Objects.requireNonNull(chargesPayer);
+		return this;
 	}
 
-	@XmlElement(name = "ChrgsPyee", required = true)
 	public BankRole1Code getChargesPayee() {
 		return chargesPayee;
 	}
 
-	public void setChargesPayee(BankRole1Code chargesPayee) {
-		this.chargesPayee = chargesPayee;
+	public Charges5 setChargesPayee(BankRole1Code chargesPayee) {
+		this.chargesPayee = Objects.requireNonNull(chargesPayee);
+		return this;
 	}
 
-	@XmlElement(name = "Amt")
-	public CurrencyAndAmount getAmount() {
-		return amount;
+	public Optional<CurrencyAndAmount> getAmount() {
+		return amount == null ? Optional.empty() : Optional.of(amount);
 	}
 
-	public void setAmount(CurrencyAndAmount amount) {
+	public Charges5 setAmount(CurrencyAndAmount amount) {
 		this.amount = amount;
+		return this;
 	}
 
-	@XmlElement(name = "Pctg")
-	public PercentageRate getPercentage() {
-		return percentage;
+	public Optional<PercentageRate> getPercentage() {
+		return percentage == null ? Optional.empty() : Optional.of(percentage);
 	}
 
-	public void setPercentage(PercentageRate percentage) {
+	public Charges5 setPercentage(PercentageRate percentage) {
 		this.percentage = percentage;
+		return this;
 	}
 
-	@XmlElement(name = "Tp")
-	public Max35Text getType() {
-		return type;
+	public Optional<Max35Text> getType() {
+		return type == null ? Optional.empty() : Optional.of(type);
 	}
 
-	public void setType(Max35Text type) {
+	public Charges5 setType(Max35Text type) {
 		this.type = type;
+		return this;
 	}
 }

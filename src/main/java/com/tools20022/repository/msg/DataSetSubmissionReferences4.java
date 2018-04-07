@@ -26,9 +26,14 @@ import com.tools20022.repository.codeset.BaselineStatus3Code;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.datatype.YesNoIndicator;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.DocumentIdentification3;
+import com.tools20022.repository.msg.DocumentIdentification5;
+import com.tools20022.repository.msg.DocumentIdentification7;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -76,8 +81,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -90,17 +95,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DataSetSubmissionReferences4", propOrder = {"transactionIdentification", "purchaseOrderReference", "userTransactionReference", "forcedMatch", "establishedBaselineIdentification", "transactionStatus"})
 public class DataSetSubmissionReferences4 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "TxId", required = true)
 	protected Max35Text transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -127,9 +131,9 @@ public class DataSetSubmissionReferences4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTransactionIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DataSetSubmissionReferences4, Max35Text> mmTransactionIdentification = new MMMessageAttribute<DataSetSubmissionReferences4, Max35Text>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -139,11 +143,22 @@ public class DataSetSubmissionReferences4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, Max35Text value) {
+			obj.setTransactionIdentification(value);
+		}
 	};
+	@XmlElement(name = "PurchsOrdrRef", required = true)
 	protected DocumentIdentification7 purchaseOrderReference;
 	/**
-	 * Reference to the purchase order of the underlying transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -170,9 +185,9 @@ public class DataSetSubmissionReferences4 {
 	 * "Reference to the purchase order of the underlying transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPurchaseOrderReference = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DataSetSubmissionReferences4, DocumentIdentification7> mmPurchaseOrderReference = new MMMessageAttribute<DataSetSubmissionReferences4, DocumentIdentification7>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "PurchsOrdrRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -180,13 +195,24 @@ public class DataSetSubmissionReferences4 {
 			definition = "Reference to the purchase order of the underlying transaction.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			complexType_lazy = () -> com.tools20022.repository.msg.DocumentIdentification7.mmObject();
+			complexType_lazy = () -> DocumentIdentification7.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification7 getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getPurchaseOrderReference();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, DocumentIdentification7 value) {
+			obj.setPurchaseOrderReference(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.DocumentIdentification5> userTransactionReference;
+	@XmlElement(name = "UsrTxRef")
+	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Own reference to the transaction for the financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -212,9 +238,9 @@ public class DataSetSubmissionReferences4 {
 	 * "Own reference to the transaction for the financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUserTransactionReference = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<DataSetSubmissionReferences4, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageAssociationEnd<DataSetSubmissionReferences4, List<DocumentIdentification5>>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -223,15 +249,24 @@ public class DataSetSubmissionReferences4 {
 			maxOccurs = 2;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification5.mmObject();
+			type_lazy = () -> DocumentIdentification5.mmObject();
+		}
+
+		@Override
+		public List<DocumentIdentification5> getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "ForcdMtch", required = true)
 	protected YesNoIndicator forcedMatch;
 	/**
-	 * Specifies that this message should force the matching application to
-	 * match all data sets it has received so far for the transaction identified
-	 * by the transaction identification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -259,9 +294,9 @@ public class DataSetSubmissionReferences4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmForcedMatch = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DataSetSubmissionReferences4, YesNoIndicator> mmForcedMatch = new MMMessageAttribute<DataSetSubmissionReferences4, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "ForcdMtch";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -271,12 +306,22 @@ public class DataSetSubmissionReferences4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getForcedMatch();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, YesNoIndicator value) {
+			obj.setForcedMatch(value);
+		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching engine to the baseline
-	 * when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -303,9 +348,9 @@ public class DataSetSubmissionReferences4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmEstablishedBaselineIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<DataSetSubmissionReferences4, DocumentIdentification3> mmEstablishedBaselineIdentification = new MMMessageAssociationEnd<DataSetSubmissionReferences4, DocumentIdentification3>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -314,13 +359,24 @@ public class DataSetSubmissionReferences4 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification3.mmObject();
+			type_lazy = () -> DocumentIdentification3.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification3 getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, DocumentIdentification3 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected BaselineStatus3Code transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -347,9 +403,9 @@ public class DataSetSubmissionReferences4 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTransactionStatus = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DataSetSubmissionReferences4, BaselineStatus3Code> mmTransactionStatus = new MMMessageAttribute<DataSetSubmissionReferences4, BaselineStatus3Code>() {
 		{
-			componentContext_lazy = () -> DataSetSubmissionReferences4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DataSetSubmissionReferences4.mmObject();
 			isDerived = false;
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -359,15 +415,26 @@ public class DataSetSubmissionReferences4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> BaselineStatus3Code.mmObject();
 		}
+
+		@Override
+		public BaselineStatus3Code getValue(DataSetSubmissionReferences4 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionReferences4 obj, BaselineStatus3Code value) {
+			obj.setTransactionStatus(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(DataSetSubmissionReferences4.mmTransactionIdentification, DataSetSubmissionReferences4.mmPurchaseOrderReference, DataSetSubmissionReferences4.mmUserTransactionReference,
-						DataSetSubmissionReferences4.mmForcedMatch, DataSetSubmissionReferences4.mmEstablishedBaselineIdentification, DataSetSubmissionReferences4.mmTransactionStatus);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.DataSetSubmissionReferences4.mmTransactionIdentification, com.tools20022.repository.msg.DataSetSubmissionReferences4.mmPurchaseOrderReference,
+						com.tools20022.repository.msg.DataSetSubmissionReferences4.mmUserTransactionReference, com.tools20022.repository.msg.DataSetSubmissionReferences4.mmForcedMatch,
+						com.tools20022.repository.msg.DataSetSubmissionReferences4.mmEstablishedBaselineIdentification, com.tools20022.repository.msg.DataSetSubmissionReferences4.mmTransactionStatus);
 				messageBuildingBlock_lazy = () -> Arrays.asList(ForwardDataSetSubmissionReportV05.mmRelatedTransactionReferences);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DataSetSubmissionReferences4";
 				definition = "Provides references to the transactions both for the matching application and for the user.";
@@ -376,57 +443,57 @@ public class DataSetSubmissionReferences4 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public Max35Text getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(Max35Text transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public DataSetSubmissionReferences4 setTransactionIdentification(Max35Text transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "PurchsOrdrRef", required = true)
 	public DocumentIdentification7 getPurchaseOrderReference() {
 		return purchaseOrderReference;
 	}
 
-	public void setPurchaseOrderReference(com.tools20022.repository.msg.DocumentIdentification7 purchaseOrderReference) {
-		this.purchaseOrderReference = purchaseOrderReference;
+	public DataSetSubmissionReferences4 setPurchaseOrderReference(DocumentIdentification7 purchaseOrderReference) {
+		this.purchaseOrderReference = Objects.requireNonNull(purchaseOrderReference);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<com.tools20022.repository.msg.DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public DataSetSubmissionReferences4 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "ForcdMtch", required = true)
 	public YesNoIndicator getForcedMatch() {
 		return forcedMatch;
 	}
 
-	public void setForcedMatch(YesNoIndicator forcedMatch) {
-		this.forcedMatch = forcedMatch;
+	public DataSetSubmissionReferences4 setForcedMatch(YesNoIndicator forcedMatch) {
+		this.forcedMatch = Objects.requireNonNull(forcedMatch);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification3 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(com.tools20022.repository.msg.DocumentIdentification3 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public DataSetSubmissionReferences4 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public BaselineStatus3Code getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(BaselineStatus3Code transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public DataSetSubmissionReferences4 setTransactionStatus(BaselineStatus3Code transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 }

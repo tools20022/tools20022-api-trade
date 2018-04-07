@@ -29,6 +29,8 @@ import com.tools20022.repository.entity.GenericIdentification;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -69,8 +71,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -83,15 +85,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DocumentIdentification6", propOrder = {"identification", "version", "amendmentSequenceNumber"})
 public class DocumentIdentification6 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Identification of a set of data.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -121,10 +124,10 @@ public class DocumentIdentification6 {
 	 * definition} = "Identification of a set of data."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification6, Max35Text> mmIdentification = new MMMessageAttribute<DocumentIdentification6, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> DocumentIdentification6.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification6.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -134,12 +137,22 @@ public class DocumentIdentification6 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(DocumentIdentification6 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification6 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "Vrsn", required = true)
 	protected Number version;
 	/**
-	 * Unambiguous identification of the version of a set of data. Example:
-	 * Version 1.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -171,10 +184,10 @@ public class DocumentIdentification6 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmVersion = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification6, Number> mmVersion = new MMMessageAttribute<DocumentIdentification6, Number>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmDocumentVersion;
-			componentContext_lazy = () -> DocumentIdentification6.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification6.mmObject();
 			isDerived = false;
 			xmlTag = "Vrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -184,11 +197,22 @@ public class DocumentIdentification6 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(DocumentIdentification6 obj) {
+			return obj.getVersion();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification6 obj, Number value) {
+			obj.setVersion(value);
+		}
 	};
+	@XmlElement(name = "AmdmntSeqNb")
 	protected Max3NumericText amendmentSequenceNumber;
 	/**
-	 * Number that is assigned sequentially by the TSU to a baseline amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -216,9 +240,9 @@ public class DocumentIdentification6 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmendmentSequenceNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification6, Optional<Max3NumericText>> mmAmendmentSequenceNumber = new MMMessageAttribute<DocumentIdentification6, Optional<Max3NumericText>>() {
 		{
-			componentContext_lazy = () -> DocumentIdentification6.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification6.mmObject();
 			isDerived = false;
 			xmlTag = "AmdmntSeqNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -228,15 +252,26 @@ public class DocumentIdentification6 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max3NumericText.mmObject();
 		}
+
+		@Override
+		public Optional<Max3NumericText> getValue(DocumentIdentification6 obj) {
+			return obj.getAmendmentSequenceNumber();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification6 obj, Optional<Max3NumericText> value) {
+			obj.setAmendmentSequenceNumber(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(DocumentIdentification6.mmIdentification, DocumentIdentification6.mmVersion, DocumentIdentification6.mmAmendmentSequenceNumber);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.DocumentIdentification6.mmIdentification, com.tools20022.repository.msg.DocumentIdentification6.mmVersion,
+						com.tools20022.repository.msg.DocumentIdentification6.mmAmendmentSequenceNumber);
 				messageBuildingBlock_lazy = () -> Arrays.asList(BaselineReportV04.mmEstablishedBaselineIdentification);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DocumentIdentification6";
 				definition = "Identifies a document by a unique identification and a version.\nAlso provides reference to a baseline amendment number.";
@@ -245,30 +280,30 @@ public class DocumentIdentification6 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public DocumentIdentification6 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Vrsn", required = true)
 	public Number getVersion() {
 		return version;
 	}
 
-	public void setVersion(Number version) {
-		this.version = version;
+	public DocumentIdentification6 setVersion(Number version) {
+		this.version = Objects.requireNonNull(version);
+		return this;
 	}
 
-	@XmlElement(name = "AmdmntSeqNb")
-	public Max3NumericText getAmendmentSequenceNumber() {
-		return amendmentSequenceNumber;
+	public Optional<Max3NumericText> getAmendmentSequenceNumber() {
+		return amendmentSequenceNumber == null ? Optional.empty() : Optional.of(amendmentSequenceNumber);
 	}
 
-	public void setAmendmentSequenceNumber(Max3NumericText amendmentSequenceNumber) {
+	public DocumentIdentification6 setAmendmentSequenceNumber(Max3NumericText amendmentSequenceNumber) {
 		this.amendmentSequenceNumber = amendmentSequenceNumber;
+		return this;
 	}
 }

@@ -147,6 +147,8 @@ class ListBuilderForGeneratedRepository_03 {
 		list.add((T) ExternalValidationRuleIdentification1Code.mmObject());
 		list.add((T) StatisticalReportingStatusCode.mmObject());
 		list.add((T) DebtInstrumentSeniorityTypeCode.mmObject());
+		list.add((T) TradeConfirmationTypeCode.mmObject());
+		list.add((T) TaxRateMarkerCode.mmObject());
 		list.add((T) CivilStatusCode.mmObject());
 		list.add((T) ISINOct2015Identifier.mmObject());
 		list.add((T) CFIOct2015Identifier.mmObject());
@@ -159,6 +161,23 @@ class ListBuilderForGeneratedRepository_03 {
 		list.add((T) MandateClassificationCode.mmObject());
 		list.add((T) NovationStatusCode.mmObject());
 		list.add((T) AuthenticationResultCode.mmObject());
+		list.add((T) ActiveOrHistoricCurrencyCode_BusinessCode.mmObject());
+		list.add((T) ExternalAccountIdentificationCode.mmObject());
+		list.add((T) ExternalCashAccountTypeCode.mmObject());
+		list.add((T) ExternalCategoryPurposeCode.mmObject());
+		list.add((T) ExternalClearingSystemIdentificationCode.mmObject());
+		list.add((T) ExternalFinancialInstitutionIdentificationCode.mmObject());
+		list.add((T) ExternalLocalInstrumentCode.mmObject());
+		list.add((T) ExternalOrganisationIdentificationCode.mmObject());
+		list.add((T) ExternalPersonIdentificationCode.mmObject());
+		list.add((T) ExternalServiceLevelCode.mmObject());
+		list.add((T) NamePrefixCode.mmObject());
+		list.add((T) ActiveCurrencyCode_BusinessCode.mmObject());
+		list.add((T) CreditQualityCode.mmObject());
+		list.add((T) ExternalDocumentTypeCode.mmObject());
+		list.add((T) ExternalDocumentPurposeCode.mmObject());
+		list.add((T) ExternalStatusReasonCode.mmObject());
+		list.add((T) ExternalIncotermsCode.mmObject());
 		return list;
 	}
 }

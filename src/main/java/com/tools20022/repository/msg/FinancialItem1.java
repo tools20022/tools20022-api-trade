@@ -26,9 +26,9 @@ import com.tools20022.repository.datatype.ActiveCurrencyAndAmount;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -84,8 +84,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -98,16 +98,17 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "FinancialItem1", propOrder = {"itemContext", "financialDocumentReference", "creditDebitIndicator", "totalAmount", "dueAmount", "instalmentInformation", "additionalInformation", "associatedDocument",
 		"validationStatusInformation", "financingStatus", "proprietaryDetails"})
 public class FinancialItem1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ItmCntxt", required = true)
 	protected FinancialItemParameters1 itemContext;
 	/**
-	 * Parameters identifying the context of the item.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -135,10 +136,10 @@ public class FinancialItem1 {
 	 * definition} = "Parameters identifying the context of the item."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmItemContext = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, FinancialItemParameters1> mmItemContext = new MMMessageAssociationEnd<FinancialItem1, FinancialItemParameters1>() {
 		{
 			businessComponentTrace_lazy = () -> Invoice.mmObject();
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "ItmCntxt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -147,14 +148,24 @@ public class FinancialItem1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancialItemParameters1.mmObject();
+			type_lazy = () -> FinancialItemParameters1.mmObject();
+		}
+
+		@Override
+		public FinancialItemParameters1 getValue(FinancialItem1 obj) {
+			return obj.getItemContext();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, FinancialItemParameters1 value) {
+			obj.setItemContext(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> financialDocumentReference;
+	@XmlElement(name = "FinDocRef")
+	protected List<QualifiedDocumentInformation1> financialDocumentReference;
 	/**
-	 * Identifier of financial document that is the base document for this item,
-	 * for example an invoice number.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -184,10 +195,10 @@ public class FinancialItem1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFinancialDocumentReference = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, List<QualifiedDocumentInformation1>> mmFinancialDocumentReference = new MMMessageAssociationEnd<FinancialItem1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Invoice.mmObject();
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "FinDocRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -195,13 +206,24 @@ public class FinancialItem1 {
 			definition = "Identifier of financial document that is the base document for this item, for example an invoice number.";
 			minOccurs = 0;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(FinancialItem1 obj) {
+			return obj.getFinancialDocumentReference();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setFinancialDocumentReference(value);
 		}
 	};
+	@XmlElement(name = "CdtDbtInd", required = true)
 	protected CreditDebitCode creditDebitIndicator;
 	/**
-	 * Indicates whether the value is a debit or credit.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -231,10 +253,10 @@ public class FinancialItem1 {
 	 * definition} = "Indicates whether the value is a debit or credit."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCreditDebitIndicator = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancialItem1, CreditDebitCode> mmCreditDebitIndicator = new MMMessageAttribute<FinancialItem1, CreditDebitCode>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmCreditDebitIndicator;
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "CdtDbtInd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -244,11 +266,22 @@ public class FinancialItem1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> CreditDebitCode.mmObject();
 		}
+
+		@Override
+		public CreditDebitCode getValue(FinancialItem1 obj) {
+			return obj.getCreditDebitIndicator();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, CreditDebitCode value) {
+			obj.setCreditDebitIndicator(value);
+		}
 	};
+	@XmlElement(name = "TtlAmt", required = true)
 	protected InvoiceTotals1 totalAmount;
 	/**
-	 * Specifies the total amount related to the financial document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -277,10 +310,10 @@ public class FinancialItem1 {
 	 * "Specifies the total amount related to the financial document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTotalAmount = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, InvoiceTotals1> mmTotalAmount = new MMMessageAssociationEnd<FinancialItem1, InvoiceTotals1>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmTotalInvoiceAmount;
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "TtlAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -289,13 +322,24 @@ public class FinancialItem1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.InvoiceTotals1.mmObject();
+			type_lazy = () -> InvoiceTotals1.mmObject();
+		}
+
+		@Override
+		public InvoiceTotals1 getValue(FinancialItem1 obj) {
+			return obj.getTotalAmount();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, InvoiceTotals1 value) {
+			obj.setTotalAmount(value);
 		}
 	};
+	@XmlElement(name = "DueAmt")
 	protected ActiveCurrencyAndAmount dueAmount;
 	/**
-	 * Specifies the remaining monetary amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -325,10 +369,10 @@ public class FinancialItem1 {
 	 * definition} = "Specifies the remaining monetary amount."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDueAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancialItem1, Optional<ActiveCurrencyAndAmount>> mmDueAmount = new MMMessageAttribute<FinancialItem1, Optional<ActiveCurrencyAndAmount>>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmAmount;
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "DueAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -338,11 +382,22 @@ public class FinancialItem1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public Optional<ActiveCurrencyAndAmount> getValue(FinancialItem1 obj) {
+			return obj.getDueAmount();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, Optional<ActiveCurrencyAndAmount> value) {
+			obj.setDueAmount(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Instalment2> instalmentInformation;
+	@XmlElement(name = "InstlmtInf")
+	protected List<Instalment2> instalmentInformation;
 	/**
-	 * Instalment information for payment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -369,10 +424,10 @@ public class FinancialItem1 {
 	 * definition} = "Instalment information for payment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmInstalmentInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, List<Instalment2>> mmInstalmentInformation = new MMMessageAssociationEnd<FinancialItem1, List<Instalment2>>() {
 		{
 			businessComponentTrace_lazy = () -> Instalment.mmObject();
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "InstlmtInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -380,13 +435,24 @@ public class FinancialItem1 {
 			definition = "Instalment information for payment.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Instalment2.mmObject();
+			type_lazy = () -> Instalment2.mmObject();
+		}
+
+		@Override
+		public List<Instalment2> getValue(FinancialItem1 obj) {
+			return obj.getInstalmentInformation();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, List<Instalment2> value) {
+			obj.setInstalmentInformation(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected Max2000Text additionalInformation;
 	/**
-	 * Additional proprietary textual information concerning the item.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -411,9 +477,9 @@ public class FinancialItem1 {
 	 * "Additional proprietary textual information concerning the item."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancialItem1, Optional<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<FinancialItem1, Optional<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -423,11 +489,22 @@ public class FinancialItem1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max2000Text> getValue(FinancialItem1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, Optional<Max2000Text> value) {
+			obj.setAdditionalInformation(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> associatedDocument;
+	@XmlElement(name = "AssoctdDoc")
+	protected List<QualifiedDocumentInformation1> associatedDocument;
 	/**
-	 * Associated free form document, for example a delivery confirmation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -452,9 +529,9 @@ public class FinancialItem1 {
 	 * "Associated free form document, for example a delivery confirmation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAssociatedDocument = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, List<QualifiedDocumentInformation1>> mmAssociatedDocument = new MMMessageAssociationEnd<FinancialItem1, List<QualifiedDocumentInformation1>>() {
 		{
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "AssoctdDoc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -462,13 +539,24 @@ public class FinancialItem1 {
 			definition = "Associated free form document, for example a delivery confirmation.";
 			minOccurs = 0;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(FinancialItem1 obj) {
+			return obj.getAssociatedDocument();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setAssociatedDocument(value);
 		}
 	};
+	@XmlElement(name = "VldtnStsInf")
 	protected ValidationStatusInformation1 validationStatusInformation;
 	/**
-	 * Validation status of the item.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -497,10 +585,10 @@ public class FinancialItem1 {
 	 * definition} = "Validation status of the item."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmValidationStatusInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, Optional<ValidationStatusInformation1>> mmValidationStatusInformation = new MMMessageAssociationEnd<FinancialItem1, Optional<ValidationStatusInformation1>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "VldtnStsInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -509,13 +597,24 @@ public class FinancialItem1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ValidationStatusInformation1.mmObject();
+			type_lazy = () -> ValidationStatusInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<ValidationStatusInformation1> getValue(FinancialItem1 obj) {
+			return obj.getValidationStatusInformation();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, Optional<ValidationStatusInformation1> value) {
+			obj.setValidationStatusInformation(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "FincgSts")
 	protected FinancingInformationAndStatus1 financingStatus;
 	/**
-	 * Financing status if applicable for the item.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -544,10 +643,10 @@ public class FinancialItem1 {
 	 * definition} = "Financing status if applicable for the item."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFinancingStatus = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, Optional<FinancingInformationAndStatus1>> mmFinancingStatus = new MMMessageAssociationEnd<FinancialItem1, Optional<FinancingInformationAndStatus1>>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmInvoiceFinancingTransaction;
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "FincgSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -556,14 +655,24 @@ public class FinancialItem1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancingInformationAndStatus1.mmObject();
+			type_lazy = () -> FinancingInformationAndStatus1.mmObject();
+		}
+
+		@Override
+		public Optional<FinancingInformationAndStatus1> getValue(FinancialItem1 obj) {
+			return obj.getFinancingStatus();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, Optional<FinancingInformationAndStatus1> value) {
+			obj.setFinancingStatus(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "PrtryDtls")
 	protected SupplementaryData1 proprietaryDetails;
 	/**
-	 * Structured proprietary information concerning details of the financial
-	 * item.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -588,9 +697,9 @@ public class FinancialItem1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmProprietaryDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancialItem1, Optional<SupplementaryData1>> mmProprietaryDetails = new MMMessageAssociationEnd<FinancialItem1, Optional<SupplementaryData1>>() {
 		{
-			componentContext_lazy = () -> FinancialItem1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancialItem1.mmObject();
 			isDerived = false;
 			xmlTag = "PrtryDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -599,18 +708,29 @@ public class FinancialItem1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SupplementaryData1.mmObject();
+			type_lazy = () -> SupplementaryData1.mmObject();
+		}
+
+		@Override
+		public Optional<SupplementaryData1> getValue(FinancialItem1 obj) {
+			return obj.getProprietaryDetails();
+		}
+
+		@Override
+		public void setValue(FinancialItem1 obj, Optional<SupplementaryData1> value) {
+			obj.setProprietaryDetails(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(FinancialItem1.mmItemContext, FinancialItem1.mmFinancialDocumentReference, FinancialItem1.mmCreditDebitIndicator, FinancialItem1.mmTotalAmount, FinancialItem1.mmDueAmount,
-						FinancialItem1.mmInstalmentInformation, FinancialItem1.mmAdditionalInformation, FinancialItem1.mmAssociatedDocument, FinancialItem1.mmValidationStatusInformation, FinancialItem1.mmFinancingStatus,
-						FinancialItem1.mmProprietaryDetails);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.FinancialItem1.mmItemContext, com.tools20022.repository.msg.FinancialItem1.mmFinancialDocumentReference,
+						com.tools20022.repository.msg.FinancialItem1.mmCreditDebitIndicator, com.tools20022.repository.msg.FinancialItem1.mmTotalAmount, com.tools20022.repository.msg.FinancialItem1.mmDueAmount,
+						com.tools20022.repository.msg.FinancialItem1.mmInstalmentInformation, com.tools20022.repository.msg.FinancialItem1.mmAdditionalInformation, com.tools20022.repository.msg.FinancialItem1.mmAssociatedDocument,
+						com.tools20022.repository.msg.FinancialItem1.mmValidationStatusInformation, com.tools20022.repository.msg.FinancialItem1.mmFinancingStatus, com.tools20022.repository.msg.FinancialItem1.mmProprietaryDetails);
 				trace_lazy = () -> FinancialDocument.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "FinancialItem1";
 				definition = "Specifies information about a financing relation between two parties represented by a document, for example invoice, credit.\r\nThe component may include an external document describing details of the underlying trade object using an external schema.";
@@ -619,102 +739,102 @@ public class FinancialItem1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ItmCntxt", required = true)
 	public FinancialItemParameters1 getItemContext() {
 		return itemContext;
 	}
 
-	public void setItemContext(com.tools20022.repository.msg.FinancialItemParameters1 itemContext) {
-		this.itemContext = itemContext;
+	public FinancialItem1 setItemContext(FinancialItemParameters1 itemContext) {
+		this.itemContext = Objects.requireNonNull(itemContext);
+		return this;
 	}
 
-	@XmlElement(name = "FinDocRef")
 	public List<QualifiedDocumentInformation1> getFinancialDocumentReference() {
-		return financialDocumentReference;
+		return financialDocumentReference == null ? financialDocumentReference = new ArrayList<>() : financialDocumentReference;
 	}
 
-	public void setFinancialDocumentReference(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> financialDocumentReference) {
-		this.financialDocumentReference = financialDocumentReference;
+	public FinancialItem1 setFinancialDocumentReference(List<QualifiedDocumentInformation1> financialDocumentReference) {
+		this.financialDocumentReference = Objects.requireNonNull(financialDocumentReference);
+		return this;
 	}
 
-	@XmlElement(name = "CdtDbtInd", required = true)
 	public CreditDebitCode getCreditDebitIndicator() {
 		return creditDebitIndicator;
 	}
 
-	public void setCreditDebitIndicator(CreditDebitCode creditDebitIndicator) {
-		this.creditDebitIndicator = creditDebitIndicator;
+	public FinancialItem1 setCreditDebitIndicator(CreditDebitCode creditDebitIndicator) {
+		this.creditDebitIndicator = Objects.requireNonNull(creditDebitIndicator);
+		return this;
 	}
 
-	@XmlElement(name = "TtlAmt", required = true)
 	public InvoiceTotals1 getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(com.tools20022.repository.msg.InvoiceTotals1 totalAmount) {
-		this.totalAmount = totalAmount;
+	public FinancialItem1 setTotalAmount(InvoiceTotals1 totalAmount) {
+		this.totalAmount = Objects.requireNonNull(totalAmount);
+		return this;
 	}
 
-	@XmlElement(name = "DueAmt")
-	public ActiveCurrencyAndAmount getDueAmount() {
-		return dueAmount;
+	public Optional<ActiveCurrencyAndAmount> getDueAmount() {
+		return dueAmount == null ? Optional.empty() : Optional.of(dueAmount);
 	}
 
-	public void setDueAmount(ActiveCurrencyAndAmount dueAmount) {
+	public FinancialItem1 setDueAmount(ActiveCurrencyAndAmount dueAmount) {
 		this.dueAmount = dueAmount;
+		return this;
 	}
 
-	@XmlElement(name = "InstlmtInf")
 	public List<Instalment2> getInstalmentInformation() {
-		return instalmentInformation;
+		return instalmentInformation == null ? instalmentInformation = new ArrayList<>() : instalmentInformation;
 	}
 
-	public void setInstalmentInformation(List<com.tools20022.repository.msg.Instalment2> instalmentInformation) {
-		this.instalmentInformation = instalmentInformation;
+	public FinancialItem1 setInstalmentInformation(List<Instalment2> instalmentInformation) {
+		this.instalmentInformation = Objects.requireNonNull(instalmentInformation);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
-	public Max2000Text getAdditionalInformation() {
-		return additionalInformation;
+	public Optional<Max2000Text> getAdditionalInformation() {
+		return additionalInformation == null ? Optional.empty() : Optional.of(additionalInformation);
 	}
 
-	public void setAdditionalInformation(Max2000Text additionalInformation) {
+	public FinancialItem1 setAdditionalInformation(Max2000Text additionalInformation) {
 		this.additionalInformation = additionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "AssoctdDoc")
 	public List<QualifiedDocumentInformation1> getAssociatedDocument() {
-		return associatedDocument;
+		return associatedDocument == null ? associatedDocument = new ArrayList<>() : associatedDocument;
 	}
 
-	public void setAssociatedDocument(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> associatedDocument) {
-		this.associatedDocument = associatedDocument;
+	public FinancialItem1 setAssociatedDocument(List<QualifiedDocumentInformation1> associatedDocument) {
+		this.associatedDocument = Objects.requireNonNull(associatedDocument);
+		return this;
 	}
 
-	@XmlElement(name = "VldtnStsInf")
-	public ValidationStatusInformation1 getValidationStatusInformation() {
-		return validationStatusInformation;
+	public Optional<ValidationStatusInformation1> getValidationStatusInformation() {
+		return validationStatusInformation == null ? Optional.empty() : Optional.of(validationStatusInformation);
 	}
 
-	public void setValidationStatusInformation(com.tools20022.repository.msg.ValidationStatusInformation1 validationStatusInformation) {
+	public FinancialItem1 setValidationStatusInformation(ValidationStatusInformation1 validationStatusInformation) {
 		this.validationStatusInformation = validationStatusInformation;
+		return this;
 	}
 
-	@XmlElement(name = "FincgSts")
-	public FinancingInformationAndStatus1 getFinancingStatus() {
-		return financingStatus;
+	public Optional<FinancingInformationAndStatus1> getFinancingStatus() {
+		return financingStatus == null ? Optional.empty() : Optional.of(financingStatus);
 	}
 
-	public void setFinancingStatus(com.tools20022.repository.msg.FinancingInformationAndStatus1 financingStatus) {
+	public FinancialItem1 setFinancingStatus(FinancingInformationAndStatus1 financingStatus) {
 		this.financingStatus = financingStatus;
+		return this;
 	}
 
-	@XmlElement(name = "PrtryDtls")
-	public SupplementaryData1 getProprietaryDetails() {
-		return proprietaryDetails;
+	public Optional<SupplementaryData1> getProprietaryDetails() {
+		return proprietaryDetails == null ? Optional.empty() : Optional.of(proprietaryDetails);
 	}
 
-	public void setProprietaryDetails(com.tools20022.repository.msg.SupplementaryData1 proprietaryDetails) {
+	public FinancialItem1 setProprietaryDetails(SupplementaryData1 proprietaryDetails) {
 		this.proprietaryDetails = proprietaryDetails;
+		return this;
 	}
 }

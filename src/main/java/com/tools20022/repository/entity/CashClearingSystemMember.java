@@ -17,14 +17,18 @@
 
 package com.tools20022.repository.entity;
 
+import com.tools20022.metamodel.ext.OtherSemanticMarkup;
 import com.tools20022.metamodel.*;
 import com.tools20022.repository.choice.ClearingSystemMemberIdentification2Choice;
 import com.tools20022.repository.datatype.*;
+import com.tools20022.repository.entity.AustralianBSBIdentification;
+import com.tools20022.repository.entity.ClearingMemberRole;
+import com.tools20022.repository.entity.OrganisationIdentification;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.ClearingSystemMemberIdentification2;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Unique and unambiguous identifier for a clearing system member, as assigned
@@ -155,8 +159,17 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>
+ * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+ * semanticMarkup} = type=BusinessComment, BusinessComment=|Definition given by
+ * securities earlier: |Identifies an institution that collects funds from the
+ * public to place in financial assets. | Depository institutions pay interest
+ * on deposits and invest the deposit money. | Nondepository institutions
+ * collect money by selling insurance policies or receiving |employer
+ * contributions and pay it out for legitimate claims or for retirement
+ * benefits.</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -174,9 +187,8 @@ public class CashClearingSystemMember {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected OrganisationIdentification organisationIdentification;
 	/**
-	 * Identification parameters which include clearing system member
-	 * identification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -210,7 +222,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmOrganisationIdentification = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<CashClearingSystemMember, OrganisationIdentification> mmOrganisationIdentification = new MMBusinessAssociationEnd<CashClearingSystemMember, OrganisationIdentification>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.CashClearingSystemMember.mmObject();
@@ -219,18 +231,25 @@ public class CashClearingSystemMember {
 			definition = "Identification parameters which include clearing system member identification.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			opposite_lazy = () -> com.tools20022.repository.entity.OrganisationIdentification.mmClearingSystemMemberIdentificationType;
+			opposite_lazy = () -> OrganisationIdentification.mmClearingSystemMemberIdentificationType;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.OrganisationIdentification.mmObject();
+			type_lazy = () -> OrganisationIdentification.mmObject();
+		}
+
+		@Override
+		public OrganisationIdentification getValue(CashClearingSystemMember obj) {
+			return obj.getOrganisationIdentification();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, OrganisationIdentification value) {
+			obj.setOrganisationIdentification(value);
 		}
 	};
 	protected CHIPSUniversalIdentifier cHIPSUniversalIdentification;
 	/**
-	 * (United States) Clearing House Interbank Payments System (CHIPS)
-	 * Universal Identification (UID) - identifies entities that own accounts at
-	 * CHIPS participating financial institutions, through which CHIPS payments
-	 * are effected. The CHIPS UID is assigned by the New York Clearing House.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -265,7 +284,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCHIPSUniversalIdentification = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, CHIPSUniversalIdentifier> mmCHIPSUniversalIdentification = new MMBusinessAttribute<CashClearingSystemMember, CHIPSUniversalIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmCHIPSUniversalIdentification);
 			isDerived = false;
@@ -278,20 +297,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> CHIPSUniversalIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getCHIPSUniversalIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public CHIPSUniversalIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getCHIPSUniversalIdentification();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, CHIPSUniversalIdentifier value) {
+			obj.setCHIPSUniversalIdentification(value);
 		}
 	};
 	protected NewZealandNCCIdentifier newZealandNCC;
 	/**
-	 * New Zealand Bank/Branch Code - identifies New Zealand institutions on the
-	 * New Zealand national clearing system. The code is assigned by the New
-	 * Zealand Bankers' Association (NZBA).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -325,7 +344,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmNewZealandNCC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, NewZealandNCCIdentifier> mmNewZealandNCC = new MMBusinessAttribute<CashClearingSystemMember, NewZealandNCCIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmNewZealandNCCIdentification);
 			isDerived = false;
@@ -338,20 +357,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> NewZealandNCCIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getNewZealandNCC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public NewZealandNCCIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getNewZealandNCC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, NewZealandNCCIdentifier value) {
+			obj.setNewZealandNCC(value);
 		}
 	};
 	protected IrishNSCIdentifier irishNSC;
 	/**
-	 * Irish National Sorting Code - identifies Irish financial institutions on
-	 * the Irish national clearing system. The code is assigned by the Irish
-	 * Payments Services Organisation (IPSO).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -385,7 +404,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmIrishNSC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, IrishNSCIdentifier> mmIrishNSC = new MMBusinessAttribute<CashClearingSystemMember, IrishNSCIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmIrishNSCIdentification);
 			isDerived = false;
@@ -398,20 +417,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> IrishNSCIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getIrishNSC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public IrishNSCIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getIrishNSC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, IrishNSCIdentifier value) {
+			obj.setIrishNSC(value);
 		}
 	};
 	protected UKDomesticSortCodeIdentifier uKSortCode;
 	/**
-	 * United Kingdom (UK) Sort Code - identifies British financial institutions
-	 * on the British national clearing systems. The sort code is assigned by
-	 * the Association for Payments and Clearing Services (APACS).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -445,7 +464,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmUKSortCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, UKDomesticSortCodeIdentifier> mmUKSortCode = new MMBusinessAttribute<CashClearingSystemMember, UKDomesticSortCodeIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmUKDomesticSortCode);
 			isDerived = false;
@@ -458,21 +477,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> UKDomesticSortCodeIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getUKSortCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UKDomesticSortCodeIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getUKSortCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, UKDomesticSortCodeIdentifier value) {
+			obj.setUKSortCode(value);
 		}
 	};
 	protected CHIPSParticipantIdentifier cHIPSParticipantIdentification;
 	/**
-	 * (United States) Clearing House Interbank Payment System (CHIPS)
-	 * Participant Identifier (ID) - identifies financial institutions
-	 * participating on CHIPS. The CHIPS Participant ID is assigned by the New
-	 * York Clearing House.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -507,7 +525,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCHIPSParticipantIdentification = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, CHIPSParticipantIdentifier> mmCHIPSParticipantIdentification = new MMBusinessAttribute<CashClearingSystemMember, CHIPSParticipantIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmCHIPSParticipantIdentification);
 			isDerived = false;
@@ -520,19 +538,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> CHIPSParticipantIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getCHIPSParticipantIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public CHIPSParticipantIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getCHIPSParticipantIdentification();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, CHIPSParticipantIdentifier value) {
+			obj.setCHIPSParticipantIdentification(value);
 		}
 	};
 	protected SwissBCIdentifier swissBC;
 	/**
-	 * Swiss Bank Code - identifies Swiss institutions on the Swiss national
-	 * clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -566,7 +585,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmSwissBC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, SwissBCIdentifier> mmSwissBC = new MMBusinessAttribute<CashClearingSystemMember, SwissBCIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmSwissBCIdentification);
 			isDerived = false;
@@ -579,20 +598,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> SwissBCIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getSwissBC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SwissBCIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getSwissBC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, SwissBCIdentifier value) {
+			obj.setSwissBC(value);
 		}
 	};
 	protected FedwireRoutingNumberIdentifier fedwireRoutingNumber;
 	/**
-	 * Fed wire Routing Number - identifies financial institutions, in the US,
-	 * on the Fed wire system. The routing number is assigned by the American
-	 * Bankers Association (ABA).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -627,7 +646,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmFedwireRoutingNumber = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, FedwireRoutingNumberIdentifier> mmFedwireRoutingNumber = new MMBusinessAttribute<CashClearingSystemMember, FedwireRoutingNumberIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmFedwireRoutingNumberIdentification);
 			isDerived = false;
@@ -640,19 +659,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> FedwireRoutingNumberIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getFedwireRoutingNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public FedwireRoutingNumberIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getFedwireRoutingNumber();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, FedwireRoutingNumberIdentifier value) {
+			obj.setFedwireRoutingNumber(value);
 		}
 	};
 	protected PortugueseNCCIdentifier portugueseNCC;
 	/**
-	 * Portuguese National Clearing Code - identifies Portuguese financial
-	 * institutions on the Portuguese national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -686,7 +706,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPortugueseNCC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, PortugueseNCCIdentifier> mmPortugueseNCC = new MMBusinessAttribute<CashClearingSystemMember, PortugueseNCCIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmPortugueseNCCIdentification);
 			isDerived = false;
@@ -699,19 +719,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> PortugueseNCCIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getPortugueseNCC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PortugueseNCCIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getPortugueseNCC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, PortugueseNCCIdentifier value) {
+			obj.setPortugueseNCC(value);
 		}
 	};
 	protected RussianCentralBankIdentificationCodeIdentifier russianCentralBankIdentificationCode;
 	/**
-	 * Russian Central Bank Identification Code - identifies Russian financial
-	 * institutions on the Russian national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -746,7 +767,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmRussianCentralBankIdentificationCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, RussianCentralBankIdentificationCodeIdentifier> mmRussianCentralBankIdentificationCode = new MMBusinessAttribute<CashClearingSystemMember, RussianCentralBankIdentificationCodeIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmRussianCentralBankIdentificationCode);
 			isDerived = false;
@@ -759,20 +780,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> RussianCentralBankIdentificationCodeIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getRussianCentralBankIdentificationCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public RussianCentralBankIdentificationCodeIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getRussianCentralBankIdentificationCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, RussianCentralBankIdentificationCodeIdentifier value) {
+			obj.setRussianCentralBankIdentificationCode(value);
 		}
 	};
 	protected ItalianDomesticIdentifier italianDomesticIdentificationCode;
 	/**
-	 * Italian Domestic Identification Code - identifies Italian financial
-	 * institutions on the Italian national clearing system. The code is
-	 * assigned by the Associazione Bancaria Italiana (ABI).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -807,7 +828,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmItalianDomesticIdentificationCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, ItalianDomesticIdentifier> mmItalianDomesticIdentificationCode = new MMBusinessAttribute<CashClearingSystemMember, ItalianDomesticIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmItalianDomesticIdentificationCode);
 			isDerived = false;
@@ -820,19 +841,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> ItalianDomesticIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getItalianDomesticIdentificationCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ItalianDomesticIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getItalianDomesticIdentificationCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, ItalianDomesticIdentifier value) {
+			obj.setItalianDomesticIdentificationCode(value);
 		}
 	};
 	protected AustrianBankleitzahlIdentifier austrianBankleitzahl;
 	/**
-	 * Austrian Bankleitzahl - identifies Austrian financial institutions on the
-	 * Austrian national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -867,7 +889,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmAustrianBankleitzahl = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, AustrianBankleitzahlIdentifier> mmAustrianBankleitzahl = new MMBusinessAttribute<CashClearingSystemMember, AustrianBankleitzahlIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmAustrianBankleitzahlIdentification);
 			isDerived = false;
@@ -880,19 +902,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> AustrianBankleitzahlIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getAustrianBankleitzahl", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public AustrianBankleitzahlIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getAustrianBankleitzahl();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, AustrianBankleitzahlIdentifier value) {
+			obj.setAustrianBankleitzahl(value);
 		}
 	};
 	protected CanadianPaymentsARNIdentifier canadianPaymentsAssociationRoutingNumber;
 	/**
-	 * Canadian Payments Association Routing Number - identifies Canadian
-	 * financial institutions on the Canadian national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -927,7 +950,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCanadianPaymentsAssociationRoutingNumber = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, CanadianPaymentsARNIdentifier> mmCanadianPaymentsAssociationRoutingNumber = new MMBusinessAttribute<CashClearingSystemMember, CanadianPaymentsARNIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmCanadianPaymentsAssociationRoutingNumberIdentification);
 			isDerived = false;
@@ -940,19 +963,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> CanadianPaymentsARNIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getCanadianPaymentsAssociationRoutingNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public CanadianPaymentsARNIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getCanadianPaymentsAssociationRoutingNumber();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, CanadianPaymentsARNIdentifier value) {
+			obj.setCanadianPaymentsAssociationRoutingNumber(value);
 		}
 	};
 	protected SwissSICIdentifier swissSIC;
 	/**
-	 * Swiss Interbank Clearing (SIC) Code - identifies Swiss financial
-	 * institutions domestically, on the Swiss national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -986,7 +1010,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmSwissSIC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, SwissSICIdentifier> mmSwissSIC = new MMBusinessAttribute<CashClearingSystemMember, SwissSICIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmSwissSICIdentification);
 			isDerived = false;
@@ -999,19 +1023,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> SwissSICIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getSwissSIC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SwissSICIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getSwissSIC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, SwissSICIdentifier value) {
+			obj.setSwissSIC(value);
 		}
 	};
 	protected GermanBankleitzahlIdentifier germanBankleitzahl;
 	/**
-	 * German Bankleitzahl - identifies German financial institutions on the
-	 * German national clearing systems.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1046,7 +1071,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmGermanBankleitzahl = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, GermanBankleitzahlIdentifier> mmGermanBankleitzahl = new MMBusinessAttribute<CashClearingSystemMember, GermanBankleitzahlIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmGermanBankleitzahlIdentification);
 			isDerived = false;
@@ -1059,20 +1084,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> GermanBankleitzahlIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getGermanBankleitzahl", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public GermanBankleitzahlIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getGermanBankleitzahl();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, GermanBankleitzahlIdentifier value) {
+			obj.setGermanBankleitzahl(value);
 		}
 	};
 	protected SpanishDomesticInterbankingIdentifier spanishDomesticInterbankingCode;
 	/**
-	 * Spanish Domestic Interbanking Code - identifies Spanish financial
-	 * institutions on the Spanish national clearing system. The code is
-	 * assigned by the Centro de Cooperacion Interbancaria (CCI).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1107,7 +1132,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmSpanishDomesticInterbankingCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, SpanishDomesticInterbankingIdentifier> mmSpanishDomesticInterbankingCode = new MMBusinessAttribute<CashClearingSystemMember, SpanishDomesticInterbankingIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmSpanishDomesticInterbankingIdentification);
 			isDerived = false;
@@ -1120,21 +1145,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> SpanishDomesticInterbankingIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getSpanishDomesticInterbankingCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SpanishDomesticInterbankingIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getSpanishDomesticInterbankingCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, SpanishDomesticInterbankingIdentifier value) {
+			obj.setSpanishDomesticInterbankingCode(value);
 		}
 	};
 	protected SouthAfricanNCCIdentifier southAfricanNCC;
 	/**
-	 * South African National Clearing Code (NCC) - identifies South African
-	 * financial institutions on the South African national clearing system. The
-	 * code is assigned by the South African Bankers Services Company Ltd.
-	 * (BankServ).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1169,7 +1193,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmSouthAfricanNCC = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, SouthAfricanNCCIdentifier> mmSouthAfricanNCC = new MMBusinessAttribute<CashClearingSystemMember, SouthAfricanNCCIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmSouthAfricanNCCIdentification);
 			isDerived = false;
@@ -1182,19 +1206,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> SouthAfricanNCCIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getSouthAfricanNCC", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SouthAfricanNCCIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getSouthAfricanNCC();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, SouthAfricanNCCIdentifier value) {
+			obj.setSouthAfricanNCC(value);
 		}
 	};
 	protected HongKongBankIdentifier hongKongBankCode;
 	/**
-	 * Hong Kong Bank Code - identifies Hong Kong financial institutions on the
-	 * Hong Kong local clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1228,7 +1253,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmHongKongBankCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, HongKongBankIdentifier> mmHongKongBankCode = new MMBusinessAttribute<CashClearingSystemMember, HongKongBankIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmHongKongBankCode);
 			isDerived = false;
@@ -1241,19 +1266,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> HongKongBankIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getHongKongBankCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public HongKongBankIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getHongKongBankCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, HongKongBankIdentifier value) {
+			obj.setHongKongBankCode(value);
 		}
 	};
 	protected ClearingMemberRole clearingMember;
 	/**
-	 * Clearing system member for which a clearing system member identification
-	 * is specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1286,7 +1312,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmClearingMember = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<CashClearingSystemMember, ClearingMemberRole> mmClearingMember = new MMBusinessAssociationEnd<CashClearingSystemMember, ClearingMemberRole>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.CashClearingSystemMember.mmObject();
@@ -1295,16 +1321,25 @@ public class CashClearingSystemMember {
 			definition = "Clearing system member for which a clearing system member identification is specified.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			opposite_lazy = () -> com.tools20022.repository.entity.ClearingMemberRole.mmClearingSystemMemberIdentification;
+			opposite_lazy = () -> ClearingMemberRole.mmClearingSystemMemberIdentification;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.ClearingMemberRole.mmObject();
+			type_lazy = () -> ClearingMemberRole.mmObject();
+		}
+
+		@Override
+		public ClearingMemberRole getValue(CashClearingSystemMember obj) {
+			return obj.getClearingMember();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, ClearingMemberRole value) {
+			obj.setClearingMember(value);
 		}
 	};
 	protected IndianFinancialSystemCodeIdentifier indianFinancialSystemCode;
 	/**
-	 * Indian Financial System Code - identifies Indian financial institutions
-	 * on the Indian local clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1338,7 +1373,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmIndianFinancialSystemCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, IndianFinancialSystemCodeIdentifier> mmIndianFinancialSystemCode = new MMBusinessAttribute<CashClearingSystemMember, IndianFinancialSystemCodeIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmIndianFinancialSystemCode);
 			isDerived = false;
@@ -1351,19 +1386,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> IndianFinancialSystemCodeIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getIndianFinancialSystemCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public IndianFinancialSystemCodeIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getIndianFinancialSystemCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, IndianFinancialSystemCodeIdentifier value) {
+			obj.setIndianFinancialSystemCode(value);
 		}
 	};
 	protected HellenicBankIdentificationCodeIdentifier hellenicBankIdentificationCode;
 	/**
-	 * Hellenic Bank Identification Code - identifies Hellenic financial
-	 * institutions on the Hellenic national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1398,7 +1434,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmHellenicBankIdentificationCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, HellenicBankIdentificationCodeIdentifier> mmHellenicBankIdentificationCode = new MMBusinessAttribute<CashClearingSystemMember, HellenicBankIdentificationCodeIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmHellenicBankIdentificationCode);
 			isDerived = false;
@@ -1411,19 +1447,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> HellenicBankIdentificationCodeIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getHellenicBankIdentificationCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public HellenicBankIdentificationCodeIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getHellenicBankIdentificationCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, HellenicBankIdentificationCodeIdentifier value) {
+			obj.setHellenicBankIdentificationCode(value);
 		}
 	};
 	protected PolishNationalClearingCodeIdentifier polishNationalClearingCode;
 	/**
-	 * Polish National Clearing Code - identifies Polish financial institutions
-	 * on the Polish national clearing system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1457,7 +1494,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPolishNationalClearingCode = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<CashClearingSystemMember, PolishNationalClearingCodeIdentifier> mmPolishNationalClearingCode = new MMBusinessAttribute<CashClearingSystemMember, PolishNationalClearingCodeIdentifier>() {
 		{
 			derivation_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmPolishNationalClearingCode);
 			isDerived = false;
@@ -1470,20 +1507,20 @@ public class CashClearingSystemMember {
 			simpleType_lazy = () -> PolishNationalClearingCodeIdentifier.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return CashClearingSystemMember.class.getMethod("getPolishNationalClearingCode", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PolishNationalClearingCodeIdentifier getValue(CashClearingSystemMember obj) {
+			return obj.getPolishNationalClearingCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, PolishNationalClearingCodeIdentifier value) {
+			obj.setPolishNationalClearingCode(value);
 		}
 	};
 	protected AustralianBSBIdentification australianBSBCode;
 	/**
-	 * Australian Bank State Branch (BSB) Code - identifies Australian financial
-	 * institutions on the Australian national clearing system. The code is
-	 * assigned by the Australian Payments Clearing Association (APCA).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1517,7 +1554,7 @@ public class CashClearingSystemMember {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmAustralianBSBCode = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<CashClearingSystemMember, AustralianBSBIdentification> mmAustralianBSBCode = new MMBusinessAssociationEnd<CashClearingSystemMember, AustralianBSBIdentification>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.CashClearingSystemMember.mmObject();
@@ -1526,21 +1563,38 @@ public class CashClearingSystemMember {
 			definition = "Australian Bank State Branch (BSB) Code - identifies Australian financial institutions on the Australian national clearing system. The code is assigned by the Australian Payments Clearing Association (APCA).";
 			maxOccurs = 1;
 			minOccurs = 1;
-			opposite_lazy = () -> com.tools20022.repository.entity.AustralianBSBIdentification.mmClearingSystemMemberIdentificationType;
+			opposite_lazy = () -> AustralianBSBIdentification.mmClearingSystemMemberIdentificationType;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.AustralianBSBIdentification.mmObject();
+			type_lazy = () -> AustralianBSBIdentification.mmObject();
+		}
+
+		@Override
+		public AustralianBSBIdentification getValue(CashClearingSystemMember obj) {
+			return obj.getAustralianBSBCode();
+		}
+
+		@Override
+		public void setValue(CashClearingSystemMember obj, AustralianBSBIdentification value) {
+			obj.setAustralianBSBCode(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				semanticMarkup_lazy = () -> Arrays
+						.asList(new OtherSemanticMarkup(
+								this,
+								"BusinessComment",
+								new String[]{
+										"BusinessComment",
+										"|Definition given by securities earlier:\n|Identifies an institution that collects funds from the public to place in financial assets.\n| Depository institutions pay interest on deposits and invest the deposit money.\n| Nondepository institutions collect money by selling insurance policies or receiving \n|employer contributions and pay it out for legitimate claims or for retirement benefits.\n"}));
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "CashClearingSystemMember";
 				definition = "Unique and unambiguous identifier for a clearing system member, as assigned by the clearing system. In some clearing systems, the accounts of the clearing system members are also assigned an identifier. The identifier can be used when transmitting, reconciling and confirming payment orders or security transfer instructions prior to settlement, and may include the netting of instructions and the establishment of final positions for settlement.";
-				associationDomain_lazy = () -> Arrays.asList(com.tools20022.repository.entity.OrganisationIdentification.mmClearingSystemMemberIdentificationType,
-						com.tools20022.repository.entity.AustralianBSBIdentification.mmClearingSystemMemberIdentificationType, com.tools20022.repository.entity.ClearingMemberRole.mmClearingSystemMemberIdentification);
+				associationDomain_lazy = () -> Arrays.asList(OrganisationIdentification.mmClearingSystemMemberIdentificationType, AustralianBSBIdentification.mmClearingSystemMemberIdentificationType,
+						ClearingMemberRole.mmClearingSystemMemberIdentification);
 				derivationElement_lazy = () -> Arrays.asList(ClearingSystemMemberIdentification2Choice.mmOtherClearingCodeIdentification);
 				element_lazy = () -> Arrays.asList(com.tools20022.repository.entity.CashClearingSystemMember.mmOrganisationIdentification, com.tools20022.repository.entity.CashClearingSystemMember.mmCHIPSUniversalIdentification,
 						com.tools20022.repository.entity.CashClearingSystemMember.mmNewZealandNCC, com.tools20022.repository.entity.CashClearingSystemMember.mmIrishNSC,
@@ -1569,183 +1623,206 @@ public class CashClearingSystemMember {
 		return organisationIdentification;
 	}
 
-	public void setOrganisationIdentification(com.tools20022.repository.entity.OrganisationIdentification organisationIdentification) {
-		this.organisationIdentification = organisationIdentification;
+	public CashClearingSystemMember setOrganisationIdentification(OrganisationIdentification organisationIdentification) {
+		this.organisationIdentification = Objects.requireNonNull(organisationIdentification);
+		return this;
 	}
 
 	public CHIPSUniversalIdentifier getCHIPSUniversalIdentification() {
 		return cHIPSUniversalIdentification;
 	}
 
-	public void setCHIPSUniversalIdentification(CHIPSUniversalIdentifier cHIPSUniversalIdentification) {
-		this.cHIPSUniversalIdentification = cHIPSUniversalIdentification;
+	public CashClearingSystemMember setCHIPSUniversalIdentification(CHIPSUniversalIdentifier cHIPSUniversalIdentification) {
+		this.cHIPSUniversalIdentification = Objects.requireNonNull(cHIPSUniversalIdentification);
+		return this;
 	}
 
 	public NewZealandNCCIdentifier getNewZealandNCC() {
 		return newZealandNCC;
 	}
 
-	public void setNewZealandNCC(NewZealandNCCIdentifier newZealandNCC) {
-		this.newZealandNCC = newZealandNCC;
+	public CashClearingSystemMember setNewZealandNCC(NewZealandNCCIdentifier newZealandNCC) {
+		this.newZealandNCC = Objects.requireNonNull(newZealandNCC);
+		return this;
 	}
 
 	public IrishNSCIdentifier getIrishNSC() {
 		return irishNSC;
 	}
 
-	public void setIrishNSC(IrishNSCIdentifier irishNSC) {
-		this.irishNSC = irishNSC;
+	public CashClearingSystemMember setIrishNSC(IrishNSCIdentifier irishNSC) {
+		this.irishNSC = Objects.requireNonNull(irishNSC);
+		return this;
 	}
 
 	public UKDomesticSortCodeIdentifier getUKSortCode() {
 		return uKSortCode;
 	}
 
-	public void setUKSortCode(UKDomesticSortCodeIdentifier uKSortCode) {
-		this.uKSortCode = uKSortCode;
+	public CashClearingSystemMember setUKSortCode(UKDomesticSortCodeIdentifier uKSortCode) {
+		this.uKSortCode = Objects.requireNonNull(uKSortCode);
+		return this;
 	}
 
 	public CHIPSParticipantIdentifier getCHIPSParticipantIdentification() {
 		return cHIPSParticipantIdentification;
 	}
 
-	public void setCHIPSParticipantIdentification(CHIPSParticipantIdentifier cHIPSParticipantIdentification) {
-		this.cHIPSParticipantIdentification = cHIPSParticipantIdentification;
+	public CashClearingSystemMember setCHIPSParticipantIdentification(CHIPSParticipantIdentifier cHIPSParticipantIdentification) {
+		this.cHIPSParticipantIdentification = Objects.requireNonNull(cHIPSParticipantIdentification);
+		return this;
 	}
 
 	public SwissBCIdentifier getSwissBC() {
 		return swissBC;
 	}
 
-	public void setSwissBC(SwissBCIdentifier swissBC) {
-		this.swissBC = swissBC;
+	public CashClearingSystemMember setSwissBC(SwissBCIdentifier swissBC) {
+		this.swissBC = Objects.requireNonNull(swissBC);
+		return this;
 	}
 
 	public FedwireRoutingNumberIdentifier getFedwireRoutingNumber() {
 		return fedwireRoutingNumber;
 	}
 
-	public void setFedwireRoutingNumber(FedwireRoutingNumberIdentifier fedwireRoutingNumber) {
-		this.fedwireRoutingNumber = fedwireRoutingNumber;
+	public CashClearingSystemMember setFedwireRoutingNumber(FedwireRoutingNumberIdentifier fedwireRoutingNumber) {
+		this.fedwireRoutingNumber = Objects.requireNonNull(fedwireRoutingNumber);
+		return this;
 	}
 
 	public PortugueseNCCIdentifier getPortugueseNCC() {
 		return portugueseNCC;
 	}
 
-	public void setPortugueseNCC(PortugueseNCCIdentifier portugueseNCC) {
-		this.portugueseNCC = portugueseNCC;
+	public CashClearingSystemMember setPortugueseNCC(PortugueseNCCIdentifier portugueseNCC) {
+		this.portugueseNCC = Objects.requireNonNull(portugueseNCC);
+		return this;
 	}
 
 	public RussianCentralBankIdentificationCodeIdentifier getRussianCentralBankIdentificationCode() {
 		return russianCentralBankIdentificationCode;
 	}
 
-	public void setRussianCentralBankIdentificationCode(RussianCentralBankIdentificationCodeIdentifier russianCentralBankIdentificationCode) {
-		this.russianCentralBankIdentificationCode = russianCentralBankIdentificationCode;
+	public CashClearingSystemMember setRussianCentralBankIdentificationCode(RussianCentralBankIdentificationCodeIdentifier russianCentralBankIdentificationCode) {
+		this.russianCentralBankIdentificationCode = Objects.requireNonNull(russianCentralBankIdentificationCode);
+		return this;
 	}
 
 	public ItalianDomesticIdentifier getItalianDomesticIdentificationCode() {
 		return italianDomesticIdentificationCode;
 	}
 
-	public void setItalianDomesticIdentificationCode(ItalianDomesticIdentifier italianDomesticIdentificationCode) {
-		this.italianDomesticIdentificationCode = italianDomesticIdentificationCode;
+	public CashClearingSystemMember setItalianDomesticIdentificationCode(ItalianDomesticIdentifier italianDomesticIdentificationCode) {
+		this.italianDomesticIdentificationCode = Objects.requireNonNull(italianDomesticIdentificationCode);
+		return this;
 	}
 
 	public AustrianBankleitzahlIdentifier getAustrianBankleitzahl() {
 		return austrianBankleitzahl;
 	}
 
-	public void setAustrianBankleitzahl(AustrianBankleitzahlIdentifier austrianBankleitzahl) {
-		this.austrianBankleitzahl = austrianBankleitzahl;
+	public CashClearingSystemMember setAustrianBankleitzahl(AustrianBankleitzahlIdentifier austrianBankleitzahl) {
+		this.austrianBankleitzahl = Objects.requireNonNull(austrianBankleitzahl);
+		return this;
 	}
 
 	public CanadianPaymentsARNIdentifier getCanadianPaymentsAssociationRoutingNumber() {
 		return canadianPaymentsAssociationRoutingNumber;
 	}
 
-	public void setCanadianPaymentsAssociationRoutingNumber(CanadianPaymentsARNIdentifier canadianPaymentsAssociationRoutingNumber) {
-		this.canadianPaymentsAssociationRoutingNumber = canadianPaymentsAssociationRoutingNumber;
+	public CashClearingSystemMember setCanadianPaymentsAssociationRoutingNumber(CanadianPaymentsARNIdentifier canadianPaymentsAssociationRoutingNumber) {
+		this.canadianPaymentsAssociationRoutingNumber = Objects.requireNonNull(canadianPaymentsAssociationRoutingNumber);
+		return this;
 	}
 
 	public SwissSICIdentifier getSwissSIC() {
 		return swissSIC;
 	}
 
-	public void setSwissSIC(SwissSICIdentifier swissSIC) {
-		this.swissSIC = swissSIC;
+	public CashClearingSystemMember setSwissSIC(SwissSICIdentifier swissSIC) {
+		this.swissSIC = Objects.requireNonNull(swissSIC);
+		return this;
 	}
 
 	public GermanBankleitzahlIdentifier getGermanBankleitzahl() {
 		return germanBankleitzahl;
 	}
 
-	public void setGermanBankleitzahl(GermanBankleitzahlIdentifier germanBankleitzahl) {
-		this.germanBankleitzahl = germanBankleitzahl;
+	public CashClearingSystemMember setGermanBankleitzahl(GermanBankleitzahlIdentifier germanBankleitzahl) {
+		this.germanBankleitzahl = Objects.requireNonNull(germanBankleitzahl);
+		return this;
 	}
 
 	public SpanishDomesticInterbankingIdentifier getSpanishDomesticInterbankingCode() {
 		return spanishDomesticInterbankingCode;
 	}
 
-	public void setSpanishDomesticInterbankingCode(SpanishDomesticInterbankingIdentifier spanishDomesticInterbankingCode) {
-		this.spanishDomesticInterbankingCode = spanishDomesticInterbankingCode;
+	public CashClearingSystemMember setSpanishDomesticInterbankingCode(SpanishDomesticInterbankingIdentifier spanishDomesticInterbankingCode) {
+		this.spanishDomesticInterbankingCode = Objects.requireNonNull(spanishDomesticInterbankingCode);
+		return this;
 	}
 
 	public SouthAfricanNCCIdentifier getSouthAfricanNCC() {
 		return southAfricanNCC;
 	}
 
-	public void setSouthAfricanNCC(SouthAfricanNCCIdentifier southAfricanNCC) {
-		this.southAfricanNCC = southAfricanNCC;
+	public CashClearingSystemMember setSouthAfricanNCC(SouthAfricanNCCIdentifier southAfricanNCC) {
+		this.southAfricanNCC = Objects.requireNonNull(southAfricanNCC);
+		return this;
 	}
 
 	public HongKongBankIdentifier getHongKongBankCode() {
 		return hongKongBankCode;
 	}
 
-	public void setHongKongBankCode(HongKongBankIdentifier hongKongBankCode) {
-		this.hongKongBankCode = hongKongBankCode;
+	public CashClearingSystemMember setHongKongBankCode(HongKongBankIdentifier hongKongBankCode) {
+		this.hongKongBankCode = Objects.requireNonNull(hongKongBankCode);
+		return this;
 	}
 
 	public ClearingMemberRole getClearingMember() {
 		return clearingMember;
 	}
 
-	public void setClearingMember(com.tools20022.repository.entity.ClearingMemberRole clearingMember) {
-		this.clearingMember = clearingMember;
+	public CashClearingSystemMember setClearingMember(ClearingMemberRole clearingMember) {
+		this.clearingMember = Objects.requireNonNull(clearingMember);
+		return this;
 	}
 
 	public IndianFinancialSystemCodeIdentifier getIndianFinancialSystemCode() {
 		return indianFinancialSystemCode;
 	}
 
-	public void setIndianFinancialSystemCode(IndianFinancialSystemCodeIdentifier indianFinancialSystemCode) {
-		this.indianFinancialSystemCode = indianFinancialSystemCode;
+	public CashClearingSystemMember setIndianFinancialSystemCode(IndianFinancialSystemCodeIdentifier indianFinancialSystemCode) {
+		this.indianFinancialSystemCode = Objects.requireNonNull(indianFinancialSystemCode);
+		return this;
 	}
 
 	public HellenicBankIdentificationCodeIdentifier getHellenicBankIdentificationCode() {
 		return hellenicBankIdentificationCode;
 	}
 
-	public void setHellenicBankIdentificationCode(HellenicBankIdentificationCodeIdentifier hellenicBankIdentificationCode) {
-		this.hellenicBankIdentificationCode = hellenicBankIdentificationCode;
+	public CashClearingSystemMember setHellenicBankIdentificationCode(HellenicBankIdentificationCodeIdentifier hellenicBankIdentificationCode) {
+		this.hellenicBankIdentificationCode = Objects.requireNonNull(hellenicBankIdentificationCode);
+		return this;
 	}
 
 	public PolishNationalClearingCodeIdentifier getPolishNationalClearingCode() {
 		return polishNationalClearingCode;
 	}
 
-	public void setPolishNationalClearingCode(PolishNationalClearingCodeIdentifier polishNationalClearingCode) {
-		this.polishNationalClearingCode = polishNationalClearingCode;
+	public CashClearingSystemMember setPolishNationalClearingCode(PolishNationalClearingCodeIdentifier polishNationalClearingCode) {
+		this.polishNationalClearingCode = Objects.requireNonNull(polishNationalClearingCode);
+		return this;
 	}
 
 	public AustralianBSBIdentification getAustralianBSBCode() {
 		return australianBSBCode;
 	}
 
-	public void setAustralianBSBCode(com.tools20022.repository.entity.AustralianBSBIdentification australianBSBCode) {
-		this.australianBSBCode = australianBSBCode;
+	public CashClearingSystemMember setAustralianBSBCode(AustralianBSBIdentification australianBSBCode) {
+		this.australianBSBCode = Objects.requireNonNull(australianBSBCode);
+		return this;
 	}
 }

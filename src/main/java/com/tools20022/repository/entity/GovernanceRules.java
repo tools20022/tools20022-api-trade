@@ -21,12 +21,14 @@ import com.tools20022.metamodel.*;
 import com.tools20022.repository.choice.GovernanceIdentification1Choice;
 import com.tools20022.repository.codeset.GovernanceIdentificationCode;
 import com.tools20022.repository.datatype.Max35Text;
+import com.tools20022.repository.entity.Jurisdiction;
+import com.tools20022.repository.entity.ModelForm;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.GovernanceRules1;
 import com.tools20022.repository.msg.GovernanceRules2;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Rules governing an undertaking such as a guarantee or standby letter of
@@ -84,8 +86,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -103,8 +105,8 @@ public class GovernanceRules {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected ModelForm modelForm;
 	/**
-	 * Model form to which the governance rules apply.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -135,7 +137,7 @@ public class GovernanceRules {
 	 * definition} = "Model form to which the governance rules apply."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmModelForm = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<GovernanceRules, ModelForm> mmModelForm = new MMBusinessAssociationEnd<GovernanceRules, ModelForm>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.GovernanceRules.mmObject();
@@ -144,15 +146,25 @@ public class GovernanceRules {
 			definition = "Model form to which the governance rules apply.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			opposite_lazy = () -> com.tools20022.repository.entity.ModelForm.mmGovernanceRules;
+			opposite_lazy = () -> ModelForm.mmGovernanceRules;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.ModelForm.mmObject();
+			type_lazy = () -> ModelForm.mmObject();
+		}
+
+		@Override
+		public ModelForm getValue(GovernanceRules obj) {
+			return obj.getModelForm();
+		}
+
+		@Override
+		public void setValue(GovernanceRules obj, ModelForm value) {
+			obj.setModelForm(value);
 		}
 	};
 	protected GovernanceIdentificationCode identification;
 	/**
-	 * Identification of the governance rules.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -193,7 +205,7 @@ public class GovernanceRules {
 	 * definition} = "Identification of the governance rules."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmIdentification = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<GovernanceRules, GovernanceIdentificationCode> mmIdentification = new MMBusinessAttribute<GovernanceRules, GovernanceIdentificationCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(GovernanceIdentification1Choice.mmCode, GovernanceIdentification1Choice.mmProprietary, GovernanceRules1.mmRuleIdentification, GovernanceRules2.mmRuleIdentification);
 			isDerived = false;
@@ -206,18 +218,20 @@ public class GovernanceRules {
 			simpleType_lazy = () -> GovernanceIdentificationCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return GovernanceRules.class.getMethod("getIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public GovernanceIdentificationCode getValue(GovernanceRules obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(GovernanceRules obj, GovernanceIdentificationCode value) {
+			obj.setIdentification(value);
 		}
 	};
 	protected Max35Text applicableLaw;
 	/**
-	 * Law under which the undertaking has been issued.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -251,7 +265,7 @@ public class GovernanceRules {
 	 * definition} = "Law under which the undertaking has been issued."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmApplicableLaw = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<GovernanceRules, Max35Text> mmApplicableLaw = new MMBusinessAttribute<GovernanceRules, Max35Text>() {
 		{
 			derivation_lazy = () -> Arrays.asList(GovernanceRules1.mmApplicableLaw, GovernanceRules2.mmApplicableLaw);
 			isDerived = false;
@@ -264,18 +278,20 @@ public class GovernanceRules {
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return GovernanceRules.class.getMethod("getApplicableLaw", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max35Text getValue(GovernanceRules obj) {
+			return obj.getApplicableLaw();
+		}
+
+		@Override
+		public void setValue(GovernanceRules obj, Max35Text value) {
+			obj.setApplicableLaw(value);
 		}
 	};
 	protected Jurisdiction jurisdiction;
 	/**
-	 * Jurisdiction which applies to the governance rules.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -317,7 +333,7 @@ public class GovernanceRules {
 	 * definition} = "Jurisdiction which applies to the governance rules."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmJurisdiction = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<GovernanceRules, Jurisdiction> mmJurisdiction = new MMBusinessAssociationEnd<GovernanceRules, Jurisdiction>() {
 		{
 			derivation_lazy = () -> Arrays.asList(GovernanceRules1.mmJurisdiction, GovernanceRules2.mmJurisdiction);
 			isDerived = false;
@@ -327,15 +343,25 @@ public class GovernanceRules {
 			definition = "Jurisdiction which applies to the governance rules.";
 			maxOccurs = 1;
 			minOccurs = 1;
-			opposite_lazy = () -> com.tools20022.repository.entity.Jurisdiction.mmGovernanceRules;
+			opposite_lazy = () -> Jurisdiction.mmGovernanceRules;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.Jurisdiction.mmObject();
+			type_lazy = () -> Jurisdiction.mmObject();
+		}
+
+		@Override
+		public Jurisdiction getValue(GovernanceRules obj) {
+			return obj.getJurisdiction();
+		}
+
+		@Override
+		public void setValue(GovernanceRules obj, Jurisdiction value) {
+			obj.setJurisdiction(value);
 		}
 	};
 	protected Max35Text publicationAgency;
 	/**
-	 * Agency that publishes the governance rules.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -358,7 +384,7 @@ public class GovernanceRules {
 	 * definition} = "Agency that publishes the governance rules."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPublicationAgency = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<GovernanceRules, Max35Text> mmPublicationAgency = new MMBusinessAttribute<GovernanceRules, Max35Text>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.GovernanceRules.mmObject();
@@ -370,23 +396,25 @@ public class GovernanceRules {
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return GovernanceRules.class.getMethod("getPublicationAgency", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max35Text getValue(GovernanceRules obj) {
+			return obj.getPublicationAgency();
+		}
+
+		@Override
+		public void setValue(GovernanceRules obj, Max35Text value) {
+			obj.setPublicationAgency(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "GovernanceRules";
 				definition = "Rules governing an undertaking such as a guarantee or standby letter of credit.";
-				associationDomain_lazy = () -> Arrays.asList(com.tools20022.repository.entity.ModelForm.mmGovernanceRules, com.tools20022.repository.entity.Jurisdiction.mmGovernanceRules);
+				associationDomain_lazy = () -> Arrays.asList(ModelForm.mmGovernanceRules, Jurisdiction.mmGovernanceRules);
 				element_lazy = () -> Arrays.asList(com.tools20022.repository.entity.GovernanceRules.mmModelForm, com.tools20022.repository.entity.GovernanceRules.mmIdentification,
 						com.tools20022.repository.entity.GovernanceRules.mmApplicableLaw, com.tools20022.repository.entity.GovernanceRules.mmJurisdiction, com.tools20022.repository.entity.GovernanceRules.mmPublicationAgency);
 				derivationComponent_lazy = () -> Arrays.asList(GovernanceIdentification1Choice.mmObject(), GovernanceRules1.mmObject(), GovernanceRules2.mmObject());
@@ -404,39 +432,44 @@ public class GovernanceRules {
 		return modelForm;
 	}
 
-	public void setModelForm(com.tools20022.repository.entity.ModelForm modelForm) {
-		this.modelForm = modelForm;
+	public GovernanceRules setModelForm(ModelForm modelForm) {
+		this.modelForm = Objects.requireNonNull(modelForm);
+		return this;
 	}
 
 	public GovernanceIdentificationCode getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(GovernanceIdentificationCode identification) {
-		this.identification = identification;
+	public GovernanceRules setIdentification(GovernanceIdentificationCode identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
 	public Max35Text getApplicableLaw() {
 		return applicableLaw;
 	}
 
-	public void setApplicableLaw(Max35Text applicableLaw) {
-		this.applicableLaw = applicableLaw;
+	public GovernanceRules setApplicableLaw(Max35Text applicableLaw) {
+		this.applicableLaw = Objects.requireNonNull(applicableLaw);
+		return this;
 	}
 
 	public Jurisdiction getJurisdiction() {
 		return jurisdiction;
 	}
 
-	public void setJurisdiction(com.tools20022.repository.entity.Jurisdiction jurisdiction) {
-		this.jurisdiction = jurisdiction;
+	public GovernanceRules setJurisdiction(Jurisdiction jurisdiction) {
+		this.jurisdiction = Objects.requireNonNull(jurisdiction);
+		return this;
 	}
 
 	public Max35Text getPublicationAgency() {
 		return publicationAgency;
 	}
 
-	public void setPublicationAgency(Max35Text publicationAgency) {
-		this.publicationAgency = publicationAgency;
+	public GovernanceRules setPublicationAgency(Max35Text publicationAgency) {
+		this.publicationAgency = Objects.requireNonNull(publicationAgency);
+		return this;
 	}
 }

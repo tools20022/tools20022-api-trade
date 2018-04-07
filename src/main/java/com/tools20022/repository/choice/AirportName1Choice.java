@@ -27,6 +27,7 @@ import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.AirportDescription1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -70,16 +71,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AirportName1Choice", propOrder = {"airportCode", "otherAirportDescription"})
 public class AirportName1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AirprtCd", required = true)
 	protected Max6Text airportCode;
 	/**
-	 * Identifies an airport by means of its IATA identification code. Example:
-	 * LHR.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -111,10 +112,10 @@ public class AirportName1Choice {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAirportCode = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AirportName1Choice, Max6Text> mmAirportCode = new MMMessageAttribute<AirportName1Choice, Max6Text>() {
 		{
 			businessElementTrace_lazy = () -> TransportByAir.mmAirportName;
-			componentContext_lazy = () -> AirportName1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AirportName1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "AirprtCd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -124,11 +125,22 @@ public class AirportName1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max6Text.mmObject();
 		}
+
+		@Override
+		public Max6Text getValue(AirportName1Choice obj) {
+			return obj.getAirportCode();
+		}
+
+		@Override
+		public void setValue(AirportName1Choice obj, Max6Text value) {
+			obj.setAirportCode(value);
+		}
 	};
+	@XmlElement(name = "OthrAirprtDesc", required = true)
 	protected AirportDescription1 otherAirportDescription;
 	/**
-	 * Identifies an airport by its location and by its name.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -157,10 +169,10 @@ public class AirportName1Choice {
 	 * definition} = "Identifies an airport by its location and by its name."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOtherAirportDescription = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<AirportName1Choice, AirportDescription1> mmOtherAirportDescription = new MMMessageAssociationEnd<AirportName1Choice, AirportDescription1>() {
 		{
 			businessElementTrace_lazy = () -> TransportByAir.mmAirportName;
-			componentContext_lazy = () -> AirportName1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AirportName1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "OthrAirprtDesc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -171,14 +183,24 @@ public class AirportName1Choice {
 			isComposite = true;
 			type_lazy = () -> AirportDescription1.mmObject();
 		}
+
+		@Override
+		public AirportDescription1 getValue(AirportName1Choice obj) {
+			return obj.getOtherAirportDescription();
+		}
+
+		@Override
+		public void setValue(AirportName1Choice obj, AirportDescription1 value) {
+			obj.setOtherAirportDescription(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AirportName1Choice.mmAirportCode, AirportName1Choice.mmOtherAirportDescription);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.AirportName1Choice.mmAirportCode, com.tools20022.repository.choice.AirportName1Choice.mmOtherAirportDescription);
 				trace_lazy = () -> TransportByAir.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AirportName1Choice";
 				definition = "Identifies an airport by its code or by its name and the town where it is located.";
@@ -187,21 +209,21 @@ public class AirportName1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AirprtCd", required = true)
 	public Max6Text getAirportCode() {
 		return airportCode;
 	}
 
-	public void setAirportCode(Max6Text airportCode) {
-		this.airportCode = airportCode;
+	public AirportName1Choice setAirportCode(Max6Text airportCode) {
+		this.airportCode = Objects.requireNonNull(airportCode);
+		return this;
 	}
 
-	@XmlElement(name = "OthrAirprtDesc", required = true)
 	public AirportDescription1 getOtherAirportDescription() {
 		return otherAirportDescription;
 	}
 
-	public void setOtherAirportDescription(AirportDescription1 otherAirportDescription) {
-		this.otherAirportDescription = otherAirportDescription;
+	public AirportName1Choice setOtherAirportDescription(AirportDescription1 otherAirportDescription) {
+		this.otherAirportDescription = Objects.requireNonNull(otherAirportDescription);
+		return this;
 	}
 }

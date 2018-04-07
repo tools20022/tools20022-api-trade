@@ -26,9 +26,10 @@ import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.Reason2;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
 import com.tools20022.repository.msg.TransactionStatus3;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -91,15 +92,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "StatusChangeRequestV02", propOrder = {"requestIdentification", "transactionIdentification", "submitterTransactionReference", "requestedStatus", "requestReason"})
 public class StatusChangeRequestV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqId", required = true)
 	protected MessageIdentification1 requestIdentification;
 	/**
-	 * Identifies the request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -120,7 +122,7 @@ public class StatusChangeRequestV02 {
 	 * definition} = "Identifies the request message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusChangeRequestV02, MessageIdentification1> mmRequestIdentification = new MMMessageBuildingBlock<StatusChangeRequestV02, MessageIdentification1>() {
 		{
 			xmlTag = "ReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,20 +133,21 @@ public class StatusChangeRequestV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusChangeRequestV02.class.getMethod("getRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(StatusChangeRequestV02 obj) {
+			return obj.getRequestIdentification();
+		}
+
+		@Override
+		public void setValue(StatusChangeRequestV02 obj, MessageIdentification1 value) {
+			obj.setRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -167,7 +170,7 @@ public class StatusChangeRequestV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusChangeRequestV02, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<StatusChangeRequestV02, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -178,18 +181,21 @@ public class StatusChangeRequestV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusChangeRequestV02.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(StatusChangeRequestV02 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(StatusChangeRequestV02 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -211,7 +217,7 @@ public class StatusChangeRequestV02 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusChangeRequestV02, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<StatusChangeRequestV02, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -222,19 +228,21 @@ public class StatusChangeRequestV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusChangeRequestV02.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(StatusChangeRequestV02 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(StatusChangeRequestV02 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ReqdSts", required = true)
 	protected TransactionStatus3 requestedStatus;
 	/**
-	 * Specifies the baseline status requested by the submitter by means of a
-	 * code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -253,33 +261,36 @@ public class StatusChangeRequestV02 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Specifies the baseline status requested by the submitter by means of a code. "
+	 * "Specifies the baseline status requested by the submitter by means of a code."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestedStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusChangeRequestV02, TransactionStatus3> mmRequestedStatus = new MMMessageBuildingBlock<StatusChangeRequestV02, TransactionStatus3>() {
 		{
 			xmlTag = "ReqdSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "RequestedStatus";
-			definition = "Specifies the baseline status requested by the submitter by means of a code. ";
+			definition = "Specifies the baseline status requested by the submitter by means of a code.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> TransactionStatus3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusChangeRequestV02.class.getMethod("getRequestedStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus3 getValue(StatusChangeRequestV02 obj) {
+			return obj.getRequestedStatus();
+		}
+
+		@Override
+		public void setValue(StatusChangeRequestV02 obj, TransactionStatus3 value) {
+			obj.setRequestedStatus(value);
 		}
 	};
+	@XmlElement(name = "ReqRsn")
 	protected Reason2 requestReason;
 	/**
-	 * Specifies the reason for the request to change status.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -299,7 +310,7 @@ public class StatusChangeRequestV02 {
 	 * definition} = "Specifies the reason for the request to change status."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestReason = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusChangeRequestV02, Optional<Reason2>> mmRequestReason = new MMMessageBuildingBlock<StatusChangeRequestV02, Optional<Reason2>>() {
 		{
 			xmlTag = "ReqRsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -310,12 +321,14 @@ public class StatusChangeRequestV02 {
 			complexType_lazy = () -> Reason2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusChangeRequestV02.class.getMethod("getRequestReason", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Reason2> getValue(StatusChangeRequestV02 obj) {
+			return obj.getRequestReason();
+		}
+
+		@Override
+		public void setValue(StatusChangeRequestV02 obj, Optional<Reason2> value) {
+			obj.setRequestReason(value.orElse(null));
 		}
 	};
 
@@ -349,52 +362,52 @@ public class StatusChangeRequestV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqId", required = true)
 	public MessageIdentification1 getRequestIdentification() {
 		return requestIdentification;
 	}
 
-	public void setRequestIdentification(MessageIdentification1 requestIdentification) {
-		this.requestIdentification = requestIdentification;
+	public StatusChangeRequestV02 setRequestIdentification(MessageIdentification1 requestIdentification) {
+		this.requestIdentification = Objects.requireNonNull(requestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public StatusChangeRequestV02 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public StatusChangeRequestV02 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "ReqdSts", required = true)
 	public TransactionStatus3 getRequestedStatus() {
 		return requestedStatus;
 	}
 
-	public void setRequestedStatus(TransactionStatus3 requestedStatus) {
-		this.requestedStatus = requestedStatus;
+	public StatusChangeRequestV02 setRequestedStatus(TransactionStatus3 requestedStatus) {
+		this.requestedStatus = Objects.requireNonNull(requestedStatus);
+		return this;
 	}
 
-	@XmlElement(name = "ReqRsn")
-	public Reason2 getRequestReason() {
-		return requestReason;
+	public Optional<Reason2> getRequestReason() {
+		return requestReason == null ? Optional.empty() : Optional.of(requestReason);
 	}
 
-	public void setRequestReason(Reason2 requestReason) {
+	public StatusChangeRequestV02 setRequestReason(Reason2 requestReason) {
 		this.requestReason = requestReason;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.026.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.026.001.02")
 	static public class Document {
 		@XmlElement(name = "StsChngReq", required = true)
 		public StatusChangeRequestV02 messageBody;

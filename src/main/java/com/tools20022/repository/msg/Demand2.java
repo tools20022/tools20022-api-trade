@@ -26,9 +26,11 @@ import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.Demand;
 import com.tools20022.repository.GeneratedRepository;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -59,8 +61,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -71,16 +73,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information about the demand."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Demand2", propOrder = {"identification", "submissionDateTime", "amount", "additionalInformation"})
 public class Demand2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Unique and unambiguous identifier assigned by the presenting party to the
-	 * demand.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -106,9 +108,9 @@ public class Demand2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Demand2, Max35Text> mmIdentification = new MMMessageAttribute<Demand2, Max35Text>() {
 		{
-			componentContext_lazy = () -> Demand2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Demand2.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,11 +120,22 @@ public class Demand2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(Demand2 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(Demand2 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "SubmissnDtTm", required = true)
 	protected ISODateTime submissionDateTime;
 	/**
-	 * Date and time the demand is submitted.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -151,10 +164,10 @@ public class Demand2 {
 	 * definition} = "Date and time the demand is submitted."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmSubmissionDateTime = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Demand2, ISODateTime> mmSubmissionDateTime = new MMMessageAttribute<Demand2, ISODateTime>() {
 		{
 			businessElementTrace_lazy = () -> Demand.mmSubmissionDateTime;
-			componentContext_lazy = () -> Demand2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Demand2.mmObject();
 			isDerived = false;
 			xmlTag = "SubmissnDtTm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -164,11 +177,22 @@ public class Demand2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODateTime.mmObject();
 		}
+
+		@Override
+		public ISODateTime getValue(Demand2 obj) {
+			return obj.getSubmissionDateTime();
+		}
+
+		@Override
+		public void setValue(Demand2 obj, ISODateTime value) {
+			obj.setSubmissionDateTime(value);
+		}
 	};
+	@XmlElement(name = "Amt", required = true)
 	protected ActiveCurrencyAndAmount amount;
 	/**
-	 * Amount and currency of the demand.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -198,10 +222,10 @@ public class Demand2 {
 	 * definition} = "Amount and currency of the demand."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Demand2, ActiveCurrencyAndAmount> mmAmount = new MMMessageAttribute<Demand2, ActiveCurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> Demand.mmDemandAmount;
-			componentContext_lazy = () -> Demand2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Demand2.mmObject();
 			isDerived = false;
 			xmlTag = "Amt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -211,11 +235,22 @@ public class Demand2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(Demand2 obj) {
+			return obj.getAmount();
+		}
+
+		@Override
+		public void setValue(Demand2 obj, ActiveCurrencyAndAmount value) {
+			obj.setAmount(value);
+		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the demand.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -239,9 +274,9 @@ public class Demand2 {
 	 * definition} = "Additional information related to the demand."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Demand2, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<Demand2, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> Demand2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Demand2.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -251,14 +286,25 @@ public class Demand2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(Demand2 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(Demand2 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Demand2.mmIdentification, Demand2.mmSubmissionDateTime, Demand2.mmAmount, Demand2.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Demand2.mmIdentification, com.tools20022.repository.msg.Demand2.mmSubmissionDateTime, com.tools20022.repository.msg.Demand2.mmAmount,
+						com.tools20022.repository.msg.Demand2.mmAdditionalInformation);
 				trace_lazy = () -> Demand.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Demand2";
 				definition = "Information about the demand.";
@@ -267,39 +313,39 @@ public class Demand2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public Demand2 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmissnDtTm", required = true)
 	public ISODateTime getSubmissionDateTime() {
 		return submissionDateTime;
 	}
 
-	public void setSubmissionDateTime(ISODateTime submissionDateTime) {
-		this.submissionDateTime = submissionDateTime;
+	public Demand2 setSubmissionDateTime(ISODateTime submissionDateTime) {
+		this.submissionDateTime = Objects.requireNonNull(submissionDateTime);
+		return this;
 	}
 
-	@XmlElement(name = "Amt", required = true)
 	public ActiveCurrencyAndAmount getAmount() {
 		return amount;
 	}
 
-	public void setAmount(ActiveCurrencyAndAmount amount) {
-		this.amount = amount;
+	public Demand2 setAmount(ActiveCurrencyAndAmount amount) {
+		this.amount = Objects.requireNonNull(amount);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public Demand2 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

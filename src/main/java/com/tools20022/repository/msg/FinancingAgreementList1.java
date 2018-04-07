@@ -30,9 +30,9 @@ import com.tools20022.repository.entity.Document;
 import com.tools20022.repository.entity.InvoiceFinancingAgreement;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -112,8 +112,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -125,16 +125,17 @@ import javax.xml.bind.annotation.XmlType;
  * "Defines a list of party management registration and guarantee requests."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "FinancingAgreementList1", propOrder = {"identifier", "date", "relatedDocument", "agreementRequestor", "agreementResponder", "guaranteeApplicant", "guaranteeBeneficiary", "guaranteeIssuer", "notificationInformation",
 		"item", "itemCount", "controlSum", "additionalInformation", "validationStatusInformation"})
 public class FinancingAgreementList1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Idr", required = true)
 	protected Max35Text identifier;
 	/**
-	 * Identification assigned to unambiguously identify the agreement list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -165,10 +166,10 @@ public class FinancingAgreementList1 {
 	 * "Identification assigned to unambiguously identify the agreement list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentifier = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAgreementList1, Max35Text> mmIdentifier = new MMMessageAttribute<FinancingAgreementList1, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "Idr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -178,11 +179,22 @@ public class FinancingAgreementList1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(FinancingAgreementList1 obj) {
+			return obj.getIdentifier();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, Max35Text value) {
+			obj.setIdentifier(value);
+		}
 	};
+	@XmlElement(name = "Dt", required = true)
 	protected ISODate date;
 	/**
-	 * Creation date of this list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,10 +224,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Creation date of this list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAgreementList1, ISODate> mmDate = new MMMessageAttribute<FinancingAgreementList1, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmIssueDate;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "Dt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -225,11 +237,22 @@ public class FinancingAgreementList1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(FinancingAgreementList1 obj) {
+			return obj.getDate();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, ISODate value) {
+			obj.setDate(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedDocument;
+	@XmlElement(name = "RltdDoc")
+	protected List<QualifiedDocumentInformation1> relatedDocument;
 	/**
-	 * Reference to related document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -258,10 +281,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Reference to related document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmRelatedDocument = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, List<QualifiedDocumentInformation1>> mmRelatedDocument = new MMMessageAssociationEnd<FinancingAgreementList1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "RltdDoc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -269,13 +292,24 @@ public class FinancingAgreementList1 {
 			definition = "Reference to related document.";
 			minOccurs = 0;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(FinancingAgreementList1 obj) {
+			return obj.getRelatedDocument();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setRelatedDocument(value);
 		}
 	};
+	@XmlElement(name = "AgrmtRqstr", required = true)
 	protected QualifiedPartyIdentification1 agreementRequestor;
 	/**
-	 * Requestor of the agreement(s).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -305,10 +339,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Requestor of the agreement(s)."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAgreementRequestor = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1> mmAgreementRequestor = new MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "AgrmtRqstr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -317,13 +351,24 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(FinancingAgreementList1 obj) {
+			return obj.getAgreementRequestor();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, QualifiedPartyIdentification1 value) {
+			obj.setAgreementRequestor(value);
 		}
 	};
+	@XmlElement(name = "AgrmtRspndr", required = true)
 	protected QualifiedPartyIdentification1 agreementResponder;
 	/**
-	 * Party the agreement(s) are (to be) made with.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -353,10 +398,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Party the agreement(s) are (to be) made with."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAgreementResponder = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1> mmAgreementResponder = new MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "AgrmtRspndr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -365,13 +410,24 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(FinancingAgreementList1 obj) {
+			return obj.getAgreementResponder();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, QualifiedPartyIdentification1 value) {
+			obj.setAgreementResponder(value);
 		}
 	};
+	@XmlElement(name = "GrntApplcnt", required = true)
 	protected QualifiedPartyIdentification1 guaranteeApplicant;
 	/**
-	 * Applicant of the guarantee.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -401,10 +457,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Applicant of the guarantee."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmGuaranteeApplicant = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1> mmGuaranteeApplicant = new MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "GrntApplcnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -413,13 +469,24 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(FinancingAgreementList1 obj) {
+			return obj.getGuaranteeApplicant();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, QualifiedPartyIdentification1 value) {
+			obj.setGuaranteeApplicant(value);
 		}
 	};
+	@XmlElement(name = "GrntNbfcry", required = true)
 	protected QualifiedPartyIdentification1 guaranteeBeneficiary;
 	/**
-	 * Beneficiary of the guarantee.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -449,10 +516,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Beneficiary of the guarantee."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmGuaranteeBeneficiary = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1> mmGuaranteeBeneficiary = new MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "GrntNbfcry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -461,13 +528,24 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(FinancingAgreementList1 obj) {
+			return obj.getGuaranteeBeneficiary();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, QualifiedPartyIdentification1 value) {
+			obj.setGuaranteeBeneficiary(value);
 		}
 	};
+	@XmlElement(name = "GrntIssr", required = true)
 	protected QualifiedPartyIdentification1 guaranteeIssuer;
 	/**
-	 * Party that issues the guarantee.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -497,10 +575,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Party that issues the guarantee."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmGuaranteeIssuer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1> mmGuaranteeIssuer = new MMMessageAssociationEnd<FinancingAgreementList1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "GrntIssr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -509,13 +587,24 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(FinancingAgreementList1 obj) {
+			return obj.getGuaranteeIssuer();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, QualifiedPartyIdentification1 value) {
+			obj.setGuaranteeIssuer(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.FinancingNotificationParties1> notificationInformation;
+	@XmlElement(name = "NtfctnInf")
+	protected List<FinancingNotificationParties1> notificationInformation;
 	/**
-	 * Party or parties to notify and to acknowledge the agreement.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -546,10 +635,10 @@ public class FinancingAgreementList1 {
 	 * "Party or parties to notify and to acknowledge the agreement."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmNotificationInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, List<FinancingNotificationParties1>> mmNotificationInformation = new MMMessageAssociationEnd<FinancingAgreementList1, List<FinancingNotificationParties1>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmPartyRole;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "NtfctnInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -557,13 +646,24 @@ public class FinancingAgreementList1 {
 			definition = "Party or parties to notify and to acknowledge the agreement.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancingNotificationParties1.mmObject();
+			type_lazy = () -> FinancingNotificationParties1.mmObject();
+		}
+
+		@Override
+		public List<FinancingNotificationParties1> getValue(FinancingAgreementList1 obj) {
+			return obj.getNotificationInformation();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, List<FinancingNotificationParties1> value) {
+			obj.setNotificationInformation(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.FinancingAgreementItem1> item;
+	@XmlElement(name = "Itm", required = true)
+	protected List<FinancingAgreementItem1> item;
 	/**
-	 * List of agreement items.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -593,10 +693,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "List of agreement items."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmItem = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, List<FinancingAgreementItem1>> mmItem = new MMMessageAssociationEnd<FinancingAgreementList1, List<FinancingAgreementItem1>>() {
 		{
 			businessComponentTrace_lazy = () -> InvoiceFinancingAgreement.mmObject();
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "Itm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -604,13 +704,24 @@ public class FinancingAgreementList1 {
 			definition = "List of agreement items.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancingAgreementItem1.mmObject();
+			type_lazy = () -> FinancingAgreementItem1.mmObject();
+		}
+
+		@Override
+		public List<FinancingAgreementItem1> getValue(FinancingAgreementList1 obj) {
+			return obj.getItem();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, List<FinancingAgreementItem1> value) {
+			obj.setItem(value);
 		}
 	};
+	@XmlElement(name = "ItmCnt", required = true)
 	protected Max15NumericText itemCount;
 	/**
-	 * Number of individual items contained in the list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -636,9 +747,9 @@ public class FinancingAgreementList1 {
 	 * definition} = "Number of individual items contained in the list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmItemCount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAgreementList1, Max15NumericText> mmItemCount = new MMMessageAttribute<FinancingAgreementList1, Max15NumericText>() {
 		{
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "ItmCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -648,12 +759,22 @@ public class FinancingAgreementList1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
+
+		@Override
+		public Max15NumericText getValue(FinancingAgreementList1 obj) {
+			return obj.getItemCount();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, Max15NumericText value) {
+			obj.setItemCount(value);
+		}
 	};
+	@XmlElement(name = "CtrlSum")
 	protected DecimalNumber controlSum;
 	/**
-	 * Total of all individual amounts included in the list, irrespective of
-	 * currencies.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -681,9 +802,9 @@ public class FinancingAgreementList1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmControlSum = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAgreementList1, Optional<DecimalNumber>> mmControlSum = new MMMessageAttribute<FinancingAgreementList1, Optional<DecimalNumber>>() {
 		{
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "CtrlSum";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -693,11 +814,22 @@ public class FinancingAgreementList1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
+
+		@Override
+		public Optional<DecimalNumber> getValue(FinancingAgreementList1 obj) {
+			return obj.getControlSum();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, Optional<DecimalNumber> value) {
+			obj.setControlSum(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected Max2000Text additionalInformation;
 	/**
-	 * Additional proprietary formal information concerning the list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -723,9 +855,9 @@ public class FinancingAgreementList1 {
 	 * "Additional proprietary formal information concerning the list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAgreementList1, Optional<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<FinancingAgreementList1, Optional<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -735,11 +867,22 @@ public class FinancingAgreementList1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max2000Text> getValue(FinancingAgreementList1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, Optional<Max2000Text> value) {
+			obj.setAdditionalInformation(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "VldtnStsInf")
 	protected ValidationStatusInformation1 validationStatusInformation;
 	/**
-	 * Validation status of the list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -769,10 +912,10 @@ public class FinancingAgreementList1 {
 	 * definition} = "Validation status of the list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmValidationStatusInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAgreementList1, Optional<ValidationStatusInformation1>> mmValidationStatusInformation = new MMMessageAssociationEnd<FinancingAgreementList1, Optional<ValidationStatusInformation1>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> FinancingAgreementList1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAgreementList1.mmObject();
 			isDerived = false;
 			xmlTag = "VldtnStsInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -781,21 +924,34 @@ public class FinancingAgreementList1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ValidationStatusInformation1.mmObject();
+			type_lazy = () -> ValidationStatusInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<ValidationStatusInformation1> getValue(FinancingAgreementList1 obj) {
+			return obj.getValidationStatusInformation();
+		}
+
+		@Override
+		public void setValue(FinancingAgreementList1 obj, Optional<ValidationStatusInformation1> value) {
+			obj.setValidationStatusInformation(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(FinancingAgreementList1.mmIdentifier, FinancingAgreementList1.mmDate, FinancingAgreementList1.mmRelatedDocument, FinancingAgreementList1.mmAgreementRequestor,
-						FinancingAgreementList1.mmAgreementResponder, FinancingAgreementList1.mmGuaranteeApplicant, FinancingAgreementList1.mmGuaranteeBeneficiary, FinancingAgreementList1.mmGuaranteeIssuer,
-						FinancingAgreementList1.mmNotificationInformation, FinancingAgreementList1.mmItem, FinancingAgreementList1.mmItemCount, FinancingAgreementList1.mmControlSum, FinancingAgreementList1.mmAdditionalInformation,
-						FinancingAgreementList1.mmValidationStatusInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.FinancingAgreementList1.mmIdentifier, com.tools20022.repository.msg.FinancingAgreementList1.mmDate,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmRelatedDocument, com.tools20022.repository.msg.FinancingAgreementList1.mmAgreementRequestor,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmAgreementResponder, com.tools20022.repository.msg.FinancingAgreementList1.mmGuaranteeApplicant,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmGuaranteeBeneficiary, com.tools20022.repository.msg.FinancingAgreementList1.mmGuaranteeIssuer,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmNotificationInformation, com.tools20022.repository.msg.FinancingAgreementList1.mmItem, com.tools20022.repository.msg.FinancingAgreementList1.mmItemCount,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmControlSum, com.tools20022.repository.msg.FinancingAgreementList1.mmAdditionalInformation,
+						com.tools20022.repository.msg.FinancingAgreementList1.mmValidationStatusInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(PartyRegistrationAndGuaranteeAcknowledgementV01.mmAcknowledgementList, PartyRegistrationAndGuaranteeStatusV01.mmAgreementList,
 						PartyRegistrationAndGuaranteeNotificationV01.mmNotificationList, PartyRegistrationAndGuaranteeRequestV01.mmAgreementList);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "FinancingAgreementList1";
 				definition = "Defines a list of party management registration and guarantee requests.";
@@ -804,129 +960,129 @@ public class FinancingAgreementList1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Idr", required = true)
 	public Max35Text getIdentifier() {
 		return identifier;
 	}
 
-	public void setIdentifier(Max35Text identifier) {
-		this.identifier = identifier;
+	public FinancingAgreementList1 setIdentifier(Max35Text identifier) {
+		this.identifier = Objects.requireNonNull(identifier);
+		return this;
 	}
 
-	@XmlElement(name = "Dt", required = true)
 	public ISODate getDate() {
 		return date;
 	}
 
-	public void setDate(ISODate date) {
-		this.date = date;
+	public FinancingAgreementList1 setDate(ISODate date) {
+		this.date = Objects.requireNonNull(date);
+		return this;
 	}
 
-	@XmlElement(name = "RltdDoc")
 	public List<QualifiedDocumentInformation1> getRelatedDocument() {
-		return relatedDocument;
+		return relatedDocument == null ? relatedDocument = new ArrayList<>() : relatedDocument;
 	}
 
-	public void setRelatedDocument(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedDocument) {
-		this.relatedDocument = relatedDocument;
+	public FinancingAgreementList1 setRelatedDocument(List<QualifiedDocumentInformation1> relatedDocument) {
+		this.relatedDocument = Objects.requireNonNull(relatedDocument);
+		return this;
 	}
 
-	@XmlElement(name = "AgrmtRqstr", required = true)
 	public QualifiedPartyIdentification1 getAgreementRequestor() {
 		return agreementRequestor;
 	}
 
-	public void setAgreementRequestor(com.tools20022.repository.msg.QualifiedPartyIdentification1 agreementRequestor) {
-		this.agreementRequestor = agreementRequestor;
+	public FinancingAgreementList1 setAgreementRequestor(QualifiedPartyIdentification1 agreementRequestor) {
+		this.agreementRequestor = Objects.requireNonNull(agreementRequestor);
+		return this;
 	}
 
-	@XmlElement(name = "AgrmtRspndr", required = true)
 	public QualifiedPartyIdentification1 getAgreementResponder() {
 		return agreementResponder;
 	}
 
-	public void setAgreementResponder(com.tools20022.repository.msg.QualifiedPartyIdentification1 agreementResponder) {
-		this.agreementResponder = agreementResponder;
+	public FinancingAgreementList1 setAgreementResponder(QualifiedPartyIdentification1 agreementResponder) {
+		this.agreementResponder = Objects.requireNonNull(agreementResponder);
+		return this;
 	}
 
-	@XmlElement(name = "GrntApplcnt", required = true)
 	public QualifiedPartyIdentification1 getGuaranteeApplicant() {
 		return guaranteeApplicant;
 	}
 
-	public void setGuaranteeApplicant(com.tools20022.repository.msg.QualifiedPartyIdentification1 guaranteeApplicant) {
-		this.guaranteeApplicant = guaranteeApplicant;
+	public FinancingAgreementList1 setGuaranteeApplicant(QualifiedPartyIdentification1 guaranteeApplicant) {
+		this.guaranteeApplicant = Objects.requireNonNull(guaranteeApplicant);
+		return this;
 	}
 
-	@XmlElement(name = "GrntNbfcry", required = true)
 	public QualifiedPartyIdentification1 getGuaranteeBeneficiary() {
 		return guaranteeBeneficiary;
 	}
 
-	public void setGuaranteeBeneficiary(com.tools20022.repository.msg.QualifiedPartyIdentification1 guaranteeBeneficiary) {
-		this.guaranteeBeneficiary = guaranteeBeneficiary;
+	public FinancingAgreementList1 setGuaranteeBeneficiary(QualifiedPartyIdentification1 guaranteeBeneficiary) {
+		this.guaranteeBeneficiary = Objects.requireNonNull(guaranteeBeneficiary);
+		return this;
 	}
 
-	@XmlElement(name = "GrntIssr", required = true)
 	public QualifiedPartyIdentification1 getGuaranteeIssuer() {
 		return guaranteeIssuer;
 	}
 
-	public void setGuaranteeIssuer(com.tools20022.repository.msg.QualifiedPartyIdentification1 guaranteeIssuer) {
-		this.guaranteeIssuer = guaranteeIssuer;
+	public FinancingAgreementList1 setGuaranteeIssuer(QualifiedPartyIdentification1 guaranteeIssuer) {
+		this.guaranteeIssuer = Objects.requireNonNull(guaranteeIssuer);
+		return this;
 	}
 
-	@XmlElement(name = "NtfctnInf")
 	public List<FinancingNotificationParties1> getNotificationInformation() {
-		return notificationInformation;
+		return notificationInformation == null ? notificationInformation = new ArrayList<>() : notificationInformation;
 	}
 
-	public void setNotificationInformation(List<com.tools20022.repository.msg.FinancingNotificationParties1> notificationInformation) {
-		this.notificationInformation = notificationInformation;
+	public FinancingAgreementList1 setNotificationInformation(List<FinancingNotificationParties1> notificationInformation) {
+		this.notificationInformation = Objects.requireNonNull(notificationInformation);
+		return this;
 	}
 
-	@XmlElement(name = "Itm", required = true)
 	public List<FinancingAgreementItem1> getItem() {
-		return item;
+		return item == null ? item = new ArrayList<>() : item;
 	}
 
-	public void setItem(List<com.tools20022.repository.msg.FinancingAgreementItem1> item) {
-		this.item = item;
+	public FinancingAgreementList1 setItem(List<FinancingAgreementItem1> item) {
+		this.item = Objects.requireNonNull(item);
+		return this;
 	}
 
-	@XmlElement(name = "ItmCnt", required = true)
 	public Max15NumericText getItemCount() {
 		return itemCount;
 	}
 
-	public void setItemCount(Max15NumericText itemCount) {
-		this.itemCount = itemCount;
+	public FinancingAgreementList1 setItemCount(Max15NumericText itemCount) {
+		this.itemCount = Objects.requireNonNull(itemCount);
+		return this;
 	}
 
-	@XmlElement(name = "CtrlSum")
-	public DecimalNumber getControlSum() {
-		return controlSum;
+	public Optional<DecimalNumber> getControlSum() {
+		return controlSum == null ? Optional.empty() : Optional.of(controlSum);
 	}
 
-	public void setControlSum(DecimalNumber controlSum) {
+	public FinancingAgreementList1 setControlSum(DecimalNumber controlSum) {
 		this.controlSum = controlSum;
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
-	public Max2000Text getAdditionalInformation() {
-		return additionalInformation;
+	public Optional<Max2000Text> getAdditionalInformation() {
+		return additionalInformation == null ? Optional.empty() : Optional.of(additionalInformation);
 	}
 
-	public void setAdditionalInformation(Max2000Text additionalInformation) {
+	public FinancingAgreementList1 setAdditionalInformation(Max2000Text additionalInformation) {
 		this.additionalInformation = additionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "VldtnStsInf")
-	public ValidationStatusInformation1 getValidationStatusInformation() {
-		return validationStatusInformation;
+	public Optional<ValidationStatusInformation1> getValidationStatusInformation() {
+		return validationStatusInformation == null ? Optional.empty() : Optional.of(validationStatusInformation);
 	}
 
-	public void setValidationStatusInformation(com.tools20022.repository.msg.ValidationStatusInformation1 validationStatusInformation) {
+	public FinancingAgreementList1 setValidationStatusInformation(ValidationStatusInformation1 validationStatusInformation) {
 		this.validationStatusInformation = validationStatusInformation;
+		return this;
 	}
 }

@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.MasterAgreement;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -63,21 +64,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Rules which apply to the BPO (Bank Payment Obligation)."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "BPOApplicableRules1Choice", propOrder = {"URBPOVersion", "otherRulesAndVersion"})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(name = "BPOApplicableRules1Choice", propOrder = {"uRBPOVersion", "otherRulesAndVersion"})
 public class BPOApplicableRules1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "URBPOVrsn", required = true)
 	protected DecimalNumber uRBPOVersion;
 	/**
-	 * URBPO are rules that apply to a BPO when the Payment Obligation Segment
-	 * within an Established Baseline expressly states that it is subject to
-	 * these rules or when each Involved Bank agrees in a separate agreement
-	 * that a BPO is subject to these rules. If an Established Baseline or
-	 * separate agreement does not indicate the applicable version of URBPO, the
-	 * BPO will be subject to the latest version in effect when the Baseline is
-	 * established in accordance with sub-article 9 (d).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -105,9 +101,9 @@ public class BPOApplicableRules1Choice {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmURBPOVersion = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BPOApplicableRules1Choice, DecimalNumber> mmURBPOVersion = new MMMessageAttribute<BPOApplicableRules1Choice, DecimalNumber>() {
 		{
-			componentContext_lazy = () -> BPOApplicableRules1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.BPOApplicableRules1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "URBPOVrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -117,11 +113,22 @@ public class BPOApplicableRules1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
+
+		@Override
+		public DecimalNumber getValue(BPOApplicableRules1Choice obj) {
+			return obj.getURBPOVersion();
+		}
+
+		@Override
+		public void setValue(BPOApplicableRules1Choice obj, DecimalNumber value) {
+			obj.setURBPOVersion(value);
+		}
 	};
+	@XmlElement(name = "OthrRulesAndVrsn", required = true)
 	protected Max35Text otherRulesAndVersion;
 	/**
-	 * Applicable rules are not URBPO and are specified here with version.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -152,10 +159,10 @@ public class BPOApplicableRules1Choice {
 	 * "Applicable rules are not URBPO and are specified here with version."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmOtherRulesAndVersion = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BPOApplicableRules1Choice, Max35Text> mmOtherRulesAndVersion = new MMMessageAttribute<BPOApplicableRules1Choice, Max35Text>() {
 		{
 			businessComponentTrace_lazy = () -> MasterAgreement.mmObject();
-			componentContext_lazy = () -> BPOApplicableRules1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.BPOApplicableRules1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "OthrRulesAndVrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -165,13 +172,23 @@ public class BPOApplicableRules1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(BPOApplicableRules1Choice obj) {
+			return obj.getOtherRulesAndVersion();
+		}
+
+		@Override
+		public void setValue(BPOApplicableRules1Choice obj, Max35Text value) {
+			obj.setOtherRulesAndVersion(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(BPOApplicableRules1Choice.mmURBPOVersion, BPOApplicableRules1Choice.mmOtherRulesAndVersion);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.BPOApplicableRules1Choice.mmURBPOVersion, com.tools20022.repository.choice.BPOApplicableRules1Choice.mmOtherRulesAndVersion);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "BPOApplicableRules1Choice";
 				definition = "Rules which apply to the BPO (Bank Payment Obligation).";
@@ -180,21 +197,21 @@ public class BPOApplicableRules1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "URBPOVrsn", required = true)
 	public DecimalNumber getURBPOVersion() {
 		return uRBPOVersion;
 	}
 
-	public void setURBPOVersion(DecimalNumber uRBPOVersion) {
-		this.uRBPOVersion = uRBPOVersion;
+	public BPOApplicableRules1Choice setURBPOVersion(DecimalNumber uRBPOVersion) {
+		this.uRBPOVersion = Objects.requireNonNull(uRBPOVersion);
+		return this;
 	}
 
-	@XmlElement(name = "OthrRulesAndVrsn", required = true)
 	public Max35Text getOtherRulesAndVersion() {
 		return otherRulesAndVersion;
 	}
 
-	public void setOtherRulesAndVersion(Max35Text otherRulesAndVersion) {
-		this.otherRulesAndVersion = otherRulesAndVersion;
+	public BPOApplicableRules1Choice setOtherRulesAndVersion(Max35Text otherRulesAndVersion) {
+		this.otherRulesAndVersion = Objects.requireNonNull(otherRulesAndVersion);
+		return this;
 	}
 }

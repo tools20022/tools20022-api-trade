@@ -27,10 +27,8 @@ import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.PartyIdentification43;
 import com.tools20022.repository.msg.UndertakingAdvice1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -93,15 +91,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingIssuanceAdviceV01", propOrder = {"advisingParty", "secondAdvisingParty", "dateOfAdvice", "undertakingIssuanceAdviceDetails", "bankToBankInformation", "digitalSignature"})
 public class UndertakingIssuanceAdviceV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AdvsgPty", required = true)
 	protected PartyIdentification43 advisingParty;
 	/**
-	 * Party advising the undertaking to the beneficiary or to another party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -123,7 +122,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * "Party advising the undertaking to the beneficiary or to another party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAdvisingParty = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, PartyIdentification43> mmAdvisingParty = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, PartyIdentification43>() {
 		{
 			xmlTag = "AdvsgPty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -134,18 +133,21 @@ public class UndertakingIssuanceAdviceV01 {
 			complexType_lazy = () -> PartyIdentification43.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getAdvisingParty", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PartyIdentification43 getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getAdvisingParty();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, PartyIdentification43 value) {
+			obj.setAdvisingParty(value);
 		}
 	};
+	@XmlElement(name = "ScndAdvsgPty")
 	protected PartyIdentification43 secondAdvisingParty;
 	/**
-	 * Additional party that advises the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -166,7 +168,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * definition} = "Additional party that advises the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSecondAdvisingParty = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, Optional<PartyIdentification43>> mmSecondAdvisingParty = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, Optional<PartyIdentification43>>() {
 		{
 			xmlTag = "ScndAdvsgPty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,18 +179,21 @@ public class UndertakingIssuanceAdviceV01 {
 			complexType_lazy = () -> PartyIdentification43.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getSecondAdvisingParty", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyIdentification43> getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getSecondAdvisingParty();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, Optional<PartyIdentification43> value) {
+			obj.setSecondAdvisingParty(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DtOfAdvc", required = true)
 	protected DateAndDateTimeChoice dateOfAdvice;
 	/**
-	 * Date on which the undertaking is advised.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -209,7 +214,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * definition} = "Date on which the undertaking is advised."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDateOfAdvice = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, DateAndDateTimeChoice> mmDateOfAdvice = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, DateAndDateTimeChoice>() {
 		{
 			xmlTag = "DtOfAdvc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -220,18 +225,21 @@ public class UndertakingIssuanceAdviceV01 {
 			complexType_lazy = () -> DateAndDateTimeChoice.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getDateOfAdvice", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DateAndDateTimeChoice getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getDateOfAdvice();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, DateAndDateTimeChoice value) {
+			obj.setDateOfAdvice(value);
 		}
 	};
+	@XmlElement(name = "UdrtkgIssncAdvcDtls", required = true)
 	protected UndertakingAdvice1 undertakingIssuanceAdviceDetails;
 	/**
-	 * Details related to the advice of the issued undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -252,7 +260,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * definition} = "Details related to the advice of the issued undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingIssuanceAdviceDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, UndertakingAdvice1> mmUndertakingIssuanceAdviceDetails = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, UndertakingAdvice1>() {
 		{
 			xmlTag = "UdrtkgIssncAdvcDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -263,18 +271,21 @@ public class UndertakingIssuanceAdviceV01 {
 			complexType_lazy = () -> UndertakingAdvice1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getUndertakingIssuanceAdviceDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingAdvice1 getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getUndertakingIssuanceAdviceDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, UndertakingAdvice1 value) {
+			obj.setUndertakingIssuanceAdviceDetails(value);
 		}
 	};
+	@XmlElement(name = "BkToBkInf")
 	protected List<Max2000Text> bankToBankInformation;
 	/**
-	 * Additional information specific to the bank-to-bank communication.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -295,7 +306,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * "Additional information specific to the bank-to-bank communication."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBankToBankInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, List<Max2000Text>> mmBankToBankInformation = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, List<Max2000Text>>() {
 		{
 			xmlTag = "BkToBkInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -306,18 +317,21 @@ public class UndertakingIssuanceAdviceV01 {
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getBankToBankInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<Max2000Text> getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getBankToBankInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, List<Max2000Text> value) {
+			obj.setBankToBankInformation(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the undertaking advice.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -338,7 +352,7 @@ public class UndertakingIssuanceAdviceV01 {
 	 * definition} = "Digital signature of the undertaking advice."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingIssuanceAdviceV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -349,12 +363,14 @@ public class UndertakingIssuanceAdviceV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceAdviceV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingIssuanceAdviceV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceAdviceV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -388,61 +404,61 @@ public class UndertakingIssuanceAdviceV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AdvsgPty", required = true)
 	public PartyIdentification43 getAdvisingParty() {
 		return advisingParty;
 	}
 
-	public void setAdvisingParty(PartyIdentification43 advisingParty) {
-		this.advisingParty = advisingParty;
+	public UndertakingIssuanceAdviceV01 setAdvisingParty(PartyIdentification43 advisingParty) {
+		this.advisingParty = Objects.requireNonNull(advisingParty);
+		return this;
 	}
 
-	@XmlElement(name = "ScndAdvsgPty")
-	public PartyIdentification43 getSecondAdvisingParty() {
-		return secondAdvisingParty;
+	public Optional<PartyIdentification43> getSecondAdvisingParty() {
+		return secondAdvisingParty == null ? Optional.empty() : Optional.of(secondAdvisingParty);
 	}
 
-	public void setSecondAdvisingParty(PartyIdentification43 secondAdvisingParty) {
+	public UndertakingIssuanceAdviceV01 setSecondAdvisingParty(PartyIdentification43 secondAdvisingParty) {
 		this.secondAdvisingParty = secondAdvisingParty;
+		return this;
 	}
 
-	@XmlElement(name = "DtOfAdvc", required = true)
 	public DateAndDateTimeChoice getDateOfAdvice() {
 		return dateOfAdvice;
 	}
 
-	public void setDateOfAdvice(DateAndDateTimeChoice dateOfAdvice) {
-		this.dateOfAdvice = dateOfAdvice;
+	public UndertakingIssuanceAdviceV01 setDateOfAdvice(DateAndDateTimeChoice dateOfAdvice) {
+		this.dateOfAdvice = Objects.requireNonNull(dateOfAdvice);
+		return this;
 	}
 
-	@XmlElement(name = "UdrtkgIssncAdvcDtls", required = true)
 	public UndertakingAdvice1 getUndertakingIssuanceAdviceDetails() {
 		return undertakingIssuanceAdviceDetails;
 	}
 
-	public void setUndertakingIssuanceAdviceDetails(UndertakingAdvice1 undertakingIssuanceAdviceDetails) {
-		this.undertakingIssuanceAdviceDetails = undertakingIssuanceAdviceDetails;
+	public UndertakingIssuanceAdviceV01 setUndertakingIssuanceAdviceDetails(UndertakingAdvice1 undertakingIssuanceAdviceDetails) {
+		this.undertakingIssuanceAdviceDetails = Objects.requireNonNull(undertakingIssuanceAdviceDetails);
+		return this;
 	}
 
-	@XmlElement(name = "BkToBkInf")
 	public List<Max2000Text> getBankToBankInformation() {
-		return bankToBankInformation;
+		return bankToBankInformation == null ? bankToBankInformation = new ArrayList<>() : bankToBankInformation;
 	}
 
-	public void setBankToBankInformation(List<Max2000Text> bankToBankInformation) {
-		this.bankToBankInformation = bankToBankInformation;
+	public UndertakingIssuanceAdviceV01 setBankToBankInformation(List<Max2000Text> bankToBankInformation) {
+		this.bankToBankInformation = Objects.requireNonNull(bankToBankInformation);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingIssuanceAdviceV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.002.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.002.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgIssncAdvc", required = true)
 		public UndertakingIssuanceAdviceV01 messageBody;

@@ -25,9 +25,9 @@ import com.tools20022.repository.choice.AutoExtend1Choice;
 import com.tools20022.repository.datatype.ISODate;
 import com.tools20022.repository.entity.UndertakingExtension;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.NonExtension1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -58,8 +58,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -70,16 +70,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Automatic extension information."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AutoExtension1", propOrder = {"period", "finalExpiryDate", "nonExtensionNotification"})
 public class AutoExtension1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Prd")
 	protected AutoExtend1Choice period;
 	/**
-	 * Indicates that the undertaking is automatically extendable and the period
-	 * of extension.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -109,10 +109,10 @@ public class AutoExtension1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPeriod = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<AutoExtension1, Optional<AutoExtend1Choice>> mmPeriod = new MMMessageAssociationEnd<AutoExtension1, Optional<AutoExtend1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingExtension.mmAutoExtensionPeriod;
-			componentContext_lazy = () -> AutoExtension1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AutoExtension1.mmObject();
 			isDerived = false;
 			xmlTag = "Prd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -123,12 +123,22 @@ public class AutoExtension1 {
 			isComposite = true;
 			type_lazy = () -> AutoExtend1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<AutoExtend1Choice> getValue(AutoExtension1 obj) {
+			return obj.getPeriod();
+		}
+
+		@Override
+		public void setValue(AutoExtension1 obj, Optional<AutoExtend1Choice> value) {
+			obj.setPeriod(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "FnlXpryDt")
 	protected ISODate finalExpiryDate;
 	/**
-	 * Final expiry date after which the undertaking will no longer be subject
-	 * to automatic extension.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -159,10 +169,10 @@ public class AutoExtension1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFinalExpiryDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AutoExtension1, Optional<ISODate>> mmFinalExpiryDate = new MMMessageAttribute<AutoExtension1, Optional<ISODate>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingExtension.mmAutoExtensionFinalExpiryDate;
-			componentContext_lazy = () -> AutoExtension1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AutoExtension1.mmObject();
 			isDerived = false;
 			xmlTag = "FnlXpryDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -172,12 +182,22 @@ public class AutoExtension1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public Optional<ISODate> getValue(AutoExtension1 obj) {
+			return obj.getFinalExpiryDate();
+		}
+
+		@Override
+		public void setValue(AutoExtension1 obj, Optional<ISODate> value) {
+			obj.setFinalExpiryDate(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.NonExtension1> nonExtensionNotification;
+	@XmlElement(name = "NonXtnsnNtfctn")
+	protected List<NonExtension1> nonExtensionNotification;
 	/**
-	 * Details related to the notification of the end of the period for
-	 * notification of non-extension of the expiry date.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -202,9 +222,9 @@ public class AutoExtension1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmNonExtensionNotification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<AutoExtension1, List<NonExtension1>> mmNonExtensionNotification = new MMMessageAssociationEnd<AutoExtension1, List<NonExtension1>>() {
 		{
-			componentContext_lazy = () -> AutoExtension1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AutoExtension1.mmObject();
 			isDerived = false;
 			xmlTag = "NonXtnsnNtfctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -212,16 +232,27 @@ public class AutoExtension1 {
 			definition = "Details related to the notification of the end of the period for notification of non-extension of the expiry date.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.NonExtension1.mmObject();
+			type_lazy = () -> NonExtension1.mmObject();
+		}
+
+		@Override
+		public List<NonExtension1> getValue(AutoExtension1 obj) {
+			return obj.getNonExtensionNotification();
+		}
+
+		@Override
+		public void setValue(AutoExtension1 obj, List<NonExtension1> value) {
+			obj.setNonExtensionNotification(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AutoExtension1.mmPeriod, AutoExtension1.mmFinalExpiryDate, AutoExtension1.mmNonExtensionNotification);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.AutoExtension1.mmPeriod, com.tools20022.repository.msg.AutoExtension1.mmFinalExpiryDate,
+						com.tools20022.repository.msg.AutoExtension1.mmNonExtensionNotification);
 				trace_lazy = () -> UndertakingExtension.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AutoExtension1";
 				definition = "Automatic extension information.";
@@ -230,30 +261,30 @@ public class AutoExtension1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Prd")
-	public AutoExtend1Choice getPeriod() {
-		return period;
+	public Optional<AutoExtend1Choice> getPeriod() {
+		return period == null ? Optional.empty() : Optional.of(period);
 	}
 
-	public void setPeriod(AutoExtend1Choice period) {
+	public AutoExtension1 setPeriod(AutoExtend1Choice period) {
 		this.period = period;
+		return this;
 	}
 
-	@XmlElement(name = "FnlXpryDt")
-	public ISODate getFinalExpiryDate() {
-		return finalExpiryDate;
+	public Optional<ISODate> getFinalExpiryDate() {
+		return finalExpiryDate == null ? Optional.empty() : Optional.of(finalExpiryDate);
 	}
 
-	public void setFinalExpiryDate(ISODate finalExpiryDate) {
+	public AutoExtension1 setFinalExpiryDate(ISODate finalExpiryDate) {
 		this.finalExpiryDate = finalExpiryDate;
+		return this;
 	}
 
-	@XmlElement(name = "NonXtnsnNtfctn")
 	public List<NonExtension1> getNonExtensionNotification() {
-		return nonExtensionNotification;
+		return nonExtensionNotification == null ? nonExtensionNotification = new ArrayList<>() : nonExtensionNotification;
 	}
 
-	public void setNonExtensionNotification(List<com.tools20022.repository.msg.NonExtension1> nonExtensionNotification) {
-		this.nonExtensionNotification = nonExtensionNotification;
+	public AutoExtension1 setNonExtensionNotification(List<NonExtension1> nonExtensionNotification) {
+		this.nonExtensionNotification = Objects.requireNonNull(nonExtensionNotification);
+		return this;
 	}
 }

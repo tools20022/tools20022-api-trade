@@ -39,25 +39,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Deactivate
- * AgreementItemAction1Code.mmDeactivate}</li>
+ * AgreementItemAction1Code.Deactivate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Hold
- * AgreementItemAction1Code.mmHold}</li>
+ * AgreementItemAction1Code.Hold}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Modify
- * AgreementItemAction1Code.mmModify}</li>
+ * AgreementItemAction1Code.Modify}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Reactivate
- * AgreementItemAction1Code.mmReactivate}</li>
+ * AgreementItemAction1Code.Reactivate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Register
- * AgreementItemAction1Code.mmRegister}</li>
+ * AgreementItemAction1Code.Register}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Synchronize
- * AgreementItemAction1Code.mmSynchronize}</li>
+ * AgreementItemAction1Code.Synchronize}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.AgreementItemAction1Code#Verify
- * AgreementItemAction1Code.mmVerify}</li>
+ * AgreementItemAction1Code.Verify}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -66,8 +66,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -309,7 +309,7 @@ public class AgreementItemAction1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AgreementItemAction1Code";
 				definition = "Specifies the type of action concerning registration information.\r\nThe default value is OPEN.";

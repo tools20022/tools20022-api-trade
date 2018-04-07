@@ -25,6 +25,7 @@ import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +67,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UserDefinedInformation1", propOrder = {"label", "information"})
 public class UserDefinedInformation1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Labl", required = true)
 	protected Max35Text label;
 	/**
-	 * Identifies the nature of the user information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -99,9 +101,9 @@ public class UserDefinedInformation1 {
 	 * definition} = "Identifies the nature of the user information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLabel = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UserDefinedInformation1, Max35Text> mmLabel = new MMMessageAttribute<UserDefinedInformation1, Max35Text>() {
 		{
-			componentContext_lazy = () -> UserDefinedInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UserDefinedInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "Labl";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -111,11 +113,22 @@ public class UserDefinedInformation1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(UserDefinedInformation1 obj) {
+			return obj.getLabel();
+		}
+
+		@Override
+		public void setValue(UserDefinedInformation1 obj, Max35Text value) {
+			obj.setLabel(value);
+		}
 	};
+	@XmlElement(name = "Inf", required = true)
 	protected Max140Text information;
 	/**
-	 * Specifies the content of the user information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -140,9 +153,9 @@ public class UserDefinedInformation1 {
 	 * definition} = "Specifies the content of the user information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UserDefinedInformation1, Max140Text> mmInformation = new MMMessageAttribute<UserDefinedInformation1, Max140Text>() {
 		{
-			componentContext_lazy = () -> UserDefinedInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UserDefinedInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "Inf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -152,13 +165,23 @@ public class UserDefinedInformation1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Max140Text getValue(UserDefinedInformation1 obj) {
+			return obj.getInformation();
+		}
+
+		@Override
+		public void setValue(UserDefinedInformation1 obj, Max140Text value) {
+			obj.setInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UserDefinedInformation1.mmLabel, UserDefinedInformation1.mmInformation);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UserDefinedInformation1.mmLabel, com.tools20022.repository.msg.UserDefinedInformation1.mmInformation);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UserDefinedInformation1";
 				definition = "Information important for the users of the message/service, which cannot be captured in any other message component/element. For example: Warehouse number.";
@@ -167,21 +190,21 @@ public class UserDefinedInformation1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Labl", required = true)
 	public Max35Text getLabel() {
 		return label;
 	}
 
-	public void setLabel(Max35Text label) {
-		this.label = label;
+	public UserDefinedInformation1 setLabel(Max35Text label) {
+		this.label = Objects.requireNonNull(label);
+		return this;
 	}
 
-	@XmlElement(name = "Inf", required = true)
 	public Max140Text getInformation() {
 		return information;
 	}
 
-	public void setInformation(Max140Text information) {
-		this.information = information;
+	public UserDefinedInformation1 setInformation(Max140Text information) {
+		this.information = Objects.requireNonNull(information);
+		return this;
 	}
 }

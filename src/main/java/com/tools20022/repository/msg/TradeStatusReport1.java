@@ -26,9 +26,10 @@ import com.tools20022.repository.codeset.UndertakingStatus1Code;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.UndertakingStatus;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.OriginalMessage1;
+import com.tools20022.repository.msg.StatusReasonInformation8;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -71,8 +72,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -83,16 +84,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details of the trade status report."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TradeStatusReport1", propOrder = {"originalMessageDetails", "status", "statusReason", "additionalInformation"})
 public class TradeStatusReport1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "OrgnlMsgDtls", required = true)
 	protected OriginalMessage1 originalMessageDetails;
 	/**
-	 * Information concerning the original message to which the
-	 * TradeStatusReport is sent in response.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -118,9 +119,9 @@ public class TradeStatusReport1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOriginalMessageDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TradeStatusReport1, OriginalMessage1> mmOriginalMessageDetails = new MMMessageAssociationEnd<TradeStatusReport1, OriginalMessage1>() {
 		{
-			componentContext_lazy = () -> TradeStatusReport1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TradeStatusReport1.mmObject();
 			isDerived = false;
 			xmlTag = "OrgnlMsgDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,13 +130,24 @@ public class TradeStatusReport1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
+			type_lazy = () -> OriginalMessage1.mmObject();
+		}
+
+		@Override
+		public OriginalMessage1 getValue(TradeStatusReport1 obj) {
+			return obj.getOriginalMessageDetails();
+		}
+
+		@Override
+		public void setValue(TradeStatusReport1 obj, OriginalMessage1 value) {
+			obj.setOriginalMessageDetails(value);
 		}
 	};
+	@XmlElement(name = "Sts", required = true)
 	protected UndertakingStatus1Code status;
 	/**
-	 * Specifies the processing status of the original message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -166,10 +178,10 @@ public class TradeStatusReport1 {
 	 * definition} = "Specifies the processing status of the original message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmStatus = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TradeStatusReport1, UndertakingStatus1Code> mmStatus = new MMMessageAttribute<TradeStatusReport1, UndertakingStatus1Code>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatus.mmStatus;
-			componentContext_lazy = () -> TradeStatusReport1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TradeStatusReport1.mmObject();
 			isDerived = false;
 			xmlTag = "Sts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -179,12 +191,22 @@ public class TradeStatusReport1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> UndertakingStatus1Code.mmObject();
 		}
+
+		@Override
+		public UndertakingStatus1Code getValue(TradeStatusReport1 obj) {
+			return obj.getStatus();
+		}
+
+		@Override
+		public void setValue(TradeStatusReport1 obj, UndertakingStatus1Code value) {
+			obj.setStatus(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.StatusReasonInformation8> statusReason;
+	@XmlElement(name = "StsRsn")
+	protected List<StatusReasonInformation8> statusReason;
 	/**
-	 * Set of elements used to provide detailed information on the status
-	 * reason.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -216,10 +238,10 @@ public class TradeStatusReport1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmStatusReason = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TradeStatusReport1, List<StatusReasonInformation8>> mmStatusReason = new MMMessageAssociationEnd<TradeStatusReport1, List<StatusReasonInformation8>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatus.mmUndertakingStatusReason;
-			componentContext_lazy = () -> TradeStatusReport1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TradeStatusReport1.mmObject();
 			isDerived = false;
 			xmlTag = "StsRsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -227,13 +249,24 @@ public class TradeStatusReport1 {
 			definition = "Set of elements used to provide detailed information on the status reason.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.StatusReasonInformation8.mmObject();
+			type_lazy = () -> StatusReasonInformation8.mmObject();
+		}
+
+		@Override
+		public List<StatusReasonInformation8> getValue(TradeStatusReport1 obj) {
+			return obj.getStatusReason();
+		}
+
+		@Override
+		public void setValue(TradeStatusReport1 obj, List<StatusReasonInformation8> value) {
+			obj.setStatusReason(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected Max35Text additionalInformation;
 	/**
-	 * Additional information related to the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -258,9 +291,9 @@ public class TradeStatusReport1 {
 	 * definition} = "Additional information related to the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TradeStatusReport1, Optional<Max35Text>> mmAdditionalInformation = new MMMessageAttribute<TradeStatusReport1, Optional<Max35Text>>() {
 		{
-			componentContext_lazy = () -> TradeStatusReport1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TradeStatusReport1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -270,15 +303,26 @@ public class TradeStatusReport1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(TradeStatusReport1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(TradeStatusReport1 obj, Optional<Max35Text> value) {
+			obj.setAdditionalInformation(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TradeStatusReport1.mmOriginalMessageDetails, TradeStatusReport1.mmStatus, TradeStatusReport1.mmStatusReason, TradeStatusReport1.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TradeStatusReport1.mmOriginalMessageDetails, com.tools20022.repository.msg.TradeStatusReport1.mmStatus,
+						com.tools20022.repository.msg.TradeStatusReport1.mmStatusReason, com.tools20022.repository.msg.TradeStatusReport1.mmAdditionalInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(TradeStatusReportV01.mmTradeStatusAdviceDetails);
 				trace_lazy = () -> UndertakingStatus.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TradeStatusReport1";
 				definition = "Details of the trade status report.";
@@ -287,39 +331,39 @@ public class TradeStatusReport1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "OrgnlMsgDtls", required = true)
 	public OriginalMessage1 getOriginalMessageDetails() {
 		return originalMessageDetails;
 	}
 
-	public void setOriginalMessageDetails(com.tools20022.repository.msg.OriginalMessage1 originalMessageDetails) {
-		this.originalMessageDetails = originalMessageDetails;
+	public TradeStatusReport1 setOriginalMessageDetails(OriginalMessage1 originalMessageDetails) {
+		this.originalMessageDetails = Objects.requireNonNull(originalMessageDetails);
+		return this;
 	}
 
-	@XmlElement(name = "Sts", required = true)
 	public UndertakingStatus1Code getStatus() {
 		return status;
 	}
 
-	public void setStatus(UndertakingStatus1Code status) {
-		this.status = status;
+	public TradeStatusReport1 setStatus(UndertakingStatus1Code status) {
+		this.status = Objects.requireNonNull(status);
+		return this;
 	}
 
-	@XmlElement(name = "StsRsn")
 	public List<StatusReasonInformation8> getStatusReason() {
-		return statusReason;
+		return statusReason == null ? statusReason = new ArrayList<>() : statusReason;
 	}
 
-	public void setStatusReason(List<com.tools20022.repository.msg.StatusReasonInformation8> statusReason) {
-		this.statusReason = statusReason;
+	public TradeStatusReport1 setStatusReason(List<StatusReasonInformation8> statusReason) {
+		this.statusReason = Objects.requireNonNull(statusReason);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
-	public Max35Text getAdditionalInformation() {
-		return additionalInformation;
+	public Optional<Max35Text> getAdditionalInformation() {
+		return additionalInformation == null ? Optional.empty() : Optional.of(additionalInformation);
 	}
 
-	public void setAdditionalInformation(Max35Text additionalInformation) {
+	public TradeStatusReport1 setAdditionalInformation(Max35Text additionalInformation) {
 		this.additionalInformation = additionalInformation;
+		return this;
 	}
 }

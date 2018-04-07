@@ -26,13 +26,14 @@ import com.tools20022.repository.entity.Scheme;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Sets of elements to identify a name of the identification scheme
+ * Sets of elements to identify a name of the identification scheme.
  * <p>
  * <strong>Constant fields:</strong>
  * <ul>
@@ -53,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -63,19 +64,19 @@ import javax.xml.bind.annotation.XmlType;
  * "AccountSchemeName1Choice"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
  * definition} =
- * "Sets of elements to identify a name of the identification scheme"</li>
+ * "Sets of elements to identify a name of the identification scheme."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AccountSchemeName1Choice", propOrder = {"code", "proprietary"})
 public class AccountSchemeName1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Cd", required = true)
 	protected ExternalAccountIdentification1Code code;
 	/**
-	 * Name of the identification scheme, in a coded form as published in an
-	 * external list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -108,10 +109,10 @@ public class AccountSchemeName1Choice {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCode = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AccountSchemeName1Choice, ExternalAccountIdentification1Code> mmCode = new MMMessageAttribute<AccountSchemeName1Choice, ExternalAccountIdentification1Code>() {
 		{
 			businessElementTrace_lazy = () -> Scheme.mmCode;
-			componentContext_lazy = () -> AccountSchemeName1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AccountSchemeName1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Cd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -121,11 +122,22 @@ public class AccountSchemeName1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalAccountIdentification1Code.mmObject();
 		}
+
+		@Override
+		public ExternalAccountIdentification1Code getValue(AccountSchemeName1Choice obj) {
+			return obj.getCode();
+		}
+
+		@Override
+		public void setValue(AccountSchemeName1Choice obj, ExternalAccountIdentification1Code value) {
+			obj.setCode(value);
+		}
 	};
+	@XmlElement(name = "Prtry", required = true)
 	protected Max35Text proprietary;
 	/**
-	 * Name of the identification scheme, in a free text form.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -155,10 +167,10 @@ public class AccountSchemeName1Choice {
 	 * definition} = "Name of the identification scheme, in a free text form."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmProprietary = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AccountSchemeName1Choice, Max35Text> mmProprietary = new MMMessageAttribute<AccountSchemeName1Choice, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> Scheme.mmCode;
-			componentContext_lazy = () -> AccountSchemeName1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.AccountSchemeName1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Prtry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -168,37 +180,47 @@ public class AccountSchemeName1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(AccountSchemeName1Choice obj) {
+			return obj.getProprietary();
+		}
+
+		@Override
+		public void setValue(AccountSchemeName1Choice obj, Max35Text value) {
+			obj.setProprietary(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AccountSchemeName1Choice.mmCode, AccountSchemeName1Choice.mmProprietary);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.AccountSchemeName1Choice.mmCode, com.tools20022.repository.choice.AccountSchemeName1Choice.mmProprietary);
 				trace_lazy = () -> Scheme.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AccountSchemeName1Choice";
-				definition = "Sets of elements to identify a name of the identification scheme";
+				definition = "Sets of elements to identify a name of the identification scheme.";
 			}
 		});
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Cd", required = true)
 	public ExternalAccountIdentification1Code getCode() {
 		return code;
 	}
 
-	public void setCode(ExternalAccountIdentification1Code code) {
-		this.code = code;
+	public AccountSchemeName1Choice setCode(ExternalAccountIdentification1Code code) {
+		this.code = Objects.requireNonNull(code);
+		return this;
 	}
 
-	@XmlElement(name = "Prtry", required = true)
 	public Max35Text getProprietary() {
 		return proprietary;
 	}
 
-	public void setProprietary(Max35Text proprietary) {
-		this.proprietary = proprietary;
+	public AccountSchemeName1Choice setProprietary(Max35Text proprietary) {
+		this.proprietary = Objects.requireNonNull(proprietary);
+		return this;
 	}
 }

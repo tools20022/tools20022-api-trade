@@ -26,9 +26,10 @@ import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.Reason2;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
 import com.tools20022.repository.msg.TransactionStatus4;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -93,15 +94,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "StatusExtensionRequestRejectionV03", propOrder = {"rejectionIdentification", "transactionIdentification", "submitterTransactionReference", "statusNotToBeExtended", "rejectionReason"})
 public class StatusExtensionRequestRejectionV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RjctnId", required = true)
 	protected MessageIdentification1 rejectionIdentification;
 	/**
-	 * Identifies the rejection message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -122,7 +124,7 @@ public class StatusExtensionRequestRejectionV03 {
 	 * definition} = "Identifies the rejection message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, MessageIdentification1> mmRejectionIdentification = new MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, MessageIdentification1>() {
 		{
 			xmlTag = "RjctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -133,20 +135,21 @@ public class StatusExtensionRequestRejectionV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestRejectionV03.class.getMethod("getRejectionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(StatusExtensionRequestRejectionV03 obj) {
+			return obj.getRejectionIdentification();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestRejectionV03 obj, MessageIdentification1 value) {
+			obj.setRejectionIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -165,33 +168,36 @@ public class StatusExtensionRequestRejectionV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestRejectionV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(StatusExtensionRequestRejectionV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestRejectionV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -213,7 +219,7 @@ public class StatusExtensionRequestRejectionV03 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -224,18 +230,21 @@ public class StatusExtensionRequestRejectionV03 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestRejectionV03.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(StatusExtensionRequestRejectionV03 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestRejectionV03 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "StsNotToBeXtnded", required = true)
 	protected TransactionStatus4 statusNotToBeExtended;
 	/**
-	 * Identifies the status that the submitter does not want to be extended.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -257,7 +266,7 @@ public class StatusExtensionRequestRejectionV03 {
 	 * "Identifies the status that the submitter does not want to be extended."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmStatusNotToBeExtended = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, TransactionStatus4> mmStatusNotToBeExtended = new MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, TransactionStatus4>() {
 		{
 			xmlTag = "StsNotToBeXtnded";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -268,18 +277,21 @@ public class StatusExtensionRequestRejectionV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestRejectionV03.class.getMethod("getStatusNotToBeExtended", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(StatusExtensionRequestRejectionV03 obj) {
+			return obj.getStatusNotToBeExtended();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestRejectionV03 obj, TransactionStatus4 value) {
+			obj.setStatusNotToBeExtended(value);
 		}
 	};
+	@XmlElement(name = "RjctnRsn", required = true)
 	protected Reason2 rejectionReason;
 	/**
-	 * Reason why the user cannot accept the request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -299,7 +311,7 @@ public class StatusExtensionRequestRejectionV03 {
 	 * definition} = "Reason why the user cannot accept the request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectionReason = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, Reason2> mmRejectionReason = new MMMessageBuildingBlock<StatusExtensionRequestRejectionV03, Reason2>() {
 		{
 			xmlTag = "RjctnRsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -310,12 +322,14 @@ public class StatusExtensionRequestRejectionV03 {
 			complexType_lazy = () -> Reason2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestRejectionV03.class.getMethod("getRejectionReason", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Reason2 getValue(StatusExtensionRequestRejectionV03 obj) {
+			return obj.getRejectionReason();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestRejectionV03 obj, Reason2 value) {
+			obj.setRejectionReason(value);
 		}
 	};
 
@@ -349,52 +363,52 @@ public class StatusExtensionRequestRejectionV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RjctnId", required = true)
 	public MessageIdentification1 getRejectionIdentification() {
 		return rejectionIdentification;
 	}
 
-	public void setRejectionIdentification(MessageIdentification1 rejectionIdentification) {
-		this.rejectionIdentification = rejectionIdentification;
+	public StatusExtensionRequestRejectionV03 setRejectionIdentification(MessageIdentification1 rejectionIdentification) {
+		this.rejectionIdentification = Objects.requireNonNull(rejectionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public StatusExtensionRequestRejectionV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public StatusExtensionRequestRejectionV03 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "StsNotToBeXtnded", required = true)
 	public TransactionStatus4 getStatusNotToBeExtended() {
 		return statusNotToBeExtended;
 	}
 
-	public void setStatusNotToBeExtended(TransactionStatus4 statusNotToBeExtended) {
-		this.statusNotToBeExtended = statusNotToBeExtended;
+	public StatusExtensionRequestRejectionV03 setStatusNotToBeExtended(TransactionStatus4 statusNotToBeExtended) {
+		this.statusNotToBeExtended = Objects.requireNonNull(statusNotToBeExtended);
+		return this;
 	}
 
-	@XmlElement(name = "RjctnRsn", required = true)
 	public Reason2 getRejectionReason() {
 		return rejectionReason;
 	}
 
-	public void setRejectionReason(Reason2 rejectionReason) {
-		this.rejectionReason = rejectionReason;
+	public StatusExtensionRequestRejectionV03 setRejectionReason(Reason2 rejectionReason) {
+		this.rejectionReason = Objects.requireNonNull(rejectionReason);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.033.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.033.001.03")
 	static public class Document {
 		@XmlElement(name = "StsXtnsnReqRjctn", required = true)
 		public StatusExtensionRequestRejectionV03 messageBody;

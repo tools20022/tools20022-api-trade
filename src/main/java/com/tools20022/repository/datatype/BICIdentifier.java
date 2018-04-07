@@ -19,16 +19,16 @@ package com.tools20022.repository.datatype;
 
 import com.tools20022.metamodel.MMIdentifierSet;
 import com.tools20022.metamodel.MMRegistrationStatus;
-import com.tools20022.repository.datatype.BICIdentifier.InternalXmlAdapter;
 import com.tools20022.repository.GeneratedRepository;
-import java.lang.String;
 import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.Date;
 import java.util.function.Supplier;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 /**
  * Code allocated to a financial institution by the ISO 9362 Registration
@@ -46,8 +46,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintBIC#forBICIdentifier
+ * ConstraintBIC.forBICIdentifier}</li>
+ * </ul>
+ * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -67,16 +75,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * </li>
  * </ul>
  */
-@XmlJavaTypeAdapter(InternalXmlAdapter.class)
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType
 public class BICIdentifier {
 
 	final static private AtomicReference<MMIdentifierSet> mmObject_lazy = new AtomicReference<>();
+	@XmlValue
 	protected String value;
 
 	final static public MMIdentifierSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMIdentifierSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintBIC.forBICIdentifier);
 				example = Arrays.asList("CHASUS33");
 				registrationStatus = MMRegistrationStatus.OBSOLETE;
 				removalDate = ((Supplier<Date>) (() -> {
@@ -95,24 +106,23 @@ public class BICIdentifier {
 		return mmObject_lazy.get();
 	}
 
+	public BICIdentifier() {
+	}
+
 	public BICIdentifier(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
 		this.value = value;
 	}
 
 	@Override
 	public String toString() {
-		return value;
-	}
-
-	protected static class InternalXmlAdapter extends XmlAdapter<String, BICIdentifier> {
-		@Override
-		public BICIdentifier unmarshal(String value) {
-			return new BICIdentifier(value);
-		}
-
-		@Override
-		public String marshal(BICIdentifier typedData) {
-			return typedData.value;
-		}
+		return value == null ? null : value.toString();
 	}
 }

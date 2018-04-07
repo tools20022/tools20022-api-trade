@@ -27,10 +27,8 @@ import com.tools20022.repository.datatype.Max15NumericText;
 import com.tools20022.repository.msg.BusinessLetter1;
 import com.tools20022.repository.msg.EncapsulatedBusinessMessage1;
 import com.tools20022.repository.msg.FinancingItemList1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -92,20 +90,20 @@ import javax.xml.bind.annotation.*;
  * "InvoiceAssignmentAcknowledgementV01"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
  * definition} =
- * "The InvoiceAssignmentAcknowledgement message is sent from a trade partner to communicate the status of payment obligations related to financial items.  The message can be sent independently or as a response to an InvoiceAssignmentNotification message.\r\nDepending on legal contexts the message may be required as a response to an InvoiceAssignmentNotification message in order for the assignment to become effective.\r\nThe trade party may include references to the corresponding items of an InvoiceAssignmentRequest, InvoiceAssignmentStatus or InvoiceAssignmentNotification or other messages and may include referenced data.\r\nThe message can carry digital signatures if required by context."
+ * "The InvoiceAssignmentAcknowledgement message is sent from a trade partner to communicate the status of payment obligations related to financial items. The message can be sent independently or as a response to an InvoiceAssignmentNotification message.\r\nDepending on legal contexts the message may be required as a response to an InvoiceAssignmentNotification message in order for the assignment to become effective.\r\nThe trade party may include references to the corresponding items of an InvoiceAssignmentRequest, InvoiceAssignmentStatus or InvoiceAssignmentNotification or other messages and may include referenced data.\r\nThe message can carry digital signatures if required by context."
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceAssignmentAcknowledgementV01", propOrder = {"header", "paymentStatusList", "paymentStatusCount", "itemCount", "controlSum", "attachedMessage"})
 public class InvoiceAssignmentAcknowledgementV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Hdr", required = true)
 	protected BusinessLetter1 header;
 	/**
-	 * Set of characteristics that unambiguously identify the status, common
-	 * parameters, documents and identifications.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -127,7 +125,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, BusinessLetter1> mmHeader = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, BusinessLetter1>() {
 		{
 			xmlTag = "Hdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -138,18 +136,21 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			complexType_lazy = () -> BusinessLetter1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BusinessLetter1 getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getHeader();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, BusinessLetter1 value) {
+			obj.setHeader(value);
 		}
 	};
+	@XmlElement(name = "PmtStsList", required = true)
 	protected List<FinancingItemList1> paymentStatusList;
 	/**
-	 * List of payment status information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -170,7 +171,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * definition} = "List of payment status information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmPaymentStatusList = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, List<FinancingItemList1>> mmPaymentStatusList = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, List<FinancingItemList1>>() {
 		{
 			xmlTag = "PmtStsList";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -180,18 +181,21 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			complexType_lazy = () -> FinancingItemList1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getPaymentStatusList", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<FinancingItemList1> getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getPaymentStatusList();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, List<FinancingItemList1> value) {
+			obj.setPaymentStatusList(value);
 		}
 	};
+	@XmlElement(name = "PmtStsCnt")
 	protected Max15NumericText paymentStatusCount;
 	/**
-	 * Number of payment information lists as control value.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,7 +216,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * definition} = "Number of payment information lists as control value."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmPaymentStatusCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<Max15NumericText>> mmPaymentStatusCount = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "PmtStsCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -223,18 +227,21 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getPaymentStatusCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getPaymentStatusCount();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, Optional<Max15NumericText> value) {
+			obj.setPaymentStatusCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ItmCnt")
 	protected Max15NumericText itemCount;
 	/**
-	 * Total number of individual items in all lists.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -255,7 +262,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * definition} = "Total number of individual items in all lists."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmItemCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<Max15NumericText>> mmItemCount = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "ItmCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -266,19 +273,21 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getItemCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getItemCount();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, Optional<Max15NumericText> value) {
+			obj.setItemCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CtrlSum")
 	protected DecimalNumber controlSum;
 	/**
-	 * Total of all individual amounts included in all lists, irrespective of
-	 * currencies or direction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -301,7 +310,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmControlSum = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<DecimalNumber>> mmControlSum = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, Optional<DecimalNumber>>() {
 		{
 			xmlTag = "CtrlSum";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -312,18 +321,21 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getControlSum", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DecimalNumber> getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getControlSum();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, Optional<DecimalNumber> value) {
+			obj.setControlSum(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AttchdMsg")
 	protected List<EncapsulatedBusinessMessage1> attachedMessage;
 	/**
-	 * Referenced or related business message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -344,7 +356,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 	 * definition} = "Referenced or related business message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAttachedMessage = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, List<EncapsulatedBusinessMessage1>> mmAttachedMessage = new MMMessageBuildingBlock<InvoiceAssignmentAcknowledgementV01, List<EncapsulatedBusinessMessage1>>() {
 		{
 			xmlTag = "AttchdMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -354,12 +366,14 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			complexType_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceAssignmentAcknowledgementV01.class.getMethod("getAttachedMessage", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<EncapsulatedBusinessMessage1> getValue(InvoiceAssignmentAcknowledgementV01 obj) {
+			return obj.getAttachedMessage();
+		}
+
+		@Override
+		public void setValue(InvoiceAssignmentAcknowledgementV01 obj, List<EncapsulatedBusinessMessage1> value) {
+			obj.setAttachedMessage(value);
 		}
 	};
 
@@ -368,7 +382,7 @@ public class InvoiceAssignmentAcknowledgementV01 {
 			{
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InvoiceAssignmentAcknowledgementV01";
-				definition = "The InvoiceAssignmentAcknowledgement message is sent from a trade partner to communicate the status of payment obligations related to financial items.  The message can be sent independently or as a response to an InvoiceAssignmentNotification message.\r\nDepending on legal contexts the message may be required as a response to an InvoiceAssignmentNotification message in order for the assignment to become effective.\r\nThe trade party may include references to the corresponding items of an InvoiceAssignmentRequest, InvoiceAssignmentStatus or InvoiceAssignmentNotification or other messages and may include referenced data.\r\nThe message can carry digital signatures if required by context.";
+				definition = "The InvoiceAssignmentAcknowledgement message is sent from a trade partner to communicate the status of payment obligations related to financial items. The message can be sent independently or as a response to an InvoiceAssignmentNotification message.\r\nDepending on legal contexts the message may be required as a response to an InvoiceAssignmentNotification message in order for the assignment to become effective.\r\nThe trade party may include references to the corresponding items of an InvoiceAssignmentRequest, InvoiceAssignmentStatus or InvoiceAssignmentNotification or other messages and may include referenced data.\r\nThe message can carry digital signatures if required by context.";
 				rootElement = "Document";
 				xmlTag = "InvcAssgnmtAck";
 				businessArea_lazy = () -> TradeServicesInitiationLatestVersion.mmObject();
@@ -393,61 +407,61 @@ public class InvoiceAssignmentAcknowledgementV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Hdr", required = true)
 	public BusinessLetter1 getHeader() {
 		return header;
 	}
 
-	public void setHeader(BusinessLetter1 header) {
-		this.header = header;
+	public InvoiceAssignmentAcknowledgementV01 setHeader(BusinessLetter1 header) {
+		this.header = Objects.requireNonNull(header);
+		return this;
 	}
 
-	@XmlElement(name = "PmtStsList", required = true)
 	public List<FinancingItemList1> getPaymentStatusList() {
-		return paymentStatusList;
+		return paymentStatusList == null ? paymentStatusList = new ArrayList<>() : paymentStatusList;
 	}
 
-	public void setPaymentStatusList(List<FinancingItemList1> paymentStatusList) {
-		this.paymentStatusList = paymentStatusList;
+	public InvoiceAssignmentAcknowledgementV01 setPaymentStatusList(List<FinancingItemList1> paymentStatusList) {
+		this.paymentStatusList = Objects.requireNonNull(paymentStatusList);
+		return this;
 	}
 
-	@XmlElement(name = "PmtStsCnt")
-	public Max15NumericText getPaymentStatusCount() {
-		return paymentStatusCount;
+	public Optional<Max15NumericText> getPaymentStatusCount() {
+		return paymentStatusCount == null ? Optional.empty() : Optional.of(paymentStatusCount);
 	}
 
-	public void setPaymentStatusCount(Max15NumericText paymentStatusCount) {
+	public InvoiceAssignmentAcknowledgementV01 setPaymentStatusCount(Max15NumericText paymentStatusCount) {
 		this.paymentStatusCount = paymentStatusCount;
+		return this;
 	}
 
-	@XmlElement(name = "ItmCnt")
-	public Max15NumericText getItemCount() {
-		return itemCount;
+	public Optional<Max15NumericText> getItemCount() {
+		return itemCount == null ? Optional.empty() : Optional.of(itemCount);
 	}
 
-	public void setItemCount(Max15NumericText itemCount) {
+	public InvoiceAssignmentAcknowledgementV01 setItemCount(Max15NumericText itemCount) {
 		this.itemCount = itemCount;
+		return this;
 	}
 
-	@XmlElement(name = "CtrlSum")
-	public DecimalNumber getControlSum() {
-		return controlSum;
+	public Optional<DecimalNumber> getControlSum() {
+		return controlSum == null ? Optional.empty() : Optional.of(controlSum);
 	}
 
-	public void setControlSum(DecimalNumber controlSum) {
+	public InvoiceAssignmentAcknowledgementV01 setControlSum(DecimalNumber controlSum) {
 		this.controlSum = controlSum;
+		return this;
 	}
 
-	@XmlElement(name = "AttchdMsg")
 	public List<EncapsulatedBusinessMessage1> getAttachedMessage() {
-		return attachedMessage;
+		return attachedMessage == null ? attachedMessage = new ArrayList<>() : attachedMessage;
 	}
 
-	public void setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
-		this.attachedMessage = attachedMessage;
+	public InvoiceAssignmentAcknowledgementV01 setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
+		this.attachedMessage = Objects.requireNonNull(attachedMessage);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.013.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.013.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcAssgnmtAck", required = true)
 		public InvoiceAssignmentAcknowledgementV01 messageBody;

@@ -29,9 +29,11 @@ import com.tools20022.repository.entity.Presentation;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingUltimateObligor;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.Document9;
+import com.tools20022.repository.msg.PartyIdentification43;
+import com.tools20022.repository.msg.UndertakingIssuanceMessage;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -80,8 +82,49 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant1Rule#forUndertakingAdvice2
+ * ConstraintApplicant1Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant2Rule#forUndertakingAdvice2
+ * ConstraintApplicant2Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant3Rule#forUndertakingAdvice2
+ * ConstraintApplicant3Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant4Rule#forUndertakingAdvice2
+ * ConstraintApplicant4Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant5Rule#forUndertakingAdvice2
+ * ConstraintApplicant5Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant6Rule#forUndertakingAdvice2
+ * ConstraintApplicant6Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType1Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType1Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType2Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType2Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType3Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType3Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType4Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType4Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType5Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType5Rule.forUndertakingAdvice2}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType6Rule#forUndertakingAdvice2
+ * ConstraintIssuanceType6Rule.forUndertakingAdvice2}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -92,16 +135,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details of the advice for the issuance of an undertaking."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingAdvice2", propOrder = {"applicantReferenceNumber", "obligor", "undertakingIssuanceMessage", "originalIssuedMedium", "enclosedFile", "additionalInformation"})
 public class UndertakingAdvice2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ApplcntRefNb", required = true)
 	protected Max35Text applicantReferenceNumber;
 	/**
-	 * Unique and unambiguous identifier assigned by the applicant to the
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -128,9 +171,9 @@ public class UndertakingAdvice2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmApplicantReferenceNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAdvice2, Max35Text> mmApplicantReferenceNumber = new MMMessageAttribute<UndertakingAdvice2, Max35Text>() {
 		{
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "ApplcntRefNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -140,11 +183,22 @@ public class UndertakingAdvice2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(UndertakingAdvice2 obj) {
+			return obj.getApplicantReferenceNumber();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, Max35Text value) {
+			obj.setApplicantReferenceNumber(value);
+		}
 	};
+	@XmlElement(name = "Oblgr")
 	protected PartyIdentification43 obligor;
 	/**
-	 * Party obligated to reimburse the issuer.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -170,28 +224,39 @@ public class UndertakingAdvice2 {
 	 * name} = "Obligor"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Party obligated to reimburse the issuer. "</li>
+	 * definition} = "Party obligated to reimburse the issuer."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmObligor = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingAdvice2, Optional<PartyIdentification43>> mmObligor = new MMMessageAssociationEnd<UndertakingAdvice2, Optional<PartyIdentification43>>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingUltimateObligor.mmObject();
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "Oblgr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Obligor";
-			definition = "Party obligated to reimburse the issuer. ";
+			definition = "Party obligated to reimburse the issuer.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification43.mmObject();
+			type_lazy = () -> PartyIdentification43.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification43> getValue(UndertakingAdvice2 obj) {
+			return obj.getObligor();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, Optional<PartyIdentification43> value) {
+			obj.setObligor(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "UdrtkgIssncMsg", required = true)
 	protected UndertakingIssuanceMessage undertakingIssuanceMessage;
 	/**
-	 * Contents of the related UndertakingIssuance message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -220,10 +285,10 @@ public class UndertakingAdvice2 {
 	 * definition} = "Contents of the related UndertakingIssuance message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingIssuanceMessage = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingAdvice2, UndertakingIssuanceMessage> mmUndertakingIssuanceMessage = new MMMessageAssociationEnd<UndertakingAdvice2, UndertakingIssuanceMessage>() {
 		{
 			businessComponentTrace_lazy = () -> Undertaking.mmObject();
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgIssncMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -232,13 +297,24 @@ public class UndertakingAdvice2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingIssuanceMessage.mmObject();
+			type_lazy = () -> UndertakingIssuanceMessage.mmObject();
+		}
+
+		@Override
+		public UndertakingIssuanceMessage getValue(UndertakingAdvice2 obj) {
+			return obj.getUndertakingIssuanceMessage();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, UndertakingIssuanceMessage value) {
+			obj.setUndertakingIssuanceMessage(value);
 		}
 	};
+	@XmlElement(name = "OrgnlIssdMdm")
 	protected PresentationMedium1Code originalIssuedMedium;
 	/**
-	 * Medium used to issue the original undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -269,10 +345,10 @@ public class UndertakingAdvice2 {
 	 * definition} = "Medium used to issue the original undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmOriginalIssuedMedium = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAdvice2, Optional<PresentationMedium1Code>> mmOriginalIssuedMedium = new MMMessageAttribute<UndertakingAdvice2, Optional<PresentationMedium1Code>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmMedium;
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "OrgnlIssdMdm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -282,11 +358,22 @@ public class UndertakingAdvice2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> PresentationMedium1Code.mmObject();
 		}
+
+		@Override
+		public Optional<PresentationMedium1Code> getValue(UndertakingAdvice2 obj) {
+			return obj.getOriginalIssuedMedium();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, Optional<PresentationMedium1Code> value) {
+			obj.setOriginalIssuedMedium(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Document9> enclosedFile;
+	@XmlElement(name = "NclsdFile")
+	protected List<Document9> enclosedFile;
 	/**
-	 * Document or template enclosed in the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -314,10 +401,10 @@ public class UndertakingAdvice2 {
 	 * definition} = "Document or template enclosed in the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmEnclosedFile = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<UndertakingAdvice2, List<Document9>> mmEnclosedFile = new MMMessageAssociationEnd<UndertakingAdvice2, List<Document9>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmSpecifiedDocument;
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "NclsdFile";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -325,13 +412,24 @@ public class UndertakingAdvice2 {
 			definition = "Document or template enclosed in the notification.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Document9.mmObject();
+			type_lazy = () -> Document9.mmObject();
+		}
+
+		@Override
+		public List<Document9> getValue(UndertakingAdvice2 obj) {
+			return obj.getEnclosedFile();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, List<Document9> value) {
+			obj.setEnclosedFile(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the undertaking notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -357,9 +455,9 @@ public class UndertakingAdvice2 {
 	 * "Additional information related to the undertaking notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingAdvice2, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<UndertakingAdvice2, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> UndertakingAdvice2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingAdvice2.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -369,16 +467,33 @@ public class UndertakingAdvice2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(UndertakingAdvice2 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingAdvice2 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UndertakingAdvice2.mmApplicantReferenceNumber, UndertakingAdvice2.mmObligor, UndertakingAdvice2.mmUndertakingIssuanceMessage, UndertakingAdvice2.mmOriginalIssuedMedium,
-						UndertakingAdvice2.mmEnclosedFile, UndertakingAdvice2.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UndertakingAdvice2.mmApplicantReferenceNumber, com.tools20022.repository.msg.UndertakingAdvice2.mmObligor,
+						com.tools20022.repository.msg.UndertakingAdvice2.mmUndertakingIssuanceMessage, com.tools20022.repository.msg.UndertakingAdvice2.mmOriginalIssuedMedium,
+						com.tools20022.repository.msg.UndertakingAdvice2.mmEnclosedFile, com.tools20022.repository.msg.UndertakingAdvice2.mmAdditionalInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(UndertakingIssuanceNotificationV01.mmUndertakingIssuanceNotificationDetails);
 				trace_lazy = () -> Undertaking.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintApplicant1Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintApplicant2Rule.forUndertakingAdvice2,
+						com.tools20022.repository.constraints.ConstraintApplicant3Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintApplicant4Rule.forUndertakingAdvice2,
+						com.tools20022.repository.constraints.ConstraintApplicant5Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintApplicant6Rule.forUndertakingAdvice2,
+						com.tools20022.repository.constraints.ConstraintIssuanceType1Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintIssuanceType2Rule.forUndertakingAdvice2,
+						com.tools20022.repository.constraints.ConstraintIssuanceType3Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintIssuanceType4Rule.forUndertakingAdvice2,
+						com.tools20022.repository.constraints.ConstraintIssuanceType5Rule.forUndertakingAdvice2, com.tools20022.repository.constraints.ConstraintIssuanceType6Rule.forUndertakingAdvice2);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingAdvice2";
 				definition = "Details of the advice for the issuance of an undertaking.";
@@ -387,57 +502,57 @@ public class UndertakingAdvice2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ApplcntRefNb", required = true)
 	public Max35Text getApplicantReferenceNumber() {
 		return applicantReferenceNumber;
 	}
 
-	public void setApplicantReferenceNumber(Max35Text applicantReferenceNumber) {
-		this.applicantReferenceNumber = applicantReferenceNumber;
+	public UndertakingAdvice2 setApplicantReferenceNumber(Max35Text applicantReferenceNumber) {
+		this.applicantReferenceNumber = Objects.requireNonNull(applicantReferenceNumber);
+		return this;
 	}
 
-	@XmlElement(name = "Oblgr")
-	public PartyIdentification43 getObligor() {
-		return obligor;
+	public Optional<PartyIdentification43> getObligor() {
+		return obligor == null ? Optional.empty() : Optional.of(obligor);
 	}
 
-	public void setObligor(com.tools20022.repository.msg.PartyIdentification43 obligor) {
+	public UndertakingAdvice2 setObligor(PartyIdentification43 obligor) {
 		this.obligor = obligor;
+		return this;
 	}
 
-	@XmlElement(name = "UdrtkgIssncMsg", required = true)
 	public UndertakingIssuanceMessage getUndertakingIssuanceMessage() {
 		return undertakingIssuanceMessage;
 	}
 
-	public void setUndertakingIssuanceMessage(com.tools20022.repository.msg.UndertakingIssuanceMessage undertakingIssuanceMessage) {
-		this.undertakingIssuanceMessage = undertakingIssuanceMessage;
+	public UndertakingAdvice2 setUndertakingIssuanceMessage(UndertakingIssuanceMessage undertakingIssuanceMessage) {
+		this.undertakingIssuanceMessage = Objects.requireNonNull(undertakingIssuanceMessage);
+		return this;
 	}
 
-	@XmlElement(name = "OrgnlIssdMdm")
-	public PresentationMedium1Code getOriginalIssuedMedium() {
-		return originalIssuedMedium;
+	public Optional<PresentationMedium1Code> getOriginalIssuedMedium() {
+		return originalIssuedMedium == null ? Optional.empty() : Optional.of(originalIssuedMedium);
 	}
 
-	public void setOriginalIssuedMedium(PresentationMedium1Code originalIssuedMedium) {
+	public UndertakingAdvice2 setOriginalIssuedMedium(PresentationMedium1Code originalIssuedMedium) {
 		this.originalIssuedMedium = originalIssuedMedium;
+		return this;
 	}
 
-	@XmlElement(name = "NclsdFile")
 	public List<Document9> getEnclosedFile() {
-		return enclosedFile;
+		return enclosedFile == null ? enclosedFile = new ArrayList<>() : enclosedFile;
 	}
 
-	public void setEnclosedFile(List<com.tools20022.repository.msg.Document9> enclosedFile) {
-		this.enclosedFile = enclosedFile;
+	public UndertakingAdvice2 setEnclosedFile(List<Document9> enclosedFile) {
+		this.enclosedFile = Objects.requireNonNull(enclosedFile);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public UndertakingAdvice2 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

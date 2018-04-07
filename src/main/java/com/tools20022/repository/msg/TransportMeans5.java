@@ -22,8 +22,12 @@ import com.tools20022.metamodel.MMMessageComponent;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.entity.Transport;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.MultimodalTransport3;
+import com.tools20022.repository.msg.SingleTransport7;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,8 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -64,15 +68,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Describes the multimodal or the individual transport of goods."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TransportMeans5", propOrder = {"individualTransport", "multimodalTransport"})
 public class TransportMeans5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "IndvTrnsprt", required = true)
 	protected SingleTransport7 individualTransport;
 	/**
-	 * Moving of goods or people from one place to another by vehicle.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -101,10 +106,10 @@ public class TransportMeans5 {
 	 * "Moving of goods or people from one place to another by vehicle."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIndividualTransport = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TransportMeans5, SingleTransport7> mmIndividualTransport = new MMMessageAssociationEnd<TransportMeans5, SingleTransport7>() {
 		{
 			businessComponentTrace_lazy = () -> Transport.mmObject();
-			componentContext_lazy = () -> TransportMeans5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportMeans5.mmObject();
 			isDerived = false;
 			xmlTag = "IndvTrnsprt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -113,14 +118,24 @@ public class TransportMeans5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SingleTransport7.mmObject();
+			type_lazy = () -> SingleTransport7.mmObject();
+		}
+
+		@Override
+		public SingleTransport7 getValue(TransportMeans5 obj) {
+			return obj.getIndividualTransport();
+		}
+
+		@Override
+		public void setValue(TransportMeans5 obj, SingleTransport7 value) {
+			obj.setIndividualTransport(value);
 		}
 	};
+	@XmlElement(name = "MltmdlTrnsprt")
 	protected MultimodalTransport3 multimodalTransport;
 	/**
-	 * Specifies the different movements and places and their role in a
-	 * multimodal conveyance of goods.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -150,10 +165,10 @@ public class TransportMeans5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmMultimodalTransport = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TransportMeans5, Optional<MultimodalTransport3>> mmMultimodalTransport = new MMMessageAssociationEnd<TransportMeans5, Optional<MultimodalTransport3>>() {
 		{
 			businessComponentTrace_lazy = () -> Transport.mmObject();
-			componentContext_lazy = () -> TransportMeans5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportMeans5.mmObject();
 			isDerived = false;
 			xmlTag = "MltmdlTrnsprt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -162,16 +177,26 @@ public class TransportMeans5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.MultimodalTransport3.mmObject();
+			type_lazy = () -> MultimodalTransport3.mmObject();
+		}
+
+		@Override
+		public Optional<MultimodalTransport3> getValue(TransportMeans5 obj) {
+			return obj.getMultimodalTransport();
+		}
+
+		@Override
+		public void setValue(TransportMeans5 obj, Optional<MultimodalTransport3> value) {
+			obj.setMultimodalTransport(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TransportMeans5.mmIndividualTransport, TransportMeans5.mmMultimodalTransport);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TransportMeans5.mmIndividualTransport, com.tools20022.repository.msg.TransportMeans5.mmMultimodalTransport);
 				trace_lazy = () -> Transport.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TransportMeans5";
 				definition = "Describes the multimodal or the individual transport of goods.";
@@ -180,21 +205,21 @@ public class TransportMeans5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "IndvTrnsprt", required = true)
 	public SingleTransport7 getIndividualTransport() {
 		return individualTransport;
 	}
 
-	public void setIndividualTransport(com.tools20022.repository.msg.SingleTransport7 individualTransport) {
-		this.individualTransport = individualTransport;
+	public TransportMeans5 setIndividualTransport(SingleTransport7 individualTransport) {
+		this.individualTransport = Objects.requireNonNull(individualTransport);
+		return this;
 	}
 
-	@XmlElement(name = "MltmdlTrnsprt")
-	public MultimodalTransport3 getMultimodalTransport() {
-		return multimodalTransport;
+	public Optional<MultimodalTransport3> getMultimodalTransport() {
+		return multimodalTransport == null ? Optional.empty() : Optional.of(multimodalTransport);
 	}
 
-	public void setMultimodalTransport(com.tools20022.repository.msg.MultimodalTransport3 multimodalTransport) {
+	public TransportMeans5 setMultimodalTransport(MultimodalTransport3 multimodalTransport) {
 		this.multimodalTransport = multimodalTransport;
+		return this;
 	}
 }

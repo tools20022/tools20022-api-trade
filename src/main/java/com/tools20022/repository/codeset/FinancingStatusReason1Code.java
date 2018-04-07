@@ -38,52 +38,52 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#CancellationRequestOutOfTime
- * FinancingStatusReason1Code.mmCancellationRequestOutOfTime}</li>
+ * FinancingStatusReason1Code.CancellationRequestOutOfTime}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#NoMatchingFinancingRequest
- * FinancingStatusReason1Code.mmNoMatchingFinancingRequest}</li>
+ * FinancingStatusReason1Code.NoMatchingFinancingRequest}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#IncorrectAccountNumber
- * FinancingStatusReason1Code.mmIncorrectAccountNumber}</li>
+ * FinancingStatusReason1Code.IncorrectAccountNumber}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#ClosedAccountNumber
- * FinancingStatusReason1Code.mmClosedAccountNumber}</li>
+ * FinancingStatusReason1Code.ClosedAccountNumber}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#BlockedAccount
- * FinancingStatusReason1Code.mmBlockedAccount}</li>
+ * FinancingStatusReason1Code.BlockedAccount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#UnrecognisedFinancingRequestor
- * FinancingStatusReason1Code.mmUnrecognisedFinancingRequestor}</li>
+ * FinancingStatusReason1Code.UnrecognisedFinancingRequestor}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#UnrecognisedIntermediaryAgent
- * FinancingStatusReason1Code.mmUnrecognisedIntermediaryAgent}</li>
+ * FinancingStatusReason1Code.UnrecognisedIntermediaryAgent}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#UnexpectedIntermediaryAgent
- * FinancingStatusReason1Code.mmUnexpectedIntermediaryAgent}</li>
+ * FinancingStatusReason1Code.UnexpectedIntermediaryAgent}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#UnrecognisedParty
- * FinancingStatusReason1Code.mmUnrecognisedParty}</li>
+ * FinancingStatusReason1Code.UnrecognisedParty}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#InvalidPaymentDueDate
- * FinancingStatusReason1Code.mmInvalidPaymentDueDate}</li>
+ * FinancingStatusReason1Code.InvalidPaymentDueDate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#DuplicatedRequestMessage
- * FinancingStatusReason1Code.mmDuplicatedRequestMessage}</li>
+ * FinancingStatusReason1Code.DuplicatedRequestMessage}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#WrongIdentification
- * FinancingStatusReason1Code.mmWrongIdentification}</li>
+ * FinancingStatusReason1Code.WrongIdentification}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#InvalidDocumentNumber
- * FinancingStatusReason1Code.mmInvalidDocumentNumber}</li>
+ * FinancingStatusReason1Code.InvalidDocumentNumber}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#MissingMandatoryInformation
- * FinancingStatusReason1Code.mmMissingMandatoryInformation}</li>
+ * FinancingStatusReason1Code.MissingMandatoryInformation}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#Narrative
- * FinancingStatusReason1Code.mmNarrative}</li>
+ * FinancingStatusReason1Code.Narrative}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.FinancingStatusReason1Code#FinancingProcessAlreadyInitiated
- * FinancingStatusReason1Code.mmFinancingProcessAlreadyInitiated}</li>
+ * FinancingStatusReason1Code.FinancingProcessAlreadyInitiated}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -92,8 +92,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -506,7 +506,7 @@ public class FinancingStatusReason1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("CA01");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "FinancingStatusReason1Code";

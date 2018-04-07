@@ -32,9 +32,9 @@ import com.tools20022.repository.datatype.Max350Text;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -162,8 +162,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -176,17 +176,17 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "BusinessLetter1", propOrder = {"applicationContext", "letterIdentifier", "date", "relatedLetter", "relatedMessage", "contentIdentifier", "instructionPriority", "originator", "primaryRecipient", "sender",
 		"authorisationUser", "responseRecipient", "copyRecipient", "otherParty", "associatedDocument", "governingContract", "legalContext", "additionalInformation", "notice", "validationStatusInformation", "digitalSignature"})
 public class BusinessLetter1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ApplCntxt")
 	protected Max35Text applicationContext;
 	/**
-	 * Application context defined by users. This is typically the name of a
-	 * product.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -213,9 +213,9 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmApplicationContext = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, Optional<Max35Text>> mmApplicationContext = new MMMessageAttribute<BusinessLetter1, Optional<Max35Text>>() {
 		{
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "ApplCntxt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -225,11 +225,22 @@ public class BusinessLetter1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(BusinessLetter1 obj) {
+			return obj.getApplicationContext();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, Optional<Max35Text> value) {
+			obj.setApplicationContext(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "LttrIdr", required = true)
 	protected QualifiedDocumentInformation1 letterIdentifier;
 	/**
-	 * Unambiguous identifier for this letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -259,10 +270,10 @@ public class BusinessLetter1 {
 	 * definition} = "Unambiguous identifier for this letter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmLetterIdentifier = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, QualifiedDocumentInformation1> mmLetterIdentifier = new MMMessageAssociationEnd<BusinessLetter1, QualifiedDocumentInformation1>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "LttrIdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -271,13 +282,24 @@ public class BusinessLetter1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public QualifiedDocumentInformation1 getValue(BusinessLetter1 obj) {
+			return obj.getLetterIdentifier();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, QualifiedDocumentInformation1 value) {
+			obj.setLetterIdentifier(value);
 		}
 	};
+	@XmlElement(name = "Dt", required = true)
 	protected ISODate date;
 	/**
-	 * Purported creation date of the document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -307,10 +329,10 @@ public class BusinessLetter1 {
 	 * definition} = "Purported creation date of the document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, ISODate> mmDate = new MMMessageAttribute<BusinessLetter1, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmIssueDate;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "Dt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -320,11 +342,22 @@ public class BusinessLetter1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(BusinessLetter1 obj) {
+			return obj.getDate();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, ISODate value) {
+			obj.setDate(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedLetter;
+	@XmlElement(name = "RltdLttr")
+	protected List<QualifiedDocumentInformation1> relatedLetter;
 	/**
-	 * Identifier of a related letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -353,10 +386,10 @@ public class BusinessLetter1 {
 	 * definition} = "Identifier of a related letter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmRelatedLetter = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>> mmRelatedLetter = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "RltdLttr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -364,13 +397,24 @@ public class BusinessLetter1 {
 			definition = "Identifier of a related letter.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(BusinessLetter1 obj) {
+			return obj.getRelatedLetter();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setRelatedLetter(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedMessage;
+	@XmlElement(name = "RltdMsg")
+	protected List<QualifiedDocumentInformation1> relatedMessage;
 	/**
-	 * Identifier of a related message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -399,10 +443,10 @@ public class BusinessLetter1 {
 	 * definition} = "Identifier of a related message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmRelatedMessage = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>> mmRelatedMessage = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "RltdMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -410,14 +454,24 @@ public class BusinessLetter1 {
 			definition = "Identifier of a related message.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(BusinessLetter1 obj) {
+			return obj.getRelatedMessage();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setRelatedMessage(value);
 		}
 	};
+	@XmlElement(name = "CnttIdr")
 	protected List<Max35Text> contentIdentifier;
 	/**
-	 * Cross references the lists that are associated to this letter inside a
-	 * message. The identifiers are relative to the Originator.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -444,9 +498,9 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmContentIdentifier = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, List<Max35Text>> mmContentIdentifier = new MMMessageAttribute<BusinessLetter1, List<Max35Text>>() {
 		{
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "CnttIdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -455,13 +509,22 @@ public class BusinessLetter1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public List<Max35Text> getValue(BusinessLetter1 obj) {
+			return obj.getContentIdentifier();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<Max35Text> value) {
+			obj.setContentIdentifier(value);
+		}
 	};
+	@XmlElement(name = "InstrPrty")
 	protected Priority3Code instructionPriority;
 	/**
-	 * Urgency or order of importance that the originator would like the
-	 * recipient of the business letter to apply to the processing of the
-	 * letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -489,9 +552,9 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmInstructionPriority = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, Optional<Priority3Code>> mmInstructionPriority = new MMMessageAttribute<BusinessLetter1, Optional<Priority3Code>>() {
 		{
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "InstrPrty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -501,11 +564,22 @@ public class BusinessLetter1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Priority3Code.mmObject();
 		}
+
+		@Override
+		public Optional<Priority3Code> getValue(BusinessLetter1 obj) {
+			return obj.getInstructionPriority();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, Optional<Priority3Code> value) {
+			obj.setInstructionPriority(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Orgtr", required = true)
 	protected QualifiedPartyIdentification1 originator;
 	/**
-	 * Identification of the originating party of this letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -535,10 +609,10 @@ public class BusinessLetter1 {
 	 * definition} = "Identification of the originating party of this letter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOriginator = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, QualifiedPartyIdentification1> mmOriginator = new MMMessageAssociationEnd<BusinessLetter1, QualifiedPartyIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "Orgtr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -547,14 +621,24 @@ public class BusinessLetter1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public QualifiedPartyIdentification1 getValue(BusinessLetter1 obj) {
+			return obj.getOriginator();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, QualifiedPartyIdentification1 value) {
+			obj.setOriginator(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> primaryRecipient;
+	@XmlElement(name = "PmryRcpt", required = true)
+	protected List<QualifiedPartyIdentification1> primaryRecipient;
 	/**
-	 * Primary recipient of the business letter. The exact meaning is given by
-	 * the users.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -586,10 +670,10 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPrimaryRecipient = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmPrimaryRecipient = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "PmryRcpt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -597,13 +681,24 @@ public class BusinessLetter1 {
 			definition = "Primary recipient of the business letter. The exact meaning is given by the users.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getPrimaryRecipient();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setPrimaryRecipient(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> sender;
+	@XmlElement(name = "Sndr")
+	protected List<QualifiedPartyIdentification1> sender;
 	/**
-	 * Sender of the business letter. The exact meaning is given by the users.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -635,10 +730,10 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSender = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmSender = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "Sndr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -646,14 +741,24 @@ public class BusinessLetter1 {
 			definition = "Sender of the business letter. The exact meaning is given by the users.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getSender();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setSender(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> authorisationUser;
+	@XmlElement(name = "AuthstnUsr", required = true)
+	protected List<QualifiedPartyIdentification1> authorisationUser;
 	/**
-	 * User who, either individually or in concert with others, authorises the
-	 * origination of a message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -685,10 +790,10 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAuthorisationUser = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmAuthorisationUser = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "AuthstnUsr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -696,13 +801,24 @@ public class BusinessLetter1 {
 			definition = "User who, either individually or in concert with others, authorises the origination of a message.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getAuthorisationUser();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setAuthorisationUser(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> responseRecipient;
+	@XmlElement(name = "RspnRcpt")
+	protected List<QualifiedPartyIdentification1> responseRecipient;
 	/**
-	 * Party to receive a reply to this letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -732,10 +848,10 @@ public class BusinessLetter1 {
 	 * definition} = "Party to receive a reply to this letter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmResponseRecipient = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmResponseRecipient = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "RspnRcpt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -743,13 +859,24 @@ public class BusinessLetter1 {
 			definition = "Party to receive a reply to this letter.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getResponseRecipient();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setResponseRecipient(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> copyRecipient;
+	@XmlElement(name = "CpyRcpt")
+	protected List<QualifiedPartyIdentification1> copyRecipient;
 	/**
-	 * Party to receive a copy of the message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -779,10 +906,10 @@ public class BusinessLetter1 {
 	 * definition} = "Party to receive a copy of the message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCopyRecipient = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmCopyRecipient = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "CpyRcpt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -790,13 +917,24 @@ public class BusinessLetter1 {
 			definition = "Party to receive a copy of the message.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getCopyRecipient();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setCopyRecipient(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyIdentification1> otherParty;
+	@XmlElement(name = "OthrPty")
+	protected List<QualifiedPartyIdentification1> otherParty;
 	/**
-	 * Other party involved. This element is usable as a target for IDREFs.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -827,10 +965,10 @@ public class BusinessLetter1 {
 	 * "Other party involved. This element is usable as a target for IDREFs."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOtherParty = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>> mmOtherParty = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "OthrPty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -838,13 +976,24 @@ public class BusinessLetter1 {
 			definition = "Other party involved. This element is usable as a target for IDREFs.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyIdentification1> getValue(BusinessLetter1 obj) {
+			return obj.getOtherParty();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyIdentification1> value) {
+			obj.setOtherParty(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> associatedDocument;
+	@XmlElement(name = "AssoctdDoc")
+	protected List<QualifiedDocumentInformation1> associatedDocument;
 	/**
-	 * Associated free form document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -873,10 +1022,10 @@ public class BusinessLetter1 {
 	 * definition} = "Associated free form document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAssociatedDocument = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>> mmAssociatedDocument = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "AssoctdDoc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -884,13 +1033,24 @@ public class BusinessLetter1 {
 			definition = "Associated free form document.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(BusinessLetter1 obj) {
+			return obj.getAssociatedDocument();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setAssociatedDocument(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedDocumentInformation1> governingContract;
+	@XmlElement(name = "GovngCtrct")
+	protected List<QualifiedDocumentInformation1> governingContract;
 	/**
-	 * Governing contract.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -920,10 +1080,10 @@ public class BusinessLetter1 {
 	 * definition} = "Governing contract."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmGoverningContract = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>> mmGoverningContract = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedDocumentInformation1>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmAgreement;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "GovngCtrct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -931,13 +1091,24 @@ public class BusinessLetter1 {
 			definition = "Governing contract.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedDocumentInformation1.mmObject();
+			type_lazy = () -> QualifiedDocumentInformation1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedDocumentInformation1> getValue(BusinessLetter1 obj) {
+			return obj.getGoverningContract();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedDocumentInformation1> value) {
+			obj.setGoverningContract(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.GovernanceRules2> legalContext;
+	@XmlElement(name = "LglCntxt")
+	protected List<GovernanceRules2> legalContext;
 	/**
-	 * Rules and laws governing the letter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -966,10 +1137,10 @@ public class BusinessLetter1 {
 	 * definition} = "Rules and laws governing the letter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmLegalContext = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<GovernanceRules2>> mmLegalContext = new MMMessageAssociationEnd<BusinessLetter1, List<GovernanceRules2>>() {
 		{
 			businessElementTrace_lazy = () -> Jurisdiction.mmGovernanceRules;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "LglCntxt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -977,13 +1148,24 @@ public class BusinessLetter1 {
 			definition = "Rules and laws governing the letter.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.GovernanceRules2.mmObject();
+			type_lazy = () -> GovernanceRules2.mmObject();
+		}
+
+		@Override
+		public List<GovernanceRules2> getValue(BusinessLetter1 obj) {
+			return obj.getLegalContext();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<GovernanceRules2> value) {
+			obj.setLegalContext(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected Max2000Text additionalInformation;
 	/**
-	 * Free form information about this message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1008,9 +1190,9 @@ public class BusinessLetter1 {
 	 * definition} = "Free form information about this message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, Optional<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<BusinessLetter1, Optional<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1020,12 +1202,22 @@ public class BusinessLetter1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max2000Text> getValue(BusinessLetter1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, Optional<Max2000Text> value) {
+			obj.setAdditionalInformation(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Ntce")
 	protected Max350Text notice;
 	/**
-	 * Free form information unrelated to the message for example advertising or
-	 * a service notice.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1052,9 +1244,9 @@ public class BusinessLetter1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNotice = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BusinessLetter1, Optional<Max350Text>> mmNotice = new MMMessageAttribute<BusinessLetter1, Optional<Max350Text>>() {
 		{
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "Ntce";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1064,11 +1256,22 @@ public class BusinessLetter1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max350Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max350Text> getValue(BusinessLetter1 obj) {
+			return obj.getNotice();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, Optional<Max350Text> value) {
+			obj.setNotice(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "VldtnStsInf")
 	protected ValidationStatusInformation1 validationStatusInformation;
 	/**
-	 * Status of referenced messages or letters.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1098,10 +1301,10 @@ public class BusinessLetter1 {
 	 * definition} = "Status of referenced messages or letters."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmValidationStatusInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, Optional<ValidationStatusInformation1>> mmValidationStatusInformation = new MMMessageAssociationEnd<BusinessLetter1, Optional<ValidationStatusInformation1>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "VldtnStsInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1110,13 +1313,24 @@ public class BusinessLetter1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ValidationStatusInformation1.mmObject();
+			type_lazy = () -> ValidationStatusInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<ValidationStatusInformation1> getValue(BusinessLetter1 obj) {
+			return obj.getValidationStatusInformation();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, Optional<ValidationStatusInformation1> value) {
+			obj.setValidationStatusInformation(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1> digitalSignature;
+	@XmlElement(name = "DgtlSgntr")
+	protected List<QualifiedPartyAndXMLSignature1> digitalSignature;
 	/**
-	 * Digital signatures and signing parties of this letter or parts of it.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1147,10 +1361,10 @@ public class BusinessLetter1 {
 	 * "Digital signatures and signing parties of this letter or parts of it."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDigitalSignature = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyAndXMLSignature1>> mmDigitalSignature = new MMMessageAssociationEnd<BusinessLetter1, List<QualifiedPartyAndXMLSignature1>>() {
 		{
 			businessComponentTrace_lazy = () -> ElectronicSignature.mmObject();
-			componentContext_lazy = () -> BusinessLetter1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BusinessLetter1.mmObject();
 			isDerived = false;
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1158,22 +1372,36 @@ public class BusinessLetter1 {
 			definition = "Digital signatures and signing parties of this letter or parts of it.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1.mmObject();
+			type_lazy = () -> QualifiedPartyAndXMLSignature1.mmObject();
+		}
+
+		@Override
+		public List<QualifiedPartyAndXMLSignature1> getValue(BusinessLetter1 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(BusinessLetter1 obj, List<QualifiedPartyAndXMLSignature1> value) {
+			obj.setDigitalSignature(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(BusinessLetter1.mmApplicationContext, BusinessLetter1.mmLetterIdentifier, BusinessLetter1.mmDate, BusinessLetter1.mmRelatedLetter, BusinessLetter1.mmRelatedMessage,
-						BusinessLetter1.mmContentIdentifier, BusinessLetter1.mmInstructionPriority, BusinessLetter1.mmOriginator, BusinessLetter1.mmPrimaryRecipient, BusinessLetter1.mmSender, BusinessLetter1.mmAuthorisationUser,
-						BusinessLetter1.mmResponseRecipient, BusinessLetter1.mmCopyRecipient, BusinessLetter1.mmOtherParty, BusinessLetter1.mmAssociatedDocument, BusinessLetter1.mmGoverningContract, BusinessLetter1.mmLegalContext,
-						BusinessLetter1.mmAdditionalInformation, BusinessLetter1.mmNotice, BusinessLetter1.mmValidationStatusInformation, BusinessLetter1.mmDigitalSignature);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.BusinessLetter1.mmApplicationContext, com.tools20022.repository.msg.BusinessLetter1.mmLetterIdentifier,
+						com.tools20022.repository.msg.BusinessLetter1.mmDate, com.tools20022.repository.msg.BusinessLetter1.mmRelatedLetter, com.tools20022.repository.msg.BusinessLetter1.mmRelatedMessage,
+						com.tools20022.repository.msg.BusinessLetter1.mmContentIdentifier, com.tools20022.repository.msg.BusinessLetter1.mmInstructionPriority, com.tools20022.repository.msg.BusinessLetter1.mmOriginator,
+						com.tools20022.repository.msg.BusinessLetter1.mmPrimaryRecipient, com.tools20022.repository.msg.BusinessLetter1.mmSender, com.tools20022.repository.msg.BusinessLetter1.mmAuthorisationUser,
+						com.tools20022.repository.msg.BusinessLetter1.mmResponseRecipient, com.tools20022.repository.msg.BusinessLetter1.mmCopyRecipient, com.tools20022.repository.msg.BusinessLetter1.mmOtherParty,
+						com.tools20022.repository.msg.BusinessLetter1.mmAssociatedDocument, com.tools20022.repository.msg.BusinessLetter1.mmGoverningContract, com.tools20022.repository.msg.BusinessLetter1.mmLegalContext,
+						com.tools20022.repository.msg.BusinessLetter1.mmAdditionalInformation, com.tools20022.repository.msg.BusinessLetter1.mmNotice, com.tools20022.repository.msg.BusinessLetter1.mmValidationStatusInformation,
+						com.tools20022.repository.msg.BusinessLetter1.mmDigitalSignature);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InvoicePaymentReconciliationAdviceV01.mmHeader, InvoiceAssignmentRequestV01.mmHeader, PartyRegistrationAndGuaranteeAcknowledgementV01.mmHeader, PartyEventAdviceV01.mmHeader,
 						PartyRegistrationAndGuaranteeStatusV01.mmHeader, PartyRegistrationAndGuaranteeNotificationV01.mmHeader, InvoiceAssignmentNotificationV01.mmHeader, InvoiceAssignmentAcknowledgementV01.mmHeader,
 						InvoiceAssignmentStatusV01.mmHeader, PartyRegistrationAndGuaranteeRequestV01.mmHeader, InvoicePaymentReconciliationStatusV01.mmHeader);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "BusinessLetter1";
 				definition = "Defines a business letter containing identifications of involved entities and their roles, references to documents, free form text and signatures.\r\nThe semantics of this information are defined by usual business practices for the exchange and tracing of business letters. The described references and party identifiers permit to establish a linked informal trace of sequences of letters.\r\nThis message component contains three types of elements that can be referenced using IDREF:\r\n(1) - all elements defining qualified parties,\r\n(2) - all elements defining qualified documents or references to them,\r\n(3) - the LegalContext element.";
@@ -1182,192 +1410,192 @@ public class BusinessLetter1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ApplCntxt")
-	public Max35Text getApplicationContext() {
-		return applicationContext;
+	public Optional<Max35Text> getApplicationContext() {
+		return applicationContext == null ? Optional.empty() : Optional.of(applicationContext);
 	}
 
-	public void setApplicationContext(Max35Text applicationContext) {
+	public BusinessLetter1 setApplicationContext(Max35Text applicationContext) {
 		this.applicationContext = applicationContext;
+		return this;
 	}
 
-	@XmlElement(name = "LttrIdr", required = true)
 	public QualifiedDocumentInformation1 getLetterIdentifier() {
 		return letterIdentifier;
 	}
 
-	public void setLetterIdentifier(com.tools20022.repository.msg.QualifiedDocumentInformation1 letterIdentifier) {
-		this.letterIdentifier = letterIdentifier;
+	public BusinessLetter1 setLetterIdentifier(QualifiedDocumentInformation1 letterIdentifier) {
+		this.letterIdentifier = Objects.requireNonNull(letterIdentifier);
+		return this;
 	}
 
-	@XmlElement(name = "Dt", required = true)
 	public ISODate getDate() {
 		return date;
 	}
 
-	public void setDate(ISODate date) {
-		this.date = date;
+	public BusinessLetter1 setDate(ISODate date) {
+		this.date = Objects.requireNonNull(date);
+		return this;
 	}
 
-	@XmlElement(name = "RltdLttr")
 	public List<QualifiedDocumentInformation1> getRelatedLetter() {
-		return relatedLetter;
+		return relatedLetter == null ? relatedLetter = new ArrayList<>() : relatedLetter;
 	}
 
-	public void setRelatedLetter(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedLetter) {
-		this.relatedLetter = relatedLetter;
+	public BusinessLetter1 setRelatedLetter(List<QualifiedDocumentInformation1> relatedLetter) {
+		this.relatedLetter = Objects.requireNonNull(relatedLetter);
+		return this;
 	}
 
-	@XmlElement(name = "RltdMsg")
 	public List<QualifiedDocumentInformation1> getRelatedMessage() {
-		return relatedMessage;
+		return relatedMessage == null ? relatedMessage = new ArrayList<>() : relatedMessage;
 	}
 
-	public void setRelatedMessage(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> relatedMessage) {
-		this.relatedMessage = relatedMessage;
+	public BusinessLetter1 setRelatedMessage(List<QualifiedDocumentInformation1> relatedMessage) {
+		this.relatedMessage = Objects.requireNonNull(relatedMessage);
+		return this;
 	}
 
-	@XmlElement(name = "CnttIdr")
 	public List<Max35Text> getContentIdentifier() {
-		return contentIdentifier;
+		return contentIdentifier == null ? contentIdentifier = new ArrayList<>() : contentIdentifier;
 	}
 
-	public void setContentIdentifier(List<Max35Text> contentIdentifier) {
-		this.contentIdentifier = contentIdentifier;
+	public BusinessLetter1 setContentIdentifier(List<Max35Text> contentIdentifier) {
+		this.contentIdentifier = Objects.requireNonNull(contentIdentifier);
+		return this;
 	}
 
-	@XmlElement(name = "InstrPrty")
-	public Priority3Code getInstructionPriority() {
-		return instructionPriority;
+	public Optional<Priority3Code> getInstructionPriority() {
+		return instructionPriority == null ? Optional.empty() : Optional.of(instructionPriority);
 	}
 
-	public void setInstructionPriority(Priority3Code instructionPriority) {
+	public BusinessLetter1 setInstructionPriority(Priority3Code instructionPriority) {
 		this.instructionPriority = instructionPriority;
+		return this;
 	}
 
-	@XmlElement(name = "Orgtr", required = true)
 	public QualifiedPartyIdentification1 getOriginator() {
 		return originator;
 	}
 
-	public void setOriginator(com.tools20022.repository.msg.QualifiedPartyIdentification1 originator) {
-		this.originator = originator;
+	public BusinessLetter1 setOriginator(QualifiedPartyIdentification1 originator) {
+		this.originator = Objects.requireNonNull(originator);
+		return this;
 	}
 
-	@XmlElement(name = "PmryRcpt", required = true)
 	public List<QualifiedPartyIdentification1> getPrimaryRecipient() {
-		return primaryRecipient;
+		return primaryRecipient == null ? primaryRecipient = new ArrayList<>() : primaryRecipient;
 	}
 
-	public void setPrimaryRecipient(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> primaryRecipient) {
-		this.primaryRecipient = primaryRecipient;
+	public BusinessLetter1 setPrimaryRecipient(List<QualifiedPartyIdentification1> primaryRecipient) {
+		this.primaryRecipient = Objects.requireNonNull(primaryRecipient);
+		return this;
 	}
 
-	@XmlElement(name = "Sndr")
 	public List<QualifiedPartyIdentification1> getSender() {
-		return sender;
+		return sender == null ? sender = new ArrayList<>() : sender;
 	}
 
-	public void setSender(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> sender) {
-		this.sender = sender;
+	public BusinessLetter1 setSender(List<QualifiedPartyIdentification1> sender) {
+		this.sender = Objects.requireNonNull(sender);
+		return this;
 	}
 
-	@XmlElement(name = "AuthstnUsr", required = true)
 	public List<QualifiedPartyIdentification1> getAuthorisationUser() {
-		return authorisationUser;
+		return authorisationUser == null ? authorisationUser = new ArrayList<>() : authorisationUser;
 	}
 
-	public void setAuthorisationUser(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> authorisationUser) {
-		this.authorisationUser = authorisationUser;
+	public BusinessLetter1 setAuthorisationUser(List<QualifiedPartyIdentification1> authorisationUser) {
+		this.authorisationUser = Objects.requireNonNull(authorisationUser);
+		return this;
 	}
 
-	@XmlElement(name = "RspnRcpt")
 	public List<QualifiedPartyIdentification1> getResponseRecipient() {
-		return responseRecipient;
+		return responseRecipient == null ? responseRecipient = new ArrayList<>() : responseRecipient;
 	}
 
-	public void setResponseRecipient(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> responseRecipient) {
-		this.responseRecipient = responseRecipient;
+	public BusinessLetter1 setResponseRecipient(List<QualifiedPartyIdentification1> responseRecipient) {
+		this.responseRecipient = Objects.requireNonNull(responseRecipient);
+		return this;
 	}
 
-	@XmlElement(name = "CpyRcpt")
 	public List<QualifiedPartyIdentification1> getCopyRecipient() {
-		return copyRecipient;
+		return copyRecipient == null ? copyRecipient = new ArrayList<>() : copyRecipient;
 	}
 
-	public void setCopyRecipient(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> copyRecipient) {
-		this.copyRecipient = copyRecipient;
+	public BusinessLetter1 setCopyRecipient(List<QualifiedPartyIdentification1> copyRecipient) {
+		this.copyRecipient = Objects.requireNonNull(copyRecipient);
+		return this;
 	}
 
-	@XmlElement(name = "OthrPty")
 	public List<QualifiedPartyIdentification1> getOtherParty() {
-		return otherParty;
+		return otherParty == null ? otherParty = new ArrayList<>() : otherParty;
 	}
 
-	public void setOtherParty(List<com.tools20022.repository.msg.QualifiedPartyIdentification1> otherParty) {
-		this.otherParty = otherParty;
+	public BusinessLetter1 setOtherParty(List<QualifiedPartyIdentification1> otherParty) {
+		this.otherParty = Objects.requireNonNull(otherParty);
+		return this;
 	}
 
-	@XmlElement(name = "AssoctdDoc")
 	public List<QualifiedDocumentInformation1> getAssociatedDocument() {
-		return associatedDocument;
+		return associatedDocument == null ? associatedDocument = new ArrayList<>() : associatedDocument;
 	}
 
-	public void setAssociatedDocument(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> associatedDocument) {
-		this.associatedDocument = associatedDocument;
+	public BusinessLetter1 setAssociatedDocument(List<QualifiedDocumentInformation1> associatedDocument) {
+		this.associatedDocument = Objects.requireNonNull(associatedDocument);
+		return this;
 	}
 
-	@XmlElement(name = "GovngCtrct")
 	public List<QualifiedDocumentInformation1> getGoverningContract() {
-		return governingContract;
+		return governingContract == null ? governingContract = new ArrayList<>() : governingContract;
 	}
 
-	public void setGoverningContract(List<com.tools20022.repository.msg.QualifiedDocumentInformation1> governingContract) {
-		this.governingContract = governingContract;
+	public BusinessLetter1 setGoverningContract(List<QualifiedDocumentInformation1> governingContract) {
+		this.governingContract = Objects.requireNonNull(governingContract);
+		return this;
 	}
 
-	@XmlElement(name = "LglCntxt")
 	public List<GovernanceRules2> getLegalContext() {
-		return legalContext;
+		return legalContext == null ? legalContext = new ArrayList<>() : legalContext;
 	}
 
-	public void setLegalContext(List<com.tools20022.repository.msg.GovernanceRules2> legalContext) {
-		this.legalContext = legalContext;
+	public BusinessLetter1 setLegalContext(List<GovernanceRules2> legalContext) {
+		this.legalContext = Objects.requireNonNull(legalContext);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
-	public Max2000Text getAdditionalInformation() {
-		return additionalInformation;
+	public Optional<Max2000Text> getAdditionalInformation() {
+		return additionalInformation == null ? Optional.empty() : Optional.of(additionalInformation);
 	}
 
-	public void setAdditionalInformation(Max2000Text additionalInformation) {
+	public BusinessLetter1 setAdditionalInformation(Max2000Text additionalInformation) {
 		this.additionalInformation = additionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "Ntce")
-	public Max350Text getNotice() {
-		return notice;
+	public Optional<Max350Text> getNotice() {
+		return notice == null ? Optional.empty() : Optional.of(notice);
 	}
 
-	public void setNotice(Max350Text notice) {
+	public BusinessLetter1 setNotice(Max350Text notice) {
 		this.notice = notice;
+		return this;
 	}
 
-	@XmlElement(name = "VldtnStsInf")
-	public ValidationStatusInformation1 getValidationStatusInformation() {
-		return validationStatusInformation;
+	public Optional<ValidationStatusInformation1> getValidationStatusInformation() {
+		return validationStatusInformation == null ? Optional.empty() : Optional.of(validationStatusInformation);
 	}
 
-	public void setValidationStatusInformation(com.tools20022.repository.msg.ValidationStatusInformation1 validationStatusInformation) {
+	public BusinessLetter1 setValidationStatusInformation(ValidationStatusInformation1 validationStatusInformation) {
 		this.validationStatusInformation = validationStatusInformation;
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
 	public List<QualifiedPartyAndXMLSignature1> getDigitalSignature() {
-		return digitalSignature;
+		return digitalSignature == null ? digitalSignature = new ArrayList<>() : digitalSignature;
 	}
 
-	public void setDigitalSignature(List<com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1> digitalSignature) {
-		this.digitalSignature = digitalSignature;
+	public BusinessLetter1 setDigitalSignature(List<QualifiedPartyAndXMLSignature1> digitalSignature) {
+		this.digitalSignature = Objects.requireNonNull(digitalSignature);
+		return this;
 	}
 }

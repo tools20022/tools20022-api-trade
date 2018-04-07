@@ -22,8 +22,10 @@ import com.tools20022.metamodel.MMMessageComponent;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.tsmt.TimeOutNotificationV03;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.TransactionStatus5;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -67,16 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Describes the time-out consequences."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TimeOutResult2", propOrder = "transactionFutureStatus")
 public class TimeOutResult2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "TxFutrSts", required = true)
 	protected TransactionStatus5 transactionFutureStatus;
 	/**
-	 * Specifies the status of the transaction if no action is taken by the
-	 * user.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -101,9 +103,9 @@ public class TimeOutResult2 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTransactionFutureStatus = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TimeOutResult2, TransactionStatus5> mmTransactionFutureStatus = new MMMessageAssociationEnd<TimeOutResult2, TransactionStatus5>() {
 		{
-			componentContext_lazy = () -> TimeOutResult2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TimeOutResult2.mmObject();
 			isDerived = false;
 			xmlTag = "TxFutrSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -112,16 +114,26 @@ public class TimeOutResult2 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.TransactionStatus5.mmObject();
+			type_lazy = () -> TransactionStatus5.mmObject();
+		}
+
+		@Override
+		public TransactionStatus5 getValue(TimeOutResult2 obj) {
+			return obj.getTransactionFutureStatus();
+		}
+
+		@Override
+		public void setValue(TimeOutResult2 obj, TransactionStatus5 value) {
+			obj.setTransactionFutureStatus(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TimeOutResult2.mmTransactionFutureStatus);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TimeOutResult2.mmTransactionFutureStatus);
 				messageBuildingBlock_lazy = () -> Arrays.asList(TimeOutNotificationV03.mmTimeOutDescription);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TimeOutResult2";
 				definition = "Describes the time-out consequences.";
@@ -130,12 +142,12 @@ public class TimeOutResult2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "TxFutrSts", required = true)
 	public TransactionStatus5 getTransactionFutureStatus() {
 		return transactionFutureStatus;
 	}
 
-	public void setTransactionFutureStatus(com.tools20022.repository.msg.TransactionStatus5 transactionFutureStatus) {
-		this.transactionFutureStatus = transactionFutureStatus;
+	public TimeOutResult2 setTransactionFutureStatus(TransactionStatus5 transactionFutureStatus) {
+		this.transactionFutureStatus = Objects.requireNonNull(transactionFutureStatus);
+		return this;
 	}
 }

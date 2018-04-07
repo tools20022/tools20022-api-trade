@@ -25,9 +25,12 @@ import com.tools20022.repository.area.tsmt.BaselineMatchReportV03;
 import com.tools20022.repository.area.tsmt.DataSetMatchReportV03;
 import com.tools20022.repository.datatype.Number;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.ValidationResult5;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -66,8 +69,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -80,16 +83,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "MisMatchReport3", propOrder = {"numberOfMisMatches", "misMatchInformation"})
 public class MisMatchReport3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NbOfMisMtchs", required = true)
 	protected Number numberOfMisMatches;
 	/**
-	 * Total number of mismatches between two baselines or between one baseline
-	 * and one data set.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -116,9 +119,9 @@ public class MisMatchReport3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNumberOfMisMatches = new MMMessageAttribute() {
+	public static final MMMessageAttribute<MisMatchReport3, Number> mmNumberOfMisMatches = new MMMessageAttribute<MisMatchReport3, Number>() {
 		{
-			componentContext_lazy = () -> MisMatchReport3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.MisMatchReport3.mmObject();
 			isDerived = false;
 			xmlTag = "NbOfMisMtchs";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -128,11 +131,22 @@ public class MisMatchReport3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(MisMatchReport3 obj) {
+			return obj.getNumberOfMisMatches();
+		}
+
+		@Override
+		public void setValue(MisMatchReport3 obj, Number value) {
+			obj.setNumberOfMisMatches(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.ValidationResult5> misMatchInformation;
+	@XmlElement(name = "MisMtchInf")
+	protected List<ValidationResult5> misMatchInformation;
 	/**
-	 * Details of each mismatch occurrence.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -156,9 +170,9 @@ public class MisMatchReport3 {
 	 * definition} = "Details of each mismatch occurrence."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmMisMatchInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<MisMatchReport3, List<ValidationResult5>> mmMisMatchInformation = new MMMessageAssociationEnd<MisMatchReport3, List<ValidationResult5>>() {
 		{
-			componentContext_lazy = () -> MisMatchReport3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.MisMatchReport3.mmObject();
 			isDerived = false;
 			xmlTag = "MisMtchInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,16 +180,26 @@ public class MisMatchReport3 {
 			definition = "Details of each mismatch occurrence.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ValidationResult5.mmObject();
+			type_lazy = () -> ValidationResult5.mmObject();
+		}
+
+		@Override
+		public List<ValidationResult5> getValue(MisMatchReport3 obj) {
+			return obj.getMisMatchInformation();
+		}
+
+		@Override
+		public void setValue(MisMatchReport3 obj, List<ValidationResult5> value) {
+			obj.setMisMatchInformation(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(MisMatchReport3.mmNumberOfMisMatches, MisMatchReport3.mmMisMatchInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.MisMatchReport3.mmNumberOfMisMatches, com.tools20022.repository.msg.MisMatchReport3.mmMisMatchInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(BaselineMatchReportV03.mmReport, DataSetMatchReportV03.mmReport);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "MisMatchReport3";
 				definition = "Description of the mis-matched situation between two baselines or between a baseline and a data set.";
@@ -184,21 +208,21 @@ public class MisMatchReport3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NbOfMisMtchs", required = true)
 	public Number getNumberOfMisMatches() {
 		return numberOfMisMatches;
 	}
 
-	public void setNumberOfMisMatches(Number numberOfMisMatches) {
-		this.numberOfMisMatches = numberOfMisMatches;
+	public MisMatchReport3 setNumberOfMisMatches(Number numberOfMisMatches) {
+		this.numberOfMisMatches = Objects.requireNonNull(numberOfMisMatches);
+		return this;
 	}
 
-	@XmlElement(name = "MisMtchInf")
 	public List<ValidationResult5> getMisMatchInformation() {
-		return misMatchInformation;
+		return misMatchInformation == null ? misMatchInformation = new ArrayList<>() : misMatchInformation;
 	}
 
-	public void setMisMatchInformation(List<com.tools20022.repository.msg.ValidationResult5> misMatchInformation) {
-		this.misMatchInformation = misMatchInformation;
+	public MisMatchReport3 setMisMatchInformation(List<ValidationResult5> misMatchInformation) {
+		this.misMatchInformation = Objects.requireNonNull(misMatchInformation);
+		return this;
 	}
 }

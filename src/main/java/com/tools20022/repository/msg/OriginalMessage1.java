@@ -28,6 +28,8 @@ import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -63,8 +65,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -75,15 +77,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Identification of a message previously sent."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "OriginalMessage1", propOrder = {"messageDefinitionIdentifier", "from", "to", "businessMessageIdentifier", "creationDate", "copyDuplicate"})
 public class OriginalMessage1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "MsgDefIdr", required = true)
 	protected Max35Text messageDefinitionIdentifier;
 	/**
-	 * XML schema-instance namespace, for example "tsin.008.001.01"
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -106,26 +109,37 @@ public class OriginalMessage1 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "XML schema-instance namespace, for example \"tsin.008.001.01\" "</li>
+	 * "XML schema-instance namespace, for example \"tsin.008.001.01\"."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMessageDefinitionIdentifier = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalMessage1, Max35Text> mmMessageDefinitionIdentifier = new MMMessageAttribute<OriginalMessage1, Max35Text>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "MsgDefIdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "MessageDefinitionIdentifier";
-			definition = "XML schema-instance namespace, for example \"tsin.008.001.01\" ";
+			definition = "XML schema-instance namespace, for example \"tsin.008.001.01\".";
 			maxOccurs = 1;
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(OriginalMessage1 obj) {
+			return obj.getMessageDefinitionIdentifier();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, Max35Text value) {
+			obj.setMessageDefinitionIdentifier(value);
+		}
 	};
+	@XmlElement(name = "Fr", required = true)
 	protected Party9Choice from;
 	/**
-	 * Message sender specified in the original message. <br>
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -149,9 +163,9 @@ public class OriginalMessage1 {
 	 * definition} = "Message sender specified in the original message.\r\r\n"</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFrom = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalMessage1, Party9Choice> mmFrom = new MMMessageAssociationEnd<OriginalMessage1, Party9Choice>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "Fr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -162,11 +176,22 @@ public class OriginalMessage1 {
 			isComposite = true;
 			type_lazy = () -> Party9Choice.mmObject();
 		}
+
+		@Override
+		public Party9Choice getValue(OriginalMessage1 obj) {
+			return obj.getFrom();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, Party9Choice value) {
+			obj.setFrom(value);
+		}
 	};
+	@XmlElement(name = "To", required = true)
 	protected Party9Choice to;
 	/**
-	 * Message recipient specified in the original message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -190,9 +215,9 @@ public class OriginalMessage1 {
 	 * definition} = "Message recipient specified in the original message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTo = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalMessage1, Party9Choice> mmTo = new MMMessageAssociationEnd<OriginalMessage1, Party9Choice>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "To";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -203,11 +228,22 @@ public class OriginalMessage1 {
 			isComposite = true;
 			type_lazy = () -> Party9Choice.mmObject();
 		}
+
+		@Override
+		public Party9Choice getValue(OriginalMessage1 obj) {
+			return obj.getTo();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, Party9Choice value) {
+			obj.setTo(value);
+		}
 	};
+	@XmlElement(name = "BizMsgIdr", required = true)
 	protected Max35Text businessMessageIdentifier;
 	/**
-	 * Message identification specified in the original message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -233,9 +269,9 @@ public class OriginalMessage1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmBusinessMessageIdentifier = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalMessage1, Max35Text> mmBusinessMessageIdentifier = new MMMessageAttribute<OriginalMessage1, Max35Text>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "BizMsgIdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -245,11 +281,22 @@ public class OriginalMessage1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(OriginalMessage1 obj) {
+			return obj.getBusinessMessageIdentifier();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, Max35Text value) {
+			obj.setBusinessMessageIdentifier(value);
+		}
 	};
+	@XmlElement(name = "CreDt", required = true)
 	protected ISONormalisedDateTime creationDate;
 	/**
-	 * Message creation date and time specified in the original message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -276,9 +323,9 @@ public class OriginalMessage1 {
 	 * "Message creation date and time specified in the original message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCreationDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalMessage1, ISONormalisedDateTime> mmCreationDate = new MMMessageAttribute<OriginalMessage1, ISONormalisedDateTime>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "CreDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -288,12 +335,22 @@ public class OriginalMessage1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISONormalisedDateTime.mmObject();
 		}
+
+		@Override
+		public ISONormalisedDateTime getValue(OriginalMessage1 obj) {
+			return obj.getCreationDate();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, ISONormalisedDateTime value) {
+			obj.setCreationDate(value);
+		}
 	};
+	@XmlElement(name = "CpyDplct")
 	protected CopyDuplicate1Code copyDuplicate;
 	/**
-	 * Indicates whether the message is a copy, a duplicate or a copy of a
-	 * duplicate of a previously sent ISO 20022 message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -321,9 +378,9 @@ public class OriginalMessage1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCopyDuplicate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalMessage1, Optional<CopyDuplicate1Code>> mmCopyDuplicate = new MMMessageAttribute<OriginalMessage1, Optional<CopyDuplicate1Code>>() {
 		{
-			componentContext_lazy = () -> OriginalMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "CpyDplct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -333,14 +390,25 @@ public class OriginalMessage1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CopyDuplicate1Code.mmObject();
 		}
+
+		@Override
+		public Optional<CopyDuplicate1Code> getValue(OriginalMessage1 obj) {
+			return obj.getCopyDuplicate();
+		}
+
+		@Override
+		public void setValue(OriginalMessage1 obj, Optional<CopyDuplicate1Code> value) {
+			obj.setCopyDuplicate(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(OriginalMessage1.mmMessageDefinitionIdentifier, OriginalMessage1.mmFrom, OriginalMessage1.mmTo, OriginalMessage1.mmBusinessMessageIdentifier, OriginalMessage1.mmCreationDate,
-						OriginalMessage1.mmCopyDuplicate);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.OriginalMessage1.mmMessageDefinitionIdentifier, com.tools20022.repository.msg.OriginalMessage1.mmFrom,
+						com.tools20022.repository.msg.OriginalMessage1.mmTo, com.tools20022.repository.msg.OriginalMessage1.mmBusinessMessageIdentifier, com.tools20022.repository.msg.OriginalMessage1.mmCreationDate,
+						com.tools20022.repository.msg.OriginalMessage1.mmCopyDuplicate);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "OriginalMessage1";
 				definition = "Identification of a message previously sent.";
@@ -349,57 +417,57 @@ public class OriginalMessage1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "MsgDefIdr", required = true)
 	public Max35Text getMessageDefinitionIdentifier() {
 		return messageDefinitionIdentifier;
 	}
 
-	public void setMessageDefinitionIdentifier(Max35Text messageDefinitionIdentifier) {
-		this.messageDefinitionIdentifier = messageDefinitionIdentifier;
+	public OriginalMessage1 setMessageDefinitionIdentifier(Max35Text messageDefinitionIdentifier) {
+		this.messageDefinitionIdentifier = Objects.requireNonNull(messageDefinitionIdentifier);
+		return this;
 	}
 
-	@XmlElement(name = "Fr", required = true)
 	public Party9Choice getFrom() {
 		return from;
 	}
 
-	public void setFrom(Party9Choice from) {
-		this.from = from;
+	public OriginalMessage1 setFrom(Party9Choice from) {
+		this.from = Objects.requireNonNull(from);
+		return this;
 	}
 
-	@XmlElement(name = "To", required = true)
 	public Party9Choice getTo() {
 		return to;
 	}
 
-	public void setTo(Party9Choice to) {
-		this.to = to;
+	public OriginalMessage1 setTo(Party9Choice to) {
+		this.to = Objects.requireNonNull(to);
+		return this;
 	}
 
-	@XmlElement(name = "BizMsgIdr", required = true)
 	public Max35Text getBusinessMessageIdentifier() {
 		return businessMessageIdentifier;
 	}
 
-	public void setBusinessMessageIdentifier(Max35Text businessMessageIdentifier) {
-		this.businessMessageIdentifier = businessMessageIdentifier;
+	public OriginalMessage1 setBusinessMessageIdentifier(Max35Text businessMessageIdentifier) {
+		this.businessMessageIdentifier = Objects.requireNonNull(businessMessageIdentifier);
+		return this;
 	}
 
-	@XmlElement(name = "CreDt", required = true)
 	public ISONormalisedDateTime getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(ISONormalisedDateTime creationDate) {
-		this.creationDate = creationDate;
+	public OriginalMessage1 setCreationDate(ISONormalisedDateTime creationDate) {
+		this.creationDate = Objects.requireNonNull(creationDate);
+		return this;
 	}
 
-	@XmlElement(name = "CpyDplct")
-	public CopyDuplicate1Code getCopyDuplicate() {
-		return copyDuplicate;
+	public Optional<CopyDuplicate1Code> getCopyDuplicate() {
+		return copyDuplicate == null ? Optional.empty() : Optional.of(copyDuplicate);
 	}
 
-	public void setCopyDuplicate(CopyDuplicate1Code copyDuplicate) {
+	public OriginalMessage1 setCopyDuplicate(CopyDuplicate1Code copyDuplicate) {
 		this.copyDuplicate = copyDuplicate;
+		return this;
 	}
 }

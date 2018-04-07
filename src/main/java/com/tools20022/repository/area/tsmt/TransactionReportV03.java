@@ -24,10 +24,11 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.TransactionReportItems3;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -82,15 +83,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TransactionReportV03", propOrder = {"reportIdentification", "relatedMessageReference", "reportedItems"})
 public class TransactionReportV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RptId", required = true)
 	protected MessageIdentification1 reportIdentification;
 	/**
-	 * Identifies the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -108,32 +110,35 @@ public class TransactionReportV03 {
 	 * name} = "ReportIdentification"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Identifies the report. "</li>
+	 * definition} = "Identifies the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<TransactionReportV03, MessageIdentification1> mmReportIdentification = new MMMessageBuildingBlock<TransactionReportV03, MessageIdentification1>() {
 		{
 			xmlTag = "RptId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ReportIdentification";
-			definition = "Identifies the report. ";
+			definition = "Identifies the report.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransactionReportV03.class.getMethod("getReportIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(TransactionReportV03 obj) {
+			return obj.getReportIdentification();
+		}
+
+		@Override
+		public void setValue(TransactionReportV03 obj, MessageIdentification1 value) {
+			obj.setReportIdentification(value);
 		}
 	};
+	@XmlElement(name = "RltdMsgRef", required = true)
 	protected MessageIdentification1 relatedMessageReference;
 	/**
-	 * Reference to the previous message requesting the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -154,7 +159,7 @@ public class TransactionReportV03 {
 	 * definition} = "Reference to the previous message requesting the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRelatedMessageReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<TransactionReportV03, MessageIdentification1> mmRelatedMessageReference = new MMMessageBuildingBlock<TransactionReportV03, MessageIdentification1>() {
 		{
 			xmlTag = "RltdMsgRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -165,19 +170,21 @@ public class TransactionReportV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransactionReportV03.class.getMethod("getRelatedMessageReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(TransactionReportV03 obj) {
+			return obj.getRelatedMessageReference();
+		}
+
+		@Override
+		public void setValue(TransactionReportV03 obj, MessageIdentification1 value) {
+			obj.setRelatedMessageReference(value);
 		}
 	};
+	@XmlElement(name = "RptdItms")
 	protected List<TransactionReportItems3> reportedItems;
 	/**
-	 * Detailed description of the items that correspond to the parameters set
-	 * in the request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -200,7 +207,7 @@ public class TransactionReportV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportedItems = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<TransactionReportV03, List<TransactionReportItems3>> mmReportedItems = new MMMessageBuildingBlock<TransactionReportV03, List<TransactionReportItems3>>() {
 		{
 			xmlTag = "RptdItms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -210,12 +217,14 @@ public class TransactionReportV03 {
 			complexType_lazy = () -> TransactionReportItems3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransactionReportV03.class.getMethod("getReportedItems", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<TransactionReportItems3> getValue(TransactionReportV03 obj) {
+			return obj.getReportedItems();
+		}
+
+		@Override
+		public void setValue(TransactionReportV03 obj, List<TransactionReportItems3> value) {
+			obj.setReportedItems(value);
 		}
 	};
 
@@ -248,34 +257,34 @@ public class TransactionReportV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RptId", required = true)
 	public MessageIdentification1 getReportIdentification() {
 		return reportIdentification;
 	}
 
-	public void setReportIdentification(MessageIdentification1 reportIdentification) {
-		this.reportIdentification = reportIdentification;
+	public TransactionReportV03 setReportIdentification(MessageIdentification1 reportIdentification) {
+		this.reportIdentification = Objects.requireNonNull(reportIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RltdMsgRef", required = true)
 	public MessageIdentification1 getRelatedMessageReference() {
 		return relatedMessageReference;
 	}
 
-	public void setRelatedMessageReference(MessageIdentification1 relatedMessageReference) {
-		this.relatedMessageReference = relatedMessageReference;
+	public TransactionReportV03 setRelatedMessageReference(MessageIdentification1 relatedMessageReference) {
+		this.relatedMessageReference = Objects.requireNonNull(relatedMessageReference);
+		return this;
 	}
 
-	@XmlElement(name = "RptdItms")
 	public List<TransactionReportItems3> getReportedItems() {
-		return reportedItems;
+		return reportedItems == null ? reportedItems = new ArrayList<>() : reportedItems;
 	}
 
-	public void setReportedItems(List<TransactionReportItems3> reportedItems) {
-		this.reportedItems = reportedItems;
+	public TransactionReportV03 setReportedItems(List<TransactionReportItems3> reportedItems) {
+		this.reportedItems = Objects.requireNonNull(reportedItems);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.041.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.041.001.03")
 	static public class Document {
 		@XmlElement(name = "TxRpt", required = true)
 		public TransactionReportV03 messageBody;

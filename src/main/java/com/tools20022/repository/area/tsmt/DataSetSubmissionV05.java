@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -123,16 +121,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DataSetSubmissionV05", propOrder = {"submissionIdentification", "relatedTransactionReferences", "commonSubmissionReference", "instruction", "buyerBank", "sellerBank", "commercialDataSet", "transportDataSet",
 		"insuranceDataSet", "certificateDataSet", "otherCertificateDataSet"})
 public class DataSetSubmissionV05 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "SubmissnId", required = true)
 	protected MessageIdentification1 submissionIdentification;
 	/**
-	 * Identifies the submitted information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -153,7 +152,7 @@ public class DataSetSubmissionV05 {
 	 * definition} = "Identifies the submitted information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmissionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, MessageIdentification1> mmSubmissionIdentification = new MMMessageBuildingBlock<DataSetSubmissionV05, MessageIdentification1>() {
 		{
 			xmlTag = "SubmissnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -164,19 +163,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getSubmissionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(DataSetSubmissionV05 obj) {
+			return obj.getSubmissionIdentification();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, MessageIdentification1 value) {
+			obj.setSubmissionIdentification(value);
 		}
 	};
+	@XmlElement(name = "RltdTxRefs", required = true)
 	protected List<DataSetSubmissionReferences3> relatedTransactionReferences;
 	/**
-	 * Identifies the transactions that this submission relates to and provides
-	 * associated information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -199,7 +200,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRelatedTransactionReferences = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, List<DataSetSubmissionReferences3>> mmRelatedTransactionReferences = new MMMessageBuildingBlock<DataSetSubmissionV05, List<DataSetSubmissionReferences3>>() {
 		{
 			xmlTag = "RltdTxRefs";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -209,19 +210,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> DataSetSubmissionReferences3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getRelatedTransactionReferences", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DataSetSubmissionReferences3> getValue(DataSetSubmissionV05 obj) {
+			return obj.getRelatedTransactionReferences();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, List<DataSetSubmissionReferences3> value) {
+			obj.setRelatedTransactionReferences(value);
 		}
 	};
+	@XmlElement(name = "CmonSubmissnRef", required = true)
 	protected SimpleIdentificationInformation commonSubmissionReference;
 	/**
-	 * This reference must be used for all data sets belonging to the same
-	 * submission group.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -244,7 +247,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmCommonSubmissionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, SimpleIdentificationInformation> mmCommonSubmissionReference = new MMMessageBuildingBlock<DataSetSubmissionV05, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "CmonSubmissnRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -255,18 +258,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getCommonSubmissionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(DataSetSubmissionV05 obj) {
+			return obj.getCommonSubmissionReference();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, SimpleIdentificationInformation value) {
+			obj.setCommonSubmissionReference(value);
 		}
 	};
+	@XmlElement(name = "Instr", required = true)
 	protected InstructionType3 instruction;
 	/**
-	 * Specifies the instruction given by the submitter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -284,32 +290,35 @@ public class DataSetSubmissionV05 {
 	 * name} = "Instruction"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Specifies the instruction given by the submitter. "</li>
+	 * definition} = "Specifies the instruction given by the submitter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInstruction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, InstructionType3> mmInstruction = new MMMessageBuildingBlock<DataSetSubmissionV05, InstructionType3>() {
 		{
 			xmlTag = "Instr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Instruction";
-			definition = "Specifies the instruction given by the submitter. ";
+			definition = "Specifies the instruction given by the submitter.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> InstructionType3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getInstruction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public InstructionType3 getValue(DataSetSubmissionV05 obj) {
+			return obj.getInstruction();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, InstructionType3 value) {
+			obj.setInstruction(value);
 		}
 	};
+	@XmlElement(name = "BuyrBk", required = true)
 	protected BICIdentification1 buyerBank;
 	/**
-	 * The financial institution of the buyer, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -328,33 +337,36 @@ public class DataSetSubmissionV05 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the buyer, uniquely identified by its BIC. "
+	 * "The financial institution of the buyer, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, BICIdentification1> mmBuyerBank = new MMMessageBuildingBlock<DataSetSubmissionV05, BICIdentification1>() {
 		{
 			xmlTag = "BuyrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "BuyerBank";
-			definition = "The financial institution of the buyer, uniquely identified by its BIC. ";
+			definition = "The financial institution of the buyer, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getBuyerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(DataSetSubmissionV05 obj) {
+			return obj.getBuyerBank();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, BICIdentification1 value) {
+			obj.setBuyerBank(value);
 		}
 	};
+	@XmlElement(name = "SellrBk", required = true)
 	protected BICIdentification1 sellerBank;
 	/**
-	 * The financial institution of the seller, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -373,34 +385,36 @@ public class DataSetSubmissionV05 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the seller, uniquely identified by its BIC. "
+	 * "The financial institution of the seller, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSellerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, BICIdentification1> mmSellerBank = new MMMessageBuildingBlock<DataSetSubmissionV05, BICIdentification1>() {
 		{
 			xmlTag = "SellrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SellerBank";
-			definition = "The financial institution of the seller, uniquely identified by its BIC. ";
+			definition = "The financial institution of the seller, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getSellerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(DataSetSubmissionV05 obj) {
+			return obj.getSellerBank();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, BICIdentification1 value) {
+			obj.setSellerBank(value);
 		}
 	};
+	@XmlElement(name = "ComrclDataSet")
 	protected CommercialDataSet5 commercialDataSet;
 	/**
-	 * Commercial information that is submitted to the matching application for
-	 * processing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -423,7 +437,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmCommercialDataSet = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, Optional<CommercialDataSet5>> mmCommercialDataSet = new MMMessageBuildingBlock<DataSetSubmissionV05, Optional<CommercialDataSet5>>() {
 		{
 			xmlTag = "ComrclDataSet";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -434,19 +448,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> CommercialDataSet5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getCommercialDataSet", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<CommercialDataSet5> getValue(DataSetSubmissionV05 obj) {
+			return obj.getCommercialDataSet();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, Optional<CommercialDataSet5> value) {
+			obj.setCommercialDataSet(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "TrnsprtDataSet")
 	protected TransportDataSet5 transportDataSet;
 	/**
-	 * Transport information that is submitted to the matching application for
-	 * processing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -469,7 +485,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransportDataSet = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, Optional<TransportDataSet5>> mmTransportDataSet = new MMMessageBuildingBlock<DataSetSubmissionV05, Optional<TransportDataSet5>>() {
 		{
 			xmlTag = "TrnsprtDataSet";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -480,19 +496,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> TransportDataSet5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getTransportDataSet", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<TransportDataSet5> getValue(DataSetSubmissionV05 obj) {
+			return obj.getTransportDataSet();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, Optional<TransportDataSet5> value) {
+			obj.setTransportDataSet(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "InsrncDataSet")
 	protected InsuranceDataSet1 insuranceDataSet;
 	/**
-	 * Insurance information that is submitted to the matching application for
-	 * processing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -515,7 +533,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInsuranceDataSet = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, Optional<InsuranceDataSet1>> mmInsuranceDataSet = new MMMessageBuildingBlock<DataSetSubmissionV05, Optional<InsuranceDataSet1>>() {
 		{
 			xmlTag = "InsrncDataSet";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -526,19 +544,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> InsuranceDataSet1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getInsuranceDataSet", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<InsuranceDataSet1> getValue(DataSetSubmissionV05 obj) {
+			return obj.getInsuranceDataSet();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, Optional<InsuranceDataSet1> value) {
+			obj.setInsuranceDataSet(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CertDataSet")
 	protected List<CertificateDataSet2> certificateDataSet;
 	/**
-	 * Certificate information that is submitted to the matching application for
-	 * processing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -561,7 +581,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmCertificateDataSet = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, List<CertificateDataSet2>> mmCertificateDataSet = new MMMessageBuildingBlock<DataSetSubmissionV05, List<CertificateDataSet2>>() {
 		{
 			xmlTag = "CertDataSet";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -571,19 +591,21 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> CertificateDataSet2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getCertificateDataSet", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<CertificateDataSet2> getValue(DataSetSubmissionV05 obj) {
+			return obj.getCertificateDataSet();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, List<CertificateDataSet2> value) {
+			obj.setCertificateDataSet(value);
 		}
 	};
+	@XmlElement(name = "OthrCertDataSet")
 	protected List<OtherCertificateDataSet2> otherCertificateDataSet;
 	/**
-	 * Other certificate information that is submitted to the matching
-	 * application for processing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -606,7 +628,7 @@ public class DataSetSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmOtherCertificateDataSet = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DataSetSubmissionV05, List<OtherCertificateDataSet2>> mmOtherCertificateDataSet = new MMMessageBuildingBlock<DataSetSubmissionV05, List<OtherCertificateDataSet2>>() {
 		{
 			xmlTag = "OthrCertDataSet";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -616,12 +638,14 @@ public class DataSetSubmissionV05 {
 			complexType_lazy = () -> OtherCertificateDataSet2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DataSetSubmissionV05.class.getMethod("getOtherCertificateDataSet", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<OtherCertificateDataSet2> getValue(DataSetSubmissionV05 obj) {
+			return obj.getOtherCertificateDataSet();
+		}
+
+		@Override
+		public void setValue(DataSetSubmissionV05 obj, List<OtherCertificateDataSet2> value) {
+			obj.setOtherCertificateDataSet(value);
 		}
 	};
 
@@ -658,106 +682,106 @@ public class DataSetSubmissionV05 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "SubmissnId", required = true)
 	public MessageIdentification1 getSubmissionIdentification() {
 		return submissionIdentification;
 	}
 
-	public void setSubmissionIdentification(MessageIdentification1 submissionIdentification) {
-		this.submissionIdentification = submissionIdentification;
+	public DataSetSubmissionV05 setSubmissionIdentification(MessageIdentification1 submissionIdentification) {
+		this.submissionIdentification = Objects.requireNonNull(submissionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RltdTxRefs", required = true)
 	public List<DataSetSubmissionReferences3> getRelatedTransactionReferences() {
-		return relatedTransactionReferences;
+		return relatedTransactionReferences == null ? relatedTransactionReferences = new ArrayList<>() : relatedTransactionReferences;
 	}
 
-	public void setRelatedTransactionReferences(List<DataSetSubmissionReferences3> relatedTransactionReferences) {
-		this.relatedTransactionReferences = relatedTransactionReferences;
+	public DataSetSubmissionV05 setRelatedTransactionReferences(List<DataSetSubmissionReferences3> relatedTransactionReferences) {
+		this.relatedTransactionReferences = Objects.requireNonNull(relatedTransactionReferences);
+		return this;
 	}
 
-	@XmlElement(name = "CmonSubmissnRef", required = true)
 	public SimpleIdentificationInformation getCommonSubmissionReference() {
 		return commonSubmissionReference;
 	}
 
-	public void setCommonSubmissionReference(SimpleIdentificationInformation commonSubmissionReference) {
-		this.commonSubmissionReference = commonSubmissionReference;
+	public DataSetSubmissionV05 setCommonSubmissionReference(SimpleIdentificationInformation commonSubmissionReference) {
+		this.commonSubmissionReference = Objects.requireNonNull(commonSubmissionReference);
+		return this;
 	}
 
-	@XmlElement(name = "Instr", required = true)
 	public InstructionType3 getInstruction() {
 		return instruction;
 	}
 
-	public void setInstruction(InstructionType3 instruction) {
-		this.instruction = instruction;
+	public DataSetSubmissionV05 setInstruction(InstructionType3 instruction) {
+		this.instruction = Objects.requireNonNull(instruction);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrBk", required = true)
 	public BICIdentification1 getBuyerBank() {
 		return buyerBank;
 	}
 
-	public void setBuyerBank(BICIdentification1 buyerBank) {
-		this.buyerBank = buyerBank;
+	public DataSetSubmissionV05 setBuyerBank(BICIdentification1 buyerBank) {
+		this.buyerBank = Objects.requireNonNull(buyerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrBk", required = true)
 	public BICIdentification1 getSellerBank() {
 		return sellerBank;
 	}
 
-	public void setSellerBank(BICIdentification1 sellerBank) {
-		this.sellerBank = sellerBank;
+	public DataSetSubmissionV05 setSellerBank(BICIdentification1 sellerBank) {
+		this.sellerBank = Objects.requireNonNull(sellerBank);
+		return this;
 	}
 
-	@XmlElement(name = "ComrclDataSet")
-	public CommercialDataSet5 getCommercialDataSet() {
-		return commercialDataSet;
+	public Optional<CommercialDataSet5> getCommercialDataSet() {
+		return commercialDataSet == null ? Optional.empty() : Optional.of(commercialDataSet);
 	}
 
-	public void setCommercialDataSet(CommercialDataSet5 commercialDataSet) {
+	public DataSetSubmissionV05 setCommercialDataSet(CommercialDataSet5 commercialDataSet) {
 		this.commercialDataSet = commercialDataSet;
+		return this;
 	}
 
-	@XmlElement(name = "TrnsprtDataSet")
-	public TransportDataSet5 getTransportDataSet() {
-		return transportDataSet;
+	public Optional<TransportDataSet5> getTransportDataSet() {
+		return transportDataSet == null ? Optional.empty() : Optional.of(transportDataSet);
 	}
 
-	public void setTransportDataSet(TransportDataSet5 transportDataSet) {
+	public DataSetSubmissionV05 setTransportDataSet(TransportDataSet5 transportDataSet) {
 		this.transportDataSet = transportDataSet;
+		return this;
 	}
 
-	@XmlElement(name = "InsrncDataSet")
-	public InsuranceDataSet1 getInsuranceDataSet() {
-		return insuranceDataSet;
+	public Optional<InsuranceDataSet1> getInsuranceDataSet() {
+		return insuranceDataSet == null ? Optional.empty() : Optional.of(insuranceDataSet);
 	}
 
-	public void setInsuranceDataSet(InsuranceDataSet1 insuranceDataSet) {
+	public DataSetSubmissionV05 setInsuranceDataSet(InsuranceDataSet1 insuranceDataSet) {
 		this.insuranceDataSet = insuranceDataSet;
+		return this;
 	}
 
-	@XmlElement(name = "CertDataSet")
 	public List<CertificateDataSet2> getCertificateDataSet() {
-		return certificateDataSet;
+		return certificateDataSet == null ? certificateDataSet = new ArrayList<>() : certificateDataSet;
 	}
 
-	public void setCertificateDataSet(List<CertificateDataSet2> certificateDataSet) {
-		this.certificateDataSet = certificateDataSet;
+	public DataSetSubmissionV05 setCertificateDataSet(List<CertificateDataSet2> certificateDataSet) {
+		this.certificateDataSet = Objects.requireNonNull(certificateDataSet);
+		return this;
 	}
 
-	@XmlElement(name = "OthrCertDataSet")
 	public List<OtherCertificateDataSet2> getOtherCertificateDataSet() {
-		return otherCertificateDataSet;
+		return otherCertificateDataSet == null ? otherCertificateDataSet = new ArrayList<>() : otherCertificateDataSet;
 	}
 
-	public void setOtherCertificateDataSet(List<OtherCertificateDataSet2> otherCertificateDataSet) {
-		this.otherCertificateDataSet = otherCertificateDataSet;
+	public DataSetSubmissionV05 setOtherCertificateDataSet(List<OtherCertificateDataSet2> otherCertificateDataSet) {
+		this.otherCertificateDataSet = Objects.requireNonNull(otherCertificateDataSet);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.014.05.05")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.014.001.05")
 	static public class Document {
 		@XmlElement(name = "DataSetSubmissn", required = true)
 		public DataSetSubmissionV05 messageBody;

@@ -25,10 +25,11 @@ import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.Undertaking3;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -76,6 +77,47 @@ import javax.xml.bind.annotation.*;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMMessageDefinition#getMessageDefinitionIdentifier
  * messageDefinitionIdentifier} = {@code tsrv.001.001.01}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant1Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant1Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant2Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant2Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant3Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant3Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant4Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant4Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant5Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant5Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintApplicant6Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintApplicant6Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType1Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType1Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType2Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType2Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType3Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType3Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType4Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType4Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType5Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType5Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIssuanceType6Rule#for_tsrv_UndertakingIssuanceV01
+ * ConstraintIssuanceType6Rule.for_tsrv_UndertakingIssuanceV01}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -88,17 +130,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingIssuanceV01", propOrder = {"undertakingIssuanceDetails", "bankToBeneficiaryInformation", "bankToBankInformation", "digitalSignature"})
 public class UndertakingIssuanceV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgIssncDtls", required = true)
 	protected Undertaking3 undertakingIssuanceDetails;
 	/**
-	 * Independent undertaking, such as a demand guarantee or standby letter of
-	 * credit, that provides financial assurance, to be collected on the
-	 * presentation of documents that comply with its terms and conditions.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -120,7 +161,7 @@ public class UndertakingIssuanceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingIssuanceDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceV01, Undertaking3> mmUndertakingIssuanceDetails = new MMMessageBuildingBlock<UndertakingIssuanceV01, Undertaking3>() {
 		{
 			xmlTag = "UdrtkgIssncDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,18 +172,21 @@ public class UndertakingIssuanceV01 {
 			complexType_lazy = () -> Undertaking3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceV01.class.getMethod("getUndertakingIssuanceDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Undertaking3 getValue(UndertakingIssuanceV01 obj) {
+			return obj.getUndertakingIssuanceDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceV01 obj, Undertaking3 value) {
+			obj.setUndertakingIssuanceDetails(value);
 		}
 	};
+	@XmlElement(name = "BkToBnfcryInf")
 	protected List<Max2000Text> bankToBeneficiaryInformation;
 	/**
-	 * Additional information specific to the bank-to-beneficiary communication.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -164,7 +208,7 @@ public class UndertakingIssuanceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBankToBeneficiaryInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceV01, List<Max2000Text>> mmBankToBeneficiaryInformation = new MMMessageBuildingBlock<UndertakingIssuanceV01, List<Max2000Text>>() {
 		{
 			xmlTag = "BkToBnfcryInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -175,18 +219,21 @@ public class UndertakingIssuanceV01 {
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceV01.class.getMethod("getBankToBeneficiaryInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<Max2000Text> getValue(UndertakingIssuanceV01 obj) {
+			return obj.getBankToBeneficiaryInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceV01 obj, List<Max2000Text> value) {
+			obj.setBankToBeneficiaryInformation(value);
 		}
 	};
+	@XmlElement(name = "BkToBkInf")
 	protected List<Max2000Text> bankToBankInformation;
 	/**
-	 * Additional information specific to the bank-to-bank communication.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -207,7 +254,7 @@ public class UndertakingIssuanceV01 {
 	 * "Additional information specific to the bank-to-bank communication."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBankToBankInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceV01, List<Max2000Text>> mmBankToBankInformation = new MMMessageBuildingBlock<UndertakingIssuanceV01, List<Max2000Text>>() {
 		{
 			xmlTag = "BkToBkInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -218,18 +265,21 @@ public class UndertakingIssuanceV01 {
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceV01.class.getMethod("getBankToBankInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<Max2000Text> getValue(UndertakingIssuanceV01 obj) {
+			return obj.getBankToBankInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceV01 obj, List<Max2000Text> value) {
+			obj.setBankToBankInformation(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected List<PartyAndSignature2> digitalSignature;
 	/**
-	 * Digital signature of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -250,7 +300,7 @@ public class UndertakingIssuanceV01 {
 	 * definition} = "Digital signature of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingIssuanceV01, List<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingIssuanceV01, List<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -260,18 +310,27 @@ public class UndertakingIssuanceV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingIssuanceV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<PartyAndSignature2> getValue(UndertakingIssuanceV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingIssuanceV01 obj, List<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value);
 		}
 	};
 
 	final static public MMMessageDefinition mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageDefinition() {
 			{
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintApplicant1Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintApplicant2Rule.for_tsrv_UndertakingIssuanceV01, com.tools20022.repository.constraints.ConstraintApplicant3Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintApplicant4Rule.for_tsrv_UndertakingIssuanceV01, com.tools20022.repository.constraints.ConstraintApplicant5Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintApplicant6Rule.for_tsrv_UndertakingIssuanceV01, com.tools20022.repository.constraints.ConstraintIssuanceType1Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintIssuanceType2Rule.for_tsrv_UndertakingIssuanceV01, com.tools20022.repository.constraints.ConstraintIssuanceType3Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintIssuanceType4Rule.for_tsrv_UndertakingIssuanceV01, com.tools20022.repository.constraints.ConstraintIssuanceType5Rule.for_tsrv_UndertakingIssuanceV01,
+						com.tools20022.repository.constraints.ConstraintIssuanceType6Rule.for_tsrv_UndertakingIssuanceV01);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingIssuanceV01";
 				definition = "The UndertakingIssuance message is sent (and is thus issued) by the party issuing the undertaking to the beneficiary. The message may be sent either to the beneficiary directly or via an advising party. The undertaking could be a demand guarantee, standby letter of credit, or counter-undertaking (counter-guarantee or counter-standby). It contains details on the applicable rules, expiry date, the amount, required documents, and terms and conditions of the undertaking. The message constitutes an operative financial instrument.\r\nUnder the United Nations Convention on Independent Guarantees and Stand-by Letters of Credit (http://www.uncitral.org), 1996, Article 2, \"an undertaking is an independent commitment, known in international practice as an independent guarantee or as a standby letter of credit, given by a bank or other institution or person ('guarantor/issuer') to pay to the beneficiary a certain or determinable amount upon simple demand or upon demand accompanied by other documents, in conformity with the terms and any documentary conditions of the undertaking, indicating, or from which it is to be inferred, that payment is due because of a default in the performance of an obligation, or because of another contingency, or for money borrowed or advanced, or on account of any mature indebtedness undertaken by the principal/applicant or another person\".";
@@ -299,43 +358,43 @@ public class UndertakingIssuanceV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgIssncDtls", required = true)
 	public Undertaking3 getUndertakingIssuanceDetails() {
 		return undertakingIssuanceDetails;
 	}
 
-	public void setUndertakingIssuanceDetails(Undertaking3 undertakingIssuanceDetails) {
-		this.undertakingIssuanceDetails = undertakingIssuanceDetails;
+	public UndertakingIssuanceV01 setUndertakingIssuanceDetails(Undertaking3 undertakingIssuanceDetails) {
+		this.undertakingIssuanceDetails = Objects.requireNonNull(undertakingIssuanceDetails);
+		return this;
 	}
 
-	@XmlElement(name = "BkToBnfcryInf")
 	public List<Max2000Text> getBankToBeneficiaryInformation() {
-		return bankToBeneficiaryInformation;
+		return bankToBeneficiaryInformation == null ? bankToBeneficiaryInformation = new ArrayList<>() : bankToBeneficiaryInformation;
 	}
 
-	public void setBankToBeneficiaryInformation(List<Max2000Text> bankToBeneficiaryInformation) {
-		this.bankToBeneficiaryInformation = bankToBeneficiaryInformation;
+	public UndertakingIssuanceV01 setBankToBeneficiaryInformation(List<Max2000Text> bankToBeneficiaryInformation) {
+		this.bankToBeneficiaryInformation = Objects.requireNonNull(bankToBeneficiaryInformation);
+		return this;
 	}
 
-	@XmlElement(name = "BkToBkInf")
 	public List<Max2000Text> getBankToBankInformation() {
-		return bankToBankInformation;
+		return bankToBankInformation == null ? bankToBankInformation = new ArrayList<>() : bankToBankInformation;
 	}
 
-	public void setBankToBankInformation(List<Max2000Text> bankToBankInformation) {
-		this.bankToBankInformation = bankToBankInformation;
+	public UndertakingIssuanceV01 setBankToBankInformation(List<Max2000Text> bankToBankInformation) {
+		this.bankToBankInformation = Objects.requireNonNull(bankToBankInformation);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
 	public List<PartyAndSignature2> getDigitalSignature() {
-		return digitalSignature;
+		return digitalSignature == null ? digitalSignature = new ArrayList<>() : digitalSignature;
 	}
 
-	public void setDigitalSignature(List<PartyAndSignature2> digitalSignature) {
-		this.digitalSignature = digitalSignature;
+	public UndertakingIssuanceV01 setDigitalSignature(List<PartyAndSignature2> digitalSignature) {
+		this.digitalSignature = Objects.requireNonNull(digitalSignature);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.001.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.001.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgIssnc", required = true)
 		public UndertakingIssuanceV01 messageBody;

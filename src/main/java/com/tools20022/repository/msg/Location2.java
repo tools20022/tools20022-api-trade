@@ -29,6 +29,7 @@ import com.tools20022.repository.entity.PostalAddress;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -71,15 +72,16 @@ import javax.xml.bind.annotation.XmlType;
  * Location1}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Location2", propOrder = {"country", "countrySubDivision", "text"})
 public class Location2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Ctry")
 	protected CountryCode country;
 	/**
-	 * Country of jurisdiction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -113,10 +115,10 @@ public class Location2 {
 	 * Location1.mmCountry}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCountry = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Location2, Optional<CountryCode>> mmCountry = new MMMessageAttribute<Location2, Optional<CountryCode>>() {
 		{
 			businessElementTrace_lazy = () -> Country.mmCode;
-			componentContext_lazy = () -> Location2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Location2.mmObject();
 			isDerived = false;
 			xmlTag = "Ctry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -127,11 +129,22 @@ public class Location2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CountryCode.mmObject();
 		}
+
+		@Override
+		public Optional<CountryCode> getValue(Location2 obj) {
+			return obj.getCountry();
+		}
+
+		@Override
+		public void setValue(Location2 obj, Optional<CountryCode> value) {
+			obj.setCountry(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "CtrySubDvsn")
 	protected CountrySubdivision1Choice countrySubDivision;
 	/**
-	 * Codified representation of the jurisdiction as published in ISO 3166-2.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -168,10 +181,10 @@ public class Location2 {
 	 * Location1.mmCountrySubDivision}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCountrySubDivision = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Location2, Optional<CountrySubdivision1Choice>> mmCountrySubDivision = new MMMessageAttribute<Location2, Optional<CountrySubdivision1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> PostalAddress.mmCountyIdentification;
-			componentContext_lazy = () -> Location2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Location2.mmObject();
 			isDerived = false;
 			xmlTag = "CtrySubDvsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -182,11 +195,22 @@ public class Location2 {
 			minOccurs = 0;
 			complexType_lazy = () -> CountrySubdivision1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<CountrySubdivision1Choice> getValue(Location2 obj) {
+			return obj.getCountrySubDivision();
+		}
+
+		@Override
+		public void setValue(Location2 obj, Optional<CountrySubdivision1Choice> value) {
+			obj.setCountrySubDivision(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Txt")
 	protected Max35Text text;
 	/**
-	 * Name of jurisdiction, for example, Frankfurt.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -215,9 +239,9 @@ public class Location2 {
 	 * Location1.mmText}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmText = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Location2, Optional<Max35Text>> mmText = new MMMessageAttribute<Location2, Optional<Max35Text>>() {
 		{
-			componentContext_lazy = () -> Location2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Location2.mmObject();
 			isDerived = false;
 			xmlTag = "Txt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -228,14 +252,24 @@ public class Location2 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max35Text> getValue(Location2 obj) {
+			return obj.getText();
+		}
+
+		@Override
+		public void setValue(Location2 obj, Optional<Max35Text> value) {
+			obj.setText(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Location2.mmCountry, Location2.mmCountrySubDivision, Location2.mmText);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Location2.mmCountry, com.tools20022.repository.msg.Location2.mmCountrySubDivision, com.tools20022.repository.msg.Location2.mmText);
 				trace_lazy = () -> Location.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Location2";
 				definition = "Location information.";
@@ -245,30 +279,30 @@ public class Location2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Ctry")
-	public CountryCode getCountry() {
-		return country;
+	public Optional<CountryCode> getCountry() {
+		return country == null ? Optional.empty() : Optional.of(country);
 	}
 
-	public void setCountry(CountryCode country) {
+	public Location2 setCountry(CountryCode country) {
 		this.country = country;
+		return this;
 	}
 
-	@XmlElement(name = "CtrySubDvsn")
-	public CountrySubdivision1Choice getCountrySubDivision() {
-		return countrySubDivision;
+	public Optional<CountrySubdivision1Choice> getCountrySubDivision() {
+		return countrySubDivision == null ? Optional.empty() : Optional.of(countrySubDivision);
 	}
 
-	public void setCountrySubDivision(CountrySubdivision1Choice countrySubDivision) {
+	public Location2 setCountrySubDivision(CountrySubdivision1Choice countrySubDivision) {
 		this.countrySubDivision = countrySubDivision;
+		return this;
 	}
 
-	@XmlElement(name = "Txt")
-	public Max35Text getText() {
-		return text;
+	public Optional<Max35Text> getText() {
+		return text == null ? Optional.empty() : Optional.of(text);
 	}
 
-	public void setText(Max35Text text) {
+	public Location2 setText(Max35Text text) {
 		this.text = text;
+		return this;
 	}
 }

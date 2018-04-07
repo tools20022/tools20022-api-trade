@@ -25,9 +25,12 @@ import com.tools20022.repository.entity.Invoice;
 import com.tools20022.repository.entity.InvoiceFinancingAgreement;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.FinancingResult1;
+import com.tools20022.repository.msg.InstalmentFinancingInformation1;
+import com.tools20022.repository.msg.OriginalInvoiceInformation1;
+import com.tools20022.repository.msg.PartyIdentification8;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -62,8 +65,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -76,16 +79,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceFinancingDetails1", propOrder = {"originalInvoiceInformation", "supplier", "invoiceFinancingResult", "instalmentFinancingInformation"})
 public class InvoiceFinancingDetails1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "OrgnlInvcInf", required = true)
 	protected OriginalInvoiceInformation1 originalInvoiceInformation;
 	/**
-	 * General information that unambiguously identifies the invoice contained
-	 * in the original request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -117,10 +120,10 @@ public class InvoiceFinancingDetails1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOriginalInvoiceInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceFinancingDetails1, OriginalInvoiceInformation1> mmOriginalInvoiceInformation = new MMMessageAssociationEnd<InvoiceFinancingDetails1, OriginalInvoiceInformation1>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmOriginalInvoice;
-			componentContext_lazy = () -> InvoiceFinancingDetails1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceFinancingDetails1.mmObject();
 			isDerived = false;
 			xmlTag = "OrgnlInvcInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,14 +132,24 @@ public class InvoiceFinancingDetails1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.OriginalInvoiceInformation1.mmObject();
+			type_lazy = () -> OriginalInvoiceInformation1.mmObject();
+		}
+
+		@Override
+		public OriginalInvoiceInformation1 getValue(InvoiceFinancingDetails1 obj) {
+			return obj.getOriginalInvoiceInformation();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingDetails1 obj, OriginalInvoiceInformation1 value) {
+			obj.setOriginalInvoiceInformation(value);
 		}
 	};
+	@XmlElement(name = "Spplr")
 	protected PartyIdentification8 supplier;
 	/**
-	 * Person or organization that represents the creditor for the invoice to be
-	 * financed.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -167,10 +180,10 @@ public class InvoiceFinancingDetails1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSupplier = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceFinancingDetails1, Optional<PartyIdentification8>> mmSupplier = new MMMessageAssociationEnd<InvoiceFinancingDetails1, Optional<PartyIdentification8>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> InvoiceFinancingDetails1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceFinancingDetails1.mmObject();
 			isDerived = false;
 			xmlTag = "Spplr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -179,13 +192,24 @@ public class InvoiceFinancingDetails1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification8.mmObject();
+			type_lazy = () -> PartyIdentification8.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification8> getValue(InvoiceFinancingDetails1 obj) {
+			return obj.getSupplier();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingDetails1 obj, Optional<PartyIdentification8> value) {
+			obj.setSupplier(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "InvcFincgRslt", required = true)
 	protected FinancingResult1 invoiceFinancingResult;
 	/**
-	 * Information about result of invoice financing request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -214,10 +238,10 @@ public class InvoiceFinancingDetails1 {
 	 * definition} = "Information about result of invoice financing request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmInvoiceFinancingResult = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceFinancingDetails1, FinancingResult1> mmInvoiceFinancingResult = new MMMessageAssociationEnd<InvoiceFinancingDetails1, FinancingResult1>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> InvoiceFinancingDetails1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceFinancingDetails1.mmObject();
 			isDerived = false;
 			xmlTag = "InvcFincgRslt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -226,14 +250,24 @@ public class InvoiceFinancingDetails1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancingResult1.mmObject();
+			type_lazy = () -> FinancingResult1.mmObject();
+		}
+
+		@Override
+		public FinancingResult1 getValue(InvoiceFinancingDetails1 obj) {
+			return obj.getInvoiceFinancingResult();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingDetails1 obj, FinancingResult1 value) {
+			obj.setInvoiceFinancingResult(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.InstalmentFinancingInformation1> instalmentFinancingInformation;
+	@XmlElement(name = "InstlmtFincgInf")
+	protected List<InstalmentFinancingInformation1> instalmentFinancingInformation;
 	/**
-	 * Includes details about a single instalment within an invoice, such as
-	 * identification and amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -264,10 +298,10 @@ public class InvoiceFinancingDetails1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmInstalmentFinancingInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceFinancingDetails1, List<InstalmentFinancingInformation1>> mmInstalmentFinancingInformation = new MMMessageAssociationEnd<InvoiceFinancingDetails1, List<InstalmentFinancingInformation1>>() {
 		{
 			businessComponentTrace_lazy = () -> Instalment.mmObject();
-			componentContext_lazy = () -> InvoiceFinancingDetails1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceFinancingDetails1.mmObject();
 			isDerived = false;
 			xmlTag = "InstlmtFincgInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -275,17 +309,27 @@ public class InvoiceFinancingDetails1 {
 			definition = "Includes details about a single instalment within an invoice, such as identification and amount.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.InstalmentFinancingInformation1.mmObject();
+			type_lazy = () -> InstalmentFinancingInformation1.mmObject();
+		}
+
+		@Override
+		public List<InstalmentFinancingInformation1> getValue(InvoiceFinancingDetails1 obj) {
+			return obj.getInstalmentFinancingInformation();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingDetails1 obj, List<InstalmentFinancingInformation1> value) {
+			obj.setInstalmentFinancingInformation(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(InvoiceFinancingDetails1.mmOriginalInvoiceInformation, InvoiceFinancingDetails1.mmSupplier, InvoiceFinancingDetails1.mmInvoiceFinancingResult,
-						InvoiceFinancingDetails1.mmInstalmentFinancingInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.InvoiceFinancingDetails1.mmOriginalInvoiceInformation, com.tools20022.repository.msg.InvoiceFinancingDetails1.mmSupplier,
+						com.tools20022.repository.msg.InvoiceFinancingDetails1.mmInvoiceFinancingResult, com.tools20022.repository.msg.InvoiceFinancingDetails1.mmInstalmentFinancingInformation);
 				trace_lazy = () -> Invoice.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InvoiceFinancingDetails1";
 				definition = "Detailed information about single invoice/instalment financing result, such as result of request (financed or not financed), amount, percentage applied.";
@@ -294,39 +338,39 @@ public class InvoiceFinancingDetails1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "OrgnlInvcInf", required = true)
 	public OriginalInvoiceInformation1 getOriginalInvoiceInformation() {
 		return originalInvoiceInformation;
 	}
 
-	public void setOriginalInvoiceInformation(com.tools20022.repository.msg.OriginalInvoiceInformation1 originalInvoiceInformation) {
-		this.originalInvoiceInformation = originalInvoiceInformation;
+	public InvoiceFinancingDetails1 setOriginalInvoiceInformation(OriginalInvoiceInformation1 originalInvoiceInformation) {
+		this.originalInvoiceInformation = Objects.requireNonNull(originalInvoiceInformation);
+		return this;
 	}
 
-	@XmlElement(name = "Spplr")
-	public PartyIdentification8 getSupplier() {
-		return supplier;
+	public Optional<PartyIdentification8> getSupplier() {
+		return supplier == null ? Optional.empty() : Optional.of(supplier);
 	}
 
-	public void setSupplier(com.tools20022.repository.msg.PartyIdentification8 supplier) {
+	public InvoiceFinancingDetails1 setSupplier(PartyIdentification8 supplier) {
 		this.supplier = supplier;
+		return this;
 	}
 
-	@XmlElement(name = "InvcFincgRslt", required = true)
 	public FinancingResult1 getInvoiceFinancingResult() {
 		return invoiceFinancingResult;
 	}
 
-	public void setInvoiceFinancingResult(com.tools20022.repository.msg.FinancingResult1 invoiceFinancingResult) {
-		this.invoiceFinancingResult = invoiceFinancingResult;
+	public InvoiceFinancingDetails1 setInvoiceFinancingResult(FinancingResult1 invoiceFinancingResult) {
+		this.invoiceFinancingResult = Objects.requireNonNull(invoiceFinancingResult);
+		return this;
 	}
 
-	@XmlElement(name = "InstlmtFincgInf")
 	public List<InstalmentFinancingInformation1> getInstalmentFinancingInformation() {
-		return instalmentFinancingInformation;
+		return instalmentFinancingInformation == null ? instalmentFinancingInformation = new ArrayList<>() : instalmentFinancingInformation;
 	}
 
-	public void setInstalmentFinancingInformation(List<com.tools20022.repository.msg.InstalmentFinancingInformation1> instalmentFinancingInformation) {
-		this.instalmentFinancingInformation = instalmentFinancingInformation;
+	public InvoiceFinancingDetails1 setInstalmentFinancingInformation(List<InstalmentFinancingInformation1> instalmentFinancingInformation) {
+		this.instalmentFinancingInformation = Objects.requireNonNull(instalmentFinancingInformation);
+		return this;
 	}
 }

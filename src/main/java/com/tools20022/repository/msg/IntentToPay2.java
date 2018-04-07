@@ -29,8 +29,11 @@ import com.tools20022.repository.entity.ObligationFulfilment;
 import com.tools20022.repository.entity.Payment;
 import com.tools20022.repository.entity.PaymentInstruction;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.SettlementTerms3;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -72,8 +75,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -86,15 +89,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "IntentToPay2", propOrder = {"breakdown", "expectedPaymentDate", "settlementTerms"})
 public class IntentToPay2 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Brkdwn", required = true)
 	protected BreakDown1Choice breakdown;
 	/**
-	 * Specifies if breakdown is by purchase order or commercial invoice.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -118,9 +122,9 @@ public class IntentToPay2 {
 	 * "Specifies if breakdown is by purchase order or commercial invoice."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBreakdown = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<IntentToPay2, BreakDown1Choice> mmBreakdown = new MMMessageAssociationEnd<IntentToPay2, BreakDown1Choice>() {
 		{
-			componentContext_lazy = () -> IntentToPay2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.IntentToPay2.mmObject();
 			isDerived = false;
 			xmlTag = "Brkdwn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,11 +135,22 @@ public class IntentToPay2 {
 			isComposite = true;
 			type_lazy = () -> BreakDown1Choice.mmObject();
 		}
+
+		@Override
+		public BreakDown1Choice getValue(IntentToPay2 obj) {
+			return obj.getBreakdown();
+		}
+
+		@Override
+		public void setValue(IntentToPay2 obj, BreakDown1Choice value) {
+			obj.setBreakdown(value);
+		}
 	};
+	@XmlElement(name = "XpctdPmtDt", required = true)
 	protected ISODate expectedPaymentDate;
 	/**
-	 * Date at which the payment would be effected.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -164,10 +179,10 @@ public class IntentToPay2 {
 	 * definition} = "Date at which the payment would be effected."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmExpectedPaymentDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<IntentToPay2, ISODate> mmExpectedPaymentDate = new MMMessageAttribute<IntentToPay2, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> ObligationFulfilment.mmDate;
-			componentContext_lazy = () -> IntentToPay2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.IntentToPay2.mmObject();
 			isDerived = false;
 			xmlTag = "XpctdPmtDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,11 +192,22 @@ public class IntentToPay2 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(IntentToPay2 obj) {
+			return obj.getExpectedPaymentDate();
+		}
+
+		@Override
+		public void setValue(IntentToPay2 obj, ISODate value) {
+			obj.setExpectedPaymentDate(value);
+		}
 	};
+	@XmlElement(name = "SttlmTerms")
 	protected SettlementTerms3 settlementTerms;
 	/**
-	 * Specifies the beneficiary's account information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -209,10 +235,10 @@ public class IntentToPay2 {
 	 * definition} = "Specifies the beneficiary's account information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSettlementTerms = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<IntentToPay2, Optional<SettlementTerms3>> mmSettlementTerms = new MMMessageAssociationEnd<IntentToPay2, Optional<SettlementTerms3>>() {
 		{
 			businessElementTrace_lazy = () -> PaymentInstruction.mmSettlementInstruction;
-			componentContext_lazy = () -> IntentToPay2.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.IntentToPay2.mmObject();
 			isDerived = false;
 			xmlTag = "SttlmTerms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -221,17 +247,28 @@ public class IntentToPay2 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SettlementTerms3.mmObject();
+			type_lazy = () -> SettlementTerms3.mmObject();
+		}
+
+		@Override
+		public Optional<SettlementTerms3> getValue(IntentToPay2 obj) {
+			return obj.getSettlementTerms();
+		}
+
+		@Override
+		public void setValue(IntentToPay2 obj, Optional<SettlementTerms3> value) {
+			obj.setSettlementTerms(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(IntentToPay2.mmBreakdown, IntentToPay2.mmExpectedPaymentDate, IntentToPay2.mmSettlementTerms);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.IntentToPay2.mmBreakdown, com.tools20022.repository.msg.IntentToPay2.mmExpectedPaymentDate,
+						com.tools20022.repository.msg.IntentToPay2.mmSettlementTerms);
 				messageBuildingBlock_lazy = () -> Arrays.asList(IntentToPayNotificationV02.mmIntentToPay, ForwardIntentToPayNotificationV02.mmIntentToPay);
 				trace_lazy = () -> Payment.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "IntentToPay2";
 				definition = "Specifies the details of an intention to pay based on purchase orders or commercial invoice.";
@@ -240,30 +277,30 @@ public class IntentToPay2 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Brkdwn", required = true)
 	public BreakDown1Choice getBreakdown() {
 		return breakdown;
 	}
 
-	public void setBreakdown(BreakDown1Choice breakdown) {
-		this.breakdown = breakdown;
+	public IntentToPay2 setBreakdown(BreakDown1Choice breakdown) {
+		this.breakdown = Objects.requireNonNull(breakdown);
+		return this;
 	}
 
-	@XmlElement(name = "XpctdPmtDt", required = true)
 	public ISODate getExpectedPaymentDate() {
 		return expectedPaymentDate;
 	}
 
-	public void setExpectedPaymentDate(ISODate expectedPaymentDate) {
-		this.expectedPaymentDate = expectedPaymentDate;
+	public IntentToPay2 setExpectedPaymentDate(ISODate expectedPaymentDate) {
+		this.expectedPaymentDate = Objects.requireNonNull(expectedPaymentDate);
+		return this;
 	}
 
-	@XmlElement(name = "SttlmTerms")
-	public SettlementTerms3 getSettlementTerms() {
-		return settlementTerms;
+	public Optional<SettlementTerms3> getSettlementTerms() {
+		return settlementTerms == null ? Optional.empty() : Optional.of(settlementTerms);
 	}
 
-	public void setSettlementTerms(com.tools20022.repository.msg.SettlementTerms3 settlementTerms) {
+	public IntentToPay2 setSettlementTerms(SettlementTerms3 settlementTerms) {
 		this.settlementTerms = settlementTerms;
+		return this;
 	}
 }

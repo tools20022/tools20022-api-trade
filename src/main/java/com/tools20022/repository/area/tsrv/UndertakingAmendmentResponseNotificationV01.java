@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.msg.Amendment9;
 import com.tools20022.repository.msg.PartyAndSignature2;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -79,15 +80,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingAmendmentResponseNotificationV01", propOrder = {"undertakingAmendmentResponseNotificationDetails", "additionalInformation", "digitalSignature"})
 public class UndertakingAmendmentResponseNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgAmdmntRspnNtfctnDtls", required = true)
 	protected Amendment9 undertakingAmendmentResponseNotificationDetails;
 	/**
-	 * Details related to the proposed amendment response notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -108,7 +110,7 @@ public class UndertakingAmendmentResponseNotificationV01 {
 	 * "Details related to the proposed amendment response notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingAmendmentResponseNotificationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Amendment9> mmUndertakingAmendmentResponseNotificationDetails = new MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Amendment9>() {
 		{
 			xmlTag = "UdrtkgAmdmntRspnNtfctnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -119,18 +121,21 @@ public class UndertakingAmendmentResponseNotificationV01 {
 			complexType_lazy = () -> Amendment9.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingAmendmentResponseNotificationV01.class.getMethod("getUndertakingAmendmentResponseNotificationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Amendment9 getValue(UndertakingAmendmentResponseNotificationV01 obj) {
+			return obj.getUndertakingAmendmentResponseNotificationDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingAmendmentResponseNotificationV01 obj, Amendment9 value) {
+			obj.setUndertakingAmendmentResponseNotificationDetails(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected Max2000Text additionalInformation;
 	/**
-	 * Additional information reported by the beneficiary.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -150,7 +155,7 @@ public class UndertakingAmendmentResponseNotificationV01 {
 	 * definition} = "Additional information reported by the beneficiary."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAdditionalInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Optional<Max2000Text>> mmAdditionalInformation = new MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Optional<Max2000Text>>() {
 		{
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -161,18 +166,21 @@ public class UndertakingAmendmentResponseNotificationV01 {
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingAmendmentResponseNotificationV01.class.getMethod("getAdditionalInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max2000Text> getValue(UndertakingAmendmentResponseNotificationV01 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingAmendmentResponseNotificationV01 obj, Optional<Max2000Text> value) {
+			obj.setAdditionalInformation(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the response notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -193,7 +201,7 @@ public class UndertakingAmendmentResponseNotificationV01 {
 	 * definition} = "Digital signature of the response notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingAmendmentResponseNotificationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -204,12 +212,14 @@ public class UndertakingAmendmentResponseNotificationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingAmendmentResponseNotificationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingAmendmentResponseNotificationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingAmendmentResponseNotificationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -242,34 +252,34 @@ public class UndertakingAmendmentResponseNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgAmdmntRspnNtfctnDtls", required = true)
 	public Amendment9 getUndertakingAmendmentResponseNotificationDetails() {
 		return undertakingAmendmentResponseNotificationDetails;
 	}
 
-	public void setUndertakingAmendmentResponseNotificationDetails(Amendment9 undertakingAmendmentResponseNotificationDetails) {
-		this.undertakingAmendmentResponseNotificationDetails = undertakingAmendmentResponseNotificationDetails;
+	public UndertakingAmendmentResponseNotificationV01 setUndertakingAmendmentResponseNotificationDetails(Amendment9 undertakingAmendmentResponseNotificationDetails) {
+		this.undertakingAmendmentResponseNotificationDetails = Objects.requireNonNull(undertakingAmendmentResponseNotificationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
-	public Max2000Text getAdditionalInformation() {
-		return additionalInformation;
+	public Optional<Max2000Text> getAdditionalInformation() {
+		return additionalInformation == null ? Optional.empty() : Optional.of(additionalInformation);
 	}
 
-	public void setAdditionalInformation(Max2000Text additionalInformation) {
+	public UndertakingAmendmentResponseNotificationV01 setAdditionalInformation(Max2000Text additionalInformation) {
 		this.additionalInformation = additionalInformation;
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingAmendmentResponseNotificationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.009.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.009.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgAmdmntRspnNtfctn", required = true)
 		public UndertakingAmendmentResponseNotificationV01 messageBody;

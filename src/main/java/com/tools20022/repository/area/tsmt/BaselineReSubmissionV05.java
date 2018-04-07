@@ -24,10 +24,8 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.choice.BankContactPerson1Choice;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -116,16 +114,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "BaselineReSubmissionV05", propOrder = {"submissionIdentification", "transactionIdentification", "submitterTransactionReference", "baseline", "buyerContactPerson", "sellerContactPerson", "bankContactPerson",
 		"otherBankContactPerson"})
 public class BaselineReSubmissionV05 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "SubmissnId", required = true)
 	protected MessageIdentification1 submissionIdentification;
 	/**
-	 * Identifies the submitted information
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -143,34 +142,35 @@ public class BaselineReSubmissionV05 {
 	 * name} = "SubmissionIdentification"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Identifies the submitted information"</li>
+	 * definition} = "Identifies the submitted information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmissionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, MessageIdentification1> mmSubmissionIdentification = new MMMessageBuildingBlock<BaselineReSubmissionV05, MessageIdentification1>() {
 		{
 			xmlTag = "SubmissnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SubmissionIdentification";
-			definition = "Identifies the submitted information";
+			definition = "Identifies the submitted information.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getSubmissionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(BaselineReSubmissionV05 obj) {
+			return obj.getSubmissionIdentification();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, MessageIdentification1 value) {
+			obj.setSubmissionIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -193,7 +193,7 @@ public class BaselineReSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<BaselineReSubmissionV05, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -204,18 +204,21 @@ public class BaselineReSubmissionV05 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(BaselineReSubmissionV05 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -237,7 +240,7 @@ public class BaselineReSubmissionV05 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<BaselineReSubmissionV05, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -248,18 +251,21 @@ public class BaselineReSubmissionV05 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(BaselineReSubmissionV05 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Baseln", required = true)
 	protected Baseline5 baseline;
 	/**
-	 * Specifies the commercial details of the underlying transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -280,7 +286,7 @@ public class BaselineReSubmissionV05 {
 	 * "Specifies the commercial details of the underlying transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBaseline = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, Baseline5> mmBaseline = new MMMessageBuildingBlock<BaselineReSubmissionV05, Baseline5>() {
 		{
 			xmlTag = "Baseln";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -291,18 +297,21 @@ public class BaselineReSubmissionV05 {
 			complexType_lazy = () -> Baseline5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getBaseline", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Baseline5 getValue(BaselineReSubmissionV05 obj) {
+			return obj.getBaseline();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, Baseline5 value) {
+			obj.setBaseline(value);
 		}
 	};
+	@XmlElement(name = "BuyrCtctPrsn")
 	protected List<ContactIdentification1> buyerContactPerson;
 	/**
-	 * Person to be contacted in the organisation of the buyer.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -320,32 +329,34 @@ public class BaselineReSubmissionV05 {
 	 * name} = "BuyerContactPerson"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Person to be contacted in the organisation of the buyer. "
-	 * </li>
+	 * definition} = "Person to be contacted in the organisation of the buyer."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyerContactPerson = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification1>> mmBuyerContactPerson = new MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification1>>() {
 		{
 			xmlTag = "BuyrCtctPrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "BuyerContactPerson";
-			definition = "Person to be contacted in the organisation of the buyer. ";
+			definition = "Person to be contacted in the organisation of the buyer.";
 			minOccurs = 0;
 			complexType_lazy = () -> ContactIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getBuyerContactPerson", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ContactIdentification1> getValue(BaselineReSubmissionV05 obj) {
+			return obj.getBuyerContactPerson();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, List<ContactIdentification1> value) {
+			obj.setBuyerContactPerson(value);
 		}
 	};
+	@XmlElement(name = "SellrCtctPrsn")
 	protected List<ContactIdentification1> sellerContactPerson;
 	/**
-	 * Person to be contacted in the organisation of the seller.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -363,32 +374,35 @@ public class BaselineReSubmissionV05 {
 	 * name} = "SellerContactPerson"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} =
-	 * "Person to be contacted in the organisation of the seller. "</li>
+	 * definition} = "Person to be contacted in the organisation of the seller."
+	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSellerContactPerson = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification1>> mmSellerContactPerson = new MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification1>>() {
 		{
 			xmlTag = "SellrCtctPrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SellerContactPerson";
-			definition = "Person to be contacted in the organisation of the seller. ";
+			definition = "Person to be contacted in the organisation of the seller.";
 			minOccurs = 0;
 			complexType_lazy = () -> ContactIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getSellerContactPerson", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ContactIdentification1> getValue(BaselineReSubmissionV05 obj) {
+			return obj.getSellerContactPerson();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, List<ContactIdentification1> value) {
+			obj.setSellerContactPerson(value);
 		}
 	};
+	@XmlElement(name = "BkCtctPrsn", required = true)
 	protected BankContactPerson1Choice bankContactPerson;
 	/**
-	 * Person to be contacted in the seller's bank or buyer's bank.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -410,7 +424,7 @@ public class BaselineReSubmissionV05 {
 	 * "Person to be contacted in the seller's bank or buyer's bank."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBankContactPerson = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, BankContactPerson1Choice> mmBankContactPerson = new MMMessageBuildingBlock<BaselineReSubmissionV05, BankContactPerson1Choice>() {
 		{
 			xmlTag = "BkCtctPrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -421,18 +435,21 @@ public class BaselineReSubmissionV05 {
 			complexType_lazy = () -> BankContactPerson1Choice.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getBankContactPerson", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BankContactPerson1Choice getValue(BaselineReSubmissionV05 obj) {
+			return obj.getBankContactPerson();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, BankContactPerson1Choice value) {
+			obj.setBankContactPerson(value);
 		}
 	};
+	@XmlElement(name = "OthrBkCtctPrsn")
 	protected List<ContactIdentification3> otherBankContactPerson;
 	/**
-	 * Person to be contacted in another bank than the seller or buyer's bank.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -455,7 +472,7 @@ public class BaselineReSubmissionV05 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmOtherBankContactPerson = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification3>> mmOtherBankContactPerson = new MMMessageBuildingBlock<BaselineReSubmissionV05, List<ContactIdentification3>>() {
 		{
 			xmlTag = "OthrBkCtctPrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -465,12 +482,14 @@ public class BaselineReSubmissionV05 {
 			complexType_lazy = () -> ContactIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReSubmissionV05.class.getMethod("getOtherBankContactPerson", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ContactIdentification3> getValue(BaselineReSubmissionV05 obj) {
+			return obj.getOtherBankContactPerson();
+		}
+
+		@Override
+		public void setValue(BaselineReSubmissionV05 obj, List<ContactIdentification3> value) {
+			obj.setOtherBankContactPerson(value);
 		}
 	};
 
@@ -506,79 +525,79 @@ public class BaselineReSubmissionV05 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "SubmissnId", required = true)
 	public MessageIdentification1 getSubmissionIdentification() {
 		return submissionIdentification;
 	}
 
-	public void setSubmissionIdentification(MessageIdentification1 submissionIdentification) {
-		this.submissionIdentification = submissionIdentification;
+	public BaselineReSubmissionV05 setSubmissionIdentification(MessageIdentification1 submissionIdentification) {
+		this.submissionIdentification = Objects.requireNonNull(submissionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public BaselineReSubmissionV05 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public BaselineReSubmissionV05 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "Baseln", required = true)
 	public Baseline5 getBaseline() {
 		return baseline;
 	}
 
-	public void setBaseline(Baseline5 baseline) {
-		this.baseline = baseline;
+	public BaselineReSubmissionV05 setBaseline(Baseline5 baseline) {
+		this.baseline = Objects.requireNonNull(baseline);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrCtctPrsn")
 	public List<ContactIdentification1> getBuyerContactPerson() {
-		return buyerContactPerson;
+		return buyerContactPerson == null ? buyerContactPerson = new ArrayList<>() : buyerContactPerson;
 	}
 
-	public void setBuyerContactPerson(List<ContactIdentification1> buyerContactPerson) {
-		this.buyerContactPerson = buyerContactPerson;
+	public BaselineReSubmissionV05 setBuyerContactPerson(List<ContactIdentification1> buyerContactPerson) {
+		this.buyerContactPerson = Objects.requireNonNull(buyerContactPerson);
+		return this;
 	}
 
-	@XmlElement(name = "SellrCtctPrsn")
 	public List<ContactIdentification1> getSellerContactPerson() {
-		return sellerContactPerson;
+		return sellerContactPerson == null ? sellerContactPerson = new ArrayList<>() : sellerContactPerson;
 	}
 
-	public void setSellerContactPerson(List<ContactIdentification1> sellerContactPerson) {
-		this.sellerContactPerson = sellerContactPerson;
+	public BaselineReSubmissionV05 setSellerContactPerson(List<ContactIdentification1> sellerContactPerson) {
+		this.sellerContactPerson = Objects.requireNonNull(sellerContactPerson);
+		return this;
 	}
 
-	@XmlElement(name = "BkCtctPrsn", required = true)
 	public BankContactPerson1Choice getBankContactPerson() {
 		return bankContactPerson;
 	}
 
-	public void setBankContactPerson(BankContactPerson1Choice bankContactPerson) {
-		this.bankContactPerson = bankContactPerson;
+	public BaselineReSubmissionV05 setBankContactPerson(BankContactPerson1Choice bankContactPerson) {
+		this.bankContactPerson = Objects.requireNonNull(bankContactPerson);
+		return this;
 	}
 
-	@XmlElement(name = "OthrBkCtctPrsn")
 	public List<ContactIdentification3> getOtherBankContactPerson() {
-		return otherBankContactPerson;
+		return otherBankContactPerson == null ? otherBankContactPerson = new ArrayList<>() : otherBankContactPerson;
 	}
 
-	public void setOtherBankContactPerson(List<ContactIdentification3> otherBankContactPerson) {
-		this.otherBankContactPerson = otherBankContactPerson;
+	public BaselineReSubmissionV05 setOtherBankContactPerson(List<ContactIdentification3> otherBankContactPerson) {
+		this.otherBankContactPerson = Objects.requireNonNull(otherBankContactPerson);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.012.05.05")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.012.001.05")
 	static public class Document {
 		@XmlElement(name = "BaselnReSubmissn", required = true)
 		public BaselineReSubmissionV05 messageBody;

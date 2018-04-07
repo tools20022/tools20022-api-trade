@@ -37,38 +37,38 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getCode code} =
  * <ul>
  * <li>{@linkplain com.tools20022.repository.codeset.Action2Code#SubmitTwin
- * Action2Code.mmSubmitTwin}</li>
+ * Action2Code.SubmitTwin}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.Action2Code#ReSubmitTwin
- * Action2Code.mmReSubmitTwin}</li>
+ * Action2Code.ReSubmitTwin}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#ReSubmitBaseline
- * Action2Code.mmReSubmitBaseline}</li>
+ * Action2Code.ReSubmitBaseline}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#AcceptOrRejectDataSetMisMatches
- * Action2Code.mmAcceptOrRejectDataSetMisMatches}</li>
+ * Action2Code.AcceptOrRejectDataSetMisMatches}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#AcceptOrRejectChangeOfStatus
- * Action2Code.mmAcceptOrRejectChangeOfStatus}</li>
+ * Action2Code.AcceptOrRejectChangeOfStatus}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#AcceptOrRejectExtensionOfStatus
- * Action2Code.mmAcceptOrRejectExtensionOfStatus}</li>
+ * Action2Code.AcceptOrRejectExtensionOfStatus}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#WaitForBaselineEstablished
- * Action2Code.mmWaitForBaselineEstablished}</li>
+ * Action2Code.WaitForBaselineEstablished}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#UpdateAndResend
- * Action2Code.mmUpdateAndResend}</li>
+ * Action2Code.UpdateAndResend}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.Action2Code#SubmitDataSet
- * Action2Code.mmSubmitDataSet}</li>
+ * Action2Code.SubmitDataSet}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#AcceptOrRejectBaselineAmendment
- * Action2Code.mmAcceptOrRejectBaselineAmendment}</li>
+ * Action2Code.AcceptOrRejectBaselineAmendment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#AcceptOrRejectBaselineAndRole
- * Action2Code.mmAcceptOrRejectBaselineAndRole}</li>
+ * Action2Code.AcceptOrRejectBaselineAndRole}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.Action2Code#CheckInvoiceReference
- * Action2Code.mmCheckInvoiceReference}</li>
+ * Action2Code.CheckInvoiceReference}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -76,8 +76,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -382,7 +382,7 @@ public class Action2Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("SBTW");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Action2Code";

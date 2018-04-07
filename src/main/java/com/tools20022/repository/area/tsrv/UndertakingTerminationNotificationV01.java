@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.UndertakingTerminationNotice1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -72,15 +73,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingTerminationNotificationV01", propOrder = {"undertakingTerminationNotificationDetails", "digitalSignature"})
 public class UndertakingTerminationNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgTermntnNtfctnDtls", required = true)
 	protected UndertakingTerminationNotice1 undertakingTerminationNotificationDetails;
 	/**
-	 * Details of the termination notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -101,7 +103,7 @@ public class UndertakingTerminationNotificationV01 {
 	 * definition} = "Details of the termination notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingTerminationNotificationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingTerminationNotificationV01, UndertakingTerminationNotice1> mmUndertakingTerminationNotificationDetails = new MMMessageBuildingBlock<UndertakingTerminationNotificationV01, UndertakingTerminationNotice1>() {
 		{
 			xmlTag = "UdrtkgTermntnNtfctnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -112,18 +114,21 @@ public class UndertakingTerminationNotificationV01 {
 			complexType_lazy = () -> UndertakingTerminationNotice1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingTerminationNotificationV01.class.getMethod("getUndertakingTerminationNotificationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingTerminationNotice1 getValue(UndertakingTerminationNotificationV01 obj) {
+			return obj.getUndertakingTerminationNotificationDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotificationV01 obj, UndertakingTerminationNotice1 value) {
+			obj.setUndertakingTerminationNotificationDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -144,7 +149,7 @@ public class UndertakingTerminationNotificationV01 {
 	 * definition} = "Digital signature of the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingTerminationNotificationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingTerminationNotificationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -155,12 +160,14 @@ public class UndertakingTerminationNotificationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingTerminationNotificationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingTerminationNotificationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingTerminationNotificationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -193,25 +200,25 @@ public class UndertakingTerminationNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgTermntnNtfctnDtls", required = true)
 	public UndertakingTerminationNotice1 getUndertakingTerminationNotificationDetails() {
 		return undertakingTerminationNotificationDetails;
 	}
 
-	public void setUndertakingTerminationNotificationDetails(UndertakingTerminationNotice1 undertakingTerminationNotificationDetails) {
-		this.undertakingTerminationNotificationDetails = undertakingTerminationNotificationDetails;
+	public UndertakingTerminationNotificationV01 setUndertakingTerminationNotificationDetails(UndertakingTerminationNotice1 undertakingTerminationNotificationDetails) {
+		this.undertakingTerminationNotificationDetails = Objects.requireNonNull(undertakingTerminationNotificationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingTerminationNotificationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.012.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.012.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgTermntnNtfctn", required = true)
 		public UndertakingTerminationNotificationV01 messageBody;

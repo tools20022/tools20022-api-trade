@@ -38,28 +38,28 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#PaymentOnDelivery
- * PaymentTime1Code.mmPaymentOnDelivery}</li>
+ * PaymentTime1Code.PaymentOnDelivery}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfMonthOfDelivery
- * PaymentTime1Code.mmEndOfMonthOfDelivery}</li>
+ * PaymentTime1Code.EndOfMonthOfDelivery}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfPeriodAfterDelivery
- * PaymentTime1Code.mmEndOfPeriodAfterDelivery}</li>
+ * PaymentTime1Code.EndOfPeriodAfterDelivery}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfPeriodAfterEndOfDeliveryMonth
- * PaymentTime1Code.mmEndOfPeriodAfterEndOfDeliveryMonth}</li>
+ * PaymentTime1Code.EndOfPeriodAfterEndOfDeliveryMonth}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#PaymentOnReceiptOfInvoice
- * PaymentTime1Code.mmPaymentOnReceiptOfInvoice}</li>
+ * PaymentTime1Code.PaymentOnReceiptOfInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfPeriodAfterEndOfReceiptMonth
- * PaymentTime1Code.mmEndOfPeriodAfterEndOfReceiptMonth}</li>
+ * PaymentTime1Code.EndOfPeriodAfterEndOfReceiptMonth}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfPeriodAfterReceipt
- * PaymentTime1Code.mmEndOfPeriodAfterReceipt}</li>
+ * PaymentTime1Code.EndOfPeriodAfterReceipt}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime1Code#EndOfMonthOfReceipt
- * PaymentTime1Code.mmEndOfMonthOfReceipt}</li>
+ * PaymentTime1Code.EndOfMonthOfReceipt}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -68,8 +68,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -290,7 +290,7 @@ public class PaymentTime1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("CASH");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentTime1Code";

@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.Count1;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -90,15 +91,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AmendmentAcceptanceV02", propOrder = {"acceptanceIdentification", "transactionIdentification", "submitterTransactionReference", "deltaReportReference", "acceptedAmendmentNumber"})
 public class AmendmentAcceptanceV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AccptncId", required = true)
 	protected MessageIdentification1 acceptanceIdentification;
 	/**
-	 * Identifies the acceptance message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -119,7 +121,7 @@ public class AmendmentAcceptanceV02 {
 	 * definition} = "Identifies the acceptance message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcceptanceIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentAcceptanceV02, MessageIdentification1> mmAcceptanceIdentification = new MMMessageBuildingBlock<AmendmentAcceptanceV02, MessageIdentification1>() {
 		{
 			xmlTag = "AccptncId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -130,20 +132,21 @@ public class AmendmentAcceptanceV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentAcceptanceV02.class.getMethod("getAcceptanceIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AmendmentAcceptanceV02 obj) {
+			return obj.getAcceptanceIdentification();
+		}
+
+		@Override
+		public void setValue(AmendmentAcceptanceV02 obj, MessageIdentification1 value) {
+			obj.setAcceptanceIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -166,7 +169,7 @@ public class AmendmentAcceptanceV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentAcceptanceV02, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<AmendmentAcceptanceV02, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,19 +180,21 @@ public class AmendmentAcceptanceV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentAcceptanceV02.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(AmendmentAcceptanceV02 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(AmendmentAcceptanceV02 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the identification of the transaction for the requesting
-	 * financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,7 +217,7 @@ public class AmendmentAcceptanceV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentAcceptanceV02, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<AmendmentAcceptanceV02, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -223,19 +228,21 @@ public class AmendmentAcceptanceV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentAcceptanceV02.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(AmendmentAcceptanceV02 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(AmendmentAcceptanceV02 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DltaRptRef", required = true)
 	protected MessageIdentification1 deltaReportReference;
 	/**
-	 * Reference to the identification of the delta report that contained the
-	 * amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -258,7 +265,7 @@ public class AmendmentAcceptanceV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDeltaReportReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentAcceptanceV02, MessageIdentification1> mmDeltaReportReference = new MMMessageBuildingBlock<AmendmentAcceptanceV02, MessageIdentification1>() {
 		{
 			xmlTag = "DltaRptRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -269,18 +276,21 @@ public class AmendmentAcceptanceV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentAcceptanceV02.class.getMethod("getDeltaReportReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AmendmentAcceptanceV02 obj) {
+			return obj.getDeltaReportReference();
+		}
+
+		@Override
+		public void setValue(AmendmentAcceptanceV02 obj, MessageIdentification1 value) {
+			obj.setDeltaReportReference(value);
 		}
 	};
+	@XmlElement(name = "AccptdAmdmntNb", required = true)
 	protected Count1 acceptedAmendmentNumber;
 	/**
-	 * Sequence number of the accepted baseline amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -299,7 +309,7 @@ public class AmendmentAcceptanceV02 {
 	 * definition} = "Sequence number of the accepted baseline amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcceptedAmendmentNumber = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentAcceptanceV02, Count1> mmAcceptedAmendmentNumber = new MMMessageBuildingBlock<AmendmentAcceptanceV02, Count1>() {
 		{
 			xmlTag = "AccptdAmdmntNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -310,12 +320,14 @@ public class AmendmentAcceptanceV02 {
 			complexType_lazy = () -> Count1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentAcceptanceV02.class.getMethod("getAcceptedAmendmentNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Count1 getValue(AmendmentAcceptanceV02 obj) {
+			return obj.getAcceptedAmendmentNumber();
+		}
+
+		@Override
+		public void setValue(AmendmentAcceptanceV02 obj, Count1 value) {
+			obj.setAcceptedAmendmentNumber(value);
 		}
 	};
 
@@ -349,52 +361,52 @@ public class AmendmentAcceptanceV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AccptncId", required = true)
 	public MessageIdentification1 getAcceptanceIdentification() {
 		return acceptanceIdentification;
 	}
 
-	public void setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
-		this.acceptanceIdentification = acceptanceIdentification;
+	public AmendmentAcceptanceV02 setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
+		this.acceptanceIdentification = Objects.requireNonNull(acceptanceIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public AmendmentAcceptanceV02 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public AmendmentAcceptanceV02 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "DltaRptRef", required = true)
 	public MessageIdentification1 getDeltaReportReference() {
 		return deltaReportReference;
 	}
 
-	public void setDeltaReportReference(MessageIdentification1 deltaReportReference) {
-		this.deltaReportReference = deltaReportReference;
+	public AmendmentAcceptanceV02 setDeltaReportReference(MessageIdentification1 deltaReportReference) {
+		this.deltaReportReference = Objects.requireNonNull(deltaReportReference);
+		return this;
 	}
 
-	@XmlElement(name = "AccptdAmdmntNb", required = true)
 	public Count1 getAcceptedAmendmentNumber() {
 		return acceptedAmendmentNumber;
 	}
 
-	public void setAcceptedAmendmentNumber(Count1 acceptedAmendmentNumber) {
-		this.acceptedAmendmentNumber = acceptedAmendmentNumber;
+	public AmendmentAcceptanceV02 setAcceptedAmendmentNumber(Count1 acceptedAmendmentNumber) {
+		this.acceptedAmendmentNumber = Objects.requireNonNull(acceptedAmendmentNumber);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.005.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.005.001.02")
 	static public class Document {
 		@XmlElement(name = "AmdmntAccptnc", required = true)
 		public AmendmentAcceptanceV02 messageBody;

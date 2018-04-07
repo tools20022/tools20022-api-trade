@@ -25,10 +25,8 @@ import com.tools20022.repository.area.TradeServicesInitiationLatestVersion;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.Undertaking1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -80,18 +78,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingApplicationV01", propOrder = {"undertakingApplicationDetails", "instructionsToBank", "digitalSignature"})
 public class UndertakingApplicationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgApplDtls", required = true)
 	protected Undertaking1 undertakingApplicationDetails;
 	/**
-	 * Details of the application for an independent undertaking, such as a
-	 * demand guarantee or standby letter of credit, that provides financial
-	 * assurance, to be collected on the presentation of documents that comply
-	 * with its terms and conditions.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -113,7 +109,7 @@ public class UndertakingApplicationV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingApplicationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingApplicationV01, Undertaking1> mmUndertakingApplicationDetails = new MMMessageBuildingBlock<UndertakingApplicationV01, Undertaking1>() {
 		{
 			xmlTag = "UdrtkgApplDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -124,18 +120,21 @@ public class UndertakingApplicationV01 {
 			complexType_lazy = () -> Undertaking1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingApplicationV01.class.getMethod("getUndertakingApplicationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Undertaking1 getValue(UndertakingApplicationV01 obj) {
+			return obj.getUndertakingApplicationDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingApplicationV01 obj, Undertaking1 value) {
+			obj.setUndertakingApplicationDetails(value);
 		}
 	};
+	@XmlElement(name = "InstrsToBk")
 	protected List<Max2000Text> instructionsToBank;
 	/**
-	 * Instructions specific to the bank receiving the message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -155,7 +154,7 @@ public class UndertakingApplicationV01 {
 	 * definition} = "Instructions specific to the bank receiving the message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInstructionsToBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingApplicationV01, List<Max2000Text>> mmInstructionsToBank = new MMMessageBuildingBlock<UndertakingApplicationV01, List<Max2000Text>>() {
 		{
 			xmlTag = "InstrsToBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,18 +165,21 @@ public class UndertakingApplicationV01 {
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingApplicationV01.class.getMethod("getInstructionsToBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<Max2000Text> getValue(UndertakingApplicationV01 obj) {
+			return obj.getInstructionsToBank();
+		}
+
+		@Override
+		public void setValue(UndertakingApplicationV01 obj, List<Max2000Text> value) {
+			obj.setInstructionsToBank(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the undertaking application.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -198,7 +200,7 @@ public class UndertakingApplicationV01 {
 	 * definition} = "Digital signature of the undertaking application."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingApplicationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingApplicationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -209,12 +211,14 @@ public class UndertakingApplicationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingApplicationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingApplicationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingApplicationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -247,34 +251,34 @@ public class UndertakingApplicationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgApplDtls", required = true)
 	public Undertaking1 getUndertakingApplicationDetails() {
 		return undertakingApplicationDetails;
 	}
 
-	public void setUndertakingApplicationDetails(Undertaking1 undertakingApplicationDetails) {
-		this.undertakingApplicationDetails = undertakingApplicationDetails;
+	public UndertakingApplicationV01 setUndertakingApplicationDetails(Undertaking1 undertakingApplicationDetails) {
+		this.undertakingApplicationDetails = Objects.requireNonNull(undertakingApplicationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "InstrsToBk")
 	public List<Max2000Text> getInstructionsToBank() {
-		return instructionsToBank;
+		return instructionsToBank == null ? instructionsToBank = new ArrayList<>() : instructionsToBank;
 	}
 
-	public void setInstructionsToBank(List<Max2000Text> instructionsToBank) {
-		this.instructionsToBank = instructionsToBank;
+	public UndertakingApplicationV01 setInstructionsToBank(List<Max2000Text> instructionsToBank) {
+		this.instructionsToBank = Objects.requireNonNull(instructionsToBank);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingApplicationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.005.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.005.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgAppl", required = true)
 		public UndertakingApplicationV01 messageBody;

@@ -26,6 +26,7 @@ import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.DateInformation1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -63,15 +64,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Choice between a fixed date and a recurring date."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "FixedOrRecurrentDate1Choice", propOrder = {"fixedDate", "recurrentDate"})
 public class FixedOrRecurrentDate1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "FxdDt", required = true)
 	protected ISODate fixedDate;
 	/**
-	 * Date on which the variation is triggered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -96,9 +98,9 @@ public class FixedOrRecurrentDate1Choice {
 	 * definition} = "Date on which the variation is triggered."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFixedDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FixedOrRecurrentDate1Choice, ISODate> mmFixedDate = new MMMessageAttribute<FixedOrRecurrentDate1Choice, ISODate>() {
 		{
-			componentContext_lazy = () -> FixedOrRecurrentDate1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.FixedOrRecurrentDate1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "FxdDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -108,11 +110,22 @@ public class FixedOrRecurrentDate1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(FixedOrRecurrentDate1Choice obj) {
+			return obj.getFixedDate();
+		}
+
+		@Override
+		public void setValue(FixedOrRecurrentDate1Choice obj, ISODate value) {
+			obj.setFixedDate(value);
+		}
 	};
+	@XmlElement(name = "RcrntDt", required = true)
 	protected DateInformation1 recurrentDate;
 	/**
-	 * Details related to recurrent dates on which the variation is triggered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -138,9 +151,9 @@ public class FixedOrRecurrentDate1Choice {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmRecurrentDate = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FixedOrRecurrentDate1Choice, DateInformation1> mmRecurrentDate = new MMMessageAssociationEnd<FixedOrRecurrentDate1Choice, DateInformation1>() {
 		{
-			componentContext_lazy = () -> FixedOrRecurrentDate1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.FixedOrRecurrentDate1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "RcrntDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -151,13 +164,23 @@ public class FixedOrRecurrentDate1Choice {
 			isComposite = true;
 			type_lazy = () -> DateInformation1.mmObject();
 		}
+
+		@Override
+		public DateInformation1 getValue(FixedOrRecurrentDate1Choice obj) {
+			return obj.getRecurrentDate();
+		}
+
+		@Override
+		public void setValue(FixedOrRecurrentDate1Choice obj, DateInformation1 value) {
+			obj.setRecurrentDate(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(FixedOrRecurrentDate1Choice.mmFixedDate, FixedOrRecurrentDate1Choice.mmRecurrentDate);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.FixedOrRecurrentDate1Choice.mmFixedDate, com.tools20022.repository.choice.FixedOrRecurrentDate1Choice.mmRecurrentDate);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "FixedOrRecurrentDate1Choice";
 				definition = "Choice between a fixed date and a recurring date.";
@@ -166,21 +189,21 @@ public class FixedOrRecurrentDate1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "FxdDt", required = true)
 	public ISODate getFixedDate() {
 		return fixedDate;
 	}
 
-	public void setFixedDate(ISODate fixedDate) {
-		this.fixedDate = fixedDate;
+	public FixedOrRecurrentDate1Choice setFixedDate(ISODate fixedDate) {
+		this.fixedDate = Objects.requireNonNull(fixedDate);
+		return this;
 	}
 
-	@XmlElement(name = "RcrntDt", required = true)
 	public DateInformation1 getRecurrentDate() {
 		return recurrentDate;
 	}
 
-	public void setRecurrentDate(DateInformation1 recurrentDate) {
-		this.recurrentDate = recurrentDate;
+	public FixedOrRecurrentDate1Choice setRecurrentDate(DateInformation1 recurrentDate) {
+		this.recurrentDate = Objects.requireNonNull(recurrentDate);
+		return this;
 	}
 }

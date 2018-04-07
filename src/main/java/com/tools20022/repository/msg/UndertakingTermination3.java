@@ -28,9 +28,8 @@ import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.entity.UndertakingStatus;
 import com.tools20022.repository.entity.UndertakingStatusReason;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -62,8 +61,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -75,15 +74,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Information about the notification of the termination of an undertaking."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingTermination3", propOrder = {"effectiveDate", "reason", "additionalInformation"})
 public class UndertakingTermination3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "FctvDt", required = true)
 	protected ISODate effectiveDate;
 	/**
-	 * Date on which the termination is effective.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -113,10 +113,10 @@ public class UndertakingTermination3 {
 	 * definition} = "Date on which the termination is effective."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmEffectiveDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingTermination3, ISODate> mmEffectiveDate = new MMMessageAttribute<UndertakingTermination3, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmTerminationDate;
-			componentContext_lazy = () -> UndertakingTermination3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTermination3.mmObject();
 			isDerived = false;
 			xmlTag = "FctvDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -126,11 +126,22 @@ public class UndertakingTermination3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(UndertakingTermination3 obj) {
+			return obj.getEffectiveDate();
+		}
+
+		@Override
+		public void setValue(UndertakingTermination3 obj, ISODate value) {
+			obj.setEffectiveDate(value);
+		}
 	};
+	@XmlElement(name = "Rsn")
 	protected TerminationReason1Choice reason;
 	/**
-	 * Reason for the termination.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -161,10 +172,10 @@ public class UndertakingTermination3 {
 	 * definition} = "Reason for the termination."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmReason = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingTermination3, Optional<TerminationReason1Choice>> mmReason = new MMMessageAttribute<UndertakingTermination3, Optional<TerminationReason1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingStatusReason.mmTerminationReason;
-			componentContext_lazy = () -> UndertakingTermination3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTermination3.mmObject();
 			isDerived = false;
 			xmlTag = "Rsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -174,11 +185,22 @@ public class UndertakingTermination3 {
 			minOccurs = 0;
 			complexType_lazy = () -> TerminationReason1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<TerminationReason1Choice> getValue(UndertakingTermination3 obj) {
+			return obj.getReason();
+		}
+
+		@Override
+		public void setValue(UndertakingTermination3 obj, Optional<TerminationReason1Choice> value) {
+			obj.setReason(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the termination.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -208,10 +230,10 @@ public class UndertakingTermination3 {
 	 * definition} = "Additional information related to the termination."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<UndertakingTermination3, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<UndertakingTermination3, List<Max2000Text>>() {
 		{
 			businessElementTrace_lazy = () -> Status.mmStatusDescription;
-			componentContext_lazy = () -> UndertakingTermination3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.UndertakingTermination3.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -221,14 +243,25 @@ public class UndertakingTermination3 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(UndertakingTermination3 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(UndertakingTermination3 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(UndertakingTermination3.mmEffectiveDate, UndertakingTermination3.mmReason, UndertakingTermination3.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.UndertakingTermination3.mmEffectiveDate, com.tools20022.repository.msg.UndertakingTermination3.mmReason,
+						com.tools20022.repository.msg.UndertakingTermination3.mmAdditionalInformation);
 				trace_lazy = () -> UndertakingStatus.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingTermination3";
 				definition = "Information about the notification of the termination of an undertaking.";
@@ -237,30 +270,30 @@ public class UndertakingTermination3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "FctvDt", required = true)
 	public ISODate getEffectiveDate() {
 		return effectiveDate;
 	}
 
-	public void setEffectiveDate(ISODate effectiveDate) {
-		this.effectiveDate = effectiveDate;
+	public UndertakingTermination3 setEffectiveDate(ISODate effectiveDate) {
+		this.effectiveDate = Objects.requireNonNull(effectiveDate);
+		return this;
 	}
 
-	@XmlElement(name = "Rsn")
-	public TerminationReason1Choice getReason() {
-		return reason;
+	public Optional<TerminationReason1Choice> getReason() {
+		return reason == null ? Optional.empty() : Optional.of(reason);
 	}
 
-	public void setReason(TerminationReason1Choice reason) {
+	public UndertakingTermination3 setReason(TerminationReason1Choice reason) {
 		this.reason = reason;
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public UndertakingTermination3 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

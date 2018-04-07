@@ -28,9 +28,8 @@ import com.tools20022.repository.entity.PartyName;
 import com.tools20022.repository.entity.Transport;
 import com.tools20022.repository.entity.TransportByRail;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -71,8 +70,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -86,15 +85,16 @@ import javax.xml.bind.annotation.XmlType;
  * {@linkplain com.tools20022.repository.msg.TransportByRail4 TransportByRail4}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TransportByRail5", propOrder = {"placeOfReceipt", "placeOfDelivery", "railCarrierName", "railCarrierCountry", "carrierAgentName", "carrierAgentCountry"})
 public class TransportByRail5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "PlcOfRct")
 	protected List<Max35Text> placeOfReceipt;
 	/**
-	 * Identifies the location where the goods are received for transportation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -131,10 +131,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmPlaceOfReceipt}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlaceOfReceipt = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, List<Max35Text>> mmPlaceOfReceipt = new MMMessageAttribute<TransportByRail5, List<Max35Text>>() {
 		{
 			businessElementTrace_lazy = () -> Transport.mmPlaceOfDeparture;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "PlcOfRct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -144,11 +144,22 @@ public class TransportByRail5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public List<Max35Text> getValue(TransportByRail5 obj) {
+			return obj.getPlaceOfReceipt();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, List<Max35Text> value) {
+			obj.setPlaceOfReceipt(value);
+		}
 	};
+	@XmlElement(name = "PlcOfDlvry", required = true)
 	protected List<Max35Text> placeOfDelivery;
 	/**
-	 * Identifies the location of delivery of the goods.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -183,10 +194,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmPlaceOfDelivery}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPlaceOfDelivery = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, List<Max35Text>> mmPlaceOfDelivery = new MMMessageAttribute<TransportByRail5, List<Max35Text>>() {
 		{
 			businessElementTrace_lazy = () -> Transport.mmPlaceOfDestination;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "PlcOfDlvry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -196,12 +207,22 @@ public class TransportByRail5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public List<Max35Text> getValue(TransportByRail5 obj) {
+			return obj.getPlaceOfDelivery();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, List<Max35Text> value) {
+			obj.setPlaceOfDelivery(value);
+		}
 	};
+	@XmlElement(name = "RailCrrierNm")
 	protected Max70Text railCarrierName;
 	/**
-	 * Identifies the party that is responsible for the conveyance of the goods
-	 * from one place to another.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -238,10 +259,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmRailCarrierName}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRailCarrierName = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, Optional<Max70Text>> mmRailCarrierName = new MMMessageAttribute<TransportByRail5, Optional<Max70Text>>() {
 		{
 			businessElementTrace_lazy = () -> PartyName.mmName;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "RailCrrierNm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -252,12 +273,22 @@ public class TransportByRail5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max70Text> getValue(TransportByRail5 obj) {
+			return obj.getRailCarrierName();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, Optional<Max70Text> value) {
+			obj.setRailCarrierName(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "RailCrrierCtry")
 	protected CountryCode railCarrierCountry;
 	/**
-	 * Country in which the carrier of the goods, for example, shipping company,
-	 * is located or registered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -294,10 +325,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmRailCarrierCountry}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRailCarrierCountry = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, Optional<CountryCode>> mmRailCarrierCountry = new MMMessageAttribute<TransportByRail5, Optional<CountryCode>>() {
 		{
 			businessElementTrace_lazy = () -> Country.mmCode;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "RailCrrierCtry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -308,13 +339,22 @@ public class TransportByRail5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CountryCode.mmObject();
 		}
+
+		@Override
+		public Optional<CountryCode> getValue(TransportByRail5 obj) {
+			return obj.getRailCarrierCountry();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, Optional<CountryCode> value) {
+			obj.setRailCarrierCountry(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "CrrierAgtNm")
 	protected Max70Text carrierAgentName;
 	/**
-	 * Name of the carrier's (for example, shipping company's) agent that acts
-	 * on behalf of the carrier and may be the issuer of transport documents
-	 * relating to the underlying shipment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -351,10 +391,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmCarrierAgentName}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCarrierAgentName = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, Optional<Max70Text>> mmCarrierAgentName = new MMMessageAttribute<TransportByRail5, Optional<Max70Text>>() {
 		{
 			businessElementTrace_lazy = () -> PartyName.mmName;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "CrrierAgtNm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -365,13 +405,22 @@ public class TransportByRail5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max70Text> getValue(TransportByRail5 obj) {
+			return obj.getCarrierAgentName();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, Optional<Max70Text> value) {
+			obj.setCarrierAgentName(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "CrrierAgtCtry")
 	protected CountryCode carrierAgentCountry;
 	/**
-	 * Country of registration of the carrier's (for example, shipping
-	 * company's) agent that acts on behalf of the carrier and may be the issuer
-	 * of transport documents relating to the underlying shipment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -408,10 +457,10 @@ public class TransportByRail5 {
 	 * TransportByRail4.mmCarrierAgentCountry}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCarrierAgentCountry = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransportByRail5, Optional<CountryCode>> mmCarrierAgentCountry = new MMMessageAttribute<TransportByRail5, Optional<CountryCode>>() {
 		{
 			businessElementTrace_lazy = () -> Country.mmCode;
-			componentContext_lazy = () -> TransportByRail5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransportByRail5.mmObject();
 			isDerived = false;
 			xmlTag = "CrrierAgtCtry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -422,15 +471,26 @@ public class TransportByRail5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> CountryCode.mmObject();
 		}
+
+		@Override
+		public Optional<CountryCode> getValue(TransportByRail5 obj) {
+			return obj.getCarrierAgentCountry();
+		}
+
+		@Override
+		public void setValue(TransportByRail5 obj, Optional<CountryCode> value) {
+			obj.setCarrierAgentCountry(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TransportByRail5.mmPlaceOfReceipt, TransportByRail5.mmPlaceOfDelivery, TransportByRail5.mmRailCarrierName, TransportByRail5.mmRailCarrierCountry,
-						TransportByRail5.mmCarrierAgentName, TransportByRail5.mmCarrierAgentCountry);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TransportByRail5.mmPlaceOfReceipt, com.tools20022.repository.msg.TransportByRail5.mmPlaceOfDelivery,
+						com.tools20022.repository.msg.TransportByRail5.mmRailCarrierName, com.tools20022.repository.msg.TransportByRail5.mmRailCarrierCountry, com.tools20022.repository.msg.TransportByRail5.mmCarrierAgentName,
+						com.tools20022.repository.msg.TransportByRail5.mmCarrierAgentCountry);
 				trace_lazy = () -> TransportByRail.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TransportByRail5";
 				definition = "Information related to the transportation of goods by rail.";
@@ -440,57 +500,57 @@ public class TransportByRail5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "PlcOfRct")
 	public List<Max35Text> getPlaceOfReceipt() {
-		return placeOfReceipt;
+		return placeOfReceipt == null ? placeOfReceipt = new ArrayList<>() : placeOfReceipt;
 	}
 
-	public void setPlaceOfReceipt(List<Max35Text> placeOfReceipt) {
-		this.placeOfReceipt = placeOfReceipt;
+	public TransportByRail5 setPlaceOfReceipt(List<Max35Text> placeOfReceipt) {
+		this.placeOfReceipt = Objects.requireNonNull(placeOfReceipt);
+		return this;
 	}
 
-	@XmlElement(name = "PlcOfDlvry", required = true)
 	public List<Max35Text> getPlaceOfDelivery() {
-		return placeOfDelivery;
+		return placeOfDelivery == null ? placeOfDelivery = new ArrayList<>() : placeOfDelivery;
 	}
 
-	public void setPlaceOfDelivery(List<Max35Text> placeOfDelivery) {
-		this.placeOfDelivery = placeOfDelivery;
+	public TransportByRail5 setPlaceOfDelivery(List<Max35Text> placeOfDelivery) {
+		this.placeOfDelivery = Objects.requireNonNull(placeOfDelivery);
+		return this;
 	}
 
-	@XmlElement(name = "RailCrrierNm")
-	public Max70Text getRailCarrierName() {
-		return railCarrierName;
+	public Optional<Max70Text> getRailCarrierName() {
+		return railCarrierName == null ? Optional.empty() : Optional.of(railCarrierName);
 	}
 
-	public void setRailCarrierName(Max70Text railCarrierName) {
+	public TransportByRail5 setRailCarrierName(Max70Text railCarrierName) {
 		this.railCarrierName = railCarrierName;
+		return this;
 	}
 
-	@XmlElement(name = "RailCrrierCtry")
-	public CountryCode getRailCarrierCountry() {
-		return railCarrierCountry;
+	public Optional<CountryCode> getRailCarrierCountry() {
+		return railCarrierCountry == null ? Optional.empty() : Optional.of(railCarrierCountry);
 	}
 
-	public void setRailCarrierCountry(CountryCode railCarrierCountry) {
+	public TransportByRail5 setRailCarrierCountry(CountryCode railCarrierCountry) {
 		this.railCarrierCountry = railCarrierCountry;
+		return this;
 	}
 
-	@XmlElement(name = "CrrierAgtNm")
-	public Max70Text getCarrierAgentName() {
-		return carrierAgentName;
+	public Optional<Max70Text> getCarrierAgentName() {
+		return carrierAgentName == null ? Optional.empty() : Optional.of(carrierAgentName);
 	}
 
-	public void setCarrierAgentName(Max70Text carrierAgentName) {
+	public TransportByRail5 setCarrierAgentName(Max70Text carrierAgentName) {
 		this.carrierAgentName = carrierAgentName;
+		return this;
 	}
 
-	@XmlElement(name = "CrrierAgtCtry")
-	public CountryCode getCarrierAgentCountry() {
-		return carrierAgentCountry;
+	public Optional<CountryCode> getCarrierAgentCountry() {
+		return carrierAgentCountry == null ? Optional.empty() : Optional.of(carrierAgentCountry);
 	}
 
-	public void setCarrierAgentCountry(CountryCode carrierAgentCountry) {
+	public TransportByRail5 setCarrierAgentCountry(CountryCode carrierAgentCountry) {
 		this.carrierAgentCountry = carrierAgentCountry;
+		return this;
 	}
 }

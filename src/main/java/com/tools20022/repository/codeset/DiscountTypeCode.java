@@ -39,35 +39,35 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#QuantityDiscount
- * DiscountTypeCode.mmQuantityDiscount}</li>
+ * DiscountTypeCode.QuantityDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#PromotionalDiscount
- * DiscountTypeCode.mmPromotionalDiscount}</li>
+ * DiscountTypeCode.PromotionalDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#PricingDiscount
- * DiscountTypeCode.mmPricingDiscount}</li>
+ * DiscountTypeCode.PricingDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#SpecialAgreementDiscount
- * DiscountTypeCode.mmSpecialAgreementDiscount}</li>
+ * DiscountTypeCode.SpecialAgreementDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#EndOfRangeDiscount
- * DiscountTypeCode.mmEndOfRangeDiscount}</li>
+ * DiscountTypeCode.EndOfRangeDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#AdditionalPromotionalDiscount
- * DiscountTypeCode.mmAdditionalPromotionalDiscount}</li>
+ * DiscountTypeCode.AdditionalPromotionalDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#StandingDiscount
- * DiscountTypeCode.mmStandingDiscount}</li>
+ * DiscountTypeCode.StandingDiscount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DiscountTypeCode#TermsDiscount
- * DiscountTypeCode.mmTermsDiscount}</li>
+ * DiscountTypeCode.TermsDiscount}</li>
  * </ul>
  * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -242,7 +242,7 @@ public class DiscountTypeCode extends MMCode {
 	};
 	/**
 	 * Addition discount based on third-party agreed business promotional
-	 * activity, i.e., extra 10 percent discount for 15 days)
+	 * activity, i.e., extra 10 percent discount for 15 days).
 	 * <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
@@ -260,7 +260,7 @@ public class DiscountTypeCode extends MMCode {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Addition discount based on third-party agreed business promotional activity, i.e., extra 10 percent discount for 15 days)"
+	 * "Addition discount based on third-party agreed business promotional activity, i.e., extra 10 percent discount for 15 days)."
 	 * </li>
 	 * </ul>
 	 */
@@ -268,7 +268,7 @@ public class DiscountTypeCode extends MMCode {
 		{
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "AdditionalPromotionalDiscount";
-			definition = "Addition discount based on third-party agreed business promotional activity, i.e., extra 10 percent discount for 15 days)";
+			definition = "Addition discount based on third-party agreed business promotional activity, i.e., extra 10 percent discount for 15 days).";
 			owner_lazy = () -> com.tools20022.repository.codeset.DiscountTypeCode.mmObject();
 			codeName = "ADPS";
 		}
@@ -345,7 +345,7 @@ public class DiscountTypeCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("QUAN");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DiscountTypeCode";

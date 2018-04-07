@@ -29,9 +29,12 @@ import com.tools20022.repository.datatype.ID;
 import com.tools20022.repository.datatype.YesNoIndicator;
 import com.tools20022.repository.entity.Document;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.BusinessApplicationHeader1;
 import com.tools20022.repository.other.StrictPayload;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -111,8 +114,16 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintNameSpaceRule#forEncapsulatedBusinessMessage1
+ * ConstraintNameSpaceRule.forEncapsulatedBusinessMessage1}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -125,16 +136,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "EncapsulatedBusinessMessage1", propOrder = {"header", "prefix", "partial", "message"})
 public class EncapsulatedBusinessMessage1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Hdr")
 	protected BusinessApplicationHeader1 header;
 	/**
-	 * The Business Application Header associated to the encapsulated message if
-	 * it exists.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -165,10 +176,10 @@ public class EncapsulatedBusinessMessage1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmHeader = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<EncapsulatedBusinessMessage1, Optional<BusinessApplicationHeader1>> mmHeader = new MMMessageAssociationEnd<EncapsulatedBusinessMessage1, Optional<BusinessApplicationHeader1>>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "Hdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,14 +188,24 @@ public class EncapsulatedBusinessMessage1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BusinessApplicationHeader1.mmObject();
+			type_lazy = () -> BusinessApplicationHeader1.mmObject();
+		}
+
+		@Override
+		public Optional<BusinessApplicationHeader1> getValue(EncapsulatedBusinessMessage1 obj) {
+			return obj.getHeader();
+		}
+
+		@Override
+		public void setValue(EncapsulatedBusinessMessage1 obj, Optional<BusinessApplicationHeader1> value) {
+			obj.setHeader(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Prfx")
 	protected ID prefix;
 	/**
-	 * Prefix of ID/IDREFs in the encapsulated message to be removed before
-	 * signature verification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -210,9 +231,9 @@ public class EncapsulatedBusinessMessage1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPrefix = new MMMessageAttribute() {
+	public static final MMMessageAttribute<EncapsulatedBusinessMessage1, Optional<ID>> mmPrefix = new MMMessageAttribute<EncapsulatedBusinessMessage1, Optional<ID>>() {
 		{
-			componentContext_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "Prfx";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -222,11 +243,22 @@ public class EncapsulatedBusinessMessage1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ID.mmObject();
 		}
+
+		@Override
+		public Optional<ID> getValue(EncapsulatedBusinessMessage1 obj) {
+			return obj.getPrefix();
+		}
+
+		@Override
+		public void setValue(EncapsulatedBusinessMessage1 obj, Optional<ID> value) {
+			obj.setPrefix(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Prtl", required = true)
 	protected YesNoIndicator partial;
 	/**
-	 * If yes, the Msg element contains only a subset of the original message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -254,9 +286,9 @@ public class EncapsulatedBusinessMessage1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPartial = new MMMessageAttribute() {
+	public static final MMMessageAttribute<EncapsulatedBusinessMessage1, YesNoIndicator> mmPartial = new MMMessageAttribute<EncapsulatedBusinessMessage1, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "Prtl";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -266,11 +298,22 @@ public class EncapsulatedBusinessMessage1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(EncapsulatedBusinessMessage1 obj) {
+			return obj.getPartial();
+		}
+
+		@Override
+		public void setValue(EncapsulatedBusinessMessage1 obj, YesNoIndicator value) {
+			obj.setPartial(value);
+		}
 	};
+	@XmlElement(name = "Msg", required = true)
 	protected StrictPayload message;
 	/**
-	 * The encapsulated ISO 20022 message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -299,10 +342,10 @@ public class EncapsulatedBusinessMessage1 {
 	 * definition} = "The encapsulated ISO 20022 message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMessage = new MMMessageAttribute() {
+	public static final MMMessageAttribute<EncapsulatedBusinessMessage1, StrictPayload> mmMessage = new MMMessageAttribute<EncapsulatedBusinessMessage1, StrictPayload>() {
 		{
 			businessComponentTrace_lazy = () -> Document.mmObject();
-			componentContext_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmObject();
 			isDerived = false;
 			xmlTag = "Msg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -312,19 +355,31 @@ public class EncapsulatedBusinessMessage1 {
 			minOccurs = 1;
 			complexType_lazy = () -> StrictPayload.mmObject();
 		}
+
+		@Override
+		public StrictPayload getValue(EncapsulatedBusinessMessage1 obj) {
+			return obj.getMessage();
+		}
+
+		@Override
+		public void setValue(EncapsulatedBusinessMessage1 obj, StrictPayload value) {
+			obj.setMessage(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(EncapsulatedBusinessMessage1.mmHeader, EncapsulatedBusinessMessage1.mmPrefix, EncapsulatedBusinessMessage1.mmPartial, EncapsulatedBusinessMessage1.mmMessage);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmHeader, com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmPrefix,
+						com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmPartial, com.tools20022.repository.msg.EncapsulatedBusinessMessage1.mmMessage);
 				messageBuildingBlock_lazy = () -> Arrays
 						.asList(InvoicePaymentReconciliationAdviceV01.mmAttachedMessage, InvoiceAssignmentRequestV01.mmAttachedMessage, PartyRegistrationAndGuaranteeAcknowledgementV01.mmAttachedMessage,
 								PartyEventAdviceV01.mmAttachedMessage, PartyRegistrationAndGuaranteeStatusV01.mmAttachedMessage, PartyRegistrationAndGuaranteeNotificationV01.mmAttachedMessage,
 								InvoiceAssignmentNotificationV01.mmAttachedMessage, InvoiceAssignmentAcknowledgementV01.mmAttachedMessage, InvoiceAssignmentStatusV01.mmAttachedMessage,
 								PartyRegistrationAndGuaranteeRequestV01.mmAttachedMessage, InvoicePaymentReconciliationStatusV01.mmAttachedMessage);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintNameSpaceRule.forEncapsulatedBusinessMessage1);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "EncapsulatedBusinessMessage1";
 				definition = "Defines an encapsulated form of an ISO 20022 message and, if present, its associated Business Application Header. The encapsulation guarantees uniqueness of ID/IDREFs though the use of the Prefix element. This element can be added during message preparation to ID/IDREFs. In order to verify the signature in the Hdr element or inside the encapsulated message, for each occurrence of an ID orIDREF that possesses the same value as a prefix, the prefix part is removed before signature verification. This is not done for surrounding signatures.";
@@ -333,39 +388,39 @@ public class EncapsulatedBusinessMessage1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Hdr")
-	public BusinessApplicationHeader1 getHeader() {
-		return header;
+	public Optional<BusinessApplicationHeader1> getHeader() {
+		return header == null ? Optional.empty() : Optional.of(header);
 	}
 
-	public void setHeader(com.tools20022.repository.msg.BusinessApplicationHeader1 header) {
+	public EncapsulatedBusinessMessage1 setHeader(BusinessApplicationHeader1 header) {
 		this.header = header;
+		return this;
 	}
 
-	@XmlElement(name = "Prfx")
-	public ID getPrefix() {
-		return prefix;
+	public Optional<ID> getPrefix() {
+		return prefix == null ? Optional.empty() : Optional.of(prefix);
 	}
 
-	public void setPrefix(ID prefix) {
+	public EncapsulatedBusinessMessage1 setPrefix(ID prefix) {
 		this.prefix = prefix;
+		return this;
 	}
 
-	@XmlElement(name = "Prtl", required = true)
 	public YesNoIndicator getPartial() {
 		return partial;
 	}
 
-	public void setPartial(YesNoIndicator partial) {
-		this.partial = partial;
+	public EncapsulatedBusinessMessage1 setPartial(YesNoIndicator partial) {
+		this.partial = Objects.requireNonNull(partial);
+		return this;
 	}
 
-	@XmlElement(name = "Msg", required = true)
 	public StrictPayload getMessage() {
 		return message;
 	}
 
-	public void setMessage(StrictPayload message) {
-		this.message = message;
+	public EncapsulatedBusinessMessage1 setMessage(StrictPayload message) {
+		this.message = Objects.requireNonNull(message);
+		return this;
 	}
 }

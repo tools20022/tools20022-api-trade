@@ -27,8 +27,12 @@ import com.tools20022.repository.entity.PartyIdentificationInformation;
 import com.tools20022.repository.entity.PersonIdentification;
 import com.tools20022.repository.entity.PostalAddress;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.ContactDetails2;
+import com.tools20022.repository.msg.PostalAddress6;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -62,8 +66,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -76,16 +80,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TaxOrganisationIdentification1", propOrder = {"name", "postalAddress", "contactDetails"})
 public class TaxOrganisationIdentification1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Nm", required = true)
 	protected Max140Text name;
 	/**
-	 * Name by which a party is known and which is usually used to identify that
-	 * party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -117,10 +121,10 @@ public class TaxOrganisationIdentification1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmName = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TaxOrganisationIdentification1, Max140Text> mmName = new MMMessageAttribute<TaxOrganisationIdentification1, Max140Text>() {
 		{
 			businessElementTrace_lazy = () -> PartyIdentificationInformation.mmPartyName;
-			componentContext_lazy = () -> TaxOrganisationIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxOrganisationIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "Nm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -130,12 +134,22 @@ public class TaxOrganisationIdentification1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Max140Text getValue(TaxOrganisationIdentification1 obj) {
+			return obj.getName();
+		}
+
+		@Override
+		public void setValue(TaxOrganisationIdentification1 obj, Max140Text value) {
+			obj.setName(value);
+		}
 	};
+	@XmlElement(name = "PstlAdr")
 	protected PostalAddress6 postalAddress;
 	/**
-	 * Information that locates and identifies a specific address, as defined by
-	 * postal services.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -166,10 +180,10 @@ public class TaxOrganisationIdentification1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPostalAddress = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TaxOrganisationIdentification1, Optional<PostalAddress6>> mmPostalAddress = new MMMessageAssociationEnd<TaxOrganisationIdentification1, Optional<PostalAddress6>>() {
 		{
 			businessComponentTrace_lazy = () -> PostalAddress.mmObject();
-			componentContext_lazy = () -> TaxOrganisationIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxOrganisationIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "PstlAdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -178,13 +192,24 @@ public class TaxOrganisationIdentification1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PostalAddress6.mmObject();
+			type_lazy = () -> PostalAddress6.mmObject();
+		}
+
+		@Override
+		public Optional<PostalAddress6> getValue(TaxOrganisationIdentification1 obj) {
+			return obj.getPostalAddress();
+		}
+
+		@Override
+		public void setValue(TaxOrganisationIdentification1 obj, Optional<PostalAddress6> value) {
+			obj.setPostalAddress(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CtctDtls")
 	protected ContactDetails2 contactDetails;
 	/**
-	 * Set of elements used to indicate how to contact the party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -214,10 +239,10 @@ public class TaxOrganisationIdentification1 {
 	 * "Set of elements used to indicate how to contact the party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmContactDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TaxOrganisationIdentification1, Optional<ContactDetails2>> mmContactDetails = new MMMessageAssociationEnd<TaxOrganisationIdentification1, Optional<ContactDetails2>>() {
 		{
 			businessComponentTrace_lazy = () -> PersonIdentification.mmObject();
-			componentContext_lazy = () -> TaxOrganisationIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxOrganisationIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "CtctDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -226,16 +251,27 @@ public class TaxOrganisationIdentification1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ContactDetails2.mmObject();
+			type_lazy = () -> ContactDetails2.mmObject();
+		}
+
+		@Override
+		public Optional<ContactDetails2> getValue(TaxOrganisationIdentification1 obj) {
+			return obj.getContactDetails();
+		}
+
+		@Override
+		public void setValue(TaxOrganisationIdentification1 obj, Optional<ContactDetails2> value) {
+			obj.setContactDetails(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TaxOrganisationIdentification1.mmName, TaxOrganisationIdentification1.mmPostalAddress, TaxOrganisationIdentification1.mmContactDetails);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TaxOrganisationIdentification1.mmName, com.tools20022.repository.msg.TaxOrganisationIdentification1.mmPostalAddress,
+						com.tools20022.repository.msg.TaxOrganisationIdentification1.mmContactDetails);
 				trace_lazy = () -> OrganisationIdentification.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TaxOrganisationIdentification1";
 				definition = "Party to which the TaxReport is delivered. This message block contains party details for a specific tax authority.";
@@ -244,30 +280,30 @@ public class TaxOrganisationIdentification1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Nm", required = true)
 	public Max140Text getName() {
 		return name;
 	}
 
-	public void setName(Max140Text name) {
-		this.name = name;
+	public TaxOrganisationIdentification1 setName(Max140Text name) {
+		this.name = Objects.requireNonNull(name);
+		return this;
 	}
 
-	@XmlElement(name = "PstlAdr")
-	public PostalAddress6 getPostalAddress() {
-		return postalAddress;
+	public Optional<PostalAddress6> getPostalAddress() {
+		return postalAddress == null ? Optional.empty() : Optional.of(postalAddress);
 	}
 
-	public void setPostalAddress(com.tools20022.repository.msg.PostalAddress6 postalAddress) {
+	public TaxOrganisationIdentification1 setPostalAddress(PostalAddress6 postalAddress) {
 		this.postalAddress = postalAddress;
+		return this;
 	}
 
-	@XmlElement(name = "CtctDtls")
-	public ContactDetails2 getContactDetails() {
-		return contactDetails;
+	public Optional<ContactDetails2> getContactDetails() {
+		return contactDetails == null ? Optional.empty() : Optional.of(contactDetails);
 	}
 
-	public void setContactDetails(com.tools20022.repository.msg.ContactDetails2 contactDetails) {
+	public TaxOrganisationIdentification1 setContactDetails(ContactDetails2 contactDetails) {
 		this.contactDetails = contactDetails;
+		return this;
 	}
 }

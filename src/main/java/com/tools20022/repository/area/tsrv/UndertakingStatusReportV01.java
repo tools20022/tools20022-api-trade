@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.UndertakingStatusAdvice1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -73,15 +74,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingStatusReportV01", propOrder = {"undertakingStatusReportDetails", "digitalSignature"})
 public class UndertakingStatusReportV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgStsRptDtls", required = true)
 	protected UndertakingStatusAdvice1 undertakingStatusReportDetails;
 	/**
-	 * Details of the undertaking status report
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -99,32 +101,35 @@ public class UndertakingStatusReportV01 {
 	 * name} = "UndertakingStatusReportDetails"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Details of the undertaking status report"</li>
+	 * definition} = "Details of the undertaking status report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingStatusReportDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingStatusReportV01, UndertakingStatusAdvice1> mmUndertakingStatusReportDetails = new MMMessageBuildingBlock<UndertakingStatusReportV01, UndertakingStatusAdvice1>() {
 		{
 			xmlTag = "UdrtkgStsRptDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "UndertakingStatusReportDetails";
-			definition = "Details of the undertaking status report";
+			definition = "Details of the undertaking status report.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> UndertakingStatusAdvice1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatusReportV01.class.getMethod("getUndertakingStatusReportDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingStatusAdvice1 getValue(UndertakingStatusReportV01 obj) {
+			return obj.getUndertakingStatusReportDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingStatusReportV01 obj, UndertakingStatusAdvice1 value) {
+			obj.setUndertakingStatusReportDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -145,7 +150,7 @@ public class UndertakingStatusReportV01 {
 	 * definition} = "Digital signature of the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingStatusReportV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingStatusReportV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -156,12 +161,14 @@ public class UndertakingStatusReportV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatusReportV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingStatusReportV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingStatusReportV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -194,25 +201,25 @@ public class UndertakingStatusReportV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgStsRptDtls", required = true)
 	public UndertakingStatusAdvice1 getUndertakingStatusReportDetails() {
 		return undertakingStatusReportDetails;
 	}
 
-	public void setUndertakingStatusReportDetails(UndertakingStatusAdvice1 undertakingStatusReportDetails) {
-		this.undertakingStatusReportDetails = undertakingStatusReportDetails;
+	public UndertakingStatusReportV01 setUndertakingStatusReportDetails(UndertakingStatusAdvice1 undertakingStatusReportDetails) {
+		this.undertakingStatusReportDetails = Objects.requireNonNull(undertakingStatusReportDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingStatusReportV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.019.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.019.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgStsRpt", required = true)
 		public UndertakingStatusReportV01 messageBody;

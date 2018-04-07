@@ -28,6 +28,7 @@ import com.tools20022.repository.entity.Adjustment;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -35,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Modification on the value of goods and / or services. For example: rebate,
- * discount, surcharge
+ * discount, surcharge.
  * <p>
  * <strong>Constant fields:</strong>
  * <ul>
@@ -57,8 +58,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -67,22 +68,23 @@ import javax.xml.bind.annotation.XmlType;
  * "Adjustment7"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
  * definition} =
- * "Modification on the value of goods and / or services. For example: rebate, discount, surcharge"
+ * "Modification on the value of goods and / or services. For example: rebate, discount, surcharge."
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMModelEntity#getPreviousVersion
  * previousVersion} = {@linkplain com.tools20022.repository.msg.Adjustment6
  * Adjustment6}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Adjustment7", propOrder = {"type", "amountOrPercentage", "direction"})
 public class Adjustment7 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected AdjustmentType1Choice type;
 	/**
-	 * Specifies the type of adjustment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -116,10 +118,10 @@ public class Adjustment7 {
 	 * Adjustment6.mmType}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmType = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Adjustment7, AdjustmentType1Choice> mmType = new MMMessageAssociationEnd<Adjustment7, AdjustmentType1Choice>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmType;
-			componentContext_lazy = () -> Adjustment7.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Adjustment7.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,11 +133,22 @@ public class Adjustment7 {
 			isComposite = true;
 			type_lazy = () -> AdjustmentType1Choice.mmObject();
 		}
+
+		@Override
+		public AdjustmentType1Choice getValue(Adjustment7 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(Adjustment7 obj, AdjustmentType1Choice value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "AmtOrPctg", required = true)
 	protected AmountOrPercentage2Choice amountOrPercentage;
 	/**
-	 * Specifies the monetary amount or rate of the adjustment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -170,10 +183,10 @@ public class Adjustment7 {
 	 * Adjustment6.mmAmount}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmountOrPercentage = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Adjustment7, AmountOrPercentage2Choice> mmAmountOrPercentage = new MMMessageAttribute<Adjustment7, AmountOrPercentage2Choice>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmAmount;
-			componentContext_lazy = () -> Adjustment7.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Adjustment7.mmObject();
 			isDerived = false;
 			xmlTag = "AmtOrPctg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -184,12 +197,22 @@ public class Adjustment7 {
 			minOccurs = 1;
 			complexType_lazy = () -> AmountOrPercentage2Choice.mmObject();
 		}
+
+		@Override
+		public AmountOrPercentage2Choice getValue(Adjustment7 obj) {
+			return obj.getAmountOrPercentage();
+		}
+
+		@Override
+		public void setValue(Adjustment7 obj, AmountOrPercentage2Choice value) {
+			obj.setAmountOrPercentage(value);
+		}
 	};
+	@XmlElement(name = "Drctn", required = true)
 	protected AdjustmentDirection1Code direction;
 	/**
-	 * Specifies whether the adjustment must be subtracted or added to the total
-	 * amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -226,10 +249,10 @@ public class Adjustment7 {
 	 * Adjustment6.mmDirection}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDirection = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Adjustment7, AdjustmentDirection1Code> mmDirection = new MMMessageAttribute<Adjustment7, AdjustmentDirection1Code>() {
 		{
 			businessElementTrace_lazy = () -> Adjustment.mmDirection;
-			componentContext_lazy = () -> Adjustment7.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Adjustment7.mmObject();
 			isDerived = false;
 			xmlTag = "Drctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -240,47 +263,57 @@ public class Adjustment7 {
 			minOccurs = 1;
 			simpleType_lazy = () -> AdjustmentDirection1Code.mmObject();
 		}
+
+		@Override
+		public AdjustmentDirection1Code getValue(Adjustment7 obj) {
+			return obj.getDirection();
+		}
+
+		@Override
+		public void setValue(Adjustment7 obj, AdjustmentDirection1Code value) {
+			obj.setDirection(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Adjustment7.mmType, Adjustment7.mmAmountOrPercentage, Adjustment7.mmDirection);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Adjustment7.mmType, com.tools20022.repository.msg.Adjustment7.mmAmountOrPercentage, com.tools20022.repository.msg.Adjustment7.mmDirection);
 				trace_lazy = () -> Adjustment.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Adjustment7";
-				definition = "Modification on the value of goods and / or services. For example: rebate, discount, surcharge";
+				definition = "Modification on the value of goods and / or services. For example: rebate, discount, surcharge.";
 				previousVersion_lazy = () -> Adjustment6.mmObject();
 			}
 		});
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public AdjustmentType1Choice getType() {
 		return type;
 	}
 
-	public void setType(AdjustmentType1Choice type) {
-		this.type = type;
+	public Adjustment7 setType(AdjustmentType1Choice type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "AmtOrPctg", required = true)
 	public AmountOrPercentage2Choice getAmountOrPercentage() {
 		return amountOrPercentage;
 	}
 
-	public void setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
-		this.amountOrPercentage = amountOrPercentage;
+	public Adjustment7 setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
+		this.amountOrPercentage = Objects.requireNonNull(amountOrPercentage);
+		return this;
 	}
 
-	@XmlElement(name = "Drctn", required = true)
 	public AdjustmentDirection1Code getDirection() {
 		return direction;
 	}
 
-	public void setDirection(AdjustmentDirection1Code direction) {
-		this.direction = direction;
+	public Adjustment7 setDirection(AdjustmentDirection1Code direction) {
+		this.direction = Objects.requireNonNull(direction);
+		return this;
 	}
 }

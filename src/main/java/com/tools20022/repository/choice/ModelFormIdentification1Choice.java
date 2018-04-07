@@ -27,6 +27,7 @@ import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.GenericIdentification1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +67,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Choice of format for the model form identification."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ModelFormIdentification1Choice", propOrder = {"code", "proprietary"})
 public class ModelFormIdentification1Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Cd", required = true)
 	protected ExternalModelFormIdentification1Code code;
 	/**
-	 * Model form identification.<br>
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -105,10 +107,10 @@ public class ModelFormIdentification1Choice {
 	 * definition} = "Model form identification.\r\n"</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCode = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ModelFormIdentification1Choice, ExternalModelFormIdentification1Code> mmCode = new MMMessageAttribute<ModelFormIdentification1Choice, ExternalModelFormIdentification1Code>() {
 		{
 			businessElementTrace_lazy = () -> ModelForm.mmIdentification;
-			componentContext_lazy = () -> ModelFormIdentification1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.ModelFormIdentification1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Cd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,11 +120,22 @@ public class ModelFormIdentification1Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalModelFormIdentification1Code.mmObject();
 		}
+
+		@Override
+		public ExternalModelFormIdentification1Code getValue(ModelFormIdentification1Choice obj) {
+			return obj.getCode();
+		}
+
+		@Override
+		public void setValue(ModelFormIdentification1Choice obj, ExternalModelFormIdentification1Code value) {
+			obj.setCode(value);
+		}
 	};
+	@XmlElement(name = "Prtry", required = true)
 	protected GenericIdentification1 proprietary;
 	/**
-	 * Model form identification expressed as a proprietary code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -152,10 +165,10 @@ public class ModelFormIdentification1Choice {
 	 * "Model form identification expressed as a proprietary code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmProprietary = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<ModelFormIdentification1Choice, GenericIdentification1> mmProprietary = new MMMessageAssociationEnd<ModelFormIdentification1Choice, GenericIdentification1>() {
 		{
 			businessElementTrace_lazy = () -> ModelForm.mmIdentification;
-			componentContext_lazy = () -> ModelFormIdentification1Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.ModelFormIdentification1Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Prtry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -166,14 +179,24 @@ public class ModelFormIdentification1Choice {
 			isComposite = true;
 			type_lazy = () -> GenericIdentification1.mmObject();
 		}
+
+		@Override
+		public GenericIdentification1 getValue(ModelFormIdentification1Choice obj) {
+			return obj.getProprietary();
+		}
+
+		@Override
+		public void setValue(ModelFormIdentification1Choice obj, GenericIdentification1 value) {
+			obj.setProprietary(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ModelFormIdentification1Choice.mmCode, ModelFormIdentification1Choice.mmProprietary);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.ModelFormIdentification1Choice.mmCode, com.tools20022.repository.choice.ModelFormIdentification1Choice.mmProprietary);
 				trace_lazy = () -> ModelForm.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "ModelFormIdentification1Choice";
 				definition = "Choice of format for the model form identification.";
@@ -182,21 +205,21 @@ public class ModelFormIdentification1Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Cd", required = true)
 	public ExternalModelFormIdentification1Code getCode() {
 		return code;
 	}
 
-	public void setCode(ExternalModelFormIdentification1Code code) {
-		this.code = code;
+	public ModelFormIdentification1Choice setCode(ExternalModelFormIdentification1Code code) {
+		this.code = Objects.requireNonNull(code);
+		return this;
 	}
 
-	@XmlElement(name = "Prtry", required = true)
 	public GenericIdentification1 getProprietary() {
 		return proprietary;
 	}
 
-	public void setProprietary(GenericIdentification1 proprietary) {
-		this.proprietary = proprietary;
+	public ModelFormIdentification1Choice setProprietary(GenericIdentification1 proprietary) {
+		this.proprietary = Objects.requireNonNull(proprietary);
+		return this;
 	}
 }

@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.Notification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -83,15 +84,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "SpecialRequestV01", propOrder = {"requestIdentification", "transactionIdentification", "submitterTransactionReference", "notification"})
 public class SpecialRequestV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqId", required = true)
 	protected MessageIdentification1 requestIdentification;
 	/**
-	 * Identifies the acceptance message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -112,7 +114,7 @@ public class SpecialRequestV01 {
 	 * definition} = "Identifies the acceptance message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialRequestV01, MessageIdentification1> mmRequestIdentification = new MMMessageBuildingBlock<SpecialRequestV01, MessageIdentification1>() {
 		{
 			xmlTag = "ReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -123,20 +125,21 @@ public class SpecialRequestV01 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialRequestV01.class.getMethod("getRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(SpecialRequestV01 obj) {
+			return obj.getRequestIdentification();
+		}
+
+		@Override
+		public void setValue(SpecialRequestV01 obj, MessageIdentification1 value) {
+			obj.setRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -159,7 +162,7 @@ public class SpecialRequestV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialRequestV01, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<SpecialRequestV01, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -170,19 +173,21 @@ public class SpecialRequestV01 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialRequestV01.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(SpecialRequestV01 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(SpecialRequestV01 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the identification of the transaction for the requesting
-	 * financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -205,7 +210,7 @@ public class SpecialRequestV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialRequestV01, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<SpecialRequestV01, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -216,18 +221,21 @@ public class SpecialRequestV01 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialRequestV01.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(SpecialRequestV01 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(SpecialRequestV01 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Ntfctn", required = true)
 	protected Notification1 notification;
 	/**
-	 * Type and details of the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -247,7 +255,7 @@ public class SpecialRequestV01 {
 	 * definition} = "Type and details of the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialRequestV01, Notification1> mmNotification = new MMMessageBuildingBlock<SpecialRequestV01, Notification1>() {
 		{
 			xmlTag = "Ntfctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -258,12 +266,14 @@ public class SpecialRequestV01 {
 			complexType_lazy = () -> Notification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialRequestV01.class.getMethod("getNotification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Notification1 getValue(SpecialRequestV01 obj) {
+			return obj.getNotification();
+		}
+
+		@Override
+		public void setValue(SpecialRequestV01 obj, Notification1 value) {
+			obj.setNotification(value);
 		}
 	};
 
@@ -296,43 +306,43 @@ public class SpecialRequestV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqId", required = true)
 	public MessageIdentification1 getRequestIdentification() {
 		return requestIdentification;
 	}
 
-	public void setRequestIdentification(MessageIdentification1 requestIdentification) {
-		this.requestIdentification = requestIdentification;
+	public SpecialRequestV01 setRequestIdentification(MessageIdentification1 requestIdentification) {
+		this.requestIdentification = Objects.requireNonNull(requestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public SpecialRequestV01 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public SpecialRequestV01 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "Ntfctn", required = true)
 	public Notification1 getNotification() {
 		return notification;
 	}
 
-	public void setNotification(Notification1 notification) {
-		this.notification = notification;
+	public SpecialRequestV01 setNotification(Notification1 notification) {
+		this.notification = Objects.requireNonNull(notification);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.047.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.047.001.01")
 	static public class Document {
 		@XmlElement(name = "SpclReq", required = true)
 		public SpecialRequestV01 messageBody;

@@ -38,16 +38,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeFinanceServiceCode#PurchaseOrderServices
- * TradeFinanceServiceCode.mmPurchaseOrderServices}</li>
+ * TradeFinanceServiceCode.PurchaseOrderServices}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeFinanceServiceCode#Level1Services
- * TradeFinanceServiceCode.mmLevel1Services}</li>
+ * TradeFinanceServiceCode.Level1Services}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeFinanceServiceCode#Level2Services
- * TradeFinanceServiceCode.mmLevel2Services}</li>
+ * TradeFinanceServiceCode.Level2Services}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeFinanceServiceCode#Level3Services
- * TradeFinanceServiceCode.mmLevel3Services}</li>
+ * TradeFinanceServiceCode.Level3Services}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getDerivation derivation}
@@ -60,8 +60,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -210,7 +210,7 @@ public class TradeFinanceServiceCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("PORS");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TradeFinanceServiceCode";

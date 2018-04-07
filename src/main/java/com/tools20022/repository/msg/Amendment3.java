@@ -26,9 +26,9 @@ import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -91,8 +91,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -103,17 +103,17 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details of the amendent request."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Amendment3", propOrder = {"applicantRequestNumber", "undertakingIdentification", "applicant", "terminationDetails", "increaseDecreaseAmount", "newExpiryDetails", "newBeneficiary", "newUndertakingTermsAndConditions",
 		"counterUndertaking", "deliveryChannel", "enclosedFile", "additionalInformation"})
 public class Amendment3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ApplcntReqNb", required = true)
 	protected Max35Text applicantRequestNumber;
 	/**
-	 * Unique and unambiguous identifier assigned by the applicant to the
-	 * undertaking amendment request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -139,9 +139,9 @@ public class Amendment3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmApplicantRequestNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amendment3, Max35Text> mmApplicantRequestNumber = new MMMessageAttribute<Amendment3, Max35Text>() {
 		{
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "ApplcntReqNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -151,11 +151,22 @@ public class Amendment3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(Amendment3 obj) {
+			return obj.getApplicantRequestNumber();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Max35Text value) {
+			obj.setApplicantRequestNumber(value);
+		}
 	};
+	@XmlElement(name = "UdrtkgId", required = true)
 	protected Undertaking9 undertakingIdentification;
 	/**
-	 * Identification of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -183,10 +194,10 @@ public class Amendment3 {
 	 * definition} = "Identification of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmUndertakingIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Undertaking9> mmUndertakingIdentification = new MMMessageAssociationEnd<Amendment3, Undertaking9>() {
 		{
 			businessElementTrace_lazy = () -> AmendmentOfUndertaking.mmUndertaking;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "UdrtkgId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -195,13 +206,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Undertaking9.mmObject();
+			type_lazy = () -> Undertaking9.mmObject();
+		}
+
+		@Override
+		public Undertaking9 getValue(Amendment3 obj) {
+			return obj.getUndertakingIdentification();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Undertaking9 value) {
+			obj.setUndertakingIdentification(value);
 		}
 	};
+	@XmlElement(name = "Applcnt", required = true)
 	protected PartyIdentification43 applicant;
 	/**
-	 * Party requesting the issuance of the amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -229,10 +251,10 @@ public class Amendment3 {
 	 * definition} = "Party requesting the issuance of the amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmApplicant = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, PartyIdentification43> mmApplicant = new MMMessageAssociationEnd<Amendment3, PartyIdentification43>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "Applcnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -241,13 +263,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification43.mmObject();
+			type_lazy = () -> PartyIdentification43.mmObject();
+		}
+
+		@Override
+		public PartyIdentification43 getValue(Amendment3 obj) {
+			return obj.getApplicant();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, PartyIdentification43 value) {
+			obj.setApplicant(value);
 		}
 	};
+	@XmlElement(name = "TermntnDtls")
 	protected UndertakingTermination3 terminationDetails;
 	/**
-	 * Details concerning the requested termination of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -277,10 +310,10 @@ public class Amendment3 {
 	 * "Details concerning the requested termination of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTerminationDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Optional<UndertakingTermination3>> mmTerminationDetails = new MMMessageAssociationEnd<Amendment3, Optional<UndertakingTermination3>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmUndertakingStatus;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "TermntnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -289,14 +322,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingTermination3.mmObject();
+			type_lazy = () -> UndertakingTermination3.mmObject();
+		}
+
+		@Override
+		public Optional<UndertakingTermination3> getValue(Amendment3 obj) {
+			return obj.getTerminationDetails();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<UndertakingTermination3> value) {
+			obj.setTerminationDetails(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "IncrDcrAmt")
 	protected UndertakingAmount2 increaseDecreaseAmount;
 	/**
-	 * Indication of the amount of increase or decrease to the undertaking
-	 * amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -326,10 +369,10 @@ public class Amendment3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIncreaseDecreaseAmount = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Optional<UndertakingAmount2>> mmIncreaseDecreaseAmount = new MMMessageAssociationEnd<Amendment3, Optional<UndertakingAmount2>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmUndertakingAmount;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "IncrDcrAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -338,13 +381,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UndertakingAmount2.mmObject();
+			type_lazy = () -> UndertakingAmount2.mmObject();
+		}
+
+		@Override
+		public Optional<UndertakingAmount2> getValue(Amendment3 obj) {
+			return obj.getIncreaseDecreaseAmount();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<UndertakingAmount2> value) {
+			obj.setIncreaseDecreaseAmount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "NewXpryDtls")
 	protected ExpiryDetails2 newExpiryDetails;
 	/**
-	 * Requested new expiry terms for the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -372,10 +426,10 @@ public class Amendment3 {
 	 * definition} = "Requested new expiry terms for the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmNewExpiryDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Optional<ExpiryDetails2>> mmNewExpiryDetails = new MMMessageAssociationEnd<Amendment3, Optional<ExpiryDetails2>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmExpiry;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "NewXpryDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -384,13 +438,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ExpiryDetails2.mmObject();
+			type_lazy = () -> ExpiryDetails2.mmObject();
+		}
+
+		@Override
+		public Optional<ExpiryDetails2> getValue(Amendment3 obj) {
+			return obj.getNewExpiryDetails();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<ExpiryDetails2> value) {
+			obj.setNewExpiryDetails(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "NewBnfcry")
 	protected Beneficiary1 newBeneficiary;
 	/**
-	 * Requested new beneficiary of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -418,10 +483,10 @@ public class Amendment3 {
 	 * definition} = "Requested new beneficiary of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmNewBeneficiary = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Optional<Beneficiary1>> mmNewBeneficiary = new MMMessageAssociationEnd<Amendment3, Optional<Beneficiary1>>() {
 		{
 			businessComponentTrace_lazy = () -> UndertakingBeneficiary.mmObject();
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "NewBnfcry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -430,13 +495,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Beneficiary1.mmObject();
+			type_lazy = () -> Beneficiary1.mmObject();
+		}
+
+		@Override
+		public Optional<Beneficiary1> getValue(Amendment3 obj) {
+			return obj.getNewBeneficiary();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<Beneficiary1> value) {
+			obj.setNewBeneficiary(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.Narrative1> newUndertakingTermsAndConditions;
+	@XmlElement(name = "NewUdrtkgTermsAndConds")
+	protected List<Narrative1> newUndertakingTermsAndConditions;
 	/**
-	 * Requested new terms and conditions of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -458,9 +534,9 @@ public class Amendment3 {
 	 * definition} = "Requested new terms and conditions of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmNewUndertakingTermsAndConditions = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, List<Narrative1>> mmNewUndertakingTermsAndConditions = new MMMessageAssociationEnd<Amendment3, List<Narrative1>>() {
 		{
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "NewUdrtkgTermsAndConds";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -468,13 +544,24 @@ public class Amendment3 {
 			definition = "Requested new terms and conditions of the undertaking.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Narrative1.mmObject();
+			type_lazy = () -> Narrative1.mmObject();
+		}
+
+		@Override
+		public List<Narrative1> getValue(Amendment3 obj) {
+			return obj.getNewUndertakingTermsAndConditions();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, List<Narrative1> value) {
+			obj.setNewUndertakingTermsAndConditions(value);
 		}
 	};
+	@XmlElement(name = "CntrUdrtkg")
 	protected Undertaking10 counterUndertaking;
 	/**
-	 * Amendment details related to the counter-undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -503,10 +590,10 @@ public class Amendment3 {
 	 * definition} = "Amendment details related to the counter-undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCounterUndertaking = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amendment3, Optional<Undertaking10>> mmCounterUndertaking = new MMMessageAttribute<Amendment3, Optional<Undertaking10>>() {
 		{
 			businessElementTrace_lazy = () -> AmendmentOfUndertaking.mmUndertaking;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "CntrUdrtkg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -514,13 +601,24 @@ public class Amendment3 {
 			definition = "Amendment details related to the counter-undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.Undertaking10.mmObject();
+			complexType_lazy = () -> Undertaking10.mmObject();
+		}
+
+		@Override
+		public Optional<Undertaking10> getValue(Amendment3 obj) {
+			return obj.getCounterUndertaking();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<Undertaking10> value) {
+			obj.setCounterUndertaking(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DlvryChanl")
 	protected CommunicationChannel1 deliveryChannel;
 	/**
-	 * Communication channel for delivery of the amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -548,10 +646,10 @@ public class Amendment3 {
 	 * definition} = "Communication channel for delivery of the amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDeliveryChannel = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, Optional<CommunicationChannel1>> mmDeliveryChannel = new MMMessageAssociationEnd<Amendment3, Optional<CommunicationChannel1>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmCommunicationMethod;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "DlvryChanl";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -560,13 +658,24 @@ public class Amendment3 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.CommunicationChannel1.mmObject();
+			type_lazy = () -> CommunicationChannel1.mmObject();
+		}
+
+		@Override
+		public Optional<CommunicationChannel1> getValue(Amendment3 obj) {
+			return obj.getDeliveryChannel();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, Optional<CommunicationChannel1> value) {
+			obj.setDeliveryChannel(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.Document9> enclosedFile;
+	@XmlElement(name = "NclsdFile")
+	protected List<Document9> enclosedFile;
 	/**
-	 * Document or template enclosed in the request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -593,10 +702,10 @@ public class Amendment3 {
 	 * definition} = "Document or template enclosed in the request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmEnclosedFile = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Amendment3, List<Document9>> mmEnclosedFile = new MMMessageAssociationEnd<Amendment3, List<Document9>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmSpecifiedDocument;
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "NclsdFile";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -604,13 +713,24 @@ public class Amendment3 {
 			definition = "Document or template enclosed in the request.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Document9.mmObject();
+			type_lazy = () -> Document9.mmObject();
+		}
+
+		@Override
+		public List<Document9> getValue(Amendment3 obj) {
+			return obj.getEnclosedFile();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, List<Document9> value) {
+			obj.setEnclosedFile(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -634,9 +754,9 @@ public class Amendment3 {
 	 * definition} = "Additional information related to the request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Amendment3, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<Amendment3, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> Amendment3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Amendment3.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -646,17 +766,29 @@ public class Amendment3 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(Amendment3 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(Amendment3 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Amendment3.mmApplicantRequestNumber, Amendment3.mmUndertakingIdentification, Amendment3.mmApplicant, Amendment3.mmTerminationDetails, Amendment3.mmIncreaseDecreaseAmount,
-						Amendment3.mmNewExpiryDetails, Amendment3.mmNewBeneficiary, Amendment3.mmNewUndertakingTermsAndConditions, Amendment3.mmCounterUndertaking, Amendment3.mmDeliveryChannel, Amendment3.mmEnclosedFile,
-						Amendment3.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Amendment3.mmApplicantRequestNumber, com.tools20022.repository.msg.Amendment3.mmUndertakingIdentification,
+						com.tools20022.repository.msg.Amendment3.mmApplicant, com.tools20022.repository.msg.Amendment3.mmTerminationDetails, com.tools20022.repository.msg.Amendment3.mmIncreaseDecreaseAmount,
+						com.tools20022.repository.msg.Amendment3.mmNewExpiryDetails, com.tools20022.repository.msg.Amendment3.mmNewBeneficiary, com.tools20022.repository.msg.Amendment3.mmNewUndertakingTermsAndConditions,
+						com.tools20022.repository.msg.Amendment3.mmCounterUndertaking, com.tools20022.repository.msg.Amendment3.mmDeliveryChannel, com.tools20022.repository.msg.Amendment3.mmEnclosedFile,
+						com.tools20022.repository.msg.Amendment3.mmAdditionalInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(UndertakingAmendmentRequestV01.mmUndertakingAmendmentRequestDetails);
 				trace_lazy = () -> AmendmentOfUndertaking.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Amendment3";
 				definition = "Details of the amendent request.";
@@ -665,111 +797,111 @@ public class Amendment3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ApplcntReqNb", required = true)
 	public Max35Text getApplicantRequestNumber() {
 		return applicantRequestNumber;
 	}
 
-	public void setApplicantRequestNumber(Max35Text applicantRequestNumber) {
-		this.applicantRequestNumber = applicantRequestNumber;
+	public Amendment3 setApplicantRequestNumber(Max35Text applicantRequestNumber) {
+		this.applicantRequestNumber = Objects.requireNonNull(applicantRequestNumber);
+		return this;
 	}
 
-	@XmlElement(name = "UdrtkgId", required = true)
 	public Undertaking9 getUndertakingIdentification() {
 		return undertakingIdentification;
 	}
 
-	public void setUndertakingIdentification(com.tools20022.repository.msg.Undertaking9 undertakingIdentification) {
-		this.undertakingIdentification = undertakingIdentification;
+	public Amendment3 setUndertakingIdentification(Undertaking9 undertakingIdentification) {
+		this.undertakingIdentification = Objects.requireNonNull(undertakingIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "Applcnt", required = true)
 	public PartyIdentification43 getApplicant() {
 		return applicant;
 	}
 
-	public void setApplicant(com.tools20022.repository.msg.PartyIdentification43 applicant) {
-		this.applicant = applicant;
+	public Amendment3 setApplicant(PartyIdentification43 applicant) {
+		this.applicant = Objects.requireNonNull(applicant);
+		return this;
 	}
 
-	@XmlElement(name = "TermntnDtls")
-	public UndertakingTermination3 getTerminationDetails() {
-		return terminationDetails;
+	public Optional<UndertakingTermination3> getTerminationDetails() {
+		return terminationDetails == null ? Optional.empty() : Optional.of(terminationDetails);
 	}
 
-	public void setTerminationDetails(com.tools20022.repository.msg.UndertakingTermination3 terminationDetails) {
+	public Amendment3 setTerminationDetails(UndertakingTermination3 terminationDetails) {
 		this.terminationDetails = terminationDetails;
+		return this;
 	}
 
-	@XmlElement(name = "IncrDcrAmt")
-	public UndertakingAmount2 getIncreaseDecreaseAmount() {
-		return increaseDecreaseAmount;
+	public Optional<UndertakingAmount2> getIncreaseDecreaseAmount() {
+		return increaseDecreaseAmount == null ? Optional.empty() : Optional.of(increaseDecreaseAmount);
 	}
 
-	public void setIncreaseDecreaseAmount(com.tools20022.repository.msg.UndertakingAmount2 increaseDecreaseAmount) {
+	public Amendment3 setIncreaseDecreaseAmount(UndertakingAmount2 increaseDecreaseAmount) {
 		this.increaseDecreaseAmount = increaseDecreaseAmount;
+		return this;
 	}
 
-	@XmlElement(name = "NewXpryDtls")
-	public ExpiryDetails2 getNewExpiryDetails() {
-		return newExpiryDetails;
+	public Optional<ExpiryDetails2> getNewExpiryDetails() {
+		return newExpiryDetails == null ? Optional.empty() : Optional.of(newExpiryDetails);
 	}
 
-	public void setNewExpiryDetails(com.tools20022.repository.msg.ExpiryDetails2 newExpiryDetails) {
+	public Amendment3 setNewExpiryDetails(ExpiryDetails2 newExpiryDetails) {
 		this.newExpiryDetails = newExpiryDetails;
+		return this;
 	}
 
-	@XmlElement(name = "NewBnfcry")
-	public Beneficiary1 getNewBeneficiary() {
-		return newBeneficiary;
+	public Optional<Beneficiary1> getNewBeneficiary() {
+		return newBeneficiary == null ? Optional.empty() : Optional.of(newBeneficiary);
 	}
 
-	public void setNewBeneficiary(com.tools20022.repository.msg.Beneficiary1 newBeneficiary) {
+	public Amendment3 setNewBeneficiary(Beneficiary1 newBeneficiary) {
 		this.newBeneficiary = newBeneficiary;
+		return this;
 	}
 
-	@XmlElement(name = "NewUdrtkgTermsAndConds")
 	public List<Narrative1> getNewUndertakingTermsAndConditions() {
-		return newUndertakingTermsAndConditions;
+		return newUndertakingTermsAndConditions == null ? newUndertakingTermsAndConditions = new ArrayList<>() : newUndertakingTermsAndConditions;
 	}
 
-	public void setNewUndertakingTermsAndConditions(List<com.tools20022.repository.msg.Narrative1> newUndertakingTermsAndConditions) {
-		this.newUndertakingTermsAndConditions = newUndertakingTermsAndConditions;
+	public Amendment3 setNewUndertakingTermsAndConditions(List<Narrative1> newUndertakingTermsAndConditions) {
+		this.newUndertakingTermsAndConditions = Objects.requireNonNull(newUndertakingTermsAndConditions);
+		return this;
 	}
 
-	@XmlElement(name = "CntrUdrtkg")
-	public Undertaking10 getCounterUndertaking() {
-		return counterUndertaking;
+	public Optional<Undertaking10> getCounterUndertaking() {
+		return counterUndertaking == null ? Optional.empty() : Optional.of(counterUndertaking);
 	}
 
-	public void setCounterUndertaking(com.tools20022.repository.msg.Undertaking10 counterUndertaking) {
+	public Amendment3 setCounterUndertaking(Undertaking10 counterUndertaking) {
 		this.counterUndertaking = counterUndertaking;
+		return this;
 	}
 
-	@XmlElement(name = "DlvryChanl")
-	public CommunicationChannel1 getDeliveryChannel() {
-		return deliveryChannel;
+	public Optional<CommunicationChannel1> getDeliveryChannel() {
+		return deliveryChannel == null ? Optional.empty() : Optional.of(deliveryChannel);
 	}
 
-	public void setDeliveryChannel(com.tools20022.repository.msg.CommunicationChannel1 deliveryChannel) {
+	public Amendment3 setDeliveryChannel(CommunicationChannel1 deliveryChannel) {
 		this.deliveryChannel = deliveryChannel;
+		return this;
 	}
 
-	@XmlElement(name = "NclsdFile")
 	public List<Document9> getEnclosedFile() {
-		return enclosedFile;
+		return enclosedFile == null ? enclosedFile = new ArrayList<>() : enclosedFile;
 	}
 
-	public void setEnclosedFile(List<com.tools20022.repository.msg.Document9> enclosedFile) {
-		this.enclosedFile = enclosedFile;
+	public Amendment3 setEnclosedFile(List<Document9> enclosedFile) {
+		this.enclosedFile = Objects.requireNonNull(enclosedFile);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public Amendment3 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

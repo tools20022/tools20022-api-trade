@@ -28,8 +28,12 @@ import com.tools20022.repository.entity.BookEntry;
 import com.tools20022.repository.entity.InvoiceFinancingAgreement;
 import com.tools20022.repository.entity.InvoiceFinancingPartyRole;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.CashAccount7;
+import com.tools20022.repository.msg.FinancingDateDetails1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -74,8 +78,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -86,15 +90,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Summary information about amount financed."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "FinancingAllowedSummary1", propOrder = {"financedItemNumber", "totalAcceptedItemsAmount", "appliedPercentage", "totalFinancedAmount", "financingDateDetails", "creditAccount", "financingAccount"})
 public class FinancingAllowedSummary1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "FincdItmNb", required = true)
 	protected Number financedItemNumber;
 	/**
-	 * Number of invoices/instalments financed.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -119,9 +124,9 @@ public class FinancingAllowedSummary1 {
 	 * definition} = "Number of invoices/instalments financed."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFinancedItemNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAllowedSummary1, Number> mmFinancedItemNumber = new MMMessageAttribute<FinancingAllowedSummary1, Number>() {
 		{
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "FincdItmNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -131,11 +136,22 @@ public class FinancingAllowedSummary1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(FinancingAllowedSummary1 obj) {
+			return obj.getFinancedItemNumber();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, Number value) {
+			obj.setFinancedItemNumber(value);
+		}
 	};
+	@XmlElement(name = "TtlAccptdItmsAmt", required = true)
 	protected ActiveCurrencyAndAmount totalAcceptedItemsAmount;
 	/**
-	 * Sum of the original total amounts of the invoices accepted for financing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -163,9 +179,9 @@ public class FinancingAllowedSummary1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTotalAcceptedItemsAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAllowedSummary1, ActiveCurrencyAndAmount> mmTotalAcceptedItemsAmount = new MMMessageAttribute<FinancingAllowedSummary1, ActiveCurrencyAndAmount>() {
 		{
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "TtlAccptdItmsAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -175,15 +191,22 @@ public class FinancingAllowedSummary1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(FinancingAllowedSummary1 obj) {
+			return obj.getTotalAcceptedItemsAmount();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, ActiveCurrencyAndAmount value) {
+			obj.setTotalAcceptedItemsAmount(value);
+		}
 	};
+	@XmlElement(name = "ApldPctg")
 	protected PercentageRate appliedPercentage;
 	/**
-	 * Percentage rate applied to calculate the total amount financed related to
-	 * the total amounts of the invoices accepted for financing. It represents
-	 * the average percentage rate applied to all single invoice requests
-	 * financed. It can be calculated as result of "TotalFinancedAmount" divided
-	 * by "TotalAcceptedItemsAmount".
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -216,10 +239,10 @@ public class FinancingAllowedSummary1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAppliedPercentage = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAllowedSummary1, Optional<PercentageRate>> mmAppliedPercentage = new MMMessageAttribute<FinancingAllowedSummary1, Optional<PercentageRate>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmAppliedPercentage;
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "ApldPctg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -229,12 +252,22 @@ public class FinancingAllowedSummary1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> PercentageRate.mmObject();
 		}
+
+		@Override
+		public Optional<PercentageRate> getValue(FinancingAllowedSummary1 obj) {
+			return obj.getAppliedPercentage();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, Optional<PercentageRate> value) {
+			obj.setAppliedPercentage(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "TtlFincdAmt", required = true)
 	protected ActiveCurrencyAndAmount totalFinancedAmount;
 	/**
-	 * Total amount financed, defined as the entire financed amount of the
-	 * requests.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -263,29 +296,39 @@ public class FinancingAllowedSummary1 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Total amount financed, defined as the entire financed amount of the  requests."
+	 * "Total amount financed, defined as the entire financed amount of the requests."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTotalFinancedAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<FinancingAllowedSummary1, ActiveCurrencyAndAmount> mmTotalFinancedAmount = new MMMessageAttribute<FinancingAllowedSummary1, ActiveCurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmFinancedAmount;
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "TtlFincdAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TotalFinancedAmount";
-			definition = "Total amount financed, defined as the entire financed amount of the  requests.";
+			definition = "Total amount financed, defined as the entire financed amount of the requests.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(FinancingAllowedSummary1 obj) {
+			return obj.getTotalFinancedAmount();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, ActiveCurrencyAndAmount value) {
+			obj.setTotalFinancedAmount(value);
+		}
 	};
+	@XmlElement(name = "FincgDtDtls")
 	protected FinancingDateDetails1 financingDateDetails;
 	/**
-	 * Set of dates (eg book date, credit date) related to the crediting of the
-	 * financed amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -315,10 +358,10 @@ public class FinancingAllowedSummary1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFinancingDateDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<FinancingDateDetails1>> mmFinancingDateDetails = new MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<FinancingDateDetails1>>() {
 		{
 			businessComponentTrace_lazy = () -> BookEntry.mmObject();
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "FincgDtDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -327,14 +370,24 @@ public class FinancingAllowedSummary1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancingDateDetails1.mmObject();
+			type_lazy = () -> FinancingDateDetails1.mmObject();
+		}
+
+		@Override
+		public Optional<FinancingDateDetails1> getValue(FinancingAllowedSummary1 obj) {
+			return obj.getFinancingDateDetails();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, Optional<FinancingDateDetails1> value) {
+			obj.setFinancingDateDetails(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CdtAcct")
 	protected CashAccount7 creditAccount;
 	/**
-	 * Unambiguous identification of the account, held by Financing Requestor,
-	 * actually used for crediting the amount financed.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -365,10 +418,10 @@ public class FinancingAllowedSummary1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCreditAccount = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<CashAccount7>> mmCreditAccount = new MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<CashAccount7>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingPartyRole.mmCashAccount;
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "CdtAcct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -377,14 +430,24 @@ public class FinancingAllowedSummary1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.CashAccount7.mmObject();
+			type_lazy = () -> CashAccount7.mmObject();
+		}
+
+		@Override
+		public Optional<CashAccount7> getValue(FinancingAllowedSummary1 obj) {
+			return obj.getCreditAccount();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, Optional<CashAccount7> value) {
+			obj.setCreditAccount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "FincgAcct")
 	protected CashAccount7 financingAccount;
 	/**
-	 * Unambiguous identification of the internal bank account actually used by
-	 * First Agent to manage the line of credit granted to Financing Requestor.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -415,10 +478,10 @@ public class FinancingAllowedSummary1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFinancingAccount = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<CashAccount7>> mmFinancingAccount = new MMMessageAssociationEnd<FinancingAllowedSummary1, Optional<CashAccount7>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingPartyRole.mmCashAccount;
-			componentContext_lazy = () -> FinancingAllowedSummary1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.FinancingAllowedSummary1.mmObject();
 			isDerived = false;
 			xmlTag = "FincgAcct";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -427,17 +490,29 @@ public class FinancingAllowedSummary1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.CashAccount7.mmObject();
+			type_lazy = () -> CashAccount7.mmObject();
+		}
+
+		@Override
+		public Optional<CashAccount7> getValue(FinancingAllowedSummary1 obj) {
+			return obj.getFinancingAccount();
+		}
+
+		@Override
+		public void setValue(FinancingAllowedSummary1 obj, Optional<CashAccount7> value) {
+			obj.setFinancingAccount(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(FinancingAllowedSummary1.mmFinancedItemNumber, FinancingAllowedSummary1.mmTotalAcceptedItemsAmount, FinancingAllowedSummary1.mmAppliedPercentage,
-						FinancingAllowedSummary1.mmTotalFinancedAmount, FinancingAllowedSummary1.mmFinancingDateDetails, FinancingAllowedSummary1.mmCreditAccount, FinancingAllowedSummary1.mmFinancingAccount);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.FinancingAllowedSummary1.mmFinancedItemNumber, com.tools20022.repository.msg.FinancingAllowedSummary1.mmTotalAcceptedItemsAmount,
+						com.tools20022.repository.msg.FinancingAllowedSummary1.mmAppliedPercentage, com.tools20022.repository.msg.FinancingAllowedSummary1.mmTotalFinancedAmount,
+						com.tools20022.repository.msg.FinancingAllowedSummary1.mmFinancingDateDetails, com.tools20022.repository.msg.FinancingAllowedSummary1.mmCreditAccount,
+						com.tools20022.repository.msg.FinancingAllowedSummary1.mmFinancingAccount);
 				trace_lazy = () -> InvoiceFinancingAgreement.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "FinancingAllowedSummary1";
 				definition = "Summary information about amount financed.";
@@ -446,66 +521,66 @@ public class FinancingAllowedSummary1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "FincdItmNb", required = true)
 	public Number getFinancedItemNumber() {
 		return financedItemNumber;
 	}
 
-	public void setFinancedItemNumber(Number financedItemNumber) {
-		this.financedItemNumber = financedItemNumber;
+	public FinancingAllowedSummary1 setFinancedItemNumber(Number financedItemNumber) {
+		this.financedItemNumber = Objects.requireNonNull(financedItemNumber);
+		return this;
 	}
 
-	@XmlElement(name = "TtlAccptdItmsAmt", required = true)
 	public ActiveCurrencyAndAmount getTotalAcceptedItemsAmount() {
 		return totalAcceptedItemsAmount;
 	}
 
-	public void setTotalAcceptedItemsAmount(ActiveCurrencyAndAmount totalAcceptedItemsAmount) {
-		this.totalAcceptedItemsAmount = totalAcceptedItemsAmount;
+	public FinancingAllowedSummary1 setTotalAcceptedItemsAmount(ActiveCurrencyAndAmount totalAcceptedItemsAmount) {
+		this.totalAcceptedItemsAmount = Objects.requireNonNull(totalAcceptedItemsAmount);
+		return this;
 	}
 
-	@XmlElement(name = "ApldPctg")
-	public PercentageRate getAppliedPercentage() {
-		return appliedPercentage;
+	public Optional<PercentageRate> getAppliedPercentage() {
+		return appliedPercentage == null ? Optional.empty() : Optional.of(appliedPercentage);
 	}
 
-	public void setAppliedPercentage(PercentageRate appliedPercentage) {
+	public FinancingAllowedSummary1 setAppliedPercentage(PercentageRate appliedPercentage) {
 		this.appliedPercentage = appliedPercentage;
+		return this;
 	}
 
-	@XmlElement(name = "TtlFincdAmt", required = true)
 	public ActiveCurrencyAndAmount getTotalFinancedAmount() {
 		return totalFinancedAmount;
 	}
 
-	public void setTotalFinancedAmount(ActiveCurrencyAndAmount totalFinancedAmount) {
-		this.totalFinancedAmount = totalFinancedAmount;
+	public FinancingAllowedSummary1 setTotalFinancedAmount(ActiveCurrencyAndAmount totalFinancedAmount) {
+		this.totalFinancedAmount = Objects.requireNonNull(totalFinancedAmount);
+		return this;
 	}
 
-	@XmlElement(name = "FincgDtDtls")
-	public FinancingDateDetails1 getFinancingDateDetails() {
-		return financingDateDetails;
+	public Optional<FinancingDateDetails1> getFinancingDateDetails() {
+		return financingDateDetails == null ? Optional.empty() : Optional.of(financingDateDetails);
 	}
 
-	public void setFinancingDateDetails(com.tools20022.repository.msg.FinancingDateDetails1 financingDateDetails) {
+	public FinancingAllowedSummary1 setFinancingDateDetails(FinancingDateDetails1 financingDateDetails) {
 		this.financingDateDetails = financingDateDetails;
+		return this;
 	}
 
-	@XmlElement(name = "CdtAcct")
-	public CashAccount7 getCreditAccount() {
-		return creditAccount;
+	public Optional<CashAccount7> getCreditAccount() {
+		return creditAccount == null ? Optional.empty() : Optional.of(creditAccount);
 	}
 
-	public void setCreditAccount(com.tools20022.repository.msg.CashAccount7 creditAccount) {
+	public FinancingAllowedSummary1 setCreditAccount(CashAccount7 creditAccount) {
 		this.creditAccount = creditAccount;
+		return this;
 	}
 
-	@XmlElement(name = "FincgAcct")
-	public CashAccount7 getFinancingAccount() {
-		return financingAccount;
+	public Optional<CashAccount7> getFinancingAccount() {
+		return financingAccount == null ? Optional.empty() : Optional.of(financingAccount);
 	}
 
-	public void setFinancingAccount(com.tools20022.repository.msg.CashAccount7 financingAccount) {
+	public FinancingAllowedSummary1 setFinancingAccount(CashAccount7 financingAccount) {
 		this.financingAccount = financingAccount;
+		return this;
 	}
 }

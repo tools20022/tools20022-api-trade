@@ -38,37 +38,37 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#MeteredServiceInvoice
- * DocumentType2Code.mmMeteredServiceInvoice}</li>
+ * DocumentType2Code.MeteredServiceInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#CreditNoteRelatedToFinancialAdjustment
- * DocumentType2Code.mmCreditNoteRelatedToFinancialAdjustment}</li>
+ * DocumentType2Code.CreditNoteRelatedToFinancialAdjustment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#DebitNoteRelatedToFinancialAdjustment
- * DocumentType2Code.mmDebitNoteRelatedToFinancialAdjustment}</li>
+ * DocumentType2Code.DebitNoteRelatedToFinancialAdjustment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#CommercialInvoice
- * DocumentType2Code.mmCommercialInvoice}</li>
+ * DocumentType2Code.CommercialInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#CreditNote
- * DocumentType2Code.mmCreditNote}</li>
+ * DocumentType2Code.CreditNote}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#DebitNote
- * DocumentType2Code.mmDebitNote}</li>
+ * DocumentType2Code.DebitNote}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#HireInvoice
- * DocumentType2Code.mmHireInvoice}</li>
+ * DocumentType2Code.HireInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#SelfBilledInvoice
- * DocumentType2Code.mmSelfBilledInvoice}</li>
+ * DocumentType2Code.SelfBilledInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#CommercialContract
- * DocumentType2Code.mmCommercialContract}</li>
+ * DocumentType2Code.CommercialContract}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#StatementOfAccount
- * DocumentType2Code.mmStatementOfAccount}</li>
+ * DocumentType2Code.StatementOfAccount}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DocumentType2Code#DispatchAdvice
- * DocumentType2Code.mmDispatchAdvice}</li>
+ * DocumentType2Code.DispatchAdvice}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -77,8 +77,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -371,7 +371,7 @@ public class DocumentType2Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("MSIN");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DocumentType2Code";

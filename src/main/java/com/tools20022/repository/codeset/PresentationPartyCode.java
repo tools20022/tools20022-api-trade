@@ -38,13 +38,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PresentationPartyCode#ExclusiveConfirmer
- * PresentationPartyCode.mmExclusiveConfirmer}</li>
+ * PresentationPartyCode.ExclusiveConfirmer}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PresentationPartyCode#ExclusiveIssuer
- * PresentationPartyCode.mmExclusiveIssuer}</li>
+ * PresentationPartyCode.ExclusiveIssuer}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PresentationPartyCode#IssuerOrOtherNominatatedParty
- * PresentationPartyCode.mmIssuerOrOtherNominatatedParty}</li>
+ * PresentationPartyCode.IssuerOrOtherNominatatedParty}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getDerivation derivation}
@@ -57,8 +57,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -158,14 +158,14 @@ public class PresentationPartyCode extends MMCode {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Presentation made either to the issuer or other nominated party. "</li>
+	 * "Presentation made either to the issuer or other nominated party."</li>
 	 * </ul>
 	 */
 	public static final PresentationPartyCode IssuerOrOtherNominatatedParty = new PresentationPartyCode() {
 		{
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "IssuerOrOtherNominatatedParty";
-			definition = "Presentation made either to the issuer or other nominated party. ";
+			definition = "Presentation made either to the issuer or other nominated party.";
 			owner_lazy = () -> com.tools20022.repository.codeset.PresentationPartyCode.mmObject();
 			codeName = "ETHR";
 		}
@@ -178,7 +178,7 @@ public class PresentationPartyCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("EXCN");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PresentationPartyCode";

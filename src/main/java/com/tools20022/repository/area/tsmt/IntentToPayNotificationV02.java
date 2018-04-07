@@ -26,9 +26,10 @@ import com.tools20022.repository.msg.BICIdentification1;
 import com.tools20022.repository.msg.IntentToPay2;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -93,15 +94,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "IntentToPayNotificationV02", propOrder = {"notificationIdentification", "transactionIdentification", "submitterTransactionReference", "buyerBank", "sellerBank", "intentToPay"})
 public class IntentToPayNotificationV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NtfctnId", required = true)
 	protected MessageIdentification1 notificationIdentification;
 	/**
-	 * Identifies the notification message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -122,7 +124,7 @@ public class IntentToPayNotificationV02 {
 	 * definition} = "Identifies the notification message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotificationIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, MessageIdentification1> mmNotificationIdentification = new MMMessageBuildingBlock<IntentToPayNotificationV02, MessageIdentification1>() {
 		{
 			xmlTag = "NtfctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -133,20 +135,21 @@ public class IntentToPayNotificationV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getNotificationIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(IntentToPayNotificationV02 obj) {
+			return obj.getNotificationIdentification();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, MessageIdentification1 value) {
+			obj.setNotificationIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -169,7 +172,7 @@ public class IntentToPayNotificationV02 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<IntentToPayNotificationV02, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -180,18 +183,21 @@ public class IntentToPayNotificationV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(IntentToPayNotificationV02 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -213,7 +219,7 @@ public class IntentToPayNotificationV02 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<IntentToPayNotificationV02, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -224,18 +230,21 @@ public class IntentToPayNotificationV02 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(IntentToPayNotificationV02 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "BuyrBk", required = true)
 	protected BICIdentification1 buyerBank;
 	/**
-	 * The financial institution of the buyer, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -254,33 +263,36 @@ public class IntentToPayNotificationV02 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the buyer, uniquely identified by its BIC. \n"
+	 * "The financial institution of the buyer, uniquely identified by its BIC. \n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, BICIdentification1> mmBuyerBank = new MMMessageBuildingBlock<IntentToPayNotificationV02, BICIdentification1>() {
 		{
 			xmlTag = "BuyrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "BuyerBank";
-			definition = "The financial institution of the buyer, uniquely identified by its BIC. \n";
+			definition = "The financial institution of the buyer, uniquely identified by its BIC. \n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getBuyerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(IntentToPayNotificationV02 obj) {
+			return obj.getBuyerBank();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, BICIdentification1 value) {
+			obj.setBuyerBank(value);
 		}
 	};
+	@XmlElement(name = "SellrBk", required = true)
 	protected BICIdentification1 sellerBank;
 	/**
-	 * The financial institution of the seller, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -299,33 +311,36 @@ public class IntentToPayNotificationV02 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the seller, uniquely identified by its BIC. \n"
+	 * "The financial institution of the seller, uniquely identified by its BIC. \n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSellerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, BICIdentification1> mmSellerBank = new MMMessageBuildingBlock<IntentToPayNotificationV02, BICIdentification1>() {
 		{
 			xmlTag = "SellrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SellerBank";
-			definition = "The financial institution of the seller, uniquely identified by its BIC. \n";
+			definition = "The financial institution of the seller, uniquely identified by its BIC. \n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getSellerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(IntentToPayNotificationV02 obj) {
+			return obj.getSellerBank();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, BICIdentification1 value) {
+			obj.setSellerBank(value);
 		}
 	};
+	@XmlElement(name = "InttToPay", required = true)
 	protected IntentToPay2 intentToPay;
 	/**
-	 * Provides the details of the intention to pay.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -345,7 +360,7 @@ public class IntentToPayNotificationV02 {
 	 * definition} = "Provides the details of the intention to pay."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmIntentToPay = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<IntentToPayNotificationV02, IntentToPay2> mmIntentToPay = new MMMessageBuildingBlock<IntentToPayNotificationV02, IntentToPay2>() {
 		{
 			xmlTag = "InttToPay";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -356,12 +371,14 @@ public class IntentToPayNotificationV02 {
 			complexType_lazy = () -> IntentToPay2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return IntentToPayNotificationV02.class.getMethod("getIntentToPay", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public IntentToPay2 getValue(IntentToPayNotificationV02 obj) {
+			return obj.getIntentToPay();
+		}
+
+		@Override
+		public void setValue(IntentToPayNotificationV02 obj, IntentToPay2 value) {
+			obj.setIntentToPay(value);
 		}
 	};
 
@@ -396,61 +413,61 @@ public class IntentToPayNotificationV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NtfctnId", required = true)
 	public MessageIdentification1 getNotificationIdentification() {
 		return notificationIdentification;
 	}
 
-	public void setNotificationIdentification(MessageIdentification1 notificationIdentification) {
-		this.notificationIdentification = notificationIdentification;
+	public IntentToPayNotificationV02 setNotificationIdentification(MessageIdentification1 notificationIdentification) {
+		this.notificationIdentification = Objects.requireNonNull(notificationIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public IntentToPayNotificationV02 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public IntentToPayNotificationV02 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "BuyrBk", required = true)
 	public BICIdentification1 getBuyerBank() {
 		return buyerBank;
 	}
 
-	public void setBuyerBank(BICIdentification1 buyerBank) {
-		this.buyerBank = buyerBank;
+	public IntentToPayNotificationV02 setBuyerBank(BICIdentification1 buyerBank) {
+		this.buyerBank = Objects.requireNonNull(buyerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrBk", required = true)
 	public BICIdentification1 getSellerBank() {
 		return sellerBank;
 	}
 
-	public void setSellerBank(BICIdentification1 sellerBank) {
-		this.sellerBank = sellerBank;
+	public IntentToPayNotificationV02 setSellerBank(BICIdentification1 sellerBank) {
+		this.sellerBank = Objects.requireNonNull(sellerBank);
+		return this;
 	}
 
-	@XmlElement(name = "InttToPay", required = true)
 	public IntentToPay2 getIntentToPay() {
 		return intentToPay;
 	}
 
-	public void setIntentToPay(IntentToPay2 intentToPay) {
-		this.intentToPay = intentToPay;
+	public IntentToPayNotificationV02 setIntentToPay(IntentToPay2 intentToPay) {
+		this.intentToPay = Objects.requireNonNull(intentToPay);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.044.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.044.001.02")
 	static public class Document {
 		@XmlElement(name = "InttToPayNtfctn", required = true)
 		public IntentToPayNotificationV02 messageBody;

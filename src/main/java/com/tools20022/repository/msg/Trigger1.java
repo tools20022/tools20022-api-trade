@@ -25,9 +25,9 @@ import com.tools20022.repository.entity.AutomaticVariation;
 import com.tools20022.repository.entity.Trigger;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.Document10;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +54,19 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintDateChoiceAndDocumentaryEvent1Rule#forTrigger1
+ * ConstraintDateChoiceAndDocumentaryEvent1Rule.forTrigger1}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintDateChoiceAndDocumentaryEvent2Rule#forTrigger1
+ * ConstraintDateChoiceAndDocumentaryEvent2Rule.forTrigger1}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,15 +77,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Trigger parameters."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Trigger1", propOrder = {"dateChoice", "documentaryEvent"})
 public class Trigger1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "DtChc")
 	protected FixedOrRecurrentDate1Choice dateChoice;
 	/**
-	 * Details related to the date on which a variation is effective.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -104,10 +116,10 @@ public class Trigger1 {
 	 * "Details related to the date on which a variation is effective."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDateChoice = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Trigger1, Optional<FixedOrRecurrentDate1Choice>> mmDateChoice = new MMMessageAssociationEnd<Trigger1, Optional<FixedOrRecurrentDate1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> Trigger.mmTriggerDate;
-			componentContext_lazy = () -> Trigger1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Trigger1.mmObject();
 			isDerived = false;
 			xmlTag = "DtChc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,12 +130,22 @@ public class Trigger1 {
 			isComposite = true;
 			type_lazy = () -> FixedOrRecurrentDate1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<FixedOrRecurrentDate1Choice> getValue(Trigger1 obj) {
+			return obj.getDateChoice();
+		}
+
+		@Override
+		public void setValue(Trigger1 obj, Optional<FixedOrRecurrentDate1Choice> value) {
+			obj.setDateChoice(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Document10> documentaryEvent;
+	@XmlElement(name = "DcmntryEvt")
+	protected List<Document10> documentaryEvent;
 	/**
-	 * Details related to the documentary event on which a variation is
-	 * triggered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -152,10 +174,10 @@ public class Trigger1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDocumentaryEvent = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Trigger1, List<Document10>> mmDocumentaryEvent = new MMMessageAssociationEnd<Trigger1, List<Document10>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmSpecifiedDocument;
-			componentContext_lazy = () -> Trigger1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Trigger1.mmObject();
 			isDerived = false;
 			xmlTag = "DcmntryEvt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -163,16 +185,28 @@ public class Trigger1 {
 			definition = "Details related to the documentary event on which a variation is triggered.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Document10.mmObject();
+			type_lazy = () -> Document10.mmObject();
+		}
+
+		@Override
+		public List<Document10> getValue(Trigger1 obj) {
+			return obj.getDocumentaryEvent();
+		}
+
+		@Override
+		public void setValue(Trigger1 obj, List<Document10> value) {
+			obj.setDocumentaryEvent(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Trigger1.mmDateChoice, Trigger1.mmDocumentaryEvent);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Trigger1.mmDateChoice, com.tools20022.repository.msg.Trigger1.mmDocumentaryEvent);
 				trace_lazy = () -> AutomaticVariation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintDateChoiceAndDocumentaryEvent1Rule.forTrigger1,
+						com.tools20022.repository.constraints.ConstraintDateChoiceAndDocumentaryEvent2Rule.forTrigger1);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Trigger1";
 				definition = "Trigger parameters.";
@@ -181,21 +215,21 @@ public class Trigger1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "DtChc")
-	public FixedOrRecurrentDate1Choice getDateChoice() {
-		return dateChoice;
+	public Optional<FixedOrRecurrentDate1Choice> getDateChoice() {
+		return dateChoice == null ? Optional.empty() : Optional.of(dateChoice);
 	}
 
-	public void setDateChoice(FixedOrRecurrentDate1Choice dateChoice) {
+	public Trigger1 setDateChoice(FixedOrRecurrentDate1Choice dateChoice) {
 		this.dateChoice = dateChoice;
+		return this;
 	}
 
-	@XmlElement(name = "DcmntryEvt")
 	public List<Document10> getDocumentaryEvent() {
-		return documentaryEvent;
+		return documentaryEvent == null ? documentaryEvent = new ArrayList<>() : documentaryEvent;
 	}
 
-	public void setDocumentaryEvent(List<com.tools20022.repository.msg.Document10> documentaryEvent) {
-		this.documentaryEvent = documentaryEvent;
+	public Trigger1 setDocumentaryEvent(List<Document10> documentaryEvent) {
+		this.documentaryEvent = Objects.requireNonNull(documentaryEvent);
+		return this;
 	}
 }

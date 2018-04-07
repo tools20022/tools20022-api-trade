@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.UndertakingDemandWithdrawal1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -73,15 +74,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DemandWithdrawalNotificationV01", propOrder = {"demandWithdrawalNotificationDetails", "digitalSignature"})
 public class DemandWithdrawalNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "DmndWdrwlNtfctnDtls", required = true)
 	protected UndertakingDemandWithdrawal1 demandWithdrawalNotificationDetails;
 	/**
-	 * Details of the demand withdrawal notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -102,7 +104,7 @@ public class DemandWithdrawalNotificationV01 {
 	 * definition} = "Details of the demand withdrawal notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDemandWithdrawalNotificationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DemandWithdrawalNotificationV01, UndertakingDemandWithdrawal1> mmDemandWithdrawalNotificationDetails = new MMMessageBuildingBlock<DemandWithdrawalNotificationV01, UndertakingDemandWithdrawal1>() {
 		{
 			xmlTag = "DmndWdrwlNtfctnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -113,18 +115,21 @@ public class DemandWithdrawalNotificationV01 {
 			complexType_lazy = () -> UndertakingDemandWithdrawal1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DemandWithdrawalNotificationV01.class.getMethod("getDemandWithdrawalNotificationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingDemandWithdrawal1 getValue(DemandWithdrawalNotificationV01 obj) {
+			return obj.getDemandWithdrawalNotificationDetails();
+		}
+
+		@Override
+		public void setValue(DemandWithdrawalNotificationV01 obj, UndertakingDemandWithdrawal1 value) {
+			obj.setDemandWithdrawalNotificationDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -145,7 +150,7 @@ public class DemandWithdrawalNotificationV01 {
 	 * definition} = "Digital signature of the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DemandWithdrawalNotificationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<DemandWithdrawalNotificationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -156,12 +161,14 @@ public class DemandWithdrawalNotificationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DemandWithdrawalNotificationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(DemandWithdrawalNotificationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(DemandWithdrawalNotificationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -194,25 +201,25 @@ public class DemandWithdrawalNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "DmndWdrwlNtfctnDtls", required = true)
 	public UndertakingDemandWithdrawal1 getDemandWithdrawalNotificationDetails() {
 		return demandWithdrawalNotificationDetails;
 	}
 
-	public void setDemandWithdrawalNotificationDetails(UndertakingDemandWithdrawal1 demandWithdrawalNotificationDetails) {
-		this.demandWithdrawalNotificationDetails = demandWithdrawalNotificationDetails;
+	public DemandWithdrawalNotificationV01 setDemandWithdrawalNotificationDetails(UndertakingDemandWithdrawal1 demandWithdrawalNotificationDetails) {
+		this.demandWithdrawalNotificationDetails = Objects.requireNonNull(demandWithdrawalNotificationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public DemandWithdrawalNotificationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.017.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.017.001.01")
 	static public class Document {
 		@XmlElement(name = "DmndWdrwlNtfctn", required = true)
 		public DemandWithdrawalNotificationV01 messageBody;

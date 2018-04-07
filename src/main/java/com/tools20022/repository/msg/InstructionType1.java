@@ -25,6 +25,7 @@ import com.tools20022.repository.codeset.InstructionType1Code;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -70,16 +71,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InstructionType1", propOrder = "type")
 public class InstructionType1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected InstructionType1Code type;
 	/**
-	 * Specifies whether the baseline has to be pushed to the other party or
-	 * simply lodged.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -107,9 +108,9 @@ public class InstructionType1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InstructionType1, InstructionType1Code> mmType = new MMMessageAttribute<InstructionType1, InstructionType1Code>() {
 		{
-			componentContext_lazy = () -> InstructionType1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InstructionType1.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -119,14 +120,24 @@ public class InstructionType1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> InstructionType1Code.mmObject();
 		}
+
+		@Override
+		public InstructionType1Code getValue(InstructionType1 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(InstructionType1 obj, InstructionType1Code value) {
+			obj.setType(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(InstructionType1.mmType);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.InstructionType1.mmType);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InitialBaselineSubmissionV05.mmInstruction);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InstructionType1";
 				definition = "Specifies the type of instruction requested by the submitter by means of a code.";
@@ -135,12 +146,12 @@ public class InstructionType1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public InstructionType1Code getType() {
 		return type;
 	}
 
-	public void setType(InstructionType1Code type) {
-		this.type = type;
+	public InstructionType1 setType(InstructionType1Code type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 }

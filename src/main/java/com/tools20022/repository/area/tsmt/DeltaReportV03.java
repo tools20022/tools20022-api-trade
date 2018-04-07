@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -118,16 +116,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DeltaReportV03", propOrder = {"reportIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "amendmentNumber", "userTransactionReference", "buyer", "seller", "buyerBank",
 		"sellerBank", "submitterProposedBaselineReference", "updatedElement", "requestForAction"})
 public class DeltaReportV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RptId", required = true)
 	protected MessageIdentification1 reportIdentification;
 	/**
-	 * Identifies the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -145,34 +144,35 @@ public class DeltaReportV03 {
 	 * name} = "ReportIdentification"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Identifies the report. "</li>
+	 * definition} = "Identifies the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, MessageIdentification1> mmReportIdentification = new MMMessageBuildingBlock<DeltaReportV03, MessageIdentification1>() {
 		{
 			xmlTag = "RptId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ReportIdentification";
-			definition = "Identifies the report. ";
+			definition = "Identifies the report.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getReportIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(DeltaReportV03 obj) {
+			return obj.getReportIdentification();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, MessageIdentification1 value) {
+			obj.setReportIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -195,7 +195,7 @@ public class DeltaReportV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<DeltaReportV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -206,19 +206,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(DeltaReportV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -237,33 +239,36 @@ public class DeltaReportV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established. "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, DocumentIdentification3> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<DeltaReportV03, DocumentIdentification3>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established. ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification3 getValue(DeltaReportV03 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, DocumentIdentification3 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -285,7 +290,7 @@ public class DeltaReportV03 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<DeltaReportV03, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -296,18 +301,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(DeltaReportV03 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "AmdmntNb", required = true)
 	protected Count1 amendmentNumber;
 	/**
-	 * Sequence number of the proposed baseline amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -326,7 +334,7 @@ public class DeltaReportV03 {
 	 * definition} = "Sequence number of the proposed baseline amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAmendmentNumber = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, Count1> mmAmendmentNumber = new MMMessageBuildingBlock<DeltaReportV03, Count1>() {
 		{
 			xmlTag = "AmdmntNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -337,19 +345,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> Count1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getAmendmentNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Count1 getValue(DeltaReportV03 obj) {
+			return obj.getAmendmentNumber();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, Count1 value) {
+			obj.setAmendmentNumber(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for each financial institution which is a
-	 * party to the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -372,7 +382,7 @@ public class DeltaReportV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<DeltaReportV03, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -383,18 +393,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(DeltaReportV03 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "Buyr", required = true)
 	protected PartyIdentification26 buyer;
 	/**
-	 * Party that buys goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -413,32 +426,35 @@ public class DeltaReportV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Party that buys goods or services, or a financial instrument. "</li>
+	 * "Party that buys goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyer = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, PartyIdentification26> mmBuyer = new MMMessageBuildingBlock<DeltaReportV03, PartyIdentification26>() {
 		{
 			xmlTag = "Buyr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Buyer";
-			definition = "Party that buys goods or services, or a financial instrument. ";
+			definition = "Party that buys goods or services, or a financial instrument.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> PartyIdentification26.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getBuyer", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PartyIdentification26 getValue(DeltaReportV03 obj) {
+			return obj.getBuyer();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, PartyIdentification26 value) {
+			obj.setBuyer(value);
 		}
 	};
+	@XmlElement(name = "Sellr", required = true)
 	protected PartyIdentification26 seller;
 	/**
-	 * Party that sells goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -457,32 +473,35 @@ public class DeltaReportV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Party that sells goods or services, or a financial instrument. "</li>
+	 * "Party that sells goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSeller = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, PartyIdentification26> mmSeller = new MMMessageBuildingBlock<DeltaReportV03, PartyIdentification26>() {
 		{
 			xmlTag = "Sellr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Seller";
-			definition = "Party that sells goods or services, or a financial instrument. ";
+			definition = "Party that sells goods or services, or a financial instrument.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> PartyIdentification26.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getSeller", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PartyIdentification26 getValue(DeltaReportV03 obj) {
+			return obj.getSeller();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, PartyIdentification26 value) {
+			obj.setSeller(value);
 		}
 	};
+	@XmlElement(name = "BuyrBk", required = true)
 	protected BICIdentification1 buyerBank;
 	/**
-	 * The financial institution of the buyer, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -501,33 +520,36 @@ public class DeltaReportV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the buyer, uniquely identified by its BIC. "
+	 * "The financial institution of the buyer, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, BICIdentification1> mmBuyerBank = new MMMessageBuildingBlock<DeltaReportV03, BICIdentification1>() {
 		{
 			xmlTag = "BuyrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "BuyerBank";
-			definition = "The financial institution of the buyer, uniquely identified by its BIC. ";
+			definition = "The financial institution of the buyer, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getBuyerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(DeltaReportV03 obj) {
+			return obj.getBuyerBank();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, BICIdentification1 value) {
+			obj.setBuyerBank(value);
 		}
 	};
+	@XmlElement(name = "SellrBk", required = true)
 	protected BICIdentification1 sellerBank;
 	/**
-	 * The financial institution of the seller, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -546,34 +568,36 @@ public class DeltaReportV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the seller, uniquely identified by its BIC. "
+	 * "The financial institution of the seller, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSellerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, BICIdentification1> mmSellerBank = new MMMessageBuildingBlock<DeltaReportV03, BICIdentification1>() {
 		{
 			xmlTag = "SellrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SellerBank";
-			definition = "The financial institution of the seller, uniquely identified by its BIC. ";
+			definition = "The financial institution of the seller, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getSellerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(DeltaReportV03 obj) {
+			return obj.getSellerBank();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, BICIdentification1 value) {
+			obj.setSellerBank(value);
 		}
 	};
+	@XmlElement(name = "SubmitrPropsdBaselnRef", required = true)
 	protected DocumentIdentification1 submitterProposedBaselineReference;
 	/**
-	 * Reference to the identification of the baseline included in the amendment
-	 * request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -596,7 +620,7 @@ public class DeltaReportV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterProposedBaselineReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, DocumentIdentification1> mmSubmitterProposedBaselineReference = new MMMessageBuildingBlock<DeltaReportV03, DocumentIdentification1>() {
 		{
 			xmlTag = "SubmitrPropsdBaselnRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -607,19 +631,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> DocumentIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getSubmitterProposedBaselineReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification1 getValue(DeltaReportV03 obj) {
+			return obj.getSubmitterProposedBaselineReference();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, DocumentIdentification1 value) {
+			obj.setSubmitterProposedBaselineReference(value);
 		}
 	};
+	@XmlElement(name = "UpdtdElmt", required = true)
 	protected List<ComparisonResult2> updatedElement;
 	/**
-	 * Detailed comparison between the currently established baseline elements
-	 * and the proposed ones.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -642,7 +668,7 @@ public class DeltaReportV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUpdatedElement = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, List<ComparisonResult2>> mmUpdatedElement = new MMMessageBuildingBlock<DeltaReportV03, List<ComparisonResult2>>() {
 		{
 			xmlTag = "UpdtdElmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -652,18 +678,21 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> ComparisonResult2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getUpdatedElement", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ComparisonResult2> getValue(DeltaReportV03 obj) {
+			return obj.getUpdatedElement();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, List<ComparisonResult2> value) {
+			obj.setUpdatedElement(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -684,7 +713,7 @@ public class DeltaReportV03 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DeltaReportV03, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<DeltaReportV03, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -695,12 +724,14 @@ public class DeltaReportV03 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DeltaReportV03.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(DeltaReportV03 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(DeltaReportV03 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -737,124 +768,124 @@ public class DeltaReportV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RptId", required = true)
 	public MessageIdentification1 getReportIdentification() {
 		return reportIdentification;
 	}
 
-	public void setReportIdentification(MessageIdentification1 reportIdentification) {
-		this.reportIdentification = reportIdentification;
+	public DeltaReportV03 setReportIdentification(MessageIdentification1 reportIdentification) {
+		this.reportIdentification = Objects.requireNonNull(reportIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public DeltaReportV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification3 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public DeltaReportV03 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public DeltaReportV03 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "AmdmntNb", required = true)
 	public Count1 getAmendmentNumber() {
 		return amendmentNumber;
 	}
 
-	public void setAmendmentNumber(Count1 amendmentNumber) {
-		this.amendmentNumber = amendmentNumber;
+	public DeltaReportV03 setAmendmentNumber(Count1 amendmentNumber) {
+		this.amendmentNumber = Objects.requireNonNull(amendmentNumber);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public DeltaReportV03 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "Buyr", required = true)
 	public PartyIdentification26 getBuyer() {
 		return buyer;
 	}
 
-	public void setBuyer(PartyIdentification26 buyer) {
-		this.buyer = buyer;
+	public DeltaReportV03 setBuyer(PartyIdentification26 buyer) {
+		this.buyer = Objects.requireNonNull(buyer);
+		return this;
 	}
 
-	@XmlElement(name = "Sellr", required = true)
 	public PartyIdentification26 getSeller() {
 		return seller;
 	}
 
-	public void setSeller(PartyIdentification26 seller) {
-		this.seller = seller;
+	public DeltaReportV03 setSeller(PartyIdentification26 seller) {
+		this.seller = Objects.requireNonNull(seller);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrBk", required = true)
 	public BICIdentification1 getBuyerBank() {
 		return buyerBank;
 	}
 
-	public void setBuyerBank(BICIdentification1 buyerBank) {
-		this.buyerBank = buyerBank;
+	public DeltaReportV03 setBuyerBank(BICIdentification1 buyerBank) {
+		this.buyerBank = Objects.requireNonNull(buyerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrBk", required = true)
 	public BICIdentification1 getSellerBank() {
 		return sellerBank;
 	}
 
-	public void setSellerBank(BICIdentification1 sellerBank) {
-		this.sellerBank = sellerBank;
+	public DeltaReportV03 setSellerBank(BICIdentification1 sellerBank) {
+		this.sellerBank = Objects.requireNonNull(sellerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrPropsdBaselnRef", required = true)
 	public DocumentIdentification1 getSubmitterProposedBaselineReference() {
 		return submitterProposedBaselineReference;
 	}
 
-	public void setSubmitterProposedBaselineReference(DocumentIdentification1 submitterProposedBaselineReference) {
-		this.submitterProposedBaselineReference = submitterProposedBaselineReference;
+	public DeltaReportV03 setSubmitterProposedBaselineReference(DocumentIdentification1 submitterProposedBaselineReference) {
+		this.submitterProposedBaselineReference = Objects.requireNonNull(submitterProposedBaselineReference);
+		return this;
 	}
 
-	@XmlElement(name = "UpdtdElmt", required = true)
 	public List<ComparisonResult2> getUpdatedElement() {
-		return updatedElement;
+		return updatedElement == null ? updatedElement = new ArrayList<>() : updatedElement;
 	}
 
-	public void setUpdatedElement(List<ComparisonResult2> updatedElement) {
-		this.updatedElement = updatedElement;
+	public DeltaReportV03 setUpdatedElement(List<ComparisonResult2> updatedElement) {
+		this.updatedElement = Objects.requireNonNull(updatedElement);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public DeltaReportV03 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.015.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.015.001.03")
 	static public class Document {
 		@XmlElement(name = "DltaRpt", required = true)
 		public DeltaReportV03 messageBody;

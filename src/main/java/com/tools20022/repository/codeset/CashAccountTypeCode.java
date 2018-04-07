@@ -17,6 +17,7 @@
 
 package com.tools20022.repository.codeset;
 
+import com.tools20022.metamodel.ext.ISO15022Synonym;
 import com.tools20022.metamodel.MMCode;
 import com.tools20022.metamodel.MMCodeSet;
 import com.tools20022.metamodel.MMRegistrationStatus;
@@ -38,64 +39,64 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#CashPayment
- * CashAccountTypeCode.mmCashPayment}</li>
+ * CashAccountTypeCode.CashPayment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Charges
- * CashAccountTypeCode.mmCharges}</li>
+ * CashAccountTypeCode.Charges}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Commission
- * CashAccountTypeCode.mmCommission}</li>
+ * CashAccountTypeCode.Commission}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Tax
- * CashAccountTypeCode.mmTax}</li>
+ * CashAccountTypeCode.Tax}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#CashIncome
- * CashAccountTypeCode.mmCashIncome}</li>
+ * CashAccountTypeCode.CashIncome}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#CashTrading
- * CashAccountTypeCode.mmCashTrading}</li>
+ * CashAccountTypeCode.CashTrading}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Settlement
- * CashAccountTypeCode.mmSettlement}</li>
+ * CashAccountTypeCode.Settlement}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Current
- * CashAccountTypeCode.mmCurrent}</li>
+ * CashAccountTypeCode.Current}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Savings
- * CashAccountTypeCode.mmSavings}</li>
+ * CashAccountTypeCode.Savings}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#OverNightDeposit
- * CashAccountTypeCode.mmOverNightDeposit}</li>
+ * CashAccountTypeCode.OverNightDeposit}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#MarginalLending
- * CashAccountTypeCode.mmMarginalLending}</li>
+ * CashAccountTypeCode.MarginalLending}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#NonResidentExternal
- * CashAccountTypeCode.mmNonResidentExternal}</li>
+ * CashAccountTypeCode.NonResidentExternal}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#MoneyMarket
- * CashAccountTypeCode.mmMoneyMarket}</li>
+ * CashAccountTypeCode.MoneyMarket}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Loan
- * CashAccountTypeCode.mmLoan}</li>
+ * CashAccountTypeCode.Loan}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Salary
- * CashAccountTypeCode.mmSalary}</li>
+ * CashAccountTypeCode.Salary}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Overdraft
- * CashAccountTypeCode.mmOverdraft}</li>
+ * CashAccountTypeCode.Overdraft}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Lending
- * CashAccountTypeCode.mmLending}</li>
+ * CashAccountTypeCode.Lending}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Collateral
- * CashAccountTypeCode.mmCollateral}</li>
+ * CashAccountTypeCode.Collateral}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#FinancialSettlement
- * CashAccountTypeCode.mmFinancialSettlement}</li>
+ * CashAccountTypeCode.FinancialSettlement}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#MarginReturn
- * CashAccountTypeCode.mmMarginReturn}</li>
+ * CashAccountTypeCode.MarginReturn}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountTypeCode#Segregated
- * CashAccountTypeCode.mmSegregated}</li>
+ * CashAccountTypeCode.Segregated}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getDerivation derivation}
@@ -108,8 +109,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>
+ * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+ * semanticMarkup} = ISO15022Synonym: :97A::CASH</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -123,7 +127,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getName name} =
  * "CashAccountTypeCode"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
- * definition} = "Specifies the nature, or  use, of the cash account."</li>
+ * definition} = "Specifies the nature, or use, of the cash account."</li>
  * </ul>
  */
 @XmlJavaTypeAdapter(InternalXmlAdapter.class)
@@ -141,6 +145,9 @@ public class CashAccountTypeCode extends MMCode {
 	 * <li>{@linkplain com.tools20022.metamodel.MMCode#getCodeName codeName} =
 	 * "CASH"</li>
 	 * <li>
+	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+	 * semanticMarkup} = ISO15022Synonym: :97A::CASH</li>
+	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
 	 * registrationStatus} =
 	 * com.tools20022.metamodel.MMRegistrationStatus.REGISTERED</li>
@@ -153,6 +160,7 @@ public class CashAccountTypeCode extends MMCode {
 	 */
 	public static final CashAccountTypeCode CashPayment = new CashAccountTypeCode() {
 		{
+			semanticMarkup_lazy = () -> Arrays.asList(new ISO15022Synonym(this, ":97A::CASH"));
 			registrationStatus = MMRegistrationStatus.REGISTERED;
 			name = "CashPayment";
 			definition = "Account used for the payment of cash.";
@@ -171,6 +179,9 @@ public class CashAccountTypeCode extends MMCode {
 	 * <li>{@linkplain com.tools20022.metamodel.MMCode#getCodeName codeName} =
 	 * "CHAR"</li>
 	 * <li>
+	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+	 * semanticMarkup} = ISO15022Synonym: :97A::CHAR</li>
+	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
 	 * registrationStatus} =
 	 * com.tools20022.metamodel.MMRegistrationStatus.REGISTERED</li>
@@ -184,6 +195,7 @@ public class CashAccountTypeCode extends MMCode {
 	 */
 	public static final CashAccountTypeCode Charges = new CashAccountTypeCode() {
 		{
+			semanticMarkup_lazy = () -> Arrays.asList(new ISO15022Synonym(this, ":97A::CHAR"));
 			registrationStatus = MMRegistrationStatus.REGISTERED;
 			name = "Charges";
 			definition = "Account used for charges if different from the account for payment.";
@@ -202,6 +214,9 @@ public class CashAccountTypeCode extends MMCode {
 	 * <li>{@linkplain com.tools20022.metamodel.MMCode#getCodeName codeName} =
 	 * "COMM"</li>
 	 * <li>
+	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+	 * semanticMarkup} = ISO15022Synonym: :97A::COMM</li>
+	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
 	 * registrationStatus} =
 	 * com.tools20022.metamodel.MMRegistrationStatus.REGISTERED</li>
@@ -215,6 +230,7 @@ public class CashAccountTypeCode extends MMCode {
 	 */
 	public static final CashAccountTypeCode Commission = new CashAccountTypeCode() {
 		{
+			semanticMarkup_lazy = () -> Arrays.asList(new ISO15022Synonym(this, ":97A::COMM"));
 			registrationStatus = MMRegistrationStatus.REGISTERED;
 			name = "Commission";
 			definition = "Account used for commission if different from the account for payment.";
@@ -233,6 +249,9 @@ public class CashAccountTypeCode extends MMCode {
 	 * <li>{@linkplain com.tools20022.metamodel.MMCode#getCodeName codeName} =
 	 * "TAXE"</li>
 	 * <li>
+	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getSemanticMarkup
+	 * semanticMarkup} = ISO15022Synonym: :97A::TAXE</li>
+	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
 	 * registrationStatus} =
 	 * com.tools20022.metamodel.MMRegistrationStatus.REGISTERED</li>
@@ -246,6 +265,7 @@ public class CashAccountTypeCode extends MMCode {
 	 */
 	public static final CashAccountTypeCode Tax = new CashAccountTypeCode() {
 		{
+			semanticMarkup_lazy = () -> Arrays.asList(new ISO15022Synonym(this, ":97A::TAXE"));
 			registrationStatus = MMRegistrationStatus.REGISTERED;
 			name = "Tax";
 			definition = "Account used for taxes if different from the account for payment.";
@@ -783,11 +803,12 @@ public class CashAccountTypeCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				semanticMarkup_lazy = () -> Arrays.asList(new ISO15022Synonym(this, ":97A::CASH"));
 				example = Arrays.asList("CASH");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "CashAccountTypeCode";
-				definition = "Specifies the nature, or  use, of the cash account.";
+				definition = "Specifies the nature, or use, of the cash account.";
 				derivation_lazy = () -> Arrays.asList(CashAccountType4Code.mmObject());
 				code_lazy = () -> Arrays.asList(com.tools20022.repository.codeset.CashAccountTypeCode.CashPayment, com.tools20022.repository.codeset.CashAccountTypeCode.Charges,
 						com.tools20022.repository.codeset.CashAccountTypeCode.Commission, com.tools20022.repository.codeset.CashAccountTypeCode.Tax, com.tools20022.repository.codeset.CashAccountTypeCode.CashIncome,

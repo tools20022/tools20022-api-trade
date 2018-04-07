@@ -27,9 +27,10 @@ import com.tools20022.repository.datatype.Max256Text;
 import com.tools20022.repository.entity.PartyIdentificationInformation;
 import com.tools20022.repository.entity.RolePlayer;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.GenericIdentification1;
+import com.tools20022.repository.msg.SingleQualifiedPartyIdentification1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -74,8 +75,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -88,15 +89,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "QualifiedPartyIdentification1", propOrder = {"identification", "party", "shortIdentification", "role", "roleDescription"})
 public class QualifiedPartyIdentification1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected ID identification;
 	/**
-	 * Schema ID to be used in IDREF values.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -120,9 +122,9 @@ public class QualifiedPartyIdentification1 {
 	 * definition} = "Schema ID to be used in IDREF values."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<QualifiedPartyIdentification1, ID> mmIdentification = new MMMessageAttribute<QualifiedPartyIdentification1, ID>() {
 		{
-			componentContext_lazy = () -> QualifiedPartyIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -132,11 +134,22 @@ public class QualifiedPartyIdentification1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ID.mmObject();
 		}
+
+		@Override
+		public ID getValue(QualifiedPartyIdentification1 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyIdentification1 obj, ID value) {
+			obj.setIdentification(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.SingleQualifiedPartyIdentification1> party;
+	@XmlElement(name = "Pty", required = true)
+	protected List<SingleQualifiedPartyIdentification1> party;
 	/**
-	 * List of identifications for the same party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -166,10 +179,10 @@ public class QualifiedPartyIdentification1 {
 	 * definition} = "List of identifications for the same party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmParty = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<QualifiedPartyIdentification1, List<SingleQualifiedPartyIdentification1>> mmParty = new MMMessageAssociationEnd<QualifiedPartyIdentification1, List<SingleQualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> PartyIdentificationInformation.mmIdentifiedParty;
-			componentContext_lazy = () -> QualifiedPartyIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "Pty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -177,14 +190,24 @@ public class QualifiedPartyIdentification1 {
 			definition = "List of identifications for the same party.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SingleQualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> SingleQualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public List<SingleQualifiedPartyIdentification1> getValue(QualifiedPartyIdentification1 obj) {
+			return obj.getParty();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyIdentification1 obj, List<SingleQualifiedPartyIdentification1> value) {
+			obj.setParty(value);
 		}
 	};
+	@XmlElement(name = "ShrtId")
 	protected PartyIdentification2Choice shortIdentification;
 	/**
-	 * Short identification of the resulting party as a control mechanism for
-	 * humans.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -216,10 +239,10 @@ public class QualifiedPartyIdentification1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmShortIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<QualifiedPartyIdentification1, Optional<PartyIdentification2Choice>> mmShortIdentification = new MMMessageAssociationEnd<QualifiedPartyIdentification1, Optional<PartyIdentification2Choice>>() {
 		{
 			businessComponentTrace_lazy = () -> PartyIdentificationInformation.mmObject();
-			componentContext_lazy = () -> QualifiedPartyIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "ShrtId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -230,11 +253,22 @@ public class QualifiedPartyIdentification1 {
 			isComposite = true;
 			type_lazy = () -> PartyIdentification2Choice.mmObject();
 		}
+
+		@Override
+		public Optional<PartyIdentification2Choice> getValue(QualifiedPartyIdentification1 obj) {
+			return obj.getShortIdentification();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyIdentification1 obj, Optional<PartyIdentification2Choice> value) {
+			obj.setShortIdentification(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Role")
 	protected GenericIdentification1 role;
 	/**
-	 * Formally defined role qualifying the party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -263,10 +297,10 @@ public class QualifiedPartyIdentification1 {
 	 * definition} = "Formally defined role qualifying the party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmRole = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<QualifiedPartyIdentification1, Optional<GenericIdentification1>> mmRole = new MMMessageAssociationEnd<QualifiedPartyIdentification1, Optional<GenericIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> RolePlayer.mmRole;
-			componentContext_lazy = () -> QualifiedPartyIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "Role";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -275,13 +309,24 @@ public class QualifiedPartyIdentification1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.GenericIdentification1.mmObject();
+			type_lazy = () -> GenericIdentification1.mmObject();
+		}
+
+		@Override
+		public Optional<GenericIdentification1> getValue(QualifiedPartyIdentification1 obj) {
+			return obj.getRole();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyIdentification1 obj, Optional<GenericIdentification1> value) {
+			obj.setRole(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "RoleDesc")
 	protected Max256Text roleDescription;
 	/**
-	 * Free form description of the party's role.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -306,9 +351,9 @@ public class QualifiedPartyIdentification1 {
 	 * definition} = "Free form description of the party's role."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRoleDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<QualifiedPartyIdentification1, Optional<Max256Text>> mmRoleDescription = new MMMessageAttribute<QualifiedPartyIdentification1, Optional<Max256Text>>() {
 		{
-			componentContext_lazy = () -> QualifiedPartyIdentification1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
 			isDerived = false;
 			xmlTag = "RoleDesc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -318,15 +363,26 @@ public class QualifiedPartyIdentification1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max256Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max256Text> getValue(QualifiedPartyIdentification1 obj) {
+			return obj.getRoleDescription();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyIdentification1 obj, Optional<Max256Text> value) {
+			obj.setRoleDescription(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(QualifiedPartyIdentification1.mmIdentification, QualifiedPartyIdentification1.mmParty, QualifiedPartyIdentification1.mmShortIdentification, QualifiedPartyIdentification1.mmRole,
-						QualifiedPartyIdentification1.mmRoleDescription);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.QualifiedPartyIdentification1.mmIdentification, com.tools20022.repository.msg.QualifiedPartyIdentification1.mmParty,
+						com.tools20022.repository.msg.QualifiedPartyIdentification1.mmShortIdentification, com.tools20022.repository.msg.QualifiedPartyIdentification1.mmRole,
+						com.tools20022.repository.msg.QualifiedPartyIdentification1.mmRoleDescription);
 				trace_lazy = () -> PartyIdentificationInformation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "QualifiedPartyIdentification1";
 				definition = "Defines and associates identifications for a party as a list of other global or qualified relative identifiers.\r\nIt is assumed that customers of a party can be referenced by an identifier local to the party. The party together with the local identifier can be used to reference the customer.\r\nMultiple references can be given to identify the same party.\r\nA short identification can be used for display purposes.";
@@ -335,48 +391,48 @@ public class QualifiedPartyIdentification1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public ID getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(ID identification) {
-		this.identification = identification;
+	public QualifiedPartyIdentification1 setIdentification(ID identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Pty", required = true)
 	public List<SingleQualifiedPartyIdentification1> getParty() {
-		return party;
+		return party == null ? party = new ArrayList<>() : party;
 	}
 
-	public void setParty(List<com.tools20022.repository.msg.SingleQualifiedPartyIdentification1> party) {
-		this.party = party;
+	public QualifiedPartyIdentification1 setParty(List<SingleQualifiedPartyIdentification1> party) {
+		this.party = Objects.requireNonNull(party);
+		return this;
 	}
 
-	@XmlElement(name = "ShrtId")
-	public PartyIdentification2Choice getShortIdentification() {
-		return shortIdentification;
+	public Optional<PartyIdentification2Choice> getShortIdentification() {
+		return shortIdentification == null ? Optional.empty() : Optional.of(shortIdentification);
 	}
 
-	public void setShortIdentification(PartyIdentification2Choice shortIdentification) {
+	public QualifiedPartyIdentification1 setShortIdentification(PartyIdentification2Choice shortIdentification) {
 		this.shortIdentification = shortIdentification;
+		return this;
 	}
 
-	@XmlElement(name = "Role")
-	public GenericIdentification1 getRole() {
-		return role;
+	public Optional<GenericIdentification1> getRole() {
+		return role == null ? Optional.empty() : Optional.of(role);
 	}
 
-	public void setRole(com.tools20022.repository.msg.GenericIdentification1 role) {
+	public QualifiedPartyIdentification1 setRole(GenericIdentification1 role) {
 		this.role = role;
+		return this;
 	}
 
-	@XmlElement(name = "RoleDesc")
-	public Max256Text getRoleDescription() {
-		return roleDescription;
+	public Optional<Max256Text> getRoleDescription() {
+		return roleDescription == null ? Optional.empty() : Optional.of(roleDescription);
 	}
 
-	public void setRoleDescription(Max256Text roleDescription) {
+	public QualifiedPartyIdentification1 setRoleDescription(Max256Text roleDescription) {
 		this.roleDescription = roleDescription;
+		return this;
 	}
 }

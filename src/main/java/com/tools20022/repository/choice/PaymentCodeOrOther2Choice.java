@@ -29,6 +29,7 @@ import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.PaymentPeriod4;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -60,8 +61,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -76,15 +77,16 @@ import javax.xml.bind.annotation.XmlType;
  * PaymentCodeOrOther1Choice}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PaymentCodeOrOther2Choice", propOrder = {"paymentCode", "paymentDueDate", "otherPaymentTerms"})
 public class PaymentCodeOrOther2Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "PmtCd", required = true)
 	protected PaymentPeriod4 paymentCode;
 	/**
-	 * Specifies the payment period in coded form and a number of days.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -118,10 +120,10 @@ public class PaymentCodeOrOther2Choice {
 	 * PaymentCodeOrOther1Choice.mmPaymentCode}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPaymentCode = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PaymentCodeOrOther2Choice, PaymentPeriod4> mmPaymentCode = new MMMessageAssociationEnd<PaymentCodeOrOther2Choice, PaymentPeriod4>() {
 		{
 			businessComponentTrace_lazy = () -> PaymentTerms.mmObject();
-			componentContext_lazy = () -> PaymentCodeOrOther2Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmObject();
 			isDerived = false;
 			xmlTag = "PmtCd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -133,11 +135,22 @@ public class PaymentCodeOrOther2Choice {
 			isComposite = true;
 			type_lazy = () -> PaymentPeriod4.mmObject();
 		}
+
+		@Override
+		public PaymentPeriod4 getValue(PaymentCodeOrOther2Choice obj) {
+			return obj.getPaymentCode();
+		}
+
+		@Override
+		public void setValue(PaymentCodeOrOther2Choice obj, PaymentPeriod4 value) {
+			obj.setPaymentCode(value);
+		}
 	};
+	@XmlElement(name = "PmtDueDt", required = true)
 	protected ISODate paymentDueDate;
 	/**
-	 * Specifies the payment date as a fixed date.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -172,10 +185,10 @@ public class PaymentCodeOrOther2Choice {
 	 * PaymentCodeOrOther1Choice.mmPaymentDueDate}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmPaymentDueDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<PaymentCodeOrOther2Choice, ISODate> mmPaymentDueDate = new MMMessageAttribute<PaymentCodeOrOther2Choice, ISODate>() {
 		{
 			businessElementTrace_lazy = () -> PaymentObligation.mmPaymentDueDate;
-			componentContext_lazy = () -> PaymentCodeOrOther2Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmObject();
 			isDerived = false;
 			xmlTag = "PmtDueDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -186,11 +199,22 @@ public class PaymentCodeOrOther2Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public ISODate getValue(PaymentCodeOrOther2Choice obj) {
+			return obj.getPaymentDueDate();
+		}
+
+		@Override
+		public void setValue(PaymentCodeOrOther2Choice obj, ISODate value) {
+			obj.setPaymentDueDate(value);
+		}
 	};
+	@XmlElement(name = "OthrPmtTerms", required = true)
 	protected Max140Text otherPaymentTerms;
 	/**
-	 * Specifies payment terms not present in a code list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -220,9 +244,9 @@ public class PaymentCodeOrOther2Choice {
 	 * PaymentCodeOrOther1Choice.mmOtherPaymentTerms}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmOtherPaymentTerms = new MMMessageAttribute() {
+	public static final MMMessageAttribute<PaymentCodeOrOther2Choice, Max140Text> mmOtherPaymentTerms = new MMMessageAttribute<PaymentCodeOrOther2Choice, Max140Text>() {
 		{
-			componentContext_lazy = () -> PaymentCodeOrOther2Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmObject();
 			isDerived = false;
 			xmlTag = "OthrPmtTerms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -233,14 +257,25 @@ public class PaymentCodeOrOther2Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Max140Text getValue(PaymentCodeOrOther2Choice obj) {
+			return obj.getOtherPaymentTerms();
+		}
+
+		@Override
+		public void setValue(PaymentCodeOrOther2Choice obj, Max140Text value) {
+			obj.setOtherPaymentTerms(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(PaymentCodeOrOther2Choice.mmPaymentCode, PaymentCodeOrOther2Choice.mmPaymentDueDate, PaymentCodeOrOther2Choice.mmOtherPaymentTerms);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmPaymentCode, com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmPaymentDueDate,
+						com.tools20022.repository.choice.PaymentCodeOrOther2Choice.mmOtherPaymentTerms);
 				trace_lazy = () -> PaymentTerms.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentCodeOrOther2Choice";
 				definition = "Choice between a payment term in a coded or free format.";
@@ -250,30 +285,30 @@ public class PaymentCodeOrOther2Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "PmtCd", required = true)
 	public PaymentPeriod4 getPaymentCode() {
 		return paymentCode;
 	}
 
-	public void setPaymentCode(PaymentPeriod4 paymentCode) {
-		this.paymentCode = paymentCode;
+	public PaymentCodeOrOther2Choice setPaymentCode(PaymentPeriod4 paymentCode) {
+		this.paymentCode = Objects.requireNonNull(paymentCode);
+		return this;
 	}
 
-	@XmlElement(name = "PmtDueDt", required = true)
 	public ISODate getPaymentDueDate() {
 		return paymentDueDate;
 	}
 
-	public void setPaymentDueDate(ISODate paymentDueDate) {
-		this.paymentDueDate = paymentDueDate;
+	public PaymentCodeOrOther2Choice setPaymentDueDate(ISODate paymentDueDate) {
+		this.paymentDueDate = Objects.requireNonNull(paymentDueDate);
+		return this;
 	}
 
-	@XmlElement(name = "OthrPmtTerms", required = true)
 	public Max140Text getOtherPaymentTerms() {
 		return otherPaymentTerms;
 	}
 
-	public void setOtherPaymentTerms(Max140Text otherPaymentTerms) {
-		this.otherPaymentTerms = otherPaymentTerms;
+	public PaymentCodeOrOther2Choice setOtherPaymentTerms(Max140Text otherPaymentTerms) {
+		this.otherPaymentTerms = Objects.requireNonNull(otherPaymentTerms);
+		return this;
 	}
 }

@@ -25,6 +25,8 @@ import com.tools20022.repository.datatype.Max70Text;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -48,8 +50,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -61,15 +63,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Information about the message that is associated with the activity."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Activity1", propOrder = {"messageName", "description"})
 public class Activity1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "MsgNm", required = true)
 	protected Max70Text messageName;
 	/**
-	 * Name of the message associated with the activity.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -93,9 +96,9 @@ public class Activity1 {
 	 * definition} = "Name of the message associated with the activity."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMessageName = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Activity1, Max70Text> mmMessageName = new MMMessageAttribute<Activity1, Max70Text>() {
 		{
-			componentContext_lazy = () -> Activity1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Activity1.mmObject();
 			isDerived = false;
 			xmlTag = "MsgNm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -105,11 +108,22 @@ public class Activity1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max70Text.mmObject();
 		}
+
+		@Override
+		public Max70Text getValue(Activity1 obj) {
+			return obj.getMessageName();
+		}
+
+		@Override
+		public void setValue(Activity1 obj, Max70Text value) {
+			obj.setMessageName(value);
+		}
 	};
+	@XmlElement(name = "Desc")
 	protected Max140Text description;
 	/**
-	 * Further information on a message associated with the activity.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -134,9 +148,9 @@ public class Activity1 {
 	 * "Further information on a message associated with the activity."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Activity1, Optional<Max140Text>> mmDescription = new MMMessageAttribute<Activity1, Optional<Max140Text>>() {
 		{
-			componentContext_lazy = () -> Activity1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Activity1.mmObject();
 			isDerived = false;
 			xmlTag = "Desc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -146,13 +160,23 @@ public class Activity1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max140Text> getValue(Activity1 obj) {
+			return obj.getDescription();
+		}
+
+		@Override
+		public void setValue(Activity1 obj, Optional<Max140Text> value) {
+			obj.setDescription(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Activity1.mmMessageName, Activity1.mmDescription);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Activity1.mmMessageName, com.tools20022.repository.msg.Activity1.mmDescription);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Activity1";
 				definition = "Information about the message that is associated with the activity.";
@@ -161,21 +185,21 @@ public class Activity1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "MsgNm", required = true)
 	public Max70Text getMessageName() {
 		return messageName;
 	}
 
-	public void setMessageName(Max70Text messageName) {
-		this.messageName = messageName;
+	public Activity1 setMessageName(Max70Text messageName) {
+		this.messageName = Objects.requireNonNull(messageName);
+		return this;
 	}
 
-	@XmlElement(name = "Desc")
-	public Max140Text getDescription() {
-		return description;
+	public Optional<Max140Text> getDescription() {
+		return description == null ? Optional.empty() : Optional.of(description);
 	}
 
-	public void setDescription(Max140Text description) {
+	public Activity1 setDescription(Max140Text description) {
 		this.description = description;
+		return this;
 	}
 }

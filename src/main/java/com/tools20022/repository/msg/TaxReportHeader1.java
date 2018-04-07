@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.auth.InvoiceTaxReportV01;
 import com.tools20022.repository.datatype.Number;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.MessageIdentification1;
+import com.tools20022.repository.msg.TaxOrganisationIdentification1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -65,8 +66,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -82,15 +83,16 @@ import javax.xml.bind.annotation.XmlType;
  * TaxReport1}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TaxReportHeader1", propOrder = {"messageIdentification", "numberOfTaxReports", "taxAuthority"})
 public class TaxReportHeader1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "MsgId", required = true)
 	protected MessageIdentification1 messageIdentification;
 	/**
-	 * Unique message identification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -114,9 +116,9 @@ public class TaxReportHeader1 {
 	 * definition} = "Unique message identification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmMessageIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TaxReportHeader1, MessageIdentification1> mmMessageIdentification = new MMMessageAssociationEnd<TaxReportHeader1, MessageIdentification1>() {
 		{
-			componentContext_lazy = () -> TaxReportHeader1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxReportHeader1.mmObject();
 			isDerived = false;
 			xmlTag = "MsgId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -125,14 +127,24 @@ public class TaxReportHeader1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.MessageIdentification1.mmObject();
+			type_lazy = () -> MessageIdentification1.mmObject();
+		}
+
+		@Override
+		public MessageIdentification1 getValue(TaxReportHeader1 obj) {
+			return obj.getMessageIdentification();
+		}
+
+		@Override
+		public void setValue(TaxReportHeader1 obj, MessageIdentification1 value) {
+			obj.setMessageIdentification(value);
 		}
 	};
+	@XmlElement(name = "NbOfTaxRpts")
 	protected Number numberOfTaxReports;
 	/**
-	 * Number of TaxReports in this message. Seller can send all TaxReports in
-	 * the same file.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -159,9 +171,9 @@ public class TaxReportHeader1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNumberOfTaxReports = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TaxReportHeader1, Optional<Number>> mmNumberOfTaxReports = new MMMessageAttribute<TaxReportHeader1, Optional<Number>>() {
 		{
-			componentContext_lazy = () -> TaxReportHeader1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxReportHeader1.mmObject();
 			isDerived = false;
 			xmlTag = "NbOfTaxRpts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -171,12 +183,22 @@ public class TaxReportHeader1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Optional<Number> getValue(TaxReportHeader1 obj) {
+			return obj.getNumberOfTaxReports();
+		}
+
+		@Override
+		public void setValue(TaxReportHeader1 obj, Optional<Number> value) {
+			obj.setNumberOfTaxReports(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.TaxOrganisationIdentification1> taxAuthority;
+	@XmlElement(name = "TaxAuthrty")
+	protected List<TaxOrganisationIdentification1> taxAuthority;
 	/**
-	 * Party to which the TaxReport is delivered. This message block contains
-	 * party details for a specific tax authority.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -203,9 +225,9 @@ public class TaxReportHeader1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTaxAuthority = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<TaxReportHeader1, List<TaxOrganisationIdentification1>> mmTaxAuthority = new MMMessageAssociationEnd<TaxReportHeader1, List<TaxOrganisationIdentification1>>() {
 		{
-			componentContext_lazy = () -> TaxReportHeader1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TaxReportHeader1.mmObject();
 			isDerived = false;
 			xmlTag = "TaxAuthrty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -213,16 +235,27 @@ public class TaxReportHeader1 {
 			definition = "Party to which the TaxReport is delivered. This message block contains party details for a specific tax authority.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.TaxOrganisationIdentification1.mmObject();
+			type_lazy = () -> TaxOrganisationIdentification1.mmObject();
+		}
+
+		@Override
+		public List<TaxOrganisationIdentification1> getValue(TaxReportHeader1 obj) {
+			return obj.getTaxAuthority();
+		}
+
+		@Override
+		public void setValue(TaxReportHeader1 obj, List<TaxOrganisationIdentification1> value) {
+			obj.setTaxAuthority(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TaxReportHeader1.mmMessageIdentification, TaxReportHeader1.mmNumberOfTaxReports, TaxReportHeader1.mmTaxAuthority);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TaxReportHeader1.mmMessageIdentification, com.tools20022.repository.msg.TaxReportHeader1.mmNumberOfTaxReports,
+						com.tools20022.repository.msg.TaxReportHeader1.mmTaxAuthority);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InvoiceTaxReportV01.mmInvoiceTaxReportHeader);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TaxReportHeader1";
 				definition = "Defines message level identification, number of individual tax reports and tax authority.";
@@ -232,30 +265,30 @@ public class TaxReportHeader1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "MsgId", required = true)
 	public MessageIdentification1 getMessageIdentification() {
 		return messageIdentification;
 	}
 
-	public void setMessageIdentification(com.tools20022.repository.msg.MessageIdentification1 messageIdentification) {
-		this.messageIdentification = messageIdentification;
+	public TaxReportHeader1 setMessageIdentification(MessageIdentification1 messageIdentification) {
+		this.messageIdentification = Objects.requireNonNull(messageIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "NbOfTaxRpts")
-	public Number getNumberOfTaxReports() {
-		return numberOfTaxReports;
+	public Optional<Number> getNumberOfTaxReports() {
+		return numberOfTaxReports == null ? Optional.empty() : Optional.of(numberOfTaxReports);
 	}
 
-	public void setNumberOfTaxReports(Number numberOfTaxReports) {
+	public TaxReportHeader1 setNumberOfTaxReports(Number numberOfTaxReports) {
 		this.numberOfTaxReports = numberOfTaxReports;
+		return this;
 	}
 
-	@XmlElement(name = "TaxAuthrty")
 	public List<TaxOrganisationIdentification1> getTaxAuthority() {
-		return taxAuthority;
+		return taxAuthority == null ? taxAuthority = new ArrayList<>() : taxAuthority;
 	}
 
-	public void setTaxAuthority(List<com.tools20022.repository.msg.TaxOrganisationIdentification1> taxAuthority) {
-		this.taxAuthority = taxAuthority;
+	public TaxReportHeader1 setTaxAuthority(List<TaxOrganisationIdentification1> taxAuthority) {
+		this.taxAuthority = Objects.requireNonNull(taxAuthority);
+		return this;
 	}
 }

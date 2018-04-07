@@ -25,12 +25,11 @@ import com.tools20022.repository.datatype.AnyBICIdentifier;
 import com.tools20022.repository.entity.OrganisationIdentification;
 import com.tools20022.repository.entity.PartyIdentificationInformation;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.GenericOrganisationIdentification1;
 import java.text.DateFormat;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.Date;
 import java.util.function.Supplier;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -60,8 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} = com.tools20022.metamodel.MMRegistrationStatus.OBSOLETE</li>
@@ -73,18 +72,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Unique and unambiguous way to identify an organisation."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "OrganisationIdentification6", propOrder = {"BIC", "other"})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(name = "OrganisationIdentification6", propOrder = {"bIC", "other"})
 public class OrganisationIdentification6 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "BIC")
 	protected AnyBICIdentifier bIC;
 	/**
-	 * Code allocated to organisations by the ISO 9362 Registration Authority,
-	 * under an international identification scheme, as described in the latest
-	 * version of the standard ISO 9362 Banking (Banking telecommunication
-	 * messages, Business Identifier Codes).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -117,10 +114,10 @@ public class OrganisationIdentification6 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmBIC = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OrganisationIdentification6, Optional<AnyBICIdentifier>> mmBIC = new MMMessageAttribute<OrganisationIdentification6, Optional<AnyBICIdentifier>>() {
 		{
 			businessElementTrace_lazy = () -> OrganisationIdentification.mmBICFI;
-			componentContext_lazy = () -> OrganisationIdentification6.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OrganisationIdentification6.mmObject();
 			isDerived = false;
 			xmlTag = "BIC";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -130,12 +127,22 @@ public class OrganisationIdentification6 {
 			minOccurs = 0;
 			simpleType_lazy = () -> AnyBICIdentifier.mmObject();
 		}
+
+		@Override
+		public Optional<AnyBICIdentifier> getValue(OrganisationIdentification6 obj) {
+			return obj.getBIC();
+		}
+
+		@Override
+		public void setValue(OrganisationIdentification6 obj, Optional<AnyBICIdentifier> value) {
+			obj.setBIC(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.GenericOrganisationIdentification1> other;
+	@XmlElement(name = "Othr")
+	protected List<GenericOrganisationIdentification1> other;
 	/**
-	 * Unique identification of an organisation, as assigned by an institution,
-	 * using an identification scheme.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -167,10 +174,10 @@ public class OrganisationIdentification6 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOther = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OrganisationIdentification6, List<GenericOrganisationIdentification1>> mmOther = new MMMessageAssociationEnd<OrganisationIdentification6, List<GenericOrganisationIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> PartyIdentificationInformation.mmOtherIdentification;
-			componentContext_lazy = () -> OrganisationIdentification6.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OrganisationIdentification6.mmObject();
 			isDerived = false;
 			xmlTag = "Othr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -178,16 +185,26 @@ public class OrganisationIdentification6 {
 			definition = "Unique identification of an organisation, as assigned by an institution, using an identification scheme.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.GenericOrganisationIdentification1.mmObject();
+			type_lazy = () -> GenericOrganisationIdentification1.mmObject();
+		}
+
+		@Override
+		public List<GenericOrganisationIdentification1> getValue(OrganisationIdentification6 obj) {
+			return obj.getOther();
+		}
+
+		@Override
+		public void setValue(OrganisationIdentification6 obj, List<GenericOrganisationIdentification1> value) {
+			obj.setOther(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(OrganisationIdentification6.mmBIC, OrganisationIdentification6.mmOther);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.OrganisationIdentification6.mmBIC, com.tools20022.repository.msg.OrganisationIdentification6.mmOther);
 				trace_lazy = () -> OrganisationIdentification.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.OBSOLETE;
 				removalDate = ((Supplier<Date>) (() -> {
 					try {
@@ -203,21 +220,21 @@ public class OrganisationIdentification6 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "BIC")
-	public AnyBICIdentifier getBIC() {
-		return bIC;
+	public Optional<AnyBICIdentifier> getBIC() {
+		return bIC == null ? Optional.empty() : Optional.of(bIC);
 	}
 
-	public void setBIC(AnyBICIdentifier bIC) {
+	public OrganisationIdentification6 setBIC(AnyBICIdentifier bIC) {
 		this.bIC = bIC;
+		return this;
 	}
 
-	@XmlElement(name = "Othr")
 	public List<GenericOrganisationIdentification1> getOther() {
-		return other;
+		return other == null ? other = new ArrayList<>() : other;
 	}
 
-	public void setOther(List<com.tools20022.repository.msg.GenericOrganisationIdentification1> other) {
-		this.other = other;
+	public OrganisationIdentification6 setOther(List<GenericOrganisationIdentification1> other) {
+		this.other = Objects.requireNonNull(other);
+		return this;
 	}
 }

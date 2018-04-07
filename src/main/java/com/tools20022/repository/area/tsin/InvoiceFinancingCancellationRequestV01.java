@@ -24,9 +24,9 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesInitiationLatestVersion;
 import com.tools20022.repository.msg.CancellationRequestInformation1;
 import com.tools20022.repository.msg.MessageIdentification1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -88,15 +88,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceFinancingCancellationRequestV01", propOrder = {"cancellationRequestIdentification", "cancellationRequestInformation"})
 public class InvoiceFinancingCancellationRequestV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "CxlReqId", required = true)
 	protected MessageIdentification1 cancellationRequestIdentification;
 	/**
-	 * Unique and unambiguous identification of the message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -117,7 +118,7 @@ public class InvoiceFinancingCancellationRequestV01 {
 	 * definition} = "Unique and unambiguous identification of the message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmCancellationRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingCancellationRequestV01, MessageIdentification1> mmCancellationRequestIdentification = new MMMessageBuildingBlock<InvoiceFinancingCancellationRequestV01, MessageIdentification1>() {
 		{
 			xmlTag = "CxlReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -128,20 +129,21 @@ public class InvoiceFinancingCancellationRequestV01 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingCancellationRequestV01.class.getMethod("getCancellationRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(InvoiceFinancingCancellationRequestV01 obj) {
+			return obj.getCancellationRequestIdentification();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingCancellationRequestV01 obj, MessageIdentification1 value) {
+			obj.setCancellationRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "CxlReqInf", required = true)
 	protected CancellationRequestInformation1 cancellationRequestInformation;
 	/**
-	 * Set of information related to the cancellation request, such as actors
-	 * involved and identification of the original invoice financing request to
-	 * which the cancellation request refers.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -164,7 +166,7 @@ public class InvoiceFinancingCancellationRequestV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmCancellationRequestInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingCancellationRequestV01, CancellationRequestInformation1> mmCancellationRequestInformation = new MMMessageBuildingBlock<InvoiceFinancingCancellationRequestV01, CancellationRequestInformation1>() {
 		{
 			xmlTag = "CxlReqInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -175,12 +177,14 @@ public class InvoiceFinancingCancellationRequestV01 {
 			complexType_lazy = () -> CancellationRequestInformation1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingCancellationRequestV01.class.getMethod("getCancellationRequestInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public CancellationRequestInformation1 getValue(InvoiceFinancingCancellationRequestV01 obj) {
+			return obj.getCancellationRequestInformation();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingCancellationRequestV01 obj, CancellationRequestInformation1 value) {
+			obj.setCancellationRequestInformation(value);
 		}
 	};
 
@@ -213,25 +217,25 @@ public class InvoiceFinancingCancellationRequestV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "CxlReqId", required = true)
 	public MessageIdentification1 getCancellationRequestIdentification() {
 		return cancellationRequestIdentification;
 	}
 
-	public void setCancellationRequestIdentification(MessageIdentification1 cancellationRequestIdentification) {
-		this.cancellationRequestIdentification = cancellationRequestIdentification;
+	public InvoiceFinancingCancellationRequestV01 setCancellationRequestIdentification(MessageIdentification1 cancellationRequestIdentification) {
+		this.cancellationRequestIdentification = Objects.requireNonNull(cancellationRequestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "CxlReqInf", required = true)
 	public CancellationRequestInformation1 getCancellationRequestInformation() {
 		return cancellationRequestInformation;
 	}
 
-	public void setCancellationRequestInformation(CancellationRequestInformation1 cancellationRequestInformation) {
-		this.cancellationRequestInformation = cancellationRequestInformation;
+	public InvoiceFinancingCancellationRequestV01 setCancellationRequestInformation(CancellationRequestInformation1 cancellationRequestInformation) {
+		this.cancellationRequestInformation = Objects.requireNonNull(cancellationRequestInformation);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.003.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.003.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcFincgCxlReq", required = true)
 		public InvoiceFinancingCancellationRequestV01 messageBody;

@@ -24,10 +24,8 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.choice.RejectionReason1Choice;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -104,16 +102,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AmendmentRejectionNotificationV03", propOrder = {"notificationIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference", "deltaReportReference",
 		"rejectedAmendmentNumber", "initiator", "rejectionReason", "requestForAction"})
 public class AmendmentRejectionNotificationV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NtfctnId", required = true)
 	protected MessageIdentification1 notificationIdentification;
 	/**
-	 * Identifies the notification message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -134,7 +133,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * definition} = "Identifies the notification message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotificationIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, MessageIdentification1> mmNotificationIdentification = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, MessageIdentification1>() {
 		{
 			xmlTag = "NtfctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -145,20 +144,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getNotificationIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getNotificationIdentification();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, MessageIdentification1 value) {
+			obj.setNotificationIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique Identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -177,34 +177,36 @@ public class AmendmentRejectionNotificationV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique Identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique Identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique Identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique Identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -227,7 +229,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, DocumentIdentification3> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, DocumentIdentification3>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -238,18 +240,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification3 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, DocumentIdentification3 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -271,7 +276,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -282,19 +287,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for each financial institution which is a
-	 * party to the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -317,7 +324,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -328,19 +335,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "DltaRptRef", required = true)
 	protected MessageIdentification1 deltaReportReference;
 	/**
-	 * Reference to the identification of the delta report that contained the
-	 * amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -363,7 +372,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDeltaReportReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, MessageIdentification1> mmDeltaReportReference = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, MessageIdentification1>() {
 		{
 			xmlTag = "DltaRptRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -374,18 +383,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getDeltaReportReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getDeltaReportReference();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, MessageIdentification1 value) {
+			obj.setDeltaReportReference(value);
 		}
 	};
+	@XmlElement(name = "RjctdAmdmntNb", required = true)
 	protected Count1 rejectedAmendmentNumber;
 	/**
-	 * Sequence number of the rejected baseline amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -404,7 +416,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * definition} = "Sequence number of the rejected baseline amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectedAmendmentNumber = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, Count1> mmRejectedAmendmentNumber = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, Count1>() {
 		{
 			xmlTag = "RjctdAmdmntNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -415,18 +427,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> Count1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getRejectedAmendmentNumber", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Count1 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getRejectedAmendmentNumber();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, Count1 value) {
+			obj.setRejectedAmendmentNumber(value);
 		}
 	};
+	@XmlElement(name = "Initr", required = true)
 	protected BICIdentification1 initiator;
 	/**
-	 * Party that has rejected the amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -447,7 +462,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * definition} = "Party that has rejected the amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInitiator = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, BICIdentification1> mmInitiator = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, BICIdentification1>() {
 		{
 			xmlTag = "Initr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -458,18 +473,21 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getInitiator", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getInitiator();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, BICIdentification1 value) {
+			obj.setInitiator(value);
 		}
 	};
+	@XmlElement(name = "RjctnRsn", required = true)
 	protected RejectionReason1Choice rejectionReason;
 	/**
-	 * Specifies the reaons for rejecting the amendment.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -487,34 +505,35 @@ public class AmendmentRejectionNotificationV03 {
 	 * name} = "RejectionReason"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} =
-	 * "Specifies the reaons for rejecting the amendment.                                                    "
-	 * </li>
+	 * definition} = "Specifies the reaons for rejecting the amendment."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRejectionReason = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, RejectionReason1Choice> mmRejectionReason = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, RejectionReason1Choice>() {
 		{
 			xmlTag = "RjctnRsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "RejectionReason";
-			definition = "Specifies the reaons for rejecting the amendment.                                                    ";
+			definition = "Specifies the reaons for rejecting the amendment.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> RejectionReason1Choice.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getRejectionReason", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public RejectionReason1Choice getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getRejectionReason();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, RejectionReason1Choice value) {
+			obj.setRejectionReason(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -535,7 +554,7 @@ public class AmendmentRejectionNotificationV03 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<AmendmentRejectionNotificationV03, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<AmendmentRejectionNotificationV03, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -546,12 +565,14 @@ public class AmendmentRejectionNotificationV03 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return AmendmentRejectionNotificationV03.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(AmendmentRejectionNotificationV03 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(AmendmentRejectionNotificationV03 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -588,97 +609,97 @@ public class AmendmentRejectionNotificationV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NtfctnId", required = true)
 	public MessageIdentification1 getNotificationIdentification() {
 		return notificationIdentification;
 	}
 
-	public void setNotificationIdentification(MessageIdentification1 notificationIdentification) {
-		this.notificationIdentification = notificationIdentification;
+	public AmendmentRejectionNotificationV03 setNotificationIdentification(MessageIdentification1 notificationIdentification) {
+		this.notificationIdentification = Objects.requireNonNull(notificationIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public AmendmentRejectionNotificationV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification3 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public AmendmentRejectionNotificationV03 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public AmendmentRejectionNotificationV03 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public AmendmentRejectionNotificationV03 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "DltaRptRef", required = true)
 	public MessageIdentification1 getDeltaReportReference() {
 		return deltaReportReference;
 	}
 
-	public void setDeltaReportReference(MessageIdentification1 deltaReportReference) {
-		this.deltaReportReference = deltaReportReference;
+	public AmendmentRejectionNotificationV03 setDeltaReportReference(MessageIdentification1 deltaReportReference) {
+		this.deltaReportReference = Objects.requireNonNull(deltaReportReference);
+		return this;
 	}
 
-	@XmlElement(name = "RjctdAmdmntNb", required = true)
 	public Count1 getRejectedAmendmentNumber() {
 		return rejectedAmendmentNumber;
 	}
 
-	public void setRejectedAmendmentNumber(Count1 rejectedAmendmentNumber) {
-		this.rejectedAmendmentNumber = rejectedAmendmentNumber;
+	public AmendmentRejectionNotificationV03 setRejectedAmendmentNumber(Count1 rejectedAmendmentNumber) {
+		this.rejectedAmendmentNumber = Objects.requireNonNull(rejectedAmendmentNumber);
+		return this;
 	}
 
-	@XmlElement(name = "Initr", required = true)
 	public BICIdentification1 getInitiator() {
 		return initiator;
 	}
 
-	public void setInitiator(BICIdentification1 initiator) {
-		this.initiator = initiator;
+	public AmendmentRejectionNotificationV03 setInitiator(BICIdentification1 initiator) {
+		this.initiator = Objects.requireNonNull(initiator);
+		return this;
 	}
 
-	@XmlElement(name = "RjctnRsn", required = true)
 	public RejectionReason1Choice getRejectionReason() {
 		return rejectionReason;
 	}
 
-	public void setRejectionReason(RejectionReason1Choice rejectionReason) {
-		this.rejectionReason = rejectionReason;
+	public AmendmentRejectionNotificationV03 setRejectionReason(RejectionReason1Choice rejectionReason) {
+		this.rejectionReason = Objects.requireNonNull(rejectionReason);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public AmendmentRejectionNotificationV03 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.008.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.008.001.03")
 	static public class Document {
 		@XmlElement(name = "AmdmntRjctnNtfctn", required = true)
 		public AmendmentRejectionNotificationV03 messageBody;

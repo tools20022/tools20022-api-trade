@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.Tax;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -64,15 +65,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Specifies the type of tax as a code or free text."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TaxType2Choice", propOrder = {"type", "otherTaxType"})
 public class TaxType2Choice {
 
 	final static private AtomicReference<MMChoiceComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected TaxType9Code type;
 	/**
-	 * Type of tax applied.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -101,10 +103,10 @@ public class TaxType2Choice {
 	 * definition} = "Type of tax applied."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TaxType2Choice, TaxType9Code> mmType = new MMMessageAttribute<TaxType2Choice, TaxType9Code>() {
 		{
 			businessElementTrace_lazy = () -> Tax.mmType;
-			componentContext_lazy = () -> TaxType2Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.TaxType2Choice.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -114,11 +116,22 @@ public class TaxType2Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> TaxType9Code.mmObject();
 		}
+
+		@Override
+		public TaxType9Code getValue(TaxType2Choice obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(TaxType2Choice obj, TaxType9Code value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "OthrTaxTp", required = true)
 	protected Max35Text otherTaxType;
 	/**
-	 * Specifies types of tax not present in a code list.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -147,10 +160,10 @@ public class TaxType2Choice {
 	 * definition} = "Specifies types of tax not present in a code list."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmOtherTaxType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TaxType2Choice, Max35Text> mmOtherTaxType = new MMMessageAttribute<TaxType2Choice, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> Tax.mmType;
-			componentContext_lazy = () -> TaxType2Choice.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.choice.TaxType2Choice.mmObject();
 			isDerived = false;
 			xmlTag = "OthrTaxTp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -160,14 +173,24 @@ public class TaxType2Choice {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(TaxType2Choice obj) {
+			return obj.getOtherTaxType();
+		}
+
+		@Override
+		public void setValue(TaxType2Choice obj, Max35Text value) {
+			obj.setOtherTaxType(value);
+		}
 	};
 
 	final static public MMChoiceComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMChoiceComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TaxType2Choice.mmType, TaxType2Choice.mmOtherTaxType);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.choice.TaxType2Choice.mmType, com.tools20022.repository.choice.TaxType2Choice.mmOtherTaxType);
 				trace_lazy = () -> Tax.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TaxType2Choice";
 				definition = "Specifies the type of tax as a code or free text.";
@@ -176,21 +199,21 @@ public class TaxType2Choice {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public TaxType9Code getType() {
 		return type;
 	}
 
-	public void setType(TaxType9Code type) {
-		this.type = type;
+	public TaxType2Choice setType(TaxType9Code type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "OthrTaxTp", required = true)
 	public Max35Text getOtherTaxType() {
 		return otherTaxType;
 	}
 
-	public void setOtherTaxType(Max35Text otherTaxType) {
-		this.otherTaxType = otherTaxType;
+	public TaxType2Choice setOtherTaxType(Max35Text otherTaxType) {
+		this.otherTaxType = Objects.requireNonNull(otherTaxType);
+		return this;
 	}
 }

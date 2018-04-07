@@ -26,9 +26,12 @@ import com.tools20022.repository.datatype.Max350Text;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.datatype.Number;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.ElementIdentification3;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -68,8 +71,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -80,15 +83,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Describes the error that is the cause of the rejection."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ValidationResult3", propOrder = {"sequenceNumber", "ruleIdentification", "ruleDescription", "element"})
 public class ValidationResult3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "SeqNb", required = true)
 	protected Number sequenceNumber;
 	/**
-	 * Sequential number assigned to the error.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -113,9 +117,9 @@ public class ValidationResult3 {
 	 * definition} = "Sequential number assigned to the error."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmSequenceNumber = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ValidationResult3, Number> mmSequenceNumber = new MMMessageAttribute<ValidationResult3, Number>() {
 		{
-			componentContext_lazy = () -> ValidationResult3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ValidationResult3.mmObject();
 			isDerived = false;
 			xmlTag = "SeqNb";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -125,12 +129,22 @@ public class ValidationResult3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(ValidationResult3 obj) {
+			return obj.getSequenceNumber();
+		}
+
+		@Override
+		public void setValue(ValidationResult3 obj, Number value) {
+			obj.setSequenceNumber(value);
+		}
 	};
+	@XmlElement(name = "RuleId", required = true)
 	protected Max35Text ruleIdentification;
 	/**
-	 * Coded identification of the rule that is violated by the rejected
-	 * message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -157,9 +171,9 @@ public class ValidationResult3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRuleIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ValidationResult3, Max35Text> mmRuleIdentification = new MMMessageAttribute<ValidationResult3, Max35Text>() {
 		{
-			componentContext_lazy = () -> ValidationResult3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ValidationResult3.mmObject();
 			isDerived = false;
 			xmlTag = "RuleId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -169,11 +183,22 @@ public class ValidationResult3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(ValidationResult3 obj) {
+			return obj.getRuleIdentification();
+		}
+
+		@Override
+		public void setValue(ValidationResult3 obj, Max35Text value) {
+			obj.setRuleIdentification(value);
+		}
 	};
+	@XmlElement(name = "RuleDesc", required = true)
 	protected Max350Text ruleDescription;
 	/**
-	 * Detailed description of the rule.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -198,9 +223,9 @@ public class ValidationResult3 {
 	 * definition} = "Detailed description of the rule."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRuleDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ValidationResult3, Max350Text> mmRuleDescription = new MMMessageAttribute<ValidationResult3, Max350Text>() {
 		{
-			componentContext_lazy = () -> ValidationResult3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ValidationResult3.mmObject();
 			isDerived = false;
 			xmlTag = "RuleDesc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -210,11 +235,22 @@ public class ValidationResult3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max350Text.mmObject();
 		}
+
+		@Override
+		public Max350Text getValue(ValidationResult3 obj) {
+			return obj.getRuleDescription();
+		}
+
+		@Override
+		public void setValue(ValidationResult3 obj, Max350Text value) {
+			obj.setRuleDescription(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.ElementIdentification3> element;
+	@XmlElement(name = "Elmt")
+	protected List<ElementIdentification3> element;
 	/**
-	 * Description of the elements that violated the rule.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -238,9 +274,9 @@ public class ValidationResult3 {
 	 * definition} = "Description of the elements that violated the rule."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmElement = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<ValidationResult3, List<ElementIdentification3>> mmElement = new MMMessageAssociationEnd<ValidationResult3, List<ElementIdentification3>>() {
 		{
-			componentContext_lazy = () -> ValidationResult3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ValidationResult3.mmObject();
 			isDerived = false;
 			xmlTag = "Elmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -248,16 +284,27 @@ public class ValidationResult3 {
 			definition = "Description of the elements that violated the rule.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ElementIdentification3.mmObject();
+			type_lazy = () -> ElementIdentification3.mmObject();
+		}
+
+		@Override
+		public List<ElementIdentification3> getValue(ValidationResult3 obj) {
+			return obj.getElement();
+		}
+
+		@Override
+		public void setValue(ValidationResult3 obj, List<ElementIdentification3> value) {
+			obj.setElement(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ValidationResult3.mmSequenceNumber, ValidationResult3.mmRuleIdentification, ValidationResult3.mmRuleDescription, ValidationResult3.mmElement);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.ValidationResult3.mmSequenceNumber, com.tools20022.repository.msg.ValidationResult3.mmRuleIdentification,
+						com.tools20022.repository.msg.ValidationResult3.mmRuleDescription, com.tools20022.repository.msg.ValidationResult3.mmElement);
 				messageBuildingBlock_lazy = () -> Arrays.asList(ErrorReportV03.mmErrorDescription);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "ValidationResult3";
 				definition = "Describes the error that is the cause of the rejection.";
@@ -266,39 +313,39 @@ public class ValidationResult3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "SeqNb", required = true)
 	public Number getSequenceNumber() {
 		return sequenceNumber;
 	}
 
-	public void setSequenceNumber(Number sequenceNumber) {
-		this.sequenceNumber = sequenceNumber;
+	public ValidationResult3 setSequenceNumber(Number sequenceNumber) {
+		this.sequenceNumber = Objects.requireNonNull(sequenceNumber);
+		return this;
 	}
 
-	@XmlElement(name = "RuleId", required = true)
 	public Max35Text getRuleIdentification() {
 		return ruleIdentification;
 	}
 
-	public void setRuleIdentification(Max35Text ruleIdentification) {
-		this.ruleIdentification = ruleIdentification;
+	public ValidationResult3 setRuleIdentification(Max35Text ruleIdentification) {
+		this.ruleIdentification = Objects.requireNonNull(ruleIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RuleDesc", required = true)
 	public Max350Text getRuleDescription() {
 		return ruleDescription;
 	}
 
-	public void setRuleDescription(Max350Text ruleDescription) {
-		this.ruleDescription = ruleDescription;
+	public ValidationResult3 setRuleDescription(Max350Text ruleDescription) {
+		this.ruleDescription = Objects.requireNonNull(ruleDescription);
+		return this;
 	}
 
-	@XmlElement(name = "Elmt")
 	public List<ElementIdentification3> getElement() {
-		return element;
+		return element == null ? element = new ArrayList<>() : element;
 	}
 
-	public void setElement(List<com.tools20022.repository.msg.ElementIdentification3> element) {
-		this.element = element;
+	public ValidationResult3 setElement(List<ElementIdentification3> element) {
+		this.element = Objects.requireNonNull(element);
+		return this;
 	}
 }

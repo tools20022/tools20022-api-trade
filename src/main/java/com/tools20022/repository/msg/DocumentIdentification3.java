@@ -28,6 +28,7 @@ import com.tools20022.repository.entity.GenericIdentification;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -129,8 +130,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -142,15 +143,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Identifies a document by a unique identification and a version."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DocumentIdentification3", propOrder = {"identification", "version"})
 public class DocumentIdentification3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Identification of a set of data.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -180,10 +182,10 @@ public class DocumentIdentification3 {
 	 * definition} = "Identification of a set of data."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification3, Max35Text> mmIdentification = new MMMessageAttribute<DocumentIdentification3, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> DocumentIdentification3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification3.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -193,12 +195,22 @@ public class DocumentIdentification3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(DocumentIdentification3 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification3 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "Vrsn", required = true)
 	protected Number version;
 	/**
-	 * Unambiguous identification of the version of a set of data. Example:
-	 * Version 1.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -230,10 +242,10 @@ public class DocumentIdentification3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmVersion = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification3, Number> mmVersion = new MMMessageAttribute<DocumentIdentification3, Number>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmDocumentVersion;
-			componentContext_lazy = () -> DocumentIdentification3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification3.mmObject();
 			isDerived = false;
 			xmlTag = "Vrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -243,12 +255,22 @@ public class DocumentIdentification3 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(DocumentIdentification3 obj) {
+			return obj.getVersion();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification3 obj, Number value) {
+			obj.setVersion(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(DocumentIdentification3.mmIdentification, DocumentIdentification3.mmVersion);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.DocumentIdentification3.mmIdentification, com.tools20022.repository.msg.DocumentIdentification3.mmVersion);
 				messageBuildingBlock_lazy = () -> Arrays.asList(AcknowledgementV03.mmEstablishedBaselineIdentification, AmendmentAcceptanceNotificationV03.mmEstablishedBaselineIdentification,
 						AmendmentRejectionNotificationV03.mmEstablishedBaselineIdentification, BaselineMatchReportV03.mmEstablishedBaselineIdentification, DataSetMatchReportV03.mmEstablishedBaselineIdentification,
 						DeltaReportV03.mmEstablishedBaselineIdentification, ErrorReportV03.mmEstablishedBaselineIdentification, MisMatchAcceptanceNotificationV03.mmEstablishedBaselineIdentification,
@@ -259,7 +281,7 @@ public class DocumentIdentification3 {
 						RoleAndBaselineAcceptanceNotificationV01.mmEstablishedBaselineIdentification, RoleAndBaselineRejectionNotificationV01.mmEstablishedBaselineIdentification,
 						ForwardIntentToPayNotificationV02.mmEstablishedBaselineIdentification, FullPushThroughReportV05.mmEstablishedBaselineIdentification);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DocumentIdentification3";
 				definition = "Identifies a document by a unique identification and a version.";
@@ -268,21 +290,21 @@ public class DocumentIdentification3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public DocumentIdentification3 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Vrsn", required = true)
 	public Number getVersion() {
 		return version;
 	}
 
-	public void setVersion(Number version) {
-		this.version = version;
+	public DocumentIdentification3 setVersion(Number version) {
+		this.version = Objects.requireNonNull(version);
+		return this;
 	}
 }

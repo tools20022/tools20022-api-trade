@@ -24,9 +24,9 @@ import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.entity.Transport;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Information related to the transportation of goods by rail.
@@ -78,8 +78,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -95,8 +95,8 @@ public class TransportByRail extends Transport {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected Max35Text carriageIdentification;
 	/**
-	 * Identifies the carriage.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -119,7 +119,7 @@ public class TransportByRail extends Transport {
 	 * definition} = "Identifies the carriage."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCarriageIdentification = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<TransportByRail, Max35Text> mmCarriageIdentification = new MMBusinessAttribute<TransportByRail, Max35Text>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.TransportByRail.mmObject();
@@ -131,19 +131,21 @@ public class TransportByRail extends Transport {
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransportByRail.class.getMethod("getCarriageIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Max35Text getValue(TransportByRail obj) {
+			return obj.getCarriageIdentification();
+		}
+
+		@Override
+		public void setValue(TransportByRail obj, Max35Text value) {
+			obj.setCarriageIdentification(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TransportByRail";
 				definition = "Information related to the transportation of goods by rail.";
@@ -165,7 +167,8 @@ public class TransportByRail extends Transport {
 		return carriageIdentification;
 	}
 
-	public void setCarriageIdentification(Max35Text carriageIdentification) {
-		this.carriageIdentification = carriageIdentification;
+	public TransportByRail setCarriageIdentification(Max35Text carriageIdentification) {
+		this.carriageIdentification = Objects.requireNonNull(carriageIdentification);
+		return this;
 	}
 }

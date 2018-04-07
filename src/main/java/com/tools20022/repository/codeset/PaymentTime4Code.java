@@ -38,40 +38,40 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#PaymentOnReceiptOfInvoice
- * PaymentTime4Code.mmPaymentOnReceiptOfInvoice}</li>
+ * PaymentTime4Code.PaymentOnReceiptOfInvoice}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#PaymentOnDelivery
- * PaymentTime4Code.mmPaymentOnDelivery}</li>
+ * PaymentTime4Code.PaymentOnDelivery}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterShipmentDate
- * PaymentTime4Code.mmEndOfPeriodAfterShipmentDate}</li>
+ * PaymentTime4Code.EndOfPeriodAfterShipmentDate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterReceipt
- * PaymentTime4Code.mmEndOfPeriodAfterReceipt}</li>
+ * PaymentTime4Code.EndOfPeriodAfterReceipt}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterPurchaseOrderDate
- * PaymentTime4Code.mmEndOfPeriodAfterPurchaseOrderDate}</li>
+ * PaymentTime4Code.EndOfPeriodAfterPurchaseOrderDate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterInvoiceDate
- * PaymentTime4Code.mmEndOfPeriodAfterInvoiceDate}</li>
+ * PaymentTime4Code.EndOfPeriodAfterInvoiceDate}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterEndOfReceiptMonth
- * PaymentTime4Code.mmEndOfPeriodAfterEndOfReceiptMonth}</li>
+ * PaymentTime4Code.EndOfPeriodAfterEndOfReceiptMonth}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterEndOfDeliveryMonth
- * PaymentTime4Code.mmEndOfPeriodAfterEndOfDeliveryMonth}</li>
+ * PaymentTime4Code.EndOfPeriodAfterEndOfDeliveryMonth}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterDelivery
- * PaymentTime4Code.mmEndOfPeriodAfterDelivery}</li>
+ * PaymentTime4Code.EndOfPeriodAfterDelivery}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfPeriodAfterBaselineEstablishment
- * PaymentTime4Code.mmEndOfPeriodAfterBaselineEstablishment}</li>
+ * PaymentTime4Code.EndOfPeriodAfterBaselineEstablishment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfMonthOfReceipt
- * PaymentTime4Code.mmEndOfMonthOfReceipt}</li>
+ * PaymentTime4Code.EndOfMonthOfReceipt}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.PaymentTime4Code#EndOfMonthOfDelivery
- * PaymentTime4Code.mmEndOfMonthOfDelivery}</li>
+ * PaymentTime4Code.EndOfMonthOfDelivery}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -80,8 +80,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -392,7 +392,7 @@ public class PaymentTime4Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentTime4Code";
 				definition = "Specifies the payment conditions.";

@@ -24,9 +24,9 @@ import com.tools20022.repository.choice.PlaceOrUnderConfirmationChoice1;
 import com.tools20022.repository.codeset.PresentationPartyCode;
 import com.tools20022.repository.entity.UndertakingPartyRole;
 import com.tools20022.repository.GeneratedRepository;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 /**
  * Place at which the documents must be presented.
@@ -71,8 +71,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -88,9 +88,8 @@ public class UndertakingPlaceOfPresentation extends UndertakingPartyRole {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected PresentationPartyCode presentationUnderConfirmation;
 	/**
-	 * Specifies the type of party to which a presentation under confirmation is
-	 * required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -116,7 +115,7 @@ public class UndertakingPlaceOfPresentation extends UndertakingPartyRole {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPresentationUnderConfirmation = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingPlaceOfPresentation, PresentationPartyCode> mmPresentationUnderConfirmation = new MMBusinessAttribute<UndertakingPlaceOfPresentation, PresentationPartyCode>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.UndertakingPlaceOfPresentation.mmObject();
@@ -128,19 +127,21 @@ public class UndertakingPlaceOfPresentation extends UndertakingPartyRole {
 			simpleType_lazy = () -> PresentationPartyCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingPlaceOfPresentation.class.getMethod("getPresentationUnderConfirmation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PresentationPartyCode getValue(UndertakingPlaceOfPresentation obj) {
+			return obj.getPresentationUnderConfirmation();
+		}
+
+		@Override
+		public void setValue(UndertakingPlaceOfPresentation obj, PresentationPartyCode value) {
+			obj.setPresentationUnderConfirmation(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingPlaceOfPresentation";
 				definition = "Place at which the documents must be presented.";
@@ -162,7 +163,8 @@ public class UndertakingPlaceOfPresentation extends UndertakingPartyRole {
 		return presentationUnderConfirmation;
 	}
 
-	public void setPresentationUnderConfirmation(PresentationPartyCode presentationUnderConfirmation) {
-		this.presentationUnderConfirmation = presentationUnderConfirmation;
+	public UndertakingPlaceOfPresentation setPresentationUnderConfirmation(PresentationPartyCode presentationUnderConfirmation) {
+		this.presentationUnderConfirmation = Objects.requireNonNull(presentationUnderConfirmation);
+		return this;
 	}
 }

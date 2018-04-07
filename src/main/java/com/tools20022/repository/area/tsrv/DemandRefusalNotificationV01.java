@@ -24,10 +24,8 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.DemandRefusal1;
 import com.tools20022.repository.msg.PartyAndSignature2;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -73,15 +71,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DemandRefusalNotificationV01", propOrder = {"demandRefusalNotificationDetails", "digitalSignature"})
 public class DemandRefusalNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "DmndRfslNtfctnDtls")
 	protected List<DemandRefusal1> demandRefusalNotificationDetails;
 	/**
-	 * Details of the demand refusal notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -101,7 +100,7 @@ public class DemandRefusalNotificationV01 {
 	 * definition} = "Details of the demand refusal notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDemandRefusalNotificationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DemandRefusalNotificationV01, List<DemandRefusal1>> mmDemandRefusalNotificationDetails = new MMMessageBuildingBlock<DemandRefusalNotificationV01, List<DemandRefusal1>>() {
 		{
 			xmlTag = "DmndRfslNtfctnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -111,18 +110,21 @@ public class DemandRefusalNotificationV01 {
 			complexType_lazy = () -> DemandRefusal1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DemandRefusalNotificationV01.class.getMethod("getDemandRefusalNotificationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DemandRefusal1> getValue(DemandRefusalNotificationV01 obj) {
+			return obj.getDemandRefusalNotificationDetails();
+		}
+
+		@Override
+		public void setValue(DemandRefusalNotificationV01 obj, List<DemandRefusal1> value) {
+			obj.setDemandRefusalNotificationDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -143,7 +145,7 @@ public class DemandRefusalNotificationV01 {
 	 * definition} = "Digital signature of the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<DemandRefusalNotificationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<DemandRefusalNotificationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -154,12 +156,14 @@ public class DemandRefusalNotificationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return DemandRefusalNotificationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(DemandRefusalNotificationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(DemandRefusalNotificationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -192,25 +196,25 @@ public class DemandRefusalNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "DmndRfslNtfctnDtls")
 	public List<DemandRefusal1> getDemandRefusalNotificationDetails() {
-		return demandRefusalNotificationDetails;
+		return demandRefusalNotificationDetails == null ? demandRefusalNotificationDetails = new ArrayList<>() : demandRefusalNotificationDetails;
 	}
 
-	public void setDemandRefusalNotificationDetails(List<DemandRefusal1> demandRefusalNotificationDetails) {
-		this.demandRefusalNotificationDetails = demandRefusalNotificationDetails;
+	public DemandRefusalNotificationV01 setDemandRefusalNotificationDetails(List<DemandRefusal1> demandRefusalNotificationDetails) {
+		this.demandRefusalNotificationDetails = Objects.requireNonNull(demandRefusalNotificationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public DemandRefusalNotificationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.016.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.016.001.01")
 	static public class Document {
 		@XmlElement(name = "DmndRfslNtfctn", required = true)
 		public DemandRefusalNotificationV01 messageBody;

@@ -26,9 +26,9 @@ import com.tools20022.repository.choice.PresentationMedium1Choice;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.entity.Presentation;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.Document8;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -61,8 +61,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -73,16 +73,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information for the presentation of documents."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Presentation1", propOrder = {"medium", "placeOfPresentationOrUnderConfirmationChoice", "document", "additionalInformation"})
 public class Presentation1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Mdm")
 	protected PresentationMedium1Choice medium;
 	/**
-	 * Medium through which the presentation can be submitted such as paper,
-	 * electronic or both.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -114,10 +114,10 @@ public class Presentation1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmMedium = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Presentation1, Optional<PresentationMedium1Choice>> mmMedium = new MMMessageAttribute<Presentation1, Optional<PresentationMedium1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmMedium;
-			componentContext_lazy = () -> Presentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation1.mmObject();
 			isDerived = false;
 			xmlTag = "Mdm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -127,11 +127,22 @@ public class Presentation1 {
 			minOccurs = 0;
 			complexType_lazy = () -> PresentationMedium1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<PresentationMedium1Choice> getValue(Presentation1 obj) {
+			return obj.getMedium();
+		}
+
+		@Override
+		public void setValue(Presentation1 obj, Optional<PresentationMedium1Choice> value) {
+			obj.setMedium(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "PlcOfPresntnOrUdrConfChc")
 	protected PlaceOrUnderConfirmationChoice1 placeOfPresentationOrUnderConfirmationChoice;
 	/**
-	 * Choice of representation for the place of presentation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -155,9 +166,9 @@ public class Presentation1 {
 	 * definition} = "Choice of representation for the place of presentation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPlaceOfPresentationOrUnderConfirmationChoice = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Presentation1, Optional<PlaceOrUnderConfirmationChoice1>> mmPlaceOfPresentationOrUnderConfirmationChoice = new MMMessageAssociationEnd<Presentation1, Optional<PlaceOrUnderConfirmationChoice1>>() {
 		{
-			componentContext_lazy = () -> Presentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation1.mmObject();
 			isDerived = false;
 			xmlTag = "PlcOfPresntnOrUdrConfChc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -168,11 +179,22 @@ public class Presentation1 {
 			isComposite = true;
 			type_lazy = () -> PlaceOrUnderConfirmationChoice1.mmObject();
 		}
+
+		@Override
+		public Optional<PlaceOrUnderConfirmationChoice1> getValue(Presentation1 obj) {
+			return obj.getPlaceOfPresentationOrUnderConfirmationChoice();
+		}
+
+		@Override
+		public void setValue(Presentation1 obj, Optional<PlaceOrUnderConfirmationChoice1> value) {
+			obj.setPlaceOfPresentationOrUnderConfirmationChoice(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Document8> document;
+	@XmlElement(name = "Doc")
+	protected List<Document8> document;
 	/**
-	 * Document required to be presented.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -199,10 +221,10 @@ public class Presentation1 {
 	 * definition} = "Document required to be presented."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmDocument = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Presentation1, List<Document8>> mmDocument = new MMMessageAssociationEnd<Presentation1, List<Document8>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmPresentedDocument;
-			componentContext_lazy = () -> Presentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation1.mmObject();
 			isDerived = false;
 			xmlTag = "Doc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -210,13 +232,24 @@ public class Presentation1 {
 			definition = "Document required to be presented.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Document8.mmObject();
+			type_lazy = () -> Document8.mmObject();
+		}
+
+		@Override
+		public List<Document8> getValue(Presentation1 obj) {
+			return obj.getDocument();
+		}
+
+		@Override
+		public void setValue(Presentation1 obj, List<Document8> value) {
+			obj.setDocument(value);
 		}
 	};
+	@XmlElement(name = "AddtlInf")
 	protected List<Max2000Text> additionalInformation;
 	/**
-	 * Additional information related to the presentation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -240,9 +273,9 @@ public class Presentation1 {
 	 * definition} = "Additional information related to the presentation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAdditionalInformation = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Presentation1, List<Max2000Text>> mmAdditionalInformation = new MMMessageAttribute<Presentation1, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> Presentation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation1.mmObject();
 			isDerived = false;
 			xmlTag = "AddtlInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -252,14 +285,25 @@ public class Presentation1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(Presentation1 obj) {
+			return obj.getAdditionalInformation();
+		}
+
+		@Override
+		public void setValue(Presentation1 obj, List<Max2000Text> value) {
+			obj.setAdditionalInformation(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Presentation1.mmMedium, Presentation1.mmPlaceOfPresentationOrUnderConfirmationChoice, Presentation1.mmDocument, Presentation1.mmAdditionalInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Presentation1.mmMedium, com.tools20022.repository.msg.Presentation1.mmPlaceOfPresentationOrUnderConfirmationChoice,
+						com.tools20022.repository.msg.Presentation1.mmDocument, com.tools20022.repository.msg.Presentation1.mmAdditionalInformation);
 				trace_lazy = () -> Presentation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Presentation1";
 				definition = "Information for the presentation of documents.";
@@ -268,39 +312,39 @@ public class Presentation1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Mdm")
-	public PresentationMedium1Choice getMedium() {
-		return medium;
+	public Optional<PresentationMedium1Choice> getMedium() {
+		return medium == null ? Optional.empty() : Optional.of(medium);
 	}
 
-	public void setMedium(PresentationMedium1Choice medium) {
+	public Presentation1 setMedium(PresentationMedium1Choice medium) {
 		this.medium = medium;
+		return this;
 	}
 
-	@XmlElement(name = "PlcOfPresntnOrUdrConfChc")
-	public PlaceOrUnderConfirmationChoice1 getPlaceOfPresentationOrUnderConfirmationChoice() {
-		return placeOfPresentationOrUnderConfirmationChoice;
+	public Optional<PlaceOrUnderConfirmationChoice1> getPlaceOfPresentationOrUnderConfirmationChoice() {
+		return placeOfPresentationOrUnderConfirmationChoice == null ? Optional.empty() : Optional.of(placeOfPresentationOrUnderConfirmationChoice);
 	}
 
-	public void setPlaceOfPresentationOrUnderConfirmationChoice(PlaceOrUnderConfirmationChoice1 placeOfPresentationOrUnderConfirmationChoice) {
+	public Presentation1 setPlaceOfPresentationOrUnderConfirmationChoice(PlaceOrUnderConfirmationChoice1 placeOfPresentationOrUnderConfirmationChoice) {
 		this.placeOfPresentationOrUnderConfirmationChoice = placeOfPresentationOrUnderConfirmationChoice;
+		return this;
 	}
 
-	@XmlElement(name = "Doc")
 	public List<Document8> getDocument() {
-		return document;
+		return document == null ? document = new ArrayList<>() : document;
 	}
 
-	public void setDocument(List<com.tools20022.repository.msg.Document8> document) {
-		this.document = document;
+	public Presentation1 setDocument(List<Document8> document) {
+		this.document = Objects.requireNonNull(document);
+		return this;
 	}
 
-	@XmlElement(name = "AddtlInf")
 	public List<Max2000Text> getAdditionalInformation() {
-		return additionalInformation;
+		return additionalInformation == null ? additionalInformation = new ArrayList<>() : additionalInformation;
 	}
 
-	public void setAdditionalInformation(List<Max2000Text> additionalInformation) {
-		this.additionalInformation = additionalInformation;
+	public Presentation1 setAdditionalInformation(List<Max2000Text> additionalInformation) {
+		this.additionalInformation = Objects.requireNonNull(additionalInformation);
+		return this;
 	}
 }

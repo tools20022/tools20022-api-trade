@@ -21,12 +21,11 @@ import com.tools20022.metamodel.*;
 import com.tools20022.repository.choice.CategoryPurpose1Choice;
 import com.tools20022.repository.choice.LocalInstrument2Choice;
 import com.tools20022.repository.codeset.*;
+import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.PaymentTypeInformation19;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 
 /**
  * Specifies how a payment must be processed, for instance through which
@@ -107,8 +106,8 @@ import java.util.List;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -126,10 +125,8 @@ public class PaymentProcessing {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected PriorityCode priority;
 	/**
-	 * Indicator of the urgency or order of importance that the instructing
-	 * party would like the instructed party to apply to the processing of the
-	 * instruction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -162,7 +159,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPriority = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<PaymentProcessing, PriorityCode> mmPriority = new MMBusinessAttribute<PaymentProcessing, PriorityCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(PaymentTypeInformation19.mmInstructionPriority);
 			isDerived = false;
@@ -175,19 +172,20 @@ public class PaymentProcessing {
 			simpleType_lazy = () -> PriorityCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PaymentProcessing.class.getMethod("getPriority", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PriorityCode getValue(PaymentProcessing obj) {
+			return obj.getPriority();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, PriorityCode value) {
+			obj.setPriority(value);
 		}
 	};
 	protected ServiceLevel serviceLevel;
 	/**
-	 * Agreement under which or rules under which the transaction should be
-	 * processed.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -228,7 +226,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmServiceLevel = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<PaymentProcessing, Optional<ServiceLevel>> mmServiceLevel = new MMBusinessAssociationEnd<PaymentProcessing, Optional<ServiceLevel>>() {
 		{
 			derivation_lazy = () -> Arrays.asList(PaymentTypeInformation19.mmServiceLevel);
 			isDerived = false;
@@ -238,16 +236,25 @@ public class PaymentProcessing {
 			definition = "Agreement under which or rules under which the transaction should be processed.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			opposite_lazy = () -> com.tools20022.repository.entity.ServiceLevel.mmPaymentProcessing;
+			opposite_lazy = () -> ServiceLevel.mmPaymentProcessing;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.ServiceLevel.mmObject();
+			type_lazy = () -> ServiceLevel.mmObject();
+		}
+
+		@Override
+		public Optional<ServiceLevel> getValue(PaymentProcessing obj) {
+			return obj.getServiceLevel();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, Optional<ServiceLevel> value) {
+			obj.setServiceLevel(value.orElse(null));
 		}
 	};
 	protected ClearingChannelCode clearingChannel;
 	/**
-	 * Specifies the clearing channel to be used to process the payment
-	 * instruction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -273,7 +280,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmClearingChannel = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<PaymentProcessing, ClearingChannelCode> mmClearingChannel = new MMBusinessAttribute<PaymentProcessing, ClearingChannelCode>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -285,19 +292,20 @@ public class PaymentProcessing {
 			simpleType_lazy = () -> ClearingChannelCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PaymentProcessing.class.getMethod("getClearingChannel", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ClearingChannelCode getValue(PaymentProcessing obj) {
+			return obj.getClearingChannel();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, ClearingChannelCode value) {
+			obj.setClearingChannel(value);
 		}
 	};
 	protected ExternalCode localInstrument;
 	/**
-	 * User community specific instrument. Usage : When available, codes
-	 * provided by local authorities should be used.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -336,7 +344,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmLocalInstrument = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<PaymentProcessing, ExternalCode> mmLocalInstrument = new MMBusinessAttribute<PaymentProcessing, ExternalCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(LocalInstrument2Choice.mmCode, LocalInstrument2Choice.mmProprietary, PaymentTypeInformation19.mmLocalInstrument);
 			isDerived = false;
@@ -349,19 +357,20 @@ public class PaymentProcessing {
 			simpleType_lazy = () -> ExternalCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PaymentProcessing.class.getMethod("getLocalInstrument", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ExternalCode getValue(PaymentProcessing obj) {
+			return obj.getLocalInstrument();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, ExternalCode value) {
+			obj.setLocalInstrument(value);
 		}
 	};
 	protected PaymentCategoryPurposeCode categoryPurpose;
 	/**
-	 * Specifies the high level purpose of the instruction based on a set of
-	 * pre-defined categories.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -401,7 +410,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmCategoryPurpose = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<PaymentProcessing, PaymentCategoryPurposeCode> mmCategoryPurpose = new MMBusinessAttribute<PaymentProcessing, PaymentCategoryPurposeCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(CategoryPurpose1Choice.mmCode, CategoryPurpose1Choice.mmProprietary, PaymentTypeInformation19.mmCategoryPurpose);
 			isDerived = false;
@@ -414,18 +423,20 @@ public class PaymentProcessing {
 			simpleType_lazy = () -> PaymentCategoryPurposeCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PaymentProcessing.class.getMethod("getCategoryPurpose", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PaymentCategoryPurposeCode getValue(PaymentProcessing obj) {
+			return obj.getCategoryPurpose();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, PaymentCategoryPurposeCode value) {
+			obj.setCategoryPurpose(value);
 		}
 	};
 	protected PaymentExecution paymentExecution;
 	/**
-	 * Payment execution process for which processing parameters are specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -458,7 +469,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmPaymentExecution = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<PaymentProcessing, Optional<PaymentExecution>> mmPaymentExecution = new MMBusinessAssociationEnd<PaymentProcessing, Optional<PaymentExecution>>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -467,15 +478,25 @@ public class PaymentProcessing {
 			definition = "Payment execution process for which processing parameters are specified.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			opposite_lazy = () -> com.tools20022.repository.entity.PaymentExecution.mmProcessingInstructions;
+			opposite_lazy = () -> PaymentExecution.mmProcessingInstructions;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.PaymentExecution.mmObject();
+			type_lazy = () -> PaymentExecution.mmObject();
+		}
+
+		@Override
+		public Optional<PaymentExecution> getValue(PaymentProcessing obj) {
+			return obj.getPaymentExecution();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, Optional<PaymentExecution> value) {
+			obj.setPaymentExecution(value.orElse(null));
 		}
 	};
 	protected SequenceTypeCode sequenceType;
 	/**
-	 * Identifies the payment sequence where applicable.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -499,7 +520,7 @@ public class PaymentProcessing {
 	 * definition} = "Identifies the payment sequence where applicable."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmSequenceType = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<PaymentProcessing, SequenceTypeCode> mmSequenceType = new MMBusinessAttribute<PaymentProcessing, SequenceTypeCode>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -511,18 +532,20 @@ public class PaymentProcessing {
 			simpleType_lazy = () -> SequenceTypeCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return PaymentProcessing.class.getMethod("getSequenceType", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SequenceTypeCode getValue(PaymentProcessing obj) {
+			return obj.getSequenceType();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, SequenceTypeCode value) {
+			obj.setSequenceType(value);
 		}
 	};
 	protected DirectDebitMandate relatedMandate;
 	/**
-	 * Mandate for which payment processing parametres are specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -554,7 +577,7 @@ public class PaymentProcessing {
 	 * "Mandate for which payment processing parametres are specified."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmRelatedMandate = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<PaymentProcessing, Optional<DirectDebitMandate>> mmRelatedMandate = new MMBusinessAssociationEnd<PaymentProcessing, Optional<DirectDebitMandate>>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -563,15 +586,25 @@ public class PaymentProcessing {
 			definition = "Mandate for which payment processing parametres are specified.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			opposite_lazy = () -> com.tools20022.repository.entity.DirectDebitMandate.mmMandatePaymentType;
+			opposite_lazy = () -> DirectDebitMandate.mmMandatePaymentType;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.DirectDebitMandate.mmObject();
+			type_lazy = () -> DirectDebitMandate.mmObject();
+		}
+
+		@Override
+		public Optional<DirectDebitMandate> getValue(PaymentProcessing obj) {
+			return obj.getRelatedMandate();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, Optional<DirectDebitMandate> value) {
+			obj.setRelatedMandate(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.entity.BankTransaction> bankTransaction;
+	protected List<BankTransaction> bankTransaction;
 	/**
-	 * Code of the underlying bank transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -602,7 +635,7 @@ public class PaymentProcessing {
 	 * definition} = "Code of the underlying bank transaction."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmBankTransaction = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<PaymentProcessing, List<BankTransaction>> mmBankTransaction = new MMBusinessAssociationEnd<PaymentProcessing, List<BankTransaction>>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -610,15 +643,25 @@ public class PaymentProcessing {
 			name = "BankTransaction";
 			definition = "Code of the underlying bank transaction.";
 			minOccurs = 0;
-			opposite_lazy = () -> com.tools20022.repository.entity.BankTransaction.mmRelatedPayment;
+			opposite_lazy = () -> BankTransaction.mmRelatedPayment;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.BankTransaction.mmObject();
+			type_lazy = () -> BankTransaction.mmObject();
+		}
+
+		@Override
+		public List<BankTransaction> getValue(PaymentProcessing obj) {
+			return obj.getBankTransaction();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, List<BankTransaction> value) {
+			obj.setBankTransaction(value);
 		}
 	};
-	protected List<com.tools20022.repository.entity.ContactPoint> contactPoint;
+	protected List<ContactPoint> contactPoint;
 	/**
-	 * Specifies the notification method to be used to inform the beneficiary.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -651,7 +694,7 @@ public class PaymentProcessing {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmContactPoint = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<PaymentProcessing, List<ContactPoint>> mmContactPoint = new MMBusinessAssociationEnd<PaymentProcessing, List<ContactPoint>>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.PaymentProcessing.mmObject();
@@ -659,21 +702,31 @@ public class PaymentProcessing {
 			name = "ContactPoint";
 			definition = "Specifies the notification method to be used to inform the beneficiary.";
 			minOccurs = 0;
-			opposite_lazy = () -> com.tools20022.repository.entity.ContactPoint.mmRelatedPayment;
+			opposite_lazy = () -> ContactPoint.mmRelatedPayment;
 			aggregation = MMAggregation.NONE;
-			type_lazy = () -> com.tools20022.repository.entity.ContactPoint.mmObject();
+			type_lazy = () -> ContactPoint.mmObject();
+		}
+
+		@Override
+		public List<ContactPoint> getValue(PaymentProcessing obj) {
+			return obj.getContactPoint();
+		}
+
+		@Override
+		public void setValue(PaymentProcessing obj, List<ContactPoint> value) {
+			obj.setContactPoint(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentProcessing";
 				definition = "Specifies how a payment must be processed, for instance through which specific clearing channel.";
-				associationDomain_lazy = () -> Arrays.asList(com.tools20022.repository.entity.ContactPoint.mmRelatedPayment, com.tools20022.repository.entity.PaymentExecution.mmProcessingInstructions,
-						com.tools20022.repository.entity.BankTransaction.mmRelatedPayment, com.tools20022.repository.entity.ServiceLevel.mmPaymentProcessing, com.tools20022.repository.entity.DirectDebitMandate.mmMandatePaymentType);
+				associationDomain_lazy = () -> Arrays.asList(ContactPoint.mmRelatedPayment, PaymentExecution.mmProcessingInstructions, BankTransaction.mmRelatedPayment, ServiceLevel.mmPaymentProcessing,
+						DirectDebitMandate.mmMandatePaymentType);
 				element_lazy = () -> Arrays.asList(com.tools20022.repository.entity.PaymentProcessing.mmPriority, com.tools20022.repository.entity.PaymentProcessing.mmServiceLevel,
 						com.tools20022.repository.entity.PaymentProcessing.mmClearingChannel, com.tools20022.repository.entity.PaymentProcessing.mmLocalInstrument, com.tools20022.repository.entity.PaymentProcessing.mmCategoryPurpose,
 						com.tools20022.repository.entity.PaymentProcessing.mmPaymentExecution, com.tools20022.repository.entity.PaymentProcessing.mmSequenceType, com.tools20022.repository.entity.PaymentProcessing.mmRelatedMandate,
@@ -693,79 +746,89 @@ public class PaymentProcessing {
 		return priority;
 	}
 
-	public void setPriority(PriorityCode priority) {
-		this.priority = priority;
+	public PaymentProcessing setPriority(PriorityCode priority) {
+		this.priority = Objects.requireNonNull(priority);
+		return this;
 	}
 
-	public ServiceLevel getServiceLevel() {
-		return serviceLevel;
+	public Optional<ServiceLevel> getServiceLevel() {
+		return serviceLevel == null ? Optional.empty() : Optional.of(serviceLevel);
 	}
 
-	public void setServiceLevel(com.tools20022.repository.entity.ServiceLevel serviceLevel) {
+	public PaymentProcessing setServiceLevel(ServiceLevel serviceLevel) {
 		this.serviceLevel = serviceLevel;
+		return this;
 	}
 
 	public ClearingChannelCode getClearingChannel() {
 		return clearingChannel;
 	}
 
-	public void setClearingChannel(ClearingChannelCode clearingChannel) {
-		this.clearingChannel = clearingChannel;
+	public PaymentProcessing setClearingChannel(ClearingChannelCode clearingChannel) {
+		this.clearingChannel = Objects.requireNonNull(clearingChannel);
+		return this;
 	}
 
 	public ExternalCode getLocalInstrument() {
 		return localInstrument;
 	}
 
-	public void setLocalInstrument(ExternalCode localInstrument) {
-		this.localInstrument = localInstrument;
+	public PaymentProcessing setLocalInstrument(ExternalCode localInstrument) {
+		this.localInstrument = Objects.requireNonNull(localInstrument);
+		return this;
 	}
 
 	public PaymentCategoryPurposeCode getCategoryPurpose() {
 		return categoryPurpose;
 	}
 
-	public void setCategoryPurpose(PaymentCategoryPurposeCode categoryPurpose) {
-		this.categoryPurpose = categoryPurpose;
+	public PaymentProcessing setCategoryPurpose(PaymentCategoryPurposeCode categoryPurpose) {
+		this.categoryPurpose = Objects.requireNonNull(categoryPurpose);
+		return this;
 	}
 
-	public PaymentExecution getPaymentExecution() {
-		return paymentExecution;
+	public Optional<PaymentExecution> getPaymentExecution() {
+		return paymentExecution == null ? Optional.empty() : Optional.of(paymentExecution);
 	}
 
-	public void setPaymentExecution(com.tools20022.repository.entity.PaymentExecution paymentExecution) {
+	public PaymentProcessing setPaymentExecution(PaymentExecution paymentExecution) {
 		this.paymentExecution = paymentExecution;
+		return this;
 	}
 
 	public SequenceTypeCode getSequenceType() {
 		return sequenceType;
 	}
 
-	public void setSequenceType(SequenceTypeCode sequenceType) {
-		this.sequenceType = sequenceType;
+	public PaymentProcessing setSequenceType(SequenceTypeCode sequenceType) {
+		this.sequenceType = Objects.requireNonNull(sequenceType);
+		return this;
 	}
 
-	public DirectDebitMandate getRelatedMandate() {
-		return relatedMandate;
+	public Optional<DirectDebitMandate> getRelatedMandate() {
+		return relatedMandate == null ? Optional.empty() : Optional.of(relatedMandate);
 	}
 
-	public void setRelatedMandate(com.tools20022.repository.entity.DirectDebitMandate relatedMandate) {
+	public PaymentProcessing setRelatedMandate(DirectDebitMandate relatedMandate) {
 		this.relatedMandate = relatedMandate;
+		return this;
 	}
 
 	public List<BankTransaction> getBankTransaction() {
-		return bankTransaction;
+		return bankTransaction == null ? bankTransaction = new ArrayList<>() : bankTransaction;
 	}
 
-	public void setBankTransaction(List<com.tools20022.repository.entity.BankTransaction> bankTransaction) {
-		this.bankTransaction = bankTransaction;
+	public PaymentProcessing setBankTransaction(List<BankTransaction> bankTransaction) {
+		this.bankTransaction = Objects.requireNonNull(bankTransaction);
+		return this;
 	}
 
 	public List<ContactPoint> getContactPoint() {
-		return contactPoint;
+		return contactPoint == null ? contactPoint = new ArrayList<>() : contactPoint;
 	}
 
-	public void setContactPoint(List<com.tools20022.repository.entity.ContactPoint> contactPoint) {
-		this.contactPoint = contactPoint;
+	public PaymentProcessing setContactPoint(List<ContactPoint> contactPoint) {
+		this.contactPoint = Objects.requireNonNull(contactPoint);
+		return this;
 	}
 }

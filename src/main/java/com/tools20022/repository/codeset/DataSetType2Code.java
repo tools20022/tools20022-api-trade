@@ -37,22 +37,22 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getCode code} =
  * <ul>
  * <li>{@linkplain com.tools20022.repository.codeset.DataSetType2Code#Baseline
- * DataSetType2Code.mmBaseline}</li>
+ * DataSetType2Code.Baseline}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DataSetType2Code#TransportDataSet
- * DataSetType2Code.mmTransportDataSet}</li>
+ * DataSetType2Code.TransportDataSet}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DataSetType2Code#CommercialDataSet
- * DataSetType2Code.mmCommercialDataSet}</li>
+ * DataSetType2Code.CommercialDataSet}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DataSetType2Code#InsuranceDataSet
- * DataSetType2Code.mmInsuranceDataSet}</li>
+ * DataSetType2Code.InsuranceDataSet}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DataSetType2Code#CertificateDataSet
- * DataSetType2Code.mmCertificateDataSet}</li>
+ * DataSetType2Code.CertificateDataSet}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.DataSetType2Code#OtherCertificateDataSet
- * DataSetType2Code.mmOtherCertificateDataSet}</li>
+ * DataSetType2Code.OtherCertificateDataSet}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -61,8 +61,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -235,7 +235,7 @@ public class DataSetType2Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("BASE");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DataSetType2Code";

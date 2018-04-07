@@ -38,19 +38,19 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceType1Code#CounterUndertakingRequestForLocalUndertaking
- * IssuanceType1Code.mmCounterUndertakingRequestForLocalUndertaking}</li>
+ * IssuanceType1Code.CounterUndertakingRequestForLocalUndertaking}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceType1Code#CounterUndertakingRequestForCounterUndertaking
- * IssuanceType1Code.mmCounterUndertakingRequestForCounterUndertaking}</li>
+ * IssuanceType1Code.CounterUndertakingRequestForCounterUndertaking}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceType1Code#UndertakingIssuedDirect
- * IssuanceType1Code.mmUndertakingIssuedDirect}</li>
+ * IssuanceType1Code.UndertakingIssuedDirect}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceType1Code#UndertakingIssuedViaConfirmingParty
- * IssuanceType1Code.mmUndertakingIssuedViaConfirmingParty}</li>
+ * IssuanceType1Code.UndertakingIssuedViaConfirmingParty}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.IssuanceType1Code#UndertakingViaAdvisingParty
- * IssuanceType1Code.mmUndertakingViaAdvisingParty}</li>
+ * IssuanceType1Code.UndertakingViaAdvisingParty}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -59,8 +59,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -209,7 +209,7 @@ public class IssuanceType1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("CRQL");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "IssuanceType1Code";

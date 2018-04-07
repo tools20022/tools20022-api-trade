@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesInitiationLatestVersion;
 import com.tools20022.repository.msg.FinancingInformationAndStatus1;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.OriginalRequestInformation1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -94,6 +95,20 @@ import javax.xml.bind.annotation.*;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMMessageDefinition#getMessageDefinitionIdentifier
  * messageDefinitionIdentifier} = {@code tsin.002.001.01}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintRequest1Rule#for_tsin_InvoiceFinancingRequestStatusV01
+ * ConstraintRequest1Rule.for_tsin_InvoiceFinancingRequestStatusV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintCancellation1Rule#for_tsin_InvoiceFinancingRequestStatusV01
+ * ConstraintCancellation1Rule.for_tsin_InvoiceFinancingRequestStatusV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintMultiplicity1Rule#for_tsin_InvoiceFinancingRequestStatusV01
+ * ConstraintMultiplicity1Rule.for_tsin_InvoiceFinancingRequestStatusV01}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -106,16 +121,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceFinancingRequestStatusV01", propOrder = {"statusIdentification", "originalRequestInformationAndStatus", "financingInformationAndStatus"})
 public class InvoiceFinancingRequestStatusV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "StsId", required = true)
 	protected MessageIdentification1 statusIdentification;
 	/**
-	 * General information that unambiguously identify the invoice financing
-	 * status report, such as status identification, creation date time.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -138,7 +153,7 @@ public class InvoiceFinancingRequestStatusV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmStatusIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, MessageIdentification1> mmStatusIdentification = new MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, MessageIdentification1>() {
 		{
 			xmlTag = "StsId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -149,20 +164,21 @@ public class InvoiceFinancingRequestStatusV01 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingRequestStatusV01.class.getMethod("getStatusIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(InvoiceFinancingRequestStatusV01 obj) {
+			return obj.getStatusIdentification();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingRequestStatusV01 obj, MessageIdentification1 value) {
+			obj.setStatusIdentification(value);
 		}
 	};
+	@XmlElement(name = "OrgnlReqInfAndSts", required = true)
 	protected OriginalRequestInformation1 originalRequestInformationAndStatus;
 	/**
-	 * Set of summary information that unambiguously identifies the original
-	 * invoice financing (or cancellation) request to which the status is
-	 * referred. The status of the original request is also given in this block.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -181,33 +197,36 @@ public class InvoiceFinancingRequestStatusV01 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Set of summary information that unambiguously identifies the original invoice financing (or cancellation) request to which the status is referred. The status of the original request is also given in this block.\n"
+	 * "Set of summary information that unambiguously identifies the original invoice financing (or cancellation) request to which the status is referred. The status of the original request is also given in this block.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmOriginalRequestInformationAndStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, OriginalRequestInformation1> mmOriginalRequestInformationAndStatus = new MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, OriginalRequestInformation1>() {
 		{
 			xmlTag = "OrgnlReqInfAndSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "OriginalRequestInformationAndStatus";
-			definition = "Set of summary information that unambiguously identifies the original invoice financing (or cancellation) request to which the status is referred. The status of the original request is also given in this block.\n";
+			definition = "Set of summary information that unambiguously identifies the original invoice financing (or cancellation) request to which the status is referred. The status of the original request is also given in this block.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> OriginalRequestInformation1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingRequestStatusV01.class.getMethod("getOriginalRequestInformationAndStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public OriginalRequestInformation1 getValue(InvoiceFinancingRequestStatusV01 obj) {
+			return obj.getOriginalRequestInformationAndStatus();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingRequestStatusV01 obj, OriginalRequestInformation1 value) {
+			obj.setOriginalRequestInformationAndStatus(value);
 		}
 	};
+	@XmlElement(name = "FincgInfAndSts")
 	protected FinancingInformationAndStatus1 financingInformationAndStatus;
 	/**
-	 * Information concerning the business status of a financing request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -229,7 +248,7 @@ public class InvoiceFinancingRequestStatusV01 {
 	 * "Information concerning the business status of a financing request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmFinancingInformationAndStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, Optional<FinancingInformationAndStatus1>> mmFinancingInformationAndStatus = new MMMessageBuildingBlock<InvoiceFinancingRequestStatusV01, Optional<FinancingInformationAndStatus1>>() {
 		{
 			xmlTag = "FincgInfAndSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -240,18 +259,23 @@ public class InvoiceFinancingRequestStatusV01 {
 			complexType_lazy = () -> FinancingInformationAndStatus1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingRequestStatusV01.class.getMethod("getFinancingInformationAndStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<FinancingInformationAndStatus1> getValue(InvoiceFinancingRequestStatusV01 obj) {
+			return obj.getFinancingInformationAndStatus();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingRequestStatusV01 obj, Optional<FinancingInformationAndStatus1> value) {
+			obj.setFinancingInformationAndStatus(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageDefinition mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageDefinition() {
 			{
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintRequest1Rule.for_tsin_InvoiceFinancingRequestStatusV01,
+						com.tools20022.repository.constraints.ConstraintCancellation1Rule.for_tsin_InvoiceFinancingRequestStatusV01,
+						com.tools20022.repository.constraints.ConstraintMultiplicity1Rule.for_tsin_InvoiceFinancingRequestStatusV01);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InvoiceFinancingRequestStatusV01";
 				definition = "Scope\r\nThe InvoiceFinancingRequestStatus message is sent by the First Agent to the Financing Requestor, alternatively through an Intermediary Agent (relay scenario). It is used to inform the Financing Requestor about the positive or negative status of a financing request or a financing cancellation request.\r\nUsage\r\nThe InvoiceFinancingRequestStatus message flows from the First Agent to the Financing Requestor (alternatively through an Intermediary Agent) to provide status information about a request previously sent.\r\nIts usage will always be governed by a bilateral agreement between the First Agent and the Financing Requestor.\r\nThe InvoiceFinancingRequestStatus message can be used two fold:\r\n- to provide information about the reception status (eg rejection, acceptance) of a request message. In this case the status message is the result of a technical validation performed by the First Agent on the request message received;\r\n- to inform the Financing Requestor about the business status of the financing process initiated. In this case the First Agent can:\r\n* communicate that a single financing request has been granted, is pending or has not been granted at all;\r\n* inform that a financing cancellation request has been allowed or denied.\r\nNote.\r\nIf the Financing Requestor requests financing for more than one instalment related to the same invoice, the First Agent can decide to finance only some of the instalments. In such case the status message contains details and status of every single instalment (financed, not financed).\r\nThe message can be used in a direct or in a relay scenario:\r\n- In a direct scenario, the message is sent directly by the First Agent to the Financing Requestor;\r\n- In a relay scenario, the message is sent first by the First Agent to the Intermediary Agent, who forwards it to the Financing Requestor.\r\nThe InvoiceFinancingRequestStatus message refers to the original request(s) by means of references and a set of data elements included into the original request.";
@@ -278,34 +302,34 @@ public class InvoiceFinancingRequestStatusV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "StsId", required = true)
 	public MessageIdentification1 getStatusIdentification() {
 		return statusIdentification;
 	}
 
-	public void setStatusIdentification(MessageIdentification1 statusIdentification) {
-		this.statusIdentification = statusIdentification;
+	public InvoiceFinancingRequestStatusV01 setStatusIdentification(MessageIdentification1 statusIdentification) {
+		this.statusIdentification = Objects.requireNonNull(statusIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "OrgnlReqInfAndSts", required = true)
 	public OriginalRequestInformation1 getOriginalRequestInformationAndStatus() {
 		return originalRequestInformationAndStatus;
 	}
 
-	public void setOriginalRequestInformationAndStatus(OriginalRequestInformation1 originalRequestInformationAndStatus) {
-		this.originalRequestInformationAndStatus = originalRequestInformationAndStatus;
+	public InvoiceFinancingRequestStatusV01 setOriginalRequestInformationAndStatus(OriginalRequestInformation1 originalRequestInformationAndStatus) {
+		this.originalRequestInformationAndStatus = Objects.requireNonNull(originalRequestInformationAndStatus);
+		return this;
 	}
 
-	@XmlElement(name = "FincgInfAndSts")
-	public FinancingInformationAndStatus1 getFinancingInformationAndStatus() {
-		return financingInformationAndStatus;
+	public Optional<FinancingInformationAndStatus1> getFinancingInformationAndStatus() {
+		return financingInformationAndStatus == null ? Optional.empty() : Optional.of(financingInformationAndStatus);
 	}
 
-	public void setFinancingInformationAndStatus(FinancingInformationAndStatus1 financingInformationAndStatus) {
+	public InvoiceFinancingRequestStatusV01 setFinancingInformationAndStatus(FinancingInformationAndStatus1 financingInformationAndStatus) {
 		this.financingInformationAndStatus = financingInformationAndStatus;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.002.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.002.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcFincgReqSts", required = true)
 		public InvoiceFinancingRequestStatusV01 messageBody;

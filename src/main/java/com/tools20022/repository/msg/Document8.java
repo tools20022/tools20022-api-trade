@@ -26,9 +26,9 @@ import com.tools20022.repository.datatype.Max20000Text;
 import com.tools20022.repository.entity.Document;
 import com.tools20022.repository.entity.UndertakingDocument;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.Presentation3;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -57,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -69,15 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Information about a document."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Document8", propOrder = {"type", "wording", "electronicDetails"})
 public class Document8 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected PresentationDocumentFormat1Choice type;
 	/**
-	 * Type of document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -107,10 +108,10 @@ public class Document8 {
 	 * definition} = "Type of document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Document8, PresentationDocumentFormat1Choice> mmType = new MMMessageAttribute<Document8, PresentationDocumentFormat1Choice>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingDocument.mmDocumentType;
-			componentContext_lazy = () -> Document8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Document8.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,11 +121,22 @@ public class Document8 {
 			minOccurs = 1;
 			complexType_lazy = () -> PresentationDocumentFormat1Choice.mmObject();
 		}
+
+		@Override
+		public PresentationDocumentFormat1Choice getValue(Document8 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(Document8 obj, PresentationDocumentFormat1Choice value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "Wrdg")
 	protected Max20000Text wording;
 	/**
-	 * Wording for document.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -149,9 +161,9 @@ public class Document8 {
 	 * definition} = "Wording for document."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmWording = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Document8, Optional<Max20000Text>> mmWording = new MMMessageAttribute<Document8, Optional<Max20000Text>>() {
 		{
-			componentContext_lazy = () -> Document8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Document8.mmObject();
 			isDerived = false;
 			xmlTag = "Wrdg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -161,11 +173,22 @@ public class Document8 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max20000Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max20000Text> getValue(Document8 obj) {
+			return obj.getWording();
+		}
+
+		@Override
+		public void setValue(Document8 obj, Optional<Max20000Text> value) {
+			obj.setWording(value.orElse(null));
+		}
 	};
-	protected List<com.tools20022.repository.msg.Presentation3> electronicDetails;
+	@XmlElement(name = "ElctrncDtls")
+	protected List<Presentation3> electronicDetails;
 	/**
-	 * Details related to an electronic presentation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -193,10 +216,10 @@ public class Document8 {
 	 * definition} = "Details related to an electronic presentation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmElectronicDetails = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Document8, List<Presentation3>> mmElectronicDetails = new MMMessageAssociationEnd<Document8, List<Presentation3>>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmPresentation;
-			componentContext_lazy = () -> Document8.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Document8.mmObject();
 			isDerived = false;
 			xmlTag = "ElctrncDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -204,16 +227,26 @@ public class Document8 {
 			definition = "Details related to an electronic presentation.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Presentation3.mmObject();
+			type_lazy = () -> Presentation3.mmObject();
+		}
+
+		@Override
+		public List<Presentation3> getValue(Document8 obj) {
+			return obj.getElectronicDetails();
+		}
+
+		@Override
+		public void setValue(Document8 obj, List<Presentation3> value) {
+			obj.setElectronicDetails(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Document8.mmType, Document8.mmWording, Document8.mmElectronicDetails);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Document8.mmType, com.tools20022.repository.msg.Document8.mmWording, com.tools20022.repository.msg.Document8.mmElectronicDetails);
 				trace_lazy = () -> UndertakingDocument.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Document8";
 				definition = "Information about a document.";
@@ -222,30 +255,30 @@ public class Document8 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public PresentationDocumentFormat1Choice getType() {
 		return type;
 	}
 
-	public void setType(PresentationDocumentFormat1Choice type) {
-		this.type = type;
+	public Document8 setType(PresentationDocumentFormat1Choice type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "Wrdg")
-	public Max20000Text getWording() {
-		return wording;
+	public Optional<Max20000Text> getWording() {
+		return wording == null ? Optional.empty() : Optional.of(wording);
 	}
 
-	public void setWording(Max20000Text wording) {
+	public Document8 setWording(Max20000Text wording) {
 		this.wording = wording;
+		return this;
 	}
 
-	@XmlElement(name = "ElctrncDtls")
 	public List<Presentation3> getElectronicDetails() {
-		return electronicDetails;
+		return electronicDetails == null ? electronicDetails = new ArrayList<>() : electronicDetails;
 	}
 
-	public void setElectronicDetails(List<com.tools20022.repository.msg.Presentation3> electronicDetails) {
-		this.electronicDetails = electronicDetails;
+	public Document8 setElectronicDetails(List<Presentation3> electronicDetails) {
+		this.electronicDetails = Objects.requireNonNull(electronicDetails);
+		return this;
 	}
 }

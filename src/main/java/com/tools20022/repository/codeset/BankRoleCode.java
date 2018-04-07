@@ -37,13 +37,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getCode code} =
  * <ul>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRoleCode#BuyersBank
- * BankRoleCode.mmBuyersBank}</li>
+ * BankRoleCode.BuyersBank}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRoleCode#SellersBank
- * BankRoleCode.mmSellersBank}</li>
+ * BankRoleCode.SellersBank}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRoleCode#ObligorBank
- * BankRoleCode.mmObligorBank}</li>
+ * BankRoleCode.ObligorBank}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRoleCode#RecipientBank
- * BankRoleCode.mmRecipientBank}</li>
+ * BankRoleCode.RecipientBank}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getDerivation derivation}
@@ -56,8 +56,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -131,7 +131,7 @@ public class BankRoleCode extends MMCode {
 		}
 	};
 	/**
-	 * Obligor bank
+	 * Obligor bank.
 	 * <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
@@ -147,14 +147,14 @@ public class BankRoleCode extends MMCode {
 	 * name} = "ObligorBank"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Obligor bank"</li>
+	 * definition} = "Obligor bank."</li>
 	 * </ul>
 	 */
 	public static final BankRoleCode ObligorBank = new BankRoleCode() {
 		{
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ObligorBank";
-			definition = "Obligor bank";
+			definition = "Obligor bank.";
 			owner_lazy = () -> com.tools20022.repository.codeset.BankRoleCode.mmObject();
 			codeName = "OBLB";
 		}
@@ -196,7 +196,7 @@ public class BankRoleCode extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "BankRoleCode";
 				definition = "Specifies the role of the bank in the transaction.";

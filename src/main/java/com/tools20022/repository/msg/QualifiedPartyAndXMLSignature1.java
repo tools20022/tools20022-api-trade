@@ -24,9 +24,12 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.entity.ElectronicSignature;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.QualifiedPartyIdentification1;
 import com.tools20022.repository.other.SignatureEnvelope;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,8 +58,19 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintIDRule#forQualifiedPartyAndXMLSignature1
+ * ConstraintIDRule.forQualifiedPartyAndXMLSignature1}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintManifestRule#forQualifiedPartyAndXMLSignature1
+ * ConstraintManifestRule.forQualifiedPartyAndXMLSignature1}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -68,15 +82,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Defines a signing party and a digital signature made by this party."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "QualifiedPartyAndXMLSignature1", propOrder = {"party", "signature"})
 public class QualifiedPartyAndXMLSignature1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Pty")
 	protected QualifiedPartyIdentification1 party;
 	/**
-	 * Identification of the signing party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -106,10 +121,10 @@ public class QualifiedPartyAndXMLSignature1 {
 	 * definition} = "Identification of the signing party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmParty = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<QualifiedPartyAndXMLSignature1, Optional<QualifiedPartyIdentification1>> mmParty = new MMMessageAssociationEnd<QualifiedPartyAndXMLSignature1, Optional<QualifiedPartyIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> QualifiedPartyAndXMLSignature1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1.mmObject();
 			isDerived = false;
 			xmlTag = "Pty";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -118,13 +133,24 @@ public class QualifiedPartyAndXMLSignature1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = false;
-			type_lazy = () -> com.tools20022.repository.msg.QualifiedPartyIdentification1.mmObject();
+			type_lazy = () -> QualifiedPartyIdentification1.mmObject();
+		}
+
+		@Override
+		public Optional<QualifiedPartyIdentification1> getValue(QualifiedPartyAndXMLSignature1 obj) {
+			return obj.getParty();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyAndXMLSignature1 obj, Optional<QualifiedPartyIdentification1> value) {
+			obj.setParty(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Sgntr", required = true)
 	protected SignatureEnvelope signature;
 	/**
-	 * Digital signature in XML-DSIG format and reference to signing party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -156,10 +182,10 @@ public class QualifiedPartyAndXMLSignature1 {
 	 * "Digital signature in XML-DSIG format and reference to signing party."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmSignature = new MMMessageAttribute() {
+	public static final MMMessageAttribute<QualifiedPartyAndXMLSignature1, SignatureEnvelope> mmSignature = new MMMessageAttribute<QualifiedPartyAndXMLSignature1, SignatureEnvelope>() {
 		{
 			businessComponentTrace_lazy = () -> ElectronicSignature.mmObject();
-			componentContext_lazy = () -> QualifiedPartyAndXMLSignature1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1.mmObject();
 			isDerived = false;
 			xmlTag = "Sgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -169,14 +195,25 @@ public class QualifiedPartyAndXMLSignature1 {
 			minOccurs = 1;
 			complexType_lazy = () -> SignatureEnvelope.mmObject();
 		}
+
+		@Override
+		public SignatureEnvelope getValue(QualifiedPartyAndXMLSignature1 obj) {
+			return obj.getSignature();
+		}
+
+		@Override
+		public void setValue(QualifiedPartyAndXMLSignature1 obj, SignatureEnvelope value) {
+			obj.setSignature(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(QualifiedPartyAndXMLSignature1.mmParty, QualifiedPartyAndXMLSignature1.mmSignature);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1.mmParty, com.tools20022.repository.msg.QualifiedPartyAndXMLSignature1.mmSignature);
 				trace_lazy = () -> ElectronicSignature.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintIDRule.forQualifiedPartyAndXMLSignature1, com.tools20022.repository.constraints.ConstraintManifestRule.forQualifiedPartyAndXMLSignature1);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "QualifiedPartyAndXMLSignature1";
 				definition = "Defines a signing party and a digital signature made by this party.";
@@ -185,21 +222,21 @@ public class QualifiedPartyAndXMLSignature1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Pty")
-	public QualifiedPartyIdentification1 getParty() {
-		return party;
+	public Optional<QualifiedPartyIdentification1> getParty() {
+		return party == null ? Optional.empty() : Optional.of(party);
 	}
 
-	public void setParty(com.tools20022.repository.msg.QualifiedPartyIdentification1 party) {
+	public QualifiedPartyAndXMLSignature1 setParty(QualifiedPartyIdentification1 party) {
 		this.party = party;
+		return this;
 	}
 
-	@XmlElement(name = "Sgntr", required = true)
 	public SignatureEnvelope getSignature() {
 		return signature;
 	}
 
-	public void setSignature(SignatureEnvelope signature) {
-		this.signature = signature;
+	public QualifiedPartyAndXMLSignature1 setSignature(SignatureEnvelope signature) {
+		this.signature = Objects.requireNonNull(signature);
+		return this;
 	}
 }

@@ -27,6 +27,7 @@ import com.tools20022.repository.entity.ElectronicAddress;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,8 +55,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -67,15 +68,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Specifies possible agreement clauses related to invoice financing."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "AgreementClauses1", propOrder = {"description", "documentURL"})
 public class AgreementClauses1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Desc")
 	protected Max256Text description;
 	/**
-	 * Description of agreement clauses, given in a textual form.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -101,9 +103,9 @@ public class AgreementClauses1 {
 	 * "Description of agreement clauses, given in a textual form."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AgreementClauses1, Optional<Max256Text>> mmDescription = new MMMessageAttribute<AgreementClauses1, Optional<Max256Text>>() {
 		{
-			componentContext_lazy = () -> AgreementClauses1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AgreementClauses1.mmObject();
 			isDerived = false;
 			xmlTag = "Desc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -113,12 +115,22 @@ public class AgreementClauses1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max256Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max256Text> getValue(AgreementClauses1 obj) {
+			return obj.getDescription();
+		}
+
+		@Override
+		public void setValue(AgreementClauses1 obj, Optional<Max256Text> value) {
+			obj.setDescription(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "DocURL")
 	protected Max350Text documentURL;
 	/**
-	 * External reference to the document, containing agreement clauses, where
-	 * it is stored.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -150,10 +162,10 @@ public class AgreementClauses1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDocumentURL = new MMMessageAttribute() {
+	public static final MMMessageAttribute<AgreementClauses1, Optional<Max350Text>> mmDocumentURL = new MMMessageAttribute<AgreementClauses1, Optional<Max350Text>>() {
 		{
 			businessElementTrace_lazy = () -> ElectronicAddress.mmURLAddress;
-			componentContext_lazy = () -> AgreementClauses1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.AgreementClauses1.mmObject();
 			isDerived = false;
 			xmlTag = "DocURL";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -163,14 +175,24 @@ public class AgreementClauses1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max350Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max350Text> getValue(AgreementClauses1 obj) {
+			return obj.getDocumentURL();
+		}
+
+		@Override
+		public void setValue(AgreementClauses1 obj, Optional<Max350Text> value) {
+			obj.setDocumentURL(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(AgreementClauses1.mmDescription, AgreementClauses1.mmDocumentURL);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.AgreementClauses1.mmDescription, com.tools20022.repository.msg.AgreementClauses1.mmDocumentURL);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "AgreementClauses1";
 				definition = "Specifies possible agreement clauses related to invoice financing.";
@@ -179,21 +201,21 @@ public class AgreementClauses1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Desc")
-	public Max256Text getDescription() {
-		return description;
+	public Optional<Max256Text> getDescription() {
+		return description == null ? Optional.empty() : Optional.of(description);
 	}
 
-	public void setDescription(Max256Text description) {
+	public AgreementClauses1 setDescription(Max256Text description) {
 		this.description = description;
+		return this;
 	}
 
-	@XmlElement(name = "DocURL")
-	public Max350Text getDocumentURL() {
-		return documentURL;
+	public Optional<Max350Text> getDocumentURL() {
+		return documentURL == null ? Optional.empty() : Optional.of(documentURL);
 	}
 
-	public void setDocumentURL(Max350Text documentURL) {
+	public AgreementClauses1 setDocumentURL(Max350Text documentURL) {
 		this.documentURL = documentURL;
+		return this;
 	}
 }

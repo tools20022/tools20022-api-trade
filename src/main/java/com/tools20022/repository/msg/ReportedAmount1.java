@@ -26,6 +26,7 @@ import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,8 +53,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -64,15 +65,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Amount reported."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ReportedAmount1", propOrder = {"identification", "type", "amount"})
 public class ReportedAmount1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Identification of the reported amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -97,9 +99,9 @@ public class ReportedAmount1 {
 	 * definition} = "Identification of the reported amount."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ReportedAmount1, Max35Text> mmIdentification = new MMMessageAttribute<ReportedAmount1, Max35Text>() {
 		{
-			componentContext_lazy = () -> ReportedAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ReportedAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -109,11 +111,22 @@ public class ReportedAmount1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(ReportedAmount1 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(ReportedAmount1 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "Tp", required = true)
 	protected ExternalUndertakingAmountType1Code type;
 	/**
-	 * Type of reported amount.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -139,9 +152,9 @@ public class ReportedAmount1 {
 	 * definition} = "Type of reported amount."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ReportedAmount1, ExternalUndertakingAmountType1Code> mmType = new MMMessageAttribute<ReportedAmount1, ExternalUndertakingAmountType1Code>() {
 		{
-			componentContext_lazy = () -> ReportedAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ReportedAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -151,11 +164,22 @@ public class ReportedAmount1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ExternalUndertakingAmountType1Code.mmObject();
 		}
+
+		@Override
+		public ExternalUndertakingAmountType1Code getValue(ReportedAmount1 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(ReportedAmount1 obj, ExternalUndertakingAmountType1Code value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "Amt", required = true)
 	protected ActiveCurrencyAndAmount amount;
 	/**
-	 * Amount reported.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -181,9 +205,9 @@ public class ReportedAmount1 {
 	 * definition} = "Amount reported."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ReportedAmount1, ActiveCurrencyAndAmount> mmAmount = new MMMessageAttribute<ReportedAmount1, ActiveCurrencyAndAmount>() {
 		{
-			componentContext_lazy = () -> ReportedAmount1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ReportedAmount1.mmObject();
 			isDerived = false;
 			xmlTag = "Amt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -193,13 +217,23 @@ public class ReportedAmount1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ActiveCurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public ActiveCurrencyAndAmount getValue(ReportedAmount1 obj) {
+			return obj.getAmount();
+		}
+
+		@Override
+		public void setValue(ReportedAmount1 obj, ActiveCurrencyAndAmount value) {
+			obj.setAmount(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ReportedAmount1.mmIdentification, ReportedAmount1.mmType, ReportedAmount1.mmAmount);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.ReportedAmount1.mmIdentification, com.tools20022.repository.msg.ReportedAmount1.mmType, com.tools20022.repository.msg.ReportedAmount1.mmAmount);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "ReportedAmount1";
 				definition = "Amount reported.";
@@ -208,30 +242,30 @@ public class ReportedAmount1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public ReportedAmount1 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public ExternalUndertakingAmountType1Code getType() {
 		return type;
 	}
 
-	public void setType(ExternalUndertakingAmountType1Code type) {
-		this.type = type;
+	public ReportedAmount1 setType(ExternalUndertakingAmountType1Code type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "Amt", required = true)
 	public ActiveCurrencyAndAmount getAmount() {
 		return amount;
 	}
 
-	public void setAmount(ActiveCurrencyAndAmount amount) {
-		this.amount = amount;
+	public ReportedAmount1 setAmount(ActiveCurrencyAndAmount amount) {
+		this.amount = Objects.requireNonNull(amount);
+		return this;
 	}
 }

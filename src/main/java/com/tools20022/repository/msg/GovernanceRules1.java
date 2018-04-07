@@ -24,9 +24,9 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.choice.GovernanceIdentification1Choice;
 import com.tools20022.repository.entity.GovernanceRules;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.Location1;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -59,8 +59,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -73,15 +73,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "GovernanceRules1", propOrder = {"ruleIdentification", "applicableLaw", "jurisdiction"})
 public class GovernanceRules1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RuleId", required = true)
 	protected GovernanceIdentification1Choice ruleIdentification;
 	/**
-	 * Identification of the governance rules.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -112,10 +113,10 @@ public class GovernanceRules1 {
 	 * definition} = "Identification of the governance rules."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmRuleIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<GovernanceRules1, GovernanceIdentification1Choice> mmRuleIdentification = new MMMessageAttribute<GovernanceRules1, GovernanceIdentification1Choice>() {
 		{
 			businessElementTrace_lazy = () -> GovernanceRules.mmIdentification;
-			componentContext_lazy = () -> GovernanceRules1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.GovernanceRules1.mmObject();
 			isDerived = false;
 			xmlTag = "RuleId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -125,11 +126,22 @@ public class GovernanceRules1 {
 			minOccurs = 1;
 			complexType_lazy = () -> GovernanceIdentification1Choice.mmObject();
 		}
+
+		@Override
+		public GovernanceIdentification1Choice getValue(GovernanceRules1 obj) {
+			return obj.getRuleIdentification();
+		}
+
+		@Override
+		public void setValue(GovernanceRules1 obj, GovernanceIdentification1Choice value) {
+			obj.setRuleIdentification(value);
+		}
 	};
+	@XmlElement(name = "AplblLaw")
 	protected Location1 applicableLaw;
 	/**
-	 * Law applicable to the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -157,10 +169,10 @@ public class GovernanceRules1 {
 	 * definition} = "Law applicable to the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmApplicableLaw = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<GovernanceRules1, Optional<Location1>> mmApplicableLaw = new MMMessageAssociationEnd<GovernanceRules1, Optional<Location1>>() {
 		{
 			businessElementTrace_lazy = () -> GovernanceRules.mmApplicableLaw;
-			componentContext_lazy = () -> GovernanceRules1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.GovernanceRules1.mmObject();
 			isDerived = false;
 			xmlTag = "AplblLaw";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -169,15 +181,24 @@ public class GovernanceRules1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Location1.mmObject();
+			type_lazy = () -> Location1.mmObject();
+		}
+
+		@Override
+		public Optional<Location1> getValue(GovernanceRules1 obj) {
+			return obj.getApplicableLaw();
+		}
+
+		@Override
+		public void setValue(GovernanceRules1 obj, Optional<Location1> value) {
+			obj.setApplicableLaw(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.Location1> jurisdiction;
+	@XmlElement(name = "Jursdctn")
+	protected List<Location1> jurisdiction;
 	/**
-	 * Place at or system under which any dispute related to the undertaking is
-	 * to be resolved, such as court or arbitration. This is also known as
-	 * 'forum'.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -207,10 +228,10 @@ public class GovernanceRules1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmJurisdiction = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<GovernanceRules1, List<Location1>> mmJurisdiction = new MMMessageAssociationEnd<GovernanceRules1, List<Location1>>() {
 		{
 			businessElementTrace_lazy = () -> GovernanceRules.mmJurisdiction;
-			componentContext_lazy = () -> GovernanceRules1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.GovernanceRules1.mmObject();
 			isDerived = false;
 			xmlTag = "Jursdctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -218,16 +239,27 @@ public class GovernanceRules1 {
 			definition = "Place at or system under which any dispute related to the undertaking is to be resolved, such as court or arbitration. This is also known as 'forum'.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Location1.mmObject();
+			type_lazy = () -> Location1.mmObject();
+		}
+
+		@Override
+		public List<Location1> getValue(GovernanceRules1 obj) {
+			return obj.getJurisdiction();
+		}
+
+		@Override
+		public void setValue(GovernanceRules1 obj, List<Location1> value) {
+			obj.setJurisdiction(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(GovernanceRules1.mmRuleIdentification, GovernanceRules1.mmApplicableLaw, GovernanceRules1.mmJurisdiction);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.GovernanceRules1.mmRuleIdentification, com.tools20022.repository.msg.GovernanceRules1.mmApplicableLaw,
+						com.tools20022.repository.msg.GovernanceRules1.mmJurisdiction);
 				trace_lazy = () -> GovernanceRules.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "GovernanceRules1";
 				definition = "Rules governing an undertaking such as a guarantee or standby letter of credit.";
@@ -236,30 +268,30 @@ public class GovernanceRules1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RuleId", required = true)
 	public GovernanceIdentification1Choice getRuleIdentification() {
 		return ruleIdentification;
 	}
 
-	public void setRuleIdentification(GovernanceIdentification1Choice ruleIdentification) {
-		this.ruleIdentification = ruleIdentification;
+	public GovernanceRules1 setRuleIdentification(GovernanceIdentification1Choice ruleIdentification) {
+		this.ruleIdentification = Objects.requireNonNull(ruleIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "AplblLaw")
-	public Location1 getApplicableLaw() {
-		return applicableLaw;
+	public Optional<Location1> getApplicableLaw() {
+		return applicableLaw == null ? Optional.empty() : Optional.of(applicableLaw);
 	}
 
-	public void setApplicableLaw(com.tools20022.repository.msg.Location1 applicableLaw) {
+	public GovernanceRules1 setApplicableLaw(Location1 applicableLaw) {
 		this.applicableLaw = applicableLaw;
+		return this;
 	}
 
-	@XmlElement(name = "Jursdctn")
 	public List<Location1> getJurisdiction() {
-		return jurisdiction;
+		return jurisdiction == null ? jurisdiction = new ArrayList<>() : jurisdiction;
 	}
 
-	public void setJurisdiction(List<com.tools20022.repository.msg.Location1> jurisdiction) {
-		this.jurisdiction = jurisdiction;
+	public GovernanceRules1 setJurisdiction(List<Location1> jurisdiction) {
+		this.jurisdiction = Objects.requireNonNull(jurisdiction);
+		return this;
 	}
 }

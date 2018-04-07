@@ -29,8 +29,10 @@ import com.tools20022.repository.entity.Document;
 import com.tools20022.repository.entity.FinancialInstitution;
 import com.tools20022.repository.entity.GenericIdentification;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.BICIdentification1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -74,8 +76,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -88,15 +90,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "DocumentIdentification4", propOrder = {"identification", "version", "submitter", "documentIndex"})
 public class DocumentIdentification4 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Identification of a set of data.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -126,10 +129,10 @@ public class DocumentIdentification4 {
 	 * definition} = "Identification of a set of data."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification4, Max35Text> mmIdentification = new MMMessageAttribute<DocumentIdentification4, Max35Text>() {
 		{
 			businessElementTrace_lazy = () -> GenericIdentification.mmIdentification;
-			componentContext_lazy = () -> DocumentIdentification4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification4.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -139,12 +142,22 @@ public class DocumentIdentification4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(DocumentIdentification4 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification4 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "Vrsn", required = true)
 	protected Number version;
 	/**
-	 * Unambiguous identification of the version of a set of data. Example:
-	 * Version 1.0.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -176,10 +189,10 @@ public class DocumentIdentification4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmVersion = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification4, Number> mmVersion = new MMMessageAttribute<DocumentIdentification4, Number>() {
 		{
 			businessElementTrace_lazy = () -> Document.mmDocumentVersion;
-			componentContext_lazy = () -> DocumentIdentification4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification4.mmObject();
 			isDerived = false;
 			xmlTag = "Vrsn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -189,12 +202,22 @@ public class DocumentIdentification4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Number.mmObject();
 		}
+
+		@Override
+		public Number getValue(DocumentIdentification4 obj) {
+			return obj.getVersion();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification4 obj, Number value) {
+			obj.setVersion(value);
+		}
 	};
+	@XmlElement(name = "Submitr", required = true)
 	protected BICIdentification1 submitter;
 	/**
-	 * Uniquely identifies the financial institution which has submitted the set
-	 * of data by using a BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -225,10 +248,10 @@ public class DocumentIdentification4 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSubmitter = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<DocumentIdentification4, BICIdentification1> mmSubmitter = new MMMessageAssociationEnd<DocumentIdentification4, BICIdentification1>() {
 		{
 			businessComponentTrace_lazy = () -> FinancialInstitution.mmObject();
-			componentContext_lazy = () -> DocumentIdentification4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification4.mmObject();
 			isDerived = false;
 			xmlTag = "Submitr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -237,13 +260,24 @@ public class DocumentIdentification4 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public BICIdentification1 getValue(DocumentIdentification4 obj) {
+			return obj.getSubmitter();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification4 obj, BICIdentification1 value) {
+			obj.setSubmitter(value);
 		}
 	};
+	@XmlElement(name = "DocIndx", required = true)
 	protected Max3NumericText documentIndex;
 	/**
-	 * Index assigned to the document, to allow easy referencing.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -270,9 +304,9 @@ public class DocumentIdentification4 {
 	 * "Index assigned to the document, to allow easy referencing."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDocumentIndex = new MMMessageAttribute() {
+	public static final MMMessageAttribute<DocumentIdentification4, Max3NumericText> mmDocumentIndex = new MMMessageAttribute<DocumentIdentification4, Max3NumericText>() {
 		{
-			componentContext_lazy = () -> DocumentIdentification4.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.DocumentIdentification4.mmObject();
 			isDerived = false;
 			xmlTag = "DocIndx";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -282,15 +316,26 @@ public class DocumentIdentification4 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max3NumericText.mmObject();
 		}
+
+		@Override
+		public Max3NumericText getValue(DocumentIdentification4 obj) {
+			return obj.getDocumentIndex();
+		}
+
+		@Override
+		public void setValue(DocumentIdentification4 obj, Max3NumericText value) {
+			obj.setDocumentIndex(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(DocumentIdentification4.mmIdentification, DocumentIdentification4.mmVersion, DocumentIdentification4.mmSubmitter, DocumentIdentification4.mmDocumentIndex);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.DocumentIdentification4.mmIdentification, com.tools20022.repository.msg.DocumentIdentification4.mmVersion,
+						com.tools20022.repository.msg.DocumentIdentification4.mmSubmitter, com.tools20022.repository.msg.DocumentIdentification4.mmDocumentIndex);
 				messageBuildingBlock_lazy = () -> Arrays.asList(BaselineMatchReportV03.mmComparedDocumentReference);
 				trace_lazy = () -> Document.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "DocumentIdentification4";
 				definition = "Identifies a document by a unique identification and a version together with the submitter of the document.\nAlso specifies an index for easy referencing.";
@@ -299,39 +344,39 @@ public class DocumentIdentification4 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public DocumentIdentification4 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "Vrsn", required = true)
 	public Number getVersion() {
 		return version;
 	}
 
-	public void setVersion(Number version) {
-		this.version = version;
+	public DocumentIdentification4 setVersion(Number version) {
+		this.version = Objects.requireNonNull(version);
+		return this;
 	}
 
-	@XmlElement(name = "Submitr", required = true)
 	public BICIdentification1 getSubmitter() {
 		return submitter;
 	}
 
-	public void setSubmitter(com.tools20022.repository.msg.BICIdentification1 submitter) {
-		this.submitter = submitter;
+	public DocumentIdentification4 setSubmitter(BICIdentification1 submitter) {
+		this.submitter = Objects.requireNonNull(submitter);
+		return this;
 	}
 
-	@XmlElement(name = "DocIndx", required = true)
 	public Max3NumericText getDocumentIndex() {
 		return documentIndex;
 	}
 
-	public void setDocumentIndex(Max3NumericText documentIndex) {
-		this.documentIndex = documentIndex;
+	public DocumentIdentification4 setDocumentIndex(Max3NumericText documentIndex) {
+		this.documentIndex = Objects.requireNonNull(documentIndex);
+		return this;
 	}
 }

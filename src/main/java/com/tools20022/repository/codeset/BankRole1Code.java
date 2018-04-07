@@ -37,14 +37,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getCode code} =
  * <ul>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRole1Code#BuyersBank
- * BankRole1Code.mmBuyersBank}</li>
+ * BankRole1Code.BuyersBank}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRole1Code#ObligorBank
- * BankRole1Code.mmObligorBank}</li>
+ * BankRole1Code.ObligorBank}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.BankRole1Code#RecipientBank
- * BankRole1Code.mmRecipientBank}</li>
+ * BankRole1Code.RecipientBank}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.BankRole1Code#SellersBank
- * BankRole1Code.mmSellersBank}</li>
+ * BankRole1Code.SellersBank}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -52,8 +52,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -172,7 +172,7 @@ public class BankRole1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "BankRole1Code";
 				definition = "Specifies the role of the bank in the transaction.";

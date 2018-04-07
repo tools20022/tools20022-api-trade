@@ -22,11 +22,14 @@ import com.tools20022.repository.codeset.DemandStatusCode;
 import com.tools20022.repository.codeset.ExternalUndertakingStatusCategoryCode;
 import com.tools20022.repository.codeset.UndertakingStatusCode;
 import com.tools20022.repository.entity.Status;
+import com.tools20022.repository.entity.Undertaking;
+import com.tools20022.repository.entity.UndertakingStatusReason;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Status of the undertaking.
@@ -104,8 +107,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -121,8 +124,8 @@ public class UndertakingStatus extends Status {
 	final static private AtomicReference<MMBusinessComponent> mmObject_lazy = new AtomicReference<>();
 	protected Undertaking undertaking;
 	/**
-	 * Undertaking for which a status is specified.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -173,7 +176,7 @@ public class UndertakingStatus extends Status {
 	 * definition} = "Undertaking for which a status is specified."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmUndertaking = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<UndertakingStatus, com.tools20022.repository.entity.Undertaking> mmUndertaking = new MMBusinessAssociationEnd<UndertakingStatus, com.tools20022.repository.entity.Undertaking>() {
 		{
 			derivation_lazy = () -> Arrays.asList(DemandRefusal1.mmUndertakingIdentification, ExtendOrPayQuery2.mmUndertakingIdentification, UndertakingNonExtensionStatusAdvice1.mmUndertakingIdentification,
 					UndertakingStatusAdvice1.mmUndertakingIdentification, UndertakingTerminationNotice1.mmUndertakingIdentification);
@@ -188,11 +191,21 @@ public class UndertakingStatus extends Status {
 			aggregation = MMAggregation.NONE;
 			type_lazy = () -> com.tools20022.repository.entity.Undertaking.mmObject();
 		}
+
+		@Override
+		public com.tools20022.repository.entity.Undertaking getValue(UndertakingStatus obj) {
+			return obj.getUndertaking();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, com.tools20022.repository.entity.Undertaking value) {
+			obj.setUndertaking(value);
+		}
 	};
 	protected DemandStatusCode demandStatus;
 	/**
-	 * Processing status reported by the applicant.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -225,7 +238,7 @@ public class UndertakingStatus extends Status {
 	 * definition} = "Processing status reported by the applicant."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmDemandStatus = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingStatus, DemandStatusCode> mmDemandStatus = new MMBusinessAttribute<UndertakingStatus, DemandStatusCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(DemandRefusal1.mmStatus, ExtendOrPayQuery2.mmStatus);
 			isDerived = false;
@@ -238,18 +251,20 @@ public class UndertakingStatus extends Status {
 			simpleType_lazy = () -> DemandStatusCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatus.class.getMethod("getDemandStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DemandStatusCode getValue(UndertakingStatus obj) {
+			return obj.getDemandStatus();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, DemandStatusCode value) {
+			obj.setDemandStatus(value);
 		}
 	};
 	protected UndertakingStatusCode status;
 	/**
-	 * Status of the undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -284,7 +299,7 @@ public class UndertakingStatus extends Status {
 	 * definition} = "Status of the undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmStatus = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingStatus, UndertakingStatusCode> mmStatus = new MMBusinessAttribute<UndertakingStatus, UndertakingStatusCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TradeStatusReport1.mmStatus, UndertakingStatusAdvice1.mmStatus);
 			isDerived = false;
@@ -297,19 +312,20 @@ public class UndertakingStatus extends Status {
 			simpleType_lazy = () -> UndertakingStatusCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatus.class.getMethod("getStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingStatusCode getValue(UndertakingStatus obj) {
+			return obj.getStatus();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, UndertakingStatusCode value) {
+			obj.setStatus(value);
 		}
 	};
 	protected UndertakingStatusReason undertakingStatusReason;
 	/**
-	 * Specifies the reason for the status. it is derived from the association
-	 * between Status and StatusReason.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -354,7 +370,7 @@ public class UndertakingStatus extends Status {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMBusinessAssociationEnd mmUndertakingStatusReason = new MMBusinessAssociationEnd() {
+	public static final MMBusinessAssociationEnd<UndertakingStatus, Optional<UndertakingStatusReason>> mmUndertakingStatusReason = new MMBusinessAssociationEnd<UndertakingStatus, Optional<UndertakingStatusReason>>() {
 		{
 			derivation_lazy = () -> Arrays.asList(TradeStatusReport1.mmStatusReason, UndertakingStatusAdvice1.mmStatusReason);
 			isDerived = false;
@@ -368,11 +384,21 @@ public class UndertakingStatus extends Status {
 			aggregation = MMAggregation.NONE;
 			type_lazy = () -> com.tools20022.repository.entity.UndertakingStatusReason.mmObject();
 		}
+
+		@Override
+		public Optional<UndertakingStatusReason> getValue(UndertakingStatus obj) {
+			return obj.getUndertakingStatusReason();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, Optional<UndertakingStatusReason> value) {
+			obj.setUndertakingStatusReason(value.orElse(null));
+		}
 	};
 	protected ExternalUndertakingStatusCategoryCode statusCategory;
 	/**
-	 * Specifies the category of the status.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -404,7 +430,7 @@ public class UndertakingStatus extends Status {
 	 * definition} = "Specifies the category of the status."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmStatusCategory = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingStatus, ExternalUndertakingStatusCategoryCode> mmStatusCategory = new MMBusinessAttribute<UndertakingStatus, ExternalUndertakingStatusCategoryCode>() {
 		{
 			derivation_lazy = () -> Arrays.asList(UndertakingStatusAdvice1.mmStatusCategory);
 			isDerived = false;
@@ -417,18 +443,20 @@ public class UndertakingStatus extends Status {
 			simpleType_lazy = () -> ExternalUndertakingStatusCategoryCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatus.class.getMethod("getStatusCategory", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ExternalUndertakingStatusCategoryCode getValue(UndertakingStatus obj) {
+			return obj.getStatusCategory();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, ExternalUndertakingStatusCategoryCode value) {
+			obj.setStatusCategory(value);
 		}
 	};
 	protected UndertakingStatusCode presentationStatus;
 	/**
-	 * Status of the presentation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -452,7 +480,7 @@ public class UndertakingStatus extends Status {
 	 * definition} = "Status of the presentation."</li>
 	 * </ul>
 	 */
-	public static final MMBusinessAttribute mmPresentationStatus = new MMBusinessAttribute() {
+	public static final MMBusinessAttribute<UndertakingStatus, UndertakingStatusCode> mmPresentationStatus = new MMBusinessAttribute<UndertakingStatus, UndertakingStatusCode>() {
 		{
 			isDerived = false;
 			elementContext_lazy = () -> com.tools20022.repository.entity.UndertakingStatus.mmObject();
@@ -464,19 +492,21 @@ public class UndertakingStatus extends Status {
 			simpleType_lazy = () -> UndertakingStatusCode.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingStatus.class.getMethod("getPresentationStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingStatusCode getValue(UndertakingStatus obj) {
+			return obj.getPresentationStatus();
+		}
+
+		@Override
+		public void setValue(UndertakingStatus obj, UndertakingStatusCode value) {
+			obj.setPresentationStatus(value);
 		}
 	};
 
 	static public MMBusinessComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMBusinessComponent() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "UndertakingStatus";
 				definition = "Status of the undertaking.";
@@ -502,47 +532,53 @@ public class UndertakingStatus extends Status {
 		return undertaking;
 	}
 
-	public void setUndertaking(com.tools20022.repository.entity.Undertaking undertaking) {
-		this.undertaking = undertaking;
+	public UndertakingStatus setUndertaking(com.tools20022.repository.entity.Undertaking undertaking) {
+		this.undertaking = Objects.requireNonNull(undertaking);
+		return this;
 	}
 
 	public DemandStatusCode getDemandStatus() {
 		return demandStatus;
 	}
 
-	public void setDemandStatus(DemandStatusCode demandStatus) {
-		this.demandStatus = demandStatus;
+	public UndertakingStatus setDemandStatus(DemandStatusCode demandStatus) {
+		this.demandStatus = Objects.requireNonNull(demandStatus);
+		return this;
 	}
 
 	public UndertakingStatusCode getStatus() {
 		return status;
 	}
 
-	public void setStatus(UndertakingStatusCode status) {
-		this.status = status;
+	public UndertakingStatus setStatus(UndertakingStatusCode status) {
+		this.status = Objects.requireNonNull(status);
+		return this;
 	}
 
-	public UndertakingStatusReason getUndertakingStatusReason() {
-		return undertakingStatusReason;
+	public Optional<UndertakingStatusReason> getUndertakingStatusReason() {
+		return undertakingStatusReason == null ? Optional.empty() : Optional.of(undertakingStatusReason);
 	}
 
-	public void setUndertakingStatusReason(com.tools20022.repository.entity.UndertakingStatusReason undertakingStatusReason) {
+	public UndertakingStatus setUndertakingStatusReason(com.tools20022.repository.entity.UndertakingStatusReason undertakingStatusReason) {
 		this.undertakingStatusReason = undertakingStatusReason;
+		return this;
 	}
 
 	public ExternalUndertakingStatusCategoryCode getStatusCategory() {
 		return statusCategory;
 	}
 
-	public void setStatusCategory(ExternalUndertakingStatusCategoryCode statusCategory) {
-		this.statusCategory = statusCategory;
+	public UndertakingStatus setStatusCategory(ExternalUndertakingStatusCategoryCode statusCategory) {
+		this.statusCategory = Objects.requireNonNull(statusCategory);
+		return this;
 	}
 
 	public UndertakingStatusCode getPresentationStatus() {
 		return presentationStatus;
 	}
 
-	public void setPresentationStatus(UndertakingStatusCode presentationStatus) {
-		this.presentationStatus = presentationStatus;
+	public UndertakingStatus setPresentationStatus(UndertakingStatusCode presentationStatus) {
+		this.presentationStatus = Objects.requireNonNull(presentationStatus);
+		return this;
 	}
 }

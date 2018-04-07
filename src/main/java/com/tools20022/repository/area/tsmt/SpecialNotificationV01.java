@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -97,16 +95,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "SpecialNotificationV01", propOrder = {"notificationIdentification", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference", "initiator", "notification",
 		"requestForAction"})
 public class SpecialNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NtfctnId", required = true)
 	protected MessageIdentification1 notificationIdentification;
 	/**
-	 * Identifies the notification message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -127,7 +126,7 @@ public class SpecialNotificationV01 {
 	 * definition} = "Identifies the notification message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotificationIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, MessageIdentification1> mmNotificationIdentification = new MMMessageBuildingBlock<SpecialNotificationV01, MessageIdentification1>() {
 		{
 			xmlTag = "NtfctnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -138,20 +137,21 @@ public class SpecialNotificationV01 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getNotificationIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(SpecialNotificationV01 obj) {
+			return obj.getNotificationIdentification();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, MessageIdentification1 value) {
+			obj.setNotificationIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -170,34 +170,36 @@ public class SpecialNotificationV01 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<SpecialNotificationV01, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(SpecialNotificationV01 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification3 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -216,33 +218,36 @@ public class SpecialNotificationV01 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established. "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, DocumentIdentification3> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<SpecialNotificationV01, DocumentIdentification3>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established. ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> DocumentIdentification3.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification3 getValue(SpecialNotificationV01 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, DocumentIdentification3 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -264,7 +269,7 @@ public class SpecialNotificationV01 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<SpecialNotificationV01, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -275,19 +280,21 @@ public class SpecialNotificationV01 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(SpecialNotificationV01 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for the financial institution that is the
-	 * sender of the acknowledged message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -306,33 +313,36 @@ public class SpecialNotificationV01 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Reference to the transaction for the financial institution that is the sender of the acknowledged message. "
+	 * "Reference to the transaction for the financial institution that is the sender of the acknowledged message."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<SpecialNotificationV01, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "UserTransactionReference";
-			definition = "Reference to the transaction for the financial institution that is the sender of the acknowledged message. ";
+			definition = "Reference to the transaction for the financial institution that is the sender of the acknowledged message.";
 			maxOccurs = 2;
 			minOccurs = 0;
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(SpecialNotificationV01 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "Initr", required = true)
 	protected BICIdentification1 initiator;
 	/**
-	 * Party that has sent the special request.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -353,7 +363,7 @@ public class SpecialNotificationV01 {
 	 * definition} = "Party that has sent the special request."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInitiator = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, BICIdentification1> mmInitiator = new MMMessageBuildingBlock<SpecialNotificationV01, BICIdentification1>() {
 		{
 			xmlTag = "Initr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -364,19 +374,21 @@ public class SpecialNotificationV01 {
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getInitiator", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(SpecialNotificationV01 obj) {
+			return obj.getInitiator();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, BICIdentification1 value) {
+			obj.setInitiator(value);
 		}
 	};
+	@XmlElement(name = "Ntfctn", required = true)
 	protected Notification1 notification;
 	/**
-	 * Notification received by the matching application and forwarded to
-	 * another party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -398,7 +410,7 @@ public class SpecialNotificationV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmNotification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, Notification1> mmNotification = new MMMessageBuildingBlock<SpecialNotificationV01, Notification1>() {
 		{
 			xmlTag = "Ntfctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -409,18 +421,21 @@ public class SpecialNotificationV01 {
 			complexType_lazy = () -> Notification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getNotification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Notification1 getValue(SpecialNotificationV01 obj) {
+			return obj.getNotification();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, Notification1 value) {
+			obj.setNotification(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -441,7 +456,7 @@ public class SpecialNotificationV01 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<SpecialNotificationV01, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<SpecialNotificationV01, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -452,12 +467,14 @@ public class SpecialNotificationV01 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return SpecialNotificationV01.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(SpecialNotificationV01 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(SpecialNotificationV01 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -493,79 +510,79 @@ public class SpecialNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NtfctnId", required = true)
 	public MessageIdentification1 getNotificationIdentification() {
 		return notificationIdentification;
 	}
 
-	public void setNotificationIdentification(MessageIdentification1 notificationIdentification) {
-		this.notificationIdentification = notificationIdentification;
+	public SpecialNotificationV01 setNotificationIdentification(MessageIdentification1 notificationIdentification) {
+		this.notificationIdentification = Objects.requireNonNull(notificationIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public SpecialNotificationV01 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification3 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public SpecialNotificationV01 setEstablishedBaselineIdentification(DocumentIdentification3 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public SpecialNotificationV01 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public SpecialNotificationV01 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "Initr", required = true)
 	public BICIdentification1 getInitiator() {
 		return initiator;
 	}
 
-	public void setInitiator(BICIdentification1 initiator) {
-		this.initiator = initiator;
+	public SpecialNotificationV01 setInitiator(BICIdentification1 initiator) {
+		this.initiator = Objects.requireNonNull(initiator);
+		return this;
 	}
 
-	@XmlElement(name = "Ntfctn", required = true)
 	public Notification1 getNotification() {
 		return notification;
 	}
 
-	public void setNotification(Notification1 notification) {
-		this.notification = notification;
+	public SpecialNotificationV01 setNotification(Notification1 notification) {
+		this.notification = Objects.requireNonNull(notification);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public SpecialNotificationV01 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.048.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.048.001.01")
 	static public class Document {
 		@XmlElement(name = "SpclNtfctn", required = true)
 		public SpecialNotificationV01 messageBody;

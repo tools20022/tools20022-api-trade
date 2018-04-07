@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.PaymentObligation;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -53,8 +54,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -68,15 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * PaymentTerms4}</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "PaymentTerms5", propOrder = {"paymentTerms", "amountOrPercentage"})
 public class PaymentTerms5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "PmtTerms", required = true)
 	protected PaymentCodeOrOther2Choice paymentTerms;
 	/**
-	 * Specifies the payment terms using a code or other means.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -110,10 +112,10 @@ public class PaymentTerms5 {
 	 * PaymentTerms4.mmPaymentTerms}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPaymentTerms = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PaymentTerms5, PaymentCodeOrOther2Choice> mmPaymentTerms = new MMMessageAssociationEnd<PaymentTerms5, PaymentCodeOrOther2Choice>() {
 		{
 			businessElementTrace_lazy = () -> PaymentObligation.mmPaymentOffset;
-			componentContext_lazy = () -> PaymentTerms5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PaymentTerms5.mmObject();
 			isDerived = false;
 			xmlTag = "PmtTerms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -125,11 +127,22 @@ public class PaymentTerms5 {
 			isComposite = true;
 			type_lazy = () -> PaymentCodeOrOther2Choice.mmObject();
 		}
+
+		@Override
+		public PaymentCodeOrOther2Choice getValue(PaymentTerms5 obj) {
+			return obj.getPaymentTerms();
+		}
+
+		@Override
+		public void setValue(PaymentTerms5 obj, PaymentCodeOrOther2Choice value) {
+			obj.setPaymentTerms(value);
+		}
 	};
+	@XmlElement(name = "AmtOrPctg", required = true)
 	protected AmountOrPercentage2Choice amountOrPercentage;
 	/**
-	 * Specifies if it is a fixed amount or a percentage.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -158,9 +171,9 @@ public class PaymentTerms5 {
 	 * PaymentTerms4.mmAmountOrPercentage}</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAmountOrPercentage = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<PaymentTerms5, AmountOrPercentage2Choice> mmAmountOrPercentage = new MMMessageAssociationEnd<PaymentTerms5, AmountOrPercentage2Choice>() {
 		{
-			componentContext_lazy = () -> PaymentTerms5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.PaymentTerms5.mmObject();
 			isDerived = false;
 			xmlTag = "AmtOrPctg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -172,14 +185,24 @@ public class PaymentTerms5 {
 			isComposite = true;
 			type_lazy = () -> AmountOrPercentage2Choice.mmObject();
 		}
+
+		@Override
+		public AmountOrPercentage2Choice getValue(PaymentTerms5 obj) {
+			return obj.getAmountOrPercentage();
+		}
+
+		@Override
+		public void setValue(PaymentTerms5 obj, AmountOrPercentage2Choice value) {
+			obj.setAmountOrPercentage(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(PaymentTerms5.mmPaymentTerms, PaymentTerms5.mmAmountOrPercentage);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.PaymentTerms5.mmPaymentTerms, com.tools20022.repository.msg.PaymentTerms5.mmAmountOrPercentage);
 				trace_lazy = () -> PaymentObligation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "PaymentTerms5";
 				definition = "Specifies the payment terms of the underlying transaction.";
@@ -189,21 +212,21 @@ public class PaymentTerms5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "PmtTerms", required = true)
 	public PaymentCodeOrOther2Choice getPaymentTerms() {
 		return paymentTerms;
 	}
 
-	public void setPaymentTerms(PaymentCodeOrOther2Choice paymentTerms) {
-		this.paymentTerms = paymentTerms;
+	public PaymentTerms5 setPaymentTerms(PaymentCodeOrOther2Choice paymentTerms) {
+		this.paymentTerms = Objects.requireNonNull(paymentTerms);
+		return this;
 	}
 
-	@XmlElement(name = "AmtOrPctg", required = true)
 	public AmountOrPercentage2Choice getAmountOrPercentage() {
 		return amountOrPercentage;
 	}
 
-	public void setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
-		this.amountOrPercentage = amountOrPercentage;
+	public PaymentTerms5 setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
+		this.amountOrPercentage = Objects.requireNonNull(amountOrPercentage);
+		return this;
 	}
 }

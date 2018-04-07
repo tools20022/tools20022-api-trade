@@ -25,9 +25,10 @@ import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.SimpleIdentificationInformation;
 import com.tools20022.repository.msg.TransactionStatus4;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -89,15 +90,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "StatusExtensionRequestAcceptanceV03", propOrder = {"acceptanceIdentification", "transactionIdentification", "submitterTransactionReference", "extendedStatus"})
 public class StatusExtensionRequestAcceptanceV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "AccptncId", required = true)
 	protected MessageIdentification1 acceptanceIdentification;
 	/**
-	 * Identifies the acceptance message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -118,7 +120,7 @@ public class StatusExtensionRequestAcceptanceV03 {
 	 * definition} = "Identifies the acceptance message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAcceptanceIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, MessageIdentification1> mmAcceptanceIdentification = new MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, MessageIdentification1>() {
 		{
 			xmlTag = "AccptncId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,20 +131,21 @@ public class StatusExtensionRequestAcceptanceV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestAcceptanceV03.class.getMethod("getAcceptanceIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(StatusExtensionRequestAcceptanceV03 obj) {
+			return obj.getAcceptanceIdentification();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestAcceptanceV03 obj, MessageIdentification1 value) {
+			obj.setAcceptanceIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -161,33 +164,36 @@ public class StatusExtensionRequestAcceptanceV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestAcceptanceV03.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(StatusExtensionRequestAcceptanceV03 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestAcceptanceV03 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "SubmitrTxRef")
 	protected SimpleIdentificationInformation submitterTransactionReference;
 	/**
-	 * Reference to the transaction for the requesting financial institution.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -209,7 +215,7 @@ public class StatusExtensionRequestAcceptanceV03 {
 	 * "Reference to the transaction for the requesting financial institution."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSubmitterTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, Optional<SimpleIdentificationInformation>> mmSubmitterTransactionReference = new MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, Optional<SimpleIdentificationInformation>>() {
 		{
 			xmlTag = "SubmitrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -220,19 +226,21 @@ public class StatusExtensionRequestAcceptanceV03 {
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestAcceptanceV03.class.getMethod("getSubmitterTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<SimpleIdentificationInformation> getValue(StatusExtensionRequestAcceptanceV03 obj) {
+			return obj.getSubmitterTransactionReference();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestAcceptanceV03 obj, Optional<SimpleIdentificationInformation> value) {
+			obj.setSubmitterTransactionReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "XtndedSts", required = true)
 	protected TransactionStatus4 extendedStatus;
 	/**
-	 * Identifies the status for which the user accepts an extension of the
-	 * validity period..
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -251,27 +259,29 @@ public class StatusExtensionRequestAcceptanceV03 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Identifies the status for which the user accepts an extension of the validity period.."
+	 * "Identifies the status for which the user accepts an extension of the validity period."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmExtendedStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, TransactionStatus4> mmExtendedStatus = new MMMessageBuildingBlock<StatusExtensionRequestAcceptanceV03, TransactionStatus4>() {
 		{
 			xmlTag = "XtndedSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ExtendedStatus";
-			definition = "Identifies the status for which the user accepts an extension of the validity period..";
+			definition = "Identifies the status for which the user accepts an extension of the validity period.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return StatusExtensionRequestAcceptanceV03.class.getMethod("getExtendedStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(StatusExtensionRequestAcceptanceV03 obj) {
+			return obj.getExtendedStatus();
+		}
+
+		@Override
+		public void setValue(StatusExtensionRequestAcceptanceV03 obj, TransactionStatus4 value) {
+			obj.setExtendedStatus(value);
 		}
 	};
 
@@ -305,43 +315,43 @@ public class StatusExtensionRequestAcceptanceV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "AccptncId", required = true)
 	public MessageIdentification1 getAcceptanceIdentification() {
 		return acceptanceIdentification;
 	}
 
-	public void setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
-		this.acceptanceIdentification = acceptanceIdentification;
+	public StatusExtensionRequestAcceptanceV03 setAcceptanceIdentification(MessageIdentification1 acceptanceIdentification) {
+		this.acceptanceIdentification = Objects.requireNonNull(acceptanceIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public StatusExtensionRequestAcceptanceV03 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SubmitrTxRef")
-	public SimpleIdentificationInformation getSubmitterTransactionReference() {
-		return submitterTransactionReference;
+	public Optional<SimpleIdentificationInformation> getSubmitterTransactionReference() {
+		return submitterTransactionReference == null ? Optional.empty() : Optional.of(submitterTransactionReference);
 	}
 
-	public void setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
+	public StatusExtensionRequestAcceptanceV03 setSubmitterTransactionReference(SimpleIdentificationInformation submitterTransactionReference) {
 		this.submitterTransactionReference = submitterTransactionReference;
+		return this;
 	}
 
-	@XmlElement(name = "XtndedSts", required = true)
 	public TransactionStatus4 getExtendedStatus() {
 		return extendedStatus;
 	}
 
-	public void setExtendedStatus(TransactionStatus4 extendedStatus) {
-		this.extendedStatus = extendedStatus;
+	public StatusExtensionRequestAcceptanceV03 setExtendedStatus(TransactionStatus4 extendedStatus) {
+		this.extendedStatus = Objects.requireNonNull(extendedStatus);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.031.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.031.001.03")
 	static public class Document {
 		@XmlElement(name = "StsXtnsnReqAccptnc", required = true)
 		public StatusExtensionRequestAcceptanceV03 messageBody;

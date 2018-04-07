@@ -22,8 +22,12 @@ import com.tools20022.metamodel.MMMessageComponent;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.GeneratedRepository;
 import com.tools20022.repository.other.SkipProcessing;
+import java.text.DateFormat;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Date;
+import java.util.function.Supplier;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -46,12 +50,13 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
- * registrationStatus} =
- * com.tools20022.metamodel.MMRegistrationStatus.REGISTERED</li>
+ * registrationStatus} = com.tools20022.metamodel.MMRegistrationStatus.OBSOLETE</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRemovalDate
+ * removalDate} = September 9, 2017</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getName name} =
  * "ProprietaryData3"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
@@ -60,15 +65,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ProprietaryData3", propOrder = "any")
 public class ProprietaryData3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Any", required = true)
 	protected SkipProcessing any;
 	/**
-	 * Proprietary content.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -94,9 +100,9 @@ public class ProprietaryData3 {
 	 * definition} = "Proprietary content."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAny = new MMMessageAttribute() {
+	public static final MMMessageAttribute<ProprietaryData3, SkipProcessing> mmAny = new MMMessageAttribute<ProprietaryData3, SkipProcessing>() {
 		{
-			componentContext_lazy = () -> ProprietaryData3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.ProprietaryData3.mmObject();
 			isDerived = false;
 			xmlTag = "Any";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -106,14 +112,31 @@ public class ProprietaryData3 {
 			minOccurs = 1;
 			complexType_lazy = () -> SkipProcessing.mmObject();
 		}
+
+		@Override
+		public SkipProcessing getValue(ProprietaryData3 obj) {
+			return obj.getAny();
+		}
+
+		@Override
+		public void setValue(ProprietaryData3 obj, SkipProcessing value) {
+			obj.setAny(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(ProprietaryData3.mmAny);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
-				registrationStatus = MMRegistrationStatus.REGISTERED;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.ProprietaryData3.mmAny);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				registrationStatus = MMRegistrationStatus.OBSOLETE;
+				removalDate = ((Supplier<Date>) (() -> {
+					try {
+						return DateFormat.getDateInstance(java.text.DateFormat.LONG).parse("September 9, 2017");
+					} catch (Exception e) {
+						throw new RuntimeException(e);
+					}
+				})).get();
 				name = "ProprietaryData3";
 				definition = "Container for proprietary information. Business content of this element is not specified.";
 			}
@@ -121,12 +144,12 @@ public class ProprietaryData3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Any", required = true)
 	public SkipProcessing getAny() {
 		return any;
 	}
 
-	public void setAny(SkipProcessing any) {
-		this.any = any;
+	public ProprietaryData3 setAny(SkipProcessing any) {
+		this.any = Objects.requireNonNull(any);
+		return this;
 	}
 }

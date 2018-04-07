@@ -24,9 +24,9 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.ReportSpecification4;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -79,15 +79,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TransactionReportRequestV03", propOrder = {"requestIdentification", "reportSpecification"})
 public class TransactionReportRequestV03 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqId", required = true)
 	protected MessageIdentification1 requestIdentification;
 	/**
-	 * Identifies the request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -108,7 +109,7 @@ public class TransactionReportRequestV03 {
 	 * definition} = "Identifies the request message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<TransactionReportRequestV03, MessageIdentification1> mmRequestIdentification = new MMMessageBuildingBlock<TransactionReportRequestV03, MessageIdentification1>() {
 		{
 			xmlTag = "ReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -119,19 +120,21 @@ public class TransactionReportRequestV03 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransactionReportRequestV03.class.getMethod("getRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(TransactionReportRequestV03 obj) {
+			return obj.getRequestIdentification();
+		}
+
+		@Override
+		public void setValue(TransactionReportRequestV03 obj, MessageIdentification1 value) {
+			obj.setRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "RptSpcfctn", required = true)
 	protected ReportSpecification4 reportSpecification;
 	/**
-	 * Parameters to be used as criteria for the content of the transaction
-	 * report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -154,7 +157,7 @@ public class TransactionReportRequestV03 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportSpecification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<TransactionReportRequestV03, ReportSpecification4> mmReportSpecification = new MMMessageBuildingBlock<TransactionReportRequestV03, ReportSpecification4>() {
 		{
 			xmlTag = "RptSpcfctn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -165,12 +168,14 @@ public class TransactionReportRequestV03 {
 			complexType_lazy = () -> ReportSpecification4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return TransactionReportRequestV03.class.getMethod("getReportSpecification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ReportSpecification4 getValue(TransactionReportRequestV03 obj) {
+			return obj.getReportSpecification();
+		}
+
+		@Override
+		public void setValue(TransactionReportRequestV03 obj, ReportSpecification4 value) {
+			obj.setReportSpecification(value);
 		}
 	};
 
@@ -202,25 +207,25 @@ public class TransactionReportRequestV03 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqId", required = true)
 	public MessageIdentification1 getRequestIdentification() {
 		return requestIdentification;
 	}
 
-	public void setRequestIdentification(MessageIdentification1 requestIdentification) {
-		this.requestIdentification = requestIdentification;
+	public TransactionReportRequestV03 setRequestIdentification(MessageIdentification1 requestIdentification) {
+		this.requestIdentification = Objects.requireNonNull(requestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RptSpcfctn", required = true)
 	public ReportSpecification4 getReportSpecification() {
 		return reportSpecification;
 	}
 
-	public void setReportSpecification(ReportSpecification4 reportSpecification) {
-		this.reportSpecification = reportSpecification;
+	public TransactionReportRequestV03 setReportSpecification(ReportSpecification4 reportSpecification) {
+		this.reportSpecification = Objects.requireNonNull(reportSpecification);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.042.03.03")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.042.001.03")
 	static public class Document {
 		@XmlElement(name = "TxRptReq", required = true)
 		public TransactionReportRequestV03 messageBody;

@@ -30,9 +30,9 @@ import com.tools20022.repository.datatype.ISODate;
 import com.tools20022.repository.datatype.YesNoIndicator;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -129,8 +129,16 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintTransShipmentRule#forBaseline5
+ * ConstraintTransShipmentRule.forBaseline5}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -142,17 +150,18 @@ import javax.xml.bind.annotation.XmlType;
  * "Specifies the commercial details of the underlying transaction."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Baseline5", propOrder = {"submitterBaselineIdentification", "serviceCode", "purchaseOrderReference", "buyer", "seller", "buyerBank", "sellerBank", "buyerSideSubmittingBank", "sellerSideSubmittingBank", "billTo", "shipTo",
 		"consignee", "goods", "paymentTerms", "settlementTerms", "paymentObligation", "latestMatchDate", "commercialDataSetRequired", "transportDataSetRequired", "insuranceDataSetRequired", "certificateDataSetRequired",
 		"otherCertificateDataSetRequired", "intentToPayExpected"})
 public class Baseline5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "SubmitrBaselnId", required = true)
 	protected DocumentIdentification1 submitterBaselineIdentification;
 	/**
-	 * Identifies the baseline provided by the submitter.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -176,9 +185,9 @@ public class Baseline5 {
 	 * definition} = "Identifies the baseline provided by the submitter."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSubmitterBaselineIdentification = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, DocumentIdentification1> mmSubmitterBaselineIdentification = new MMMessageAssociationEnd<Baseline5, DocumentIdentification1>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "SubmitrBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -187,13 +196,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification1.mmObject();
+			type_lazy = () -> DocumentIdentification1.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification1 getValue(Baseline5 obj) {
+			return obj.getSubmitterBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, DocumentIdentification1 value) {
+			obj.setSubmitterBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "SvcCd", required = true)
 	protected TradeFinanceService2Code serviceCode;
 	/**
-	 * Identifies the service requested by the submitter by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -219,9 +239,9 @@ public class Baseline5 {
 	 * "Identifies the service requested by the submitter by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmServiceCode = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Baseline5, TradeFinanceService2Code> mmServiceCode = new MMMessageAttribute<Baseline5, TradeFinanceService2Code>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "SvcCd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -231,11 +251,22 @@ public class Baseline5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> TradeFinanceService2Code.mmObject();
 		}
+
+		@Override
+		public TradeFinanceService2Code getValue(Baseline5 obj) {
+			return obj.getServiceCode();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, TradeFinanceService2Code value) {
+			obj.setServiceCode(value);
+		}
 	};
+	@XmlElement(name = "PurchsOrdrRef", required = true)
 	protected DocumentIdentification7 purchaseOrderReference;
 	/**
-	 * Reference to the purchase order of the underlying transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -265,10 +296,10 @@ public class Baseline5 {
 	 * "Reference to the purchase order of the underlying transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPurchaseOrderReference = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, DocumentIdentification7> mmPurchaseOrderReference = new MMMessageAssociationEnd<Baseline5, DocumentIdentification7>() {
 		{
 			businessElementTrace_lazy = () -> PurchaseOrder.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "PurchsOrdrRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -277,13 +308,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification7.mmObject();
+			type_lazy = () -> DocumentIdentification7.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification7 getValue(Baseline5 obj) {
+			return obj.getPurchaseOrderReference();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, DocumentIdentification7 value) {
+			obj.setPurchaseOrderReference(value);
 		}
 	};
+	@XmlElement(name = "Buyr", required = true)
 	protected PartyIdentification26 buyer;
 	/**
-	 * Party that buys goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -312,10 +354,10 @@ public class Baseline5 {
 	 * "Party that buys goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBuyer = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, PartyIdentification26> mmBuyer = new MMMessageAssociationEnd<Baseline5, PartyIdentification26>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "Buyr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -324,13 +366,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public PartyIdentification26 getValue(Baseline5 obj) {
+			return obj.getBuyer();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, PartyIdentification26 value) {
+			obj.setBuyer(value);
 		}
 	};
+	@XmlElement(name = "Sellr", required = true)
 	protected PartyIdentification26 seller;
 	/**
-	 * Party that sells goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -359,10 +412,10 @@ public class Baseline5 {
 	 * "Party that sells goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSeller = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, PartyIdentification26> mmSeller = new MMMessageAssociationEnd<Baseline5, PartyIdentification26>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "Sellr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -371,13 +424,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public PartyIdentification26 getValue(Baseline5 obj) {
+			return obj.getSeller();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, PartyIdentification26 value) {
+			obj.setSeller(value);
 		}
 	};
+	@XmlElement(name = "BuyrBk", required = true)
 	protected BICIdentification1 buyerBank;
 	/**
-	 * Financial institution of the buyer, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -406,10 +470,10 @@ public class Baseline5 {
 	 * "Financial institution of the buyer, uniquely identified by its BIC."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBuyerBank = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, BICIdentification1> mmBuyerBank = new MMMessageAssociationEnd<Baseline5, BICIdentification1>() {
 		{
 			businessComponentTrace_lazy = () -> FinancialInstitution.mmObject();
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "BuyrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -418,13 +482,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public BICIdentification1 getValue(Baseline5 obj) {
+			return obj.getBuyerBank();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, BICIdentification1 value) {
+			obj.setBuyerBank(value);
 		}
 	};
+	@XmlElement(name = "SellrBk", required = true)
 	protected BICIdentification1 sellerBank;
 	/**
-	 * Financial institution of the seller, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -453,10 +528,10 @@ public class Baseline5 {
 	 * "Financial institution of the seller, uniquely identified by its BIC."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSellerBank = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, BICIdentification1> mmSellerBank = new MMMessageAssociationEnd<Baseline5, BICIdentification1>() {
 		{
 			businessComponentTrace_lazy = () -> FinancialInstitution.mmObject();
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "SellrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -465,14 +540,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public BICIdentification1 getValue(Baseline5 obj) {
+			return obj.getSellerBank();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, BICIdentification1 value) {
+			obj.setSellerBank(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.BICIdentification1> buyerSideSubmittingBank;
+	@XmlElement(name = "BuyrSdSubmitgBk")
+	protected List<BICIdentification1> buyerSideSubmittingBank;
 	/**
-	 * Financial institution on the buyer's side, uniquely identified by its
-	 * BIC. As part of the transaction, it may submit data sets.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -502,10 +587,10 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBuyerSideSubmittingBank = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<BICIdentification1>> mmBuyerSideSubmittingBank = new MMMessageAssociationEnd<Baseline5, List<BICIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> OrganisationIdentification.mmBICFI;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "BuyrSdSubmitgBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -513,14 +598,24 @@ public class Baseline5 {
 			definition = "Financial institution on the buyer's side, uniquely identified by its BIC. As part of the transaction, it may submit data sets.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public List<BICIdentification1> getValue(Baseline5 obj) {
+			return obj.getBuyerSideSubmittingBank();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<BICIdentification1> value) {
+			obj.setBuyerSideSubmittingBank(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.BICIdentification1> sellerSideSubmittingBank;
+	@XmlElement(name = "SellrSdSubmitgBk")
+	protected List<BICIdentification1> sellerSideSubmittingBank;
 	/**
-	 * Financial institution on the seller's side, uniquely identified by its
-	 * BIC. As part of the transaction, it may submit data sets.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -550,10 +645,10 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSellerSideSubmittingBank = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<BICIdentification1>> mmSellerSideSubmittingBank = new MMMessageAssociationEnd<Baseline5, List<BICIdentification1>>() {
 		{
 			businessElementTrace_lazy = () -> OrganisationIdentification.mmBICFI;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "SellrSdSubmitgBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -561,13 +656,24 @@ public class Baseline5 {
 			definition = "Financial institution on the seller's side, uniquely identified by its BIC. As part of the transaction, it may submit data sets.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.BICIdentification1.mmObject();
+			type_lazy = () -> BICIdentification1.mmObject();
+		}
+
+		@Override
+		public List<BICIdentification1> getValue(Baseline5 obj) {
+			return obj.getSellerSideSubmittingBank();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<BICIdentification1> value) {
+			obj.setSellerSideSubmittingBank(value);
 		}
 	};
+	@XmlElement(name = "BllTo")
 	protected PartyIdentification26 billTo;
 	/**
-	 * Party to be invoiced for the purchase.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -595,10 +701,10 @@ public class Baseline5 {
 	 * definition} = "Party to be invoiced for the purchase."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBillTo = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>> mmBillTo = new MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "BllTo";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -607,13 +713,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(Baseline5 obj) {
+			return obj.getBillTo();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<PartyIdentification26> value) {
+			obj.setBillTo(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ShipTo")
 	protected PartyIdentification26 shipTo;
 	/**
-	 * Party to whom the goods must be delivered in the end.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -641,10 +758,10 @@ public class Baseline5 {
 	 * definition} = "Party to whom the goods must be delivered in the end."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmShipTo = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>> mmShipTo = new MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "ShipTo";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -653,13 +770,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(Baseline5 obj) {
+			return obj.getShipTo();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<PartyIdentification26> value) {
+			obj.setShipTo(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Consgn")
 	protected PartyIdentification26 consignee;
 	/**
-	 * Party to whom the goods must be delivered.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -687,10 +815,10 @@ public class Baseline5 {
 	 * definition} = "Party to whom the goods must be delivered."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmConsignee = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>> mmConsignee = new MMMessageAssociationEnd<Baseline5, Optional<PartyIdentification26>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "Consgn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -699,13 +827,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentification26.mmObject();
+			type_lazy = () -> PartyIdentification26.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification26> getValue(Baseline5 obj) {
+			return obj.getConsignee();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<PartyIdentification26> value) {
+			obj.setConsignee(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "Goods", required = true)
 	protected LineItem13 goods;
 	/**
-	 * Goods or services that are part of a commercial trade agreement.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -732,10 +871,10 @@ public class Baseline5 {
 	 * "Goods or services that are part of a commercial trade agreement."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmGoods = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, LineItem13> mmGoods = new MMMessageAssociationEnd<Baseline5, LineItem13>() {
 		{
 			businessComponentTrace_lazy = () -> Goods.mmObject();
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "Goods";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -744,13 +883,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.LineItem13.mmObject();
+			type_lazy = () -> LineItem13.mmObject();
+		}
+
+		@Override
+		public LineItem13 getValue(Baseline5 obj) {
+			return obj.getGoods();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, LineItem13 value) {
+			obj.setGoods(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.PaymentTerms5> paymentTerms;
+	@XmlElement(name = "PmtTerms", required = true)
+	protected List<PaymentTerms5> paymentTerms;
 	/**
-	 * Specifies the payment terms by means of a code and a limit in time.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -779,10 +929,10 @@ public class Baseline5 {
 	 * "Specifies the payment terms by means of a code and a limit in time."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPaymentTerms = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<PaymentTerms5>> mmPaymentTerms = new MMMessageAssociationEnd<Baseline5, List<PaymentTerms5>>() {
 		{
 			businessElementTrace_lazy = () -> CommercialTrade.mmPaymentObligation;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "PmtTerms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -790,13 +940,24 @@ public class Baseline5 {
 			definition = "Specifies the payment terms by means of a code and a limit in time.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PaymentTerms5.mmObject();
+			type_lazy = () -> PaymentTerms5.mmObject();
+		}
+
+		@Override
+		public List<PaymentTerms5> getValue(Baseline5 obj) {
+			return obj.getPaymentTerms();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<PaymentTerms5> value) {
+			obj.setPaymentTerms(value);
 		}
 	};
+	@XmlElement(name = "SttlmTerms")
 	protected SettlementTerms3 settlementTerms;
 	/**
-	 * Specifies how the underlying transaction should be settled.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -825,10 +986,10 @@ public class Baseline5 {
 	 * "Specifies how the underlying transaction should be settled."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSettlementTerms = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<SettlementTerms3>> mmSettlementTerms = new MMMessageAssociationEnd<Baseline5, Optional<SettlementTerms3>>() {
 		{
 			businessElementTrace_lazy = () -> PaymentInstruction.mmSettlementInstruction;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "SttlmTerms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -837,14 +998,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SettlementTerms3.mmObject();
+			type_lazy = () -> SettlementTerms3.mmObject();
+		}
+
+		@Override
+		public Optional<SettlementTerms3> getValue(Baseline5 obj) {
+			return obj.getSettlementTerms();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<SettlementTerms3> value) {
+			obj.setSettlementTerms(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.PaymentObligation2> paymentObligation;
+	@XmlElement(name = "PmtOblgtn")
+	protected List<PaymentObligation2> paymentObligation;
 	/**
-	 * Specifies the details of the payment obligation between financial
-	 * institutions in this transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -874,10 +1045,10 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPaymentObligation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<PaymentObligation2>> mmPaymentObligation = new MMMessageAssociationEnd<Baseline5, List<PaymentObligation2>>() {
 		{
 			businessElementTrace_lazy = () -> CommercialTrade.mmPaymentObligation;
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "PmtOblgtn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -885,14 +1056,24 @@ public class Baseline5 {
 			definition = "Specifies the details of the payment obligation between financial institutions in this transaction.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PaymentObligation2.mmObject();
+			type_lazy = () -> PaymentObligation2.mmObject();
+		}
+
+		@Override
+		public List<PaymentObligation2> getValue(Baseline5 obj) {
+			return obj.getPaymentObligation();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<PaymentObligation2> value) {
+			obj.setPaymentObligation(value);
 		}
 	};
+	@XmlElement(name = "LatstMtchDt")
 	protected ISODate latestMatchDate;
 	/**
-	 * Specifies the latest date on which a data set must be matched with a
-	 * baseline.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -918,9 +1099,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLatestMatchDate = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Baseline5, Optional<ISODate>> mmLatestMatchDate = new MMMessageAttribute<Baseline5, Optional<ISODate>>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "LatstMtchDt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -930,12 +1111,22 @@ public class Baseline5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public Optional<ISODate> getValue(Baseline5 obj) {
+			return obj.getLatestMatchDate();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<ISODate> value) {
+			obj.setLatestMatchDate(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "ComrclDataSetReqrd", required = true)
 	protected RequiredSubmission2 commercialDataSetRequired;
 	/**
-	 * Specifies that a commercial data set is required for each shipment part
-	 * of the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -960,9 +1151,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCommercialDataSetRequired = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, RequiredSubmission2> mmCommercialDataSetRequired = new MMMessageAssociationEnd<Baseline5, RequiredSubmission2>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "ComrclDataSetReqrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -971,14 +1162,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.RequiredSubmission2.mmObject();
+			type_lazy = () -> RequiredSubmission2.mmObject();
+		}
+
+		@Override
+		public RequiredSubmission2 getValue(Baseline5 obj) {
+			return obj.getCommercialDataSetRequired();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, RequiredSubmission2 value) {
+			obj.setCommercialDataSetRequired(value);
 		}
 	};
+	@XmlElement(name = "TrnsprtDataSetReqrd")
 	protected RequiredSubmission2 transportDataSetRequired;
 	/**
-	 * Specifies that a transport data set is required for each shipment part of
-	 * the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1003,9 +1204,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTransportDataSetRequired = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<RequiredSubmission2>> mmTransportDataSetRequired = new MMMessageAssociationEnd<Baseline5, Optional<RequiredSubmission2>>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "TrnsprtDataSetReqrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1014,14 +1215,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.RequiredSubmission2.mmObject();
+			type_lazy = () -> RequiredSubmission2.mmObject();
+		}
+
+		@Override
+		public Optional<RequiredSubmission2> getValue(Baseline5 obj) {
+			return obj.getTransportDataSetRequired();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<RequiredSubmission2> value) {
+			obj.setTransportDataSetRequired(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "InsrncDataSetReqrd")
 	protected RequiredSubmission3 insuranceDataSetRequired;
 	/**
-	 * Specifies that an insurance data set is required for each shipment part
-	 * of the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1046,9 +1257,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmInsuranceDataSetRequired = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, Optional<RequiredSubmission3>> mmInsuranceDataSetRequired = new MMMessageAssociationEnd<Baseline5, Optional<RequiredSubmission3>>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "InsrncDataSetReqrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1057,14 +1268,24 @@ public class Baseline5 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.RequiredSubmission3.mmObject();
+			type_lazy = () -> RequiredSubmission3.mmObject();
+		}
+
+		@Override
+		public Optional<RequiredSubmission3> getValue(Baseline5 obj) {
+			return obj.getInsuranceDataSetRequired();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, Optional<RequiredSubmission3> value) {
+			obj.setInsuranceDataSetRequired(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.RequiredSubmission4> certificateDataSetRequired;
+	@XmlElement(name = "CertDataSetReqrd")
+	protected List<RequiredSubmission4> certificateDataSetRequired;
 	/**
-	 * Specifies that a certificate data set is required for each shipment part
-	 * of the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1089,9 +1310,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCertificateDataSetRequired = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<RequiredSubmission4>> mmCertificateDataSetRequired = new MMMessageAssociationEnd<Baseline5, List<RequiredSubmission4>>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "CertDataSetReqrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1099,14 +1320,24 @@ public class Baseline5 {
 			definition = "Specifies that a certificate data set is required for each shipment part of the transaction.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.RequiredSubmission4.mmObject();
+			type_lazy = () -> RequiredSubmission4.mmObject();
+		}
+
+		@Override
+		public List<RequiredSubmission4> getValue(Baseline5 obj) {
+			return obj.getCertificateDataSetRequired();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<RequiredSubmission4> value) {
+			obj.setCertificateDataSetRequired(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.RequiredSubmission6> otherCertificateDataSetRequired;
+	@XmlElement(name = "OthrCertDataSetReqrd")
+	protected List<RequiredSubmission6> otherCertificateDataSetRequired;
 	/**
-	 * Specifies that another type of certificate data set is required for each
-	 * shipment part of the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -1131,9 +1362,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmOtherCertificateDataSetRequired = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Baseline5, List<RequiredSubmission6>> mmOtherCertificateDataSetRequired = new MMMessageAssociationEnd<Baseline5, List<RequiredSubmission6>>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "OthrCertDataSetReqrd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1141,14 +1372,24 @@ public class Baseline5 {
 			definition = "Specifies that another type of certificate data set is required for each shipment part of the transaction.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.RequiredSubmission6.mmObject();
+			type_lazy = () -> RequiredSubmission6.mmObject();
+		}
+
+		@Override
+		public List<RequiredSubmission6> getValue(Baseline5 obj) {
+			return obj.getOtherCertificateDataSetRequired();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, List<RequiredSubmission6> value) {
+			obj.setOtherCertificateDataSetRequired(value);
 		}
 	};
+	@XmlElement(name = "InttToPayXpctd", required = true)
 	protected YesNoIndicator intentToPayExpected;
 	/**
-	 * Specifies that IntentToPayNotice message(s) are expected as part of this
-	 * transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -1175,9 +1416,9 @@ public class Baseline5 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIntentToPayExpected = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Baseline5, YesNoIndicator> mmIntentToPayExpected = new MMMessageAttribute<Baseline5, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> Baseline5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Baseline5.mmObject();
 			isDerived = false;
 			xmlTag = "InttToPayXpctd";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -1187,18 +1428,33 @@ public class Baseline5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(Baseline5 obj) {
+			return obj.getIntentToPayExpected();
+		}
+
+		@Override
+		public void setValue(Baseline5 obj, YesNoIndicator value) {
+			obj.setIntentToPayExpected(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Baseline5.mmSubmitterBaselineIdentification, Baseline5.mmServiceCode, Baseline5.mmPurchaseOrderReference, Baseline5.mmBuyer, Baseline5.mmSeller, Baseline5.mmBuyerBank,
-						Baseline5.mmSellerBank, Baseline5.mmBuyerSideSubmittingBank, Baseline5.mmSellerSideSubmittingBank, Baseline5.mmBillTo, Baseline5.mmShipTo, Baseline5.mmConsignee, Baseline5.mmGoods, Baseline5.mmPaymentTerms,
-						Baseline5.mmSettlementTerms, Baseline5.mmPaymentObligation, Baseline5.mmLatestMatchDate, Baseline5.mmCommercialDataSetRequired, Baseline5.mmTransportDataSetRequired, Baseline5.mmInsuranceDataSetRequired,
-						Baseline5.mmCertificateDataSetRequired, Baseline5.mmOtherCertificateDataSetRequired, Baseline5.mmIntentToPayExpected);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Baseline5.mmSubmitterBaselineIdentification, com.tools20022.repository.msg.Baseline5.mmServiceCode,
+						com.tools20022.repository.msg.Baseline5.mmPurchaseOrderReference, com.tools20022.repository.msg.Baseline5.mmBuyer, com.tools20022.repository.msg.Baseline5.mmSeller,
+						com.tools20022.repository.msg.Baseline5.mmBuyerBank, com.tools20022.repository.msg.Baseline5.mmSellerBank, com.tools20022.repository.msg.Baseline5.mmBuyerSideSubmittingBank,
+						com.tools20022.repository.msg.Baseline5.mmSellerSideSubmittingBank, com.tools20022.repository.msg.Baseline5.mmBillTo, com.tools20022.repository.msg.Baseline5.mmShipTo,
+						com.tools20022.repository.msg.Baseline5.mmConsignee, com.tools20022.repository.msg.Baseline5.mmGoods, com.tools20022.repository.msg.Baseline5.mmPaymentTerms,
+						com.tools20022.repository.msg.Baseline5.mmSettlementTerms, com.tools20022.repository.msg.Baseline5.mmPaymentObligation, com.tools20022.repository.msg.Baseline5.mmLatestMatchDate,
+						com.tools20022.repository.msg.Baseline5.mmCommercialDataSetRequired, com.tools20022.repository.msg.Baseline5.mmTransportDataSetRequired, com.tools20022.repository.msg.Baseline5.mmInsuranceDataSetRequired,
+						com.tools20022.repository.msg.Baseline5.mmCertificateDataSetRequired, com.tools20022.repository.msg.Baseline5.mmOtherCertificateDataSetRequired, com.tools20022.repository.msg.Baseline5.mmIntentToPayExpected);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InitialBaselineSubmissionV05.mmBaseline, BaselineAmendmentRequestV05.mmBaseline, FullPushThroughReportV05.mmPushedThroughBaseline, BaselineReSubmissionV05.mmBaseline);
 				trace_lazy = () -> CommercialTrade.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintTransShipmentRule.forBaseline5);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Baseline5";
 				definition = "Specifies the commercial details of the underlying transaction.";
@@ -1207,210 +1463,210 @@ public class Baseline5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "SubmitrBaselnId", required = true)
 	public DocumentIdentification1 getSubmitterBaselineIdentification() {
 		return submitterBaselineIdentification;
 	}
 
-	public void setSubmitterBaselineIdentification(com.tools20022.repository.msg.DocumentIdentification1 submitterBaselineIdentification) {
-		this.submitterBaselineIdentification = submitterBaselineIdentification;
+	public Baseline5 setSubmitterBaselineIdentification(DocumentIdentification1 submitterBaselineIdentification) {
+		this.submitterBaselineIdentification = Objects.requireNonNull(submitterBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "SvcCd", required = true)
 	public TradeFinanceService2Code getServiceCode() {
 		return serviceCode;
 	}
 
-	public void setServiceCode(TradeFinanceService2Code serviceCode) {
-		this.serviceCode = serviceCode;
+	public Baseline5 setServiceCode(TradeFinanceService2Code serviceCode) {
+		this.serviceCode = Objects.requireNonNull(serviceCode);
+		return this;
 	}
 
-	@XmlElement(name = "PurchsOrdrRef", required = true)
 	public DocumentIdentification7 getPurchaseOrderReference() {
 		return purchaseOrderReference;
 	}
 
-	public void setPurchaseOrderReference(com.tools20022.repository.msg.DocumentIdentification7 purchaseOrderReference) {
-		this.purchaseOrderReference = purchaseOrderReference;
+	public Baseline5 setPurchaseOrderReference(DocumentIdentification7 purchaseOrderReference) {
+		this.purchaseOrderReference = Objects.requireNonNull(purchaseOrderReference);
+		return this;
 	}
 
-	@XmlElement(name = "Buyr", required = true)
 	public PartyIdentification26 getBuyer() {
 		return buyer;
 	}
 
-	public void setBuyer(com.tools20022.repository.msg.PartyIdentification26 buyer) {
-		this.buyer = buyer;
+	public Baseline5 setBuyer(PartyIdentification26 buyer) {
+		this.buyer = Objects.requireNonNull(buyer);
+		return this;
 	}
 
-	@XmlElement(name = "Sellr", required = true)
 	public PartyIdentification26 getSeller() {
 		return seller;
 	}
 
-	public void setSeller(com.tools20022.repository.msg.PartyIdentification26 seller) {
-		this.seller = seller;
+	public Baseline5 setSeller(PartyIdentification26 seller) {
+		this.seller = Objects.requireNonNull(seller);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrBk", required = true)
 	public BICIdentification1 getBuyerBank() {
 		return buyerBank;
 	}
 
-	public void setBuyerBank(com.tools20022.repository.msg.BICIdentification1 buyerBank) {
-		this.buyerBank = buyerBank;
+	public Baseline5 setBuyerBank(BICIdentification1 buyerBank) {
+		this.buyerBank = Objects.requireNonNull(buyerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrBk", required = true)
 	public BICIdentification1 getSellerBank() {
 		return sellerBank;
 	}
 
-	public void setSellerBank(com.tools20022.repository.msg.BICIdentification1 sellerBank) {
-		this.sellerBank = sellerBank;
+	public Baseline5 setSellerBank(BICIdentification1 sellerBank) {
+		this.sellerBank = Objects.requireNonNull(sellerBank);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrSdSubmitgBk")
 	public List<BICIdentification1> getBuyerSideSubmittingBank() {
-		return buyerSideSubmittingBank;
+		return buyerSideSubmittingBank == null ? buyerSideSubmittingBank = new ArrayList<>() : buyerSideSubmittingBank;
 	}
 
-	public void setBuyerSideSubmittingBank(List<com.tools20022.repository.msg.BICIdentification1> buyerSideSubmittingBank) {
-		this.buyerSideSubmittingBank = buyerSideSubmittingBank;
+	public Baseline5 setBuyerSideSubmittingBank(List<BICIdentification1> buyerSideSubmittingBank) {
+		this.buyerSideSubmittingBank = Objects.requireNonNull(buyerSideSubmittingBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrSdSubmitgBk")
 	public List<BICIdentification1> getSellerSideSubmittingBank() {
-		return sellerSideSubmittingBank;
+		return sellerSideSubmittingBank == null ? sellerSideSubmittingBank = new ArrayList<>() : sellerSideSubmittingBank;
 	}
 
-	public void setSellerSideSubmittingBank(List<com.tools20022.repository.msg.BICIdentification1> sellerSideSubmittingBank) {
-		this.sellerSideSubmittingBank = sellerSideSubmittingBank;
+	public Baseline5 setSellerSideSubmittingBank(List<BICIdentification1> sellerSideSubmittingBank) {
+		this.sellerSideSubmittingBank = Objects.requireNonNull(sellerSideSubmittingBank);
+		return this;
 	}
 
-	@XmlElement(name = "BllTo")
-	public PartyIdentification26 getBillTo() {
-		return billTo;
+	public Optional<PartyIdentification26> getBillTo() {
+		return billTo == null ? Optional.empty() : Optional.of(billTo);
 	}
 
-	public void setBillTo(com.tools20022.repository.msg.PartyIdentification26 billTo) {
+	public Baseline5 setBillTo(PartyIdentification26 billTo) {
 		this.billTo = billTo;
+		return this;
 	}
 
-	@XmlElement(name = "ShipTo")
-	public PartyIdentification26 getShipTo() {
-		return shipTo;
+	public Optional<PartyIdentification26> getShipTo() {
+		return shipTo == null ? Optional.empty() : Optional.of(shipTo);
 	}
 
-	public void setShipTo(com.tools20022.repository.msg.PartyIdentification26 shipTo) {
+	public Baseline5 setShipTo(PartyIdentification26 shipTo) {
 		this.shipTo = shipTo;
+		return this;
 	}
 
-	@XmlElement(name = "Consgn")
-	public PartyIdentification26 getConsignee() {
-		return consignee;
+	public Optional<PartyIdentification26> getConsignee() {
+		return consignee == null ? Optional.empty() : Optional.of(consignee);
 	}
 
-	public void setConsignee(com.tools20022.repository.msg.PartyIdentification26 consignee) {
+	public Baseline5 setConsignee(PartyIdentification26 consignee) {
 		this.consignee = consignee;
+		return this;
 	}
 
-	@XmlElement(name = "Goods", required = true)
 	public LineItem13 getGoods() {
 		return goods;
 	}
 
-	public void setGoods(com.tools20022.repository.msg.LineItem13 goods) {
-		this.goods = goods;
+	public Baseline5 setGoods(LineItem13 goods) {
+		this.goods = Objects.requireNonNull(goods);
+		return this;
 	}
 
-	@XmlElement(name = "PmtTerms", required = true)
 	public List<PaymentTerms5> getPaymentTerms() {
-		return paymentTerms;
+		return paymentTerms == null ? paymentTerms = new ArrayList<>() : paymentTerms;
 	}
 
-	public void setPaymentTerms(List<com.tools20022.repository.msg.PaymentTerms5> paymentTerms) {
-		this.paymentTerms = paymentTerms;
+	public Baseline5 setPaymentTerms(List<PaymentTerms5> paymentTerms) {
+		this.paymentTerms = Objects.requireNonNull(paymentTerms);
+		return this;
 	}
 
-	@XmlElement(name = "SttlmTerms")
-	public SettlementTerms3 getSettlementTerms() {
-		return settlementTerms;
+	public Optional<SettlementTerms3> getSettlementTerms() {
+		return settlementTerms == null ? Optional.empty() : Optional.of(settlementTerms);
 	}
 
-	public void setSettlementTerms(com.tools20022.repository.msg.SettlementTerms3 settlementTerms) {
+	public Baseline5 setSettlementTerms(SettlementTerms3 settlementTerms) {
 		this.settlementTerms = settlementTerms;
+		return this;
 	}
 
-	@XmlElement(name = "PmtOblgtn")
 	public List<PaymentObligation2> getPaymentObligation() {
-		return paymentObligation;
+		return paymentObligation == null ? paymentObligation = new ArrayList<>() : paymentObligation;
 	}
 
-	public void setPaymentObligation(List<com.tools20022.repository.msg.PaymentObligation2> paymentObligation) {
-		this.paymentObligation = paymentObligation;
+	public Baseline5 setPaymentObligation(List<PaymentObligation2> paymentObligation) {
+		this.paymentObligation = Objects.requireNonNull(paymentObligation);
+		return this;
 	}
 
-	@XmlElement(name = "LatstMtchDt")
-	public ISODate getLatestMatchDate() {
-		return latestMatchDate;
+	public Optional<ISODate> getLatestMatchDate() {
+		return latestMatchDate == null ? Optional.empty() : Optional.of(latestMatchDate);
 	}
 
-	public void setLatestMatchDate(ISODate latestMatchDate) {
+	public Baseline5 setLatestMatchDate(ISODate latestMatchDate) {
 		this.latestMatchDate = latestMatchDate;
+		return this;
 	}
 
-	@XmlElement(name = "ComrclDataSetReqrd", required = true)
 	public RequiredSubmission2 getCommercialDataSetRequired() {
 		return commercialDataSetRequired;
 	}
 
-	public void setCommercialDataSetRequired(com.tools20022.repository.msg.RequiredSubmission2 commercialDataSetRequired) {
-		this.commercialDataSetRequired = commercialDataSetRequired;
+	public Baseline5 setCommercialDataSetRequired(RequiredSubmission2 commercialDataSetRequired) {
+		this.commercialDataSetRequired = Objects.requireNonNull(commercialDataSetRequired);
+		return this;
 	}
 
-	@XmlElement(name = "TrnsprtDataSetReqrd")
-	public RequiredSubmission2 getTransportDataSetRequired() {
-		return transportDataSetRequired;
+	public Optional<RequiredSubmission2> getTransportDataSetRequired() {
+		return transportDataSetRequired == null ? Optional.empty() : Optional.of(transportDataSetRequired);
 	}
 
-	public void setTransportDataSetRequired(com.tools20022.repository.msg.RequiredSubmission2 transportDataSetRequired) {
+	public Baseline5 setTransportDataSetRequired(RequiredSubmission2 transportDataSetRequired) {
 		this.transportDataSetRequired = transportDataSetRequired;
+		return this;
 	}
 
-	@XmlElement(name = "InsrncDataSetReqrd")
-	public RequiredSubmission3 getInsuranceDataSetRequired() {
-		return insuranceDataSetRequired;
+	public Optional<RequiredSubmission3> getInsuranceDataSetRequired() {
+		return insuranceDataSetRequired == null ? Optional.empty() : Optional.of(insuranceDataSetRequired);
 	}
 
-	public void setInsuranceDataSetRequired(com.tools20022.repository.msg.RequiredSubmission3 insuranceDataSetRequired) {
+	public Baseline5 setInsuranceDataSetRequired(RequiredSubmission3 insuranceDataSetRequired) {
 		this.insuranceDataSetRequired = insuranceDataSetRequired;
+		return this;
 	}
 
-	@XmlElement(name = "CertDataSetReqrd")
 	public List<RequiredSubmission4> getCertificateDataSetRequired() {
-		return certificateDataSetRequired;
+		return certificateDataSetRequired == null ? certificateDataSetRequired = new ArrayList<>() : certificateDataSetRequired;
 	}
 
-	public void setCertificateDataSetRequired(List<com.tools20022.repository.msg.RequiredSubmission4> certificateDataSetRequired) {
-		this.certificateDataSetRequired = certificateDataSetRequired;
+	public Baseline5 setCertificateDataSetRequired(List<RequiredSubmission4> certificateDataSetRequired) {
+		this.certificateDataSetRequired = Objects.requireNonNull(certificateDataSetRequired);
+		return this;
 	}
 
-	@XmlElement(name = "OthrCertDataSetReqrd")
 	public List<RequiredSubmission6> getOtherCertificateDataSetRequired() {
-		return otherCertificateDataSetRequired;
+		return otherCertificateDataSetRequired == null ? otherCertificateDataSetRequired = new ArrayList<>() : otherCertificateDataSetRequired;
 	}
 
-	public void setOtherCertificateDataSetRequired(List<com.tools20022.repository.msg.RequiredSubmission6> otherCertificateDataSetRequired) {
-		this.otherCertificateDataSetRequired = otherCertificateDataSetRequired;
+	public Baseline5 setOtherCertificateDataSetRequired(List<RequiredSubmission6> otherCertificateDataSetRequired) {
+		this.otherCertificateDataSetRequired = Objects.requireNonNull(otherCertificateDataSetRequired);
+		return this;
 	}
 
-	@XmlElement(name = "InttToPayXpctd", required = true)
 	public YesNoIndicator getIntentToPayExpected() {
 		return intentToPayExpected;
 	}
 
-	public void setIntentToPayExpected(YesNoIndicator intentToPayExpected) {
-		this.intentToPayExpected = intentToPayExpected;
+	public Baseline5 setIntentToPayExpected(YesNoIndicator intentToPayExpected) {
+		this.intentToPayExpected = Objects.requireNonNull(intentToPayExpected);
+		return this;
 	}
 }

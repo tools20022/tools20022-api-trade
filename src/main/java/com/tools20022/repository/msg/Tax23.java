@@ -26,6 +26,7 @@ import com.tools20022.repository.entity.Tax;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -51,8 +52,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -71,15 +72,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Tax23", propOrder = {"type", "amountOrPercentage"})
 public class Tax23 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected TaxType2Choice type;
 	/**
-	 * Specifies the type of tax.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -112,10 +114,10 @@ public class Tax23 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmType = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Tax23, TaxType2Choice> mmType = new MMMessageAssociationEnd<Tax23, TaxType2Choice>() {
 		{
 			businessElementTrace_lazy = () -> Tax.mmType;
-			componentContext_lazy = () -> Tax23.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Tax23.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -127,11 +129,22 @@ public class Tax23 {
 			isComposite = true;
 			type_lazy = () -> TaxType2Choice.mmObject();
 		}
+
+		@Override
+		public TaxType2Choice getValue(Tax23 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(Tax23 obj, TaxType2Choice value) {
+			obj.setType(value);
+		}
 	};
+	@XmlElement(name = "AmtOrPctg", required = true)
 	protected AmountOrPercentage2Choice amountOrPercentage;
 	/**
-	 * Specifies the tax as an amount or percentage.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -159,10 +172,10 @@ public class Tax23 {
 	 * definition} = "Specifies the tax as an amount or percentage."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAmountOrPercentage = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Tax23, AmountOrPercentage2Choice> mmAmountOrPercentage = new MMMessageAssociationEnd<Tax23, AmountOrPercentage2Choice>() {
 		{
 			businessComponentTrace_lazy = () -> Tax.mmObject();
-			componentContext_lazy = () -> Tax23.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Tax23.mmObject();
 			isDerived = false;
 			xmlTag = "AmtOrPctg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -173,14 +186,24 @@ public class Tax23 {
 			isComposite = true;
 			type_lazy = () -> AmountOrPercentage2Choice.mmObject();
 		}
+
+		@Override
+		public AmountOrPercentage2Choice getValue(Tax23 obj) {
+			return obj.getAmountOrPercentage();
+		}
+
+		@Override
+		public void setValue(Tax23 obj, AmountOrPercentage2Choice value) {
+			obj.setAmountOrPercentage(value);
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Tax23.mmType, Tax23.mmAmountOrPercentage);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Tax23.mmType, com.tools20022.repository.msg.Tax23.mmAmountOrPercentage);
 				trace_lazy = () -> Tax.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Tax23";
 				definition = "Amount of money due to the government or tax authority, according to various pre-defined parameters such as thresholds or income.";
@@ -190,21 +213,21 @@ public class Tax23 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public TaxType2Choice getType() {
 		return type;
 	}
 
-	public void setType(TaxType2Choice type) {
-		this.type = type;
+	public Tax23 setType(TaxType2Choice type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "AmtOrPctg", required = true)
 	public AmountOrPercentage2Choice getAmountOrPercentage() {
 		return amountOrPercentage;
 	}
 
-	public void setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
-		this.amountOrPercentage = amountOrPercentage;
+	public Tax23 setAmountOrPercentage(AmountOrPercentage2Choice amountOrPercentage) {
+		this.amountOrPercentage = Objects.requireNonNull(amountOrPercentage);
+		return this;
 	}
 }

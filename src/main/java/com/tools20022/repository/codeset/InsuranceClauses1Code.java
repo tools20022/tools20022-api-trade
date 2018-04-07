@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 /**
  * List of standards insurance clauses. (standard policy wordings issued by the
  * Institute of London Underwriters or the American Institute of Marine
- * Underwriters)
+ * Underwriters).
  * <p>
  * <strong>Constant fields:</strong>
  * <ul>
@@ -40,37 +40,37 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteCargoClauseA
- * InsuranceClauses1Code.mmInstituteCargoClauseA}</li>
+ * InsuranceClauses1Code.InstituteCargoClauseA}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteCargoClauseB
- * InsuranceClauses1Code.mmInstituteCargoClauseB}</li>
+ * InsuranceClauses1Code.InstituteCargoClauseB}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteCargoClauseC
- * InsuranceClauses1Code.mmInstituteCargoClauseC}</li>
+ * InsuranceClauses1Code.InstituteCargoClauseC}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteCargoClauseAir
- * InsuranceClauses1Code.mmInstituteCargoClauseAir}</li>
+ * InsuranceClauses1Code.InstituteCargoClauseAir}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteWarClauseCargo
- * InsuranceClauses1Code.mmInstituteWarClauseCargo}</li>
+ * InsuranceClauses1Code.InstituteWarClauseCargo}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteStrikesClauseCargo
- * InsuranceClauses1Code.mmInstituteStrikesClauseCargo}</li>
+ * InsuranceClauses1Code.InstituteStrikesClauseCargo}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteReplacementClause
- * InsuranceClauses1Code.mmInstituteReplacementClause}</li>
+ * InsuranceClauses1Code.InstituteReplacementClause}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteClassificationClause
- * InsuranceClauses1Code.mmInstituteClassificationClause}</li>
+ * InsuranceClauses1Code.InstituteClassificationClause}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#ISMCodeEndorsement
- * InsuranceClauses1Code.mmISMCodeEndorsement}</li>
+ * InsuranceClauses1Code.ISMCodeEndorsement}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#ComputerMilleniumClauseCargo
- * InsuranceClauses1Code.mmComputerMilleniumClauseCargo}</li>
+ * InsuranceClauses1Code.ComputerMilleniumClauseCargo}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.InsuranceClauses1Code#InstituteRadioactiveContaminationExclusionClause
- * InsuranceClauses1Code.mmInstituteRadioactiveContaminationExclusionClause}</li>
+ * InsuranceClauses1Code.InstituteRadioactiveContaminationExclusionClause}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -79,8 +79,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -95,7 +95,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * "InsuranceClauses1Code"</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
  * definition} =
- * "List of standards insurance clauses. (standard policy wordings issued by the Institute of London Underwriters or the American Institute of Marine Underwriters)"
+ * "List of standards insurance clauses. (standard policy wordings issued by the Institute of London Underwriters or the American Institute of Marine Underwriters)."
  * </li>
  * </ul>
  */
@@ -375,11 +375,11 @@ public class InsuranceClauses1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("ICCA");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InsuranceClauses1Code";
-				definition = "List of standards insurance clauses. (standard policy wordings issued by the Institute of London Underwriters or the American Institute of Marine Underwriters)";
+				definition = "List of standards insurance clauses. (standard policy wordings issued by the Institute of London Underwriters or the American Institute of Marine Underwriters).";
 				trace_lazy = () -> InsuranceClausesCode.mmObject();
 				code_lazy = () -> Arrays.asList(com.tools20022.repository.codeset.InsuranceClauses1Code.InstituteCargoClauseA, com.tools20022.repository.codeset.InsuranceClauses1Code.InstituteCargoClauseB,
 						com.tools20022.repository.codeset.InsuranceClauses1Code.InstituteCargoClauseC, com.tools20022.repository.codeset.InsuranceClauses1Code.InstituteCargoClauseAir,

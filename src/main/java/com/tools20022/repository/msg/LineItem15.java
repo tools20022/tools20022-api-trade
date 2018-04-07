@@ -25,9 +25,9 @@ import com.tools20022.repository.datatype.CurrencyAndAmount;
 import com.tools20022.repository.datatype.YesNoIndicator;
 import com.tools20022.repository.entity.*;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import com.tools20022.repository.msg.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -77,8 +77,16 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintAdjustmentFreightChargesAndTaxRule#forLineItem15
+ * ConstraintAdjustmentFreightChargesAndTaxRule.forLineItem15}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -90,16 +98,17 @@ import javax.xml.bind.annotation.XmlType;
  * "Commercial details of a trade transaction between a buyer and a seller."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "LineItem15", propOrder = {"purchaseOrderReference", "finalSubmission", "commercialLineItems", "lineItemsTotalAmount", "adjustment", "freightCharges", "tax", "totalNetAmount", "buyerDefinedInformation",
 		"sellerDefinedInformation", "incoterms"})
 public class LineItem15 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "PurchsOrdrRef", required = true)
 	protected DocumentIdentification7 purchaseOrderReference;
 	/**
-	 * Reference to the purchase order of the underlying transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -129,10 +138,10 @@ public class LineItem15 {
 	 * "Reference to the purchase order of the underlying transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmPurchaseOrderReference = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, DocumentIdentification7> mmPurchaseOrderReference = new MMMessageAssociationEnd<LineItem15, DocumentIdentification7>() {
 		{
 			businessElementTrace_lazy = () -> PurchaseOrder.mmIdentification;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "PurchsOrdrRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -141,14 +150,24 @@ public class LineItem15 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.DocumentIdentification7.mmObject();
+			type_lazy = () -> DocumentIdentification7.mmObject();
+		}
+
+		@Override
+		public DocumentIdentification7 getValue(LineItem15 obj) {
+			return obj.getPurchaseOrderReference();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, DocumentIdentification7 value) {
+			obj.setPurchaseOrderReference(value);
 		}
 	};
+	@XmlElement(name = "FnlSubmissn", required = true)
 	protected YesNoIndicator finalSubmission;
 	/**
-	 * Specifies whether this current invoice is the last submission against the
-	 * purchase order referenced.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -175,9 +194,9 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFinalSubmission = new MMMessageAttribute() {
+	public static final MMMessageAttribute<LineItem15, YesNoIndicator> mmFinalSubmission = new MMMessageAttribute<LineItem15, YesNoIndicator>() {
 		{
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "FnlSubmissn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -187,11 +206,22 @@ public class LineItem15 {
 			minOccurs = 1;
 			simpleType_lazy = () -> YesNoIndicator.mmObject();
 		}
+
+		@Override
+		public YesNoIndicator getValue(LineItem15 obj) {
+			return obj.getFinalSubmission();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, YesNoIndicator value) {
+			obj.setFinalSubmission(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.LineItemDetails14> commercialLineItems;
+	@XmlElement(name = "ComrclLineItms", required = true)
+	protected List<LineItemDetails14> commercialLineItems;
 	/**
-	 * Goods which are the subject of the invoice.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -219,10 +249,10 @@ public class LineItem15 {
 	 * definition} = "Goods which are the subject of the invoice."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCommercialLineItems = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, List<LineItemDetails14>> mmCommercialLineItems = new MMMessageAssociationEnd<LineItem15, List<LineItemDetails14>>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmLineItem;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "ComrclLineItms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -230,13 +260,24 @@ public class LineItem15 {
 			definition = "Goods which are the subject of the invoice.";
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.LineItemDetails14.mmObject();
+			type_lazy = () -> LineItemDetails14.mmObject();
+		}
+
+		@Override
+		public List<LineItemDetails14> getValue(LineItem15 obj) {
+			return obj.getCommercialLineItems();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, List<LineItemDetails14> value) {
+			obj.setCommercialLineItems(value);
 		}
 	};
+	@XmlElement(name = "LineItmsTtlAmt", required = true)
 	protected CurrencyAndAmount lineItemsTotalAmount;
 	/**
-	 * Specifies the total amount of all line items (incl. their adjustments).
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -268,10 +309,10 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLineItemsTotalAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<LineItem15, CurrencyAndAmount> mmLineItemsTotalAmount = new MMMessageAttribute<LineItem15, CurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmTotalInvoiceAmount;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "LineItmsTtlAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -281,11 +322,22 @@ public class LineItem15 {
 			minOccurs = 1;
 			simpleType_lazy = () -> CurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public CurrencyAndAmount getValue(LineItem15 obj) {
+			return obj.getLineItemsTotalAmount();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, CurrencyAndAmount value) {
+			obj.setLineItemsTotalAmount(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.Adjustment6> adjustment;
+	@XmlElement(name = "Adjstmnt")
+	protected List<Adjustment6> adjustment;
 	/**
-	 * Variance on price for the goods.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -313,10 +365,10 @@ public class LineItem15 {
 	 * definition} = "Variance on price for the goods."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmAdjustment = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, List<Adjustment6>> mmAdjustment = new MMMessageAssociationEnd<LineItem15, List<Adjustment6>>() {
 		{
 			businessElementTrace_lazy = () -> Price.mmPriceAdjustment;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "Adjstmnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -324,13 +376,24 @@ public class LineItem15 {
 			definition = "Variance on price for the goods.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Adjustment6.mmObject();
+			type_lazy = () -> Adjustment6.mmObject();
+		}
+
+		@Override
+		public List<Adjustment6> getValue(LineItem15 obj) {
+			return obj.getAdjustment();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, List<Adjustment6> value) {
+			obj.setAdjustment(value);
 		}
 	};
+	@XmlElement(name = "FrghtChrgs")
 	protected Charge25 freightCharges;
 	/**
-	 * Charges related to the conveyance of goods.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -357,10 +420,10 @@ public class LineItem15 {
 	 * definition} = "Charges related to the conveyance of goods."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFreightCharges = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, Optional<Charge25>> mmFreightCharges = new MMMessageAssociationEnd<LineItem15, Optional<Charge25>>() {
 		{
 			businessElementTrace_lazy = () -> Transport.mmTransportCharges;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "FrghtChrgs";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -369,15 +432,24 @@ public class LineItem15 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Charge25.mmObject();
+			type_lazy = () -> Charge25.mmObject();
+		}
+
+		@Override
+		public Optional<Charge25> getValue(LineItem15 obj) {
+			return obj.getFreightCharges();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, Optional<Charge25> value) {
+			obj.setFreightCharges(value.orElse(null));
 		}
 	};
-	protected List<com.tools20022.repository.msg.Tax22> tax;
+	@XmlElement(name = "Tax")
+	protected List<Tax22> tax;
 	/**
-	 * Amount of money due to the government or tax authority, according to
-	 * various pre-defined parameters linked to the value of the goods in a
-	 * trade transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -406,10 +478,10 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmTax = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, List<Tax22>> mmTax = new MMMessageAssociationEnd<LineItem15, List<Tax22>>() {
 		{
 			businessElementTrace_lazy = () -> Product.mmTax;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "Tax";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -417,14 +489,24 @@ public class LineItem15 {
 			definition = "Amount of money due to the government or tax authority, according to various pre-defined parameters linked to the value of the goods in a trade transaction.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Tax22.mmObject();
+			type_lazy = () -> Tax22.mmObject();
+		}
+
+		@Override
+		public List<Tax22> getValue(LineItem15 obj) {
+			return obj.getTax();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, List<Tax22> value) {
+			obj.setTax(value);
 		}
 	};
+	@XmlElement(name = "TtlNetAmt", required = true)
 	protected CurrencyAndAmount totalNetAmount;
 	/**
-	 * Total net amount of a trade transaction. Total amount resulting from the
-	 * gross amount plus freight charges, tax and plus/minus Adjustments.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -456,10 +538,10 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTotalNetAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<LineItem15, CurrencyAndAmount> mmTotalNetAmount = new MMMessageAttribute<LineItem15, CurrencyAndAmount>() {
 		{
 			businessElementTrace_lazy = () -> Invoice.mmTotalInvoiceAmount;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "TtlNetAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -469,13 +551,22 @@ public class LineItem15 {
 			minOccurs = 1;
 			simpleType_lazy = () -> CurrencyAndAmount.mmObject();
 		}
+
+		@Override
+		public CurrencyAndAmount getValue(LineItem15 obj) {
+			return obj.getTotalNetAmount();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, CurrencyAndAmount value) {
+			obj.setTotalNetAmount(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.UserDefinedInformation1> buyerDefinedInformation;
+	@XmlElement(name = "BuyrDfndInf")
+	protected List<UserDefinedInformation1> buyerDefinedInformation;
 	/**
-	 * Information important for the users of the message/service, which cannot
-	 * be captured in any other message component/element. For example:
-	 * Warehouse number.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -501,9 +592,9 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmBuyerDefinedInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, List<UserDefinedInformation1>> mmBuyerDefinedInformation = new MMMessageAssociationEnd<LineItem15, List<UserDefinedInformation1>>() {
 		{
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "BuyrDfndInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -511,15 +602,24 @@ public class LineItem15 {
 			definition = "Information important for the users of the message/service, which cannot be captured in any other message component/element. For example: Warehouse number.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UserDefinedInformation1.mmObject();
+			type_lazy = () -> UserDefinedInformation1.mmObject();
+		}
+
+		@Override
+		public List<UserDefinedInformation1> getValue(LineItem15 obj) {
+			return obj.getBuyerDefinedInformation();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, List<UserDefinedInformation1> value) {
+			obj.setBuyerDefinedInformation(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.UserDefinedInformation1> sellerDefinedInformation;
+	@XmlElement(name = "SellrDfndInf")
+	protected List<UserDefinedInformation1> sellerDefinedInformation;
 	/**
-	 * Information important for the users of the message/service, which cannot
-	 * be captured in any other message component/element. For example:
-	 * Warehouse number.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -545,9 +645,9 @@ public class LineItem15 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSellerDefinedInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, List<UserDefinedInformation1>> mmSellerDefinedInformation = new MMMessageAssociationEnd<LineItem15, List<UserDefinedInformation1>>() {
 		{
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "SellrDfndInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -555,13 +655,24 @@ public class LineItem15 {
 			definition = "Information important for the users of the message/service, which cannot be captured in any other message component/element. For example: Warehouse number.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.UserDefinedInformation1.mmObject();
+			type_lazy = () -> UserDefinedInformation1.mmObject();
+		}
+
+		@Override
+		public List<UserDefinedInformation1> getValue(LineItem15 obj) {
+			return obj.getSellerDefinedInformation();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, List<UserDefinedInformation1> value) {
+			obj.setSellerDefinedInformation(value);
 		}
 	};
+	@XmlElement(name = "Incotrms")
 	protected Incoterms4 incoterms;
 	/**
-	 * Specifies the applicable Incoterm and associated location.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -589,10 +700,10 @@ public class LineItem15 {
 	 * "Specifies the applicable Incoterm and associated location."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIncoterms = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<LineItem15, Optional<Incoterms4>> mmIncoterms = new MMMessageAssociationEnd<LineItem15, Optional<Incoterms4>>() {
 		{
 			businessElementTrace_lazy = () -> Transport.mmIncoterms;
-			componentContext_lazy = () -> LineItem15.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.LineItem15.mmObject();
 			isDerived = false;
 			xmlTag = "Incotrms";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -601,17 +712,30 @@ public class LineItem15 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.Incoterms4.mmObject();
+			type_lazy = () -> Incoterms4.mmObject();
+		}
+
+		@Override
+		public Optional<Incoterms4> getValue(LineItem15 obj) {
+			return obj.getIncoterms();
+		}
+
+		@Override
+		public void setValue(LineItem15 obj, Optional<Incoterms4> value) {
+			obj.setIncoterms(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(LineItem15.mmPurchaseOrderReference, LineItem15.mmFinalSubmission, LineItem15.mmCommercialLineItems, LineItem15.mmLineItemsTotalAmount, LineItem15.mmAdjustment,
-						LineItem15.mmFreightCharges, LineItem15.mmTax, LineItem15.mmTotalNetAmount, LineItem15.mmBuyerDefinedInformation, LineItem15.mmSellerDefinedInformation, LineItem15.mmIncoterms);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.LineItem15.mmPurchaseOrderReference, com.tools20022.repository.msg.LineItem15.mmFinalSubmission,
+						com.tools20022.repository.msg.LineItem15.mmCommercialLineItems, com.tools20022.repository.msg.LineItem15.mmLineItemsTotalAmount, com.tools20022.repository.msg.LineItem15.mmAdjustment,
+						com.tools20022.repository.msg.LineItem15.mmFreightCharges, com.tools20022.repository.msg.LineItem15.mmTax, com.tools20022.repository.msg.LineItem15.mmTotalNetAmount,
+						com.tools20022.repository.msg.LineItem15.mmBuyerDefinedInformation, com.tools20022.repository.msg.LineItem15.mmSellerDefinedInformation, com.tools20022.repository.msg.LineItem15.mmIncoterms);
 				trace_lazy = () -> CommercialTrade.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintAdjustmentFreightChargesAndTaxRule.forLineItem15);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "LineItem15";
 				definition = "Commercial details of a trade transaction between a buyer and a seller.";
@@ -620,102 +744,102 @@ public class LineItem15 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "PurchsOrdrRef", required = true)
 	public DocumentIdentification7 getPurchaseOrderReference() {
 		return purchaseOrderReference;
 	}
 
-	public void setPurchaseOrderReference(com.tools20022.repository.msg.DocumentIdentification7 purchaseOrderReference) {
-		this.purchaseOrderReference = purchaseOrderReference;
+	public LineItem15 setPurchaseOrderReference(DocumentIdentification7 purchaseOrderReference) {
+		this.purchaseOrderReference = Objects.requireNonNull(purchaseOrderReference);
+		return this;
 	}
 
-	@XmlElement(name = "FnlSubmissn", required = true)
 	public YesNoIndicator getFinalSubmission() {
 		return finalSubmission;
 	}
 
-	public void setFinalSubmission(YesNoIndicator finalSubmission) {
-		this.finalSubmission = finalSubmission;
+	public LineItem15 setFinalSubmission(YesNoIndicator finalSubmission) {
+		this.finalSubmission = Objects.requireNonNull(finalSubmission);
+		return this;
 	}
 
-	@XmlElement(name = "ComrclLineItms", required = true)
 	public List<LineItemDetails14> getCommercialLineItems() {
-		return commercialLineItems;
+		return commercialLineItems == null ? commercialLineItems = new ArrayList<>() : commercialLineItems;
 	}
 
-	public void setCommercialLineItems(List<com.tools20022.repository.msg.LineItemDetails14> commercialLineItems) {
-		this.commercialLineItems = commercialLineItems;
+	public LineItem15 setCommercialLineItems(List<LineItemDetails14> commercialLineItems) {
+		this.commercialLineItems = Objects.requireNonNull(commercialLineItems);
+		return this;
 	}
 
-	@XmlElement(name = "LineItmsTtlAmt", required = true)
 	public CurrencyAndAmount getLineItemsTotalAmount() {
 		return lineItemsTotalAmount;
 	}
 
-	public void setLineItemsTotalAmount(CurrencyAndAmount lineItemsTotalAmount) {
-		this.lineItemsTotalAmount = lineItemsTotalAmount;
+	public LineItem15 setLineItemsTotalAmount(CurrencyAndAmount lineItemsTotalAmount) {
+		this.lineItemsTotalAmount = Objects.requireNonNull(lineItemsTotalAmount);
+		return this;
 	}
 
-	@XmlElement(name = "Adjstmnt")
 	public List<Adjustment6> getAdjustment() {
-		return adjustment;
+		return adjustment == null ? adjustment = new ArrayList<>() : adjustment;
 	}
 
-	public void setAdjustment(List<com.tools20022.repository.msg.Adjustment6> adjustment) {
-		this.adjustment = adjustment;
+	public LineItem15 setAdjustment(List<Adjustment6> adjustment) {
+		this.adjustment = Objects.requireNonNull(adjustment);
+		return this;
 	}
 
-	@XmlElement(name = "FrghtChrgs")
-	public Charge25 getFreightCharges() {
-		return freightCharges;
+	public Optional<Charge25> getFreightCharges() {
+		return freightCharges == null ? Optional.empty() : Optional.of(freightCharges);
 	}
 
-	public void setFreightCharges(com.tools20022.repository.msg.Charge25 freightCharges) {
+	public LineItem15 setFreightCharges(Charge25 freightCharges) {
 		this.freightCharges = freightCharges;
+		return this;
 	}
 
-	@XmlElement(name = "Tax")
 	public List<Tax22> getTax() {
-		return tax;
+		return tax == null ? tax = new ArrayList<>() : tax;
 	}
 
-	public void setTax(List<com.tools20022.repository.msg.Tax22> tax) {
-		this.tax = tax;
+	public LineItem15 setTax(List<Tax22> tax) {
+		this.tax = Objects.requireNonNull(tax);
+		return this;
 	}
 
-	@XmlElement(name = "TtlNetAmt", required = true)
 	public CurrencyAndAmount getTotalNetAmount() {
 		return totalNetAmount;
 	}
 
-	public void setTotalNetAmount(CurrencyAndAmount totalNetAmount) {
-		this.totalNetAmount = totalNetAmount;
+	public LineItem15 setTotalNetAmount(CurrencyAndAmount totalNetAmount) {
+		this.totalNetAmount = Objects.requireNonNull(totalNetAmount);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrDfndInf")
 	public List<UserDefinedInformation1> getBuyerDefinedInformation() {
-		return buyerDefinedInformation;
+		return buyerDefinedInformation == null ? buyerDefinedInformation = new ArrayList<>() : buyerDefinedInformation;
 	}
 
-	public void setBuyerDefinedInformation(List<com.tools20022.repository.msg.UserDefinedInformation1> buyerDefinedInformation) {
-		this.buyerDefinedInformation = buyerDefinedInformation;
+	public LineItem15 setBuyerDefinedInformation(List<UserDefinedInformation1> buyerDefinedInformation) {
+		this.buyerDefinedInformation = Objects.requireNonNull(buyerDefinedInformation);
+		return this;
 	}
 
-	@XmlElement(name = "SellrDfndInf")
 	public List<UserDefinedInformation1> getSellerDefinedInformation() {
-		return sellerDefinedInformation;
+		return sellerDefinedInformation == null ? sellerDefinedInformation = new ArrayList<>() : sellerDefinedInformation;
 	}
 
-	public void setSellerDefinedInformation(List<com.tools20022.repository.msg.UserDefinedInformation1> sellerDefinedInformation) {
-		this.sellerDefinedInformation = sellerDefinedInformation;
+	public LineItem15 setSellerDefinedInformation(List<UserDefinedInformation1> sellerDefinedInformation) {
+		this.sellerDefinedInformation = Objects.requireNonNull(sellerDefinedInformation);
+		return this;
 	}
 
-	@XmlElement(name = "Incotrms")
-	public Incoterms4 getIncoterms() {
-		return incoterms;
+	public Optional<Incoterms4> getIncoterms() {
+		return incoterms == null ? Optional.empty() : Optional.of(incoterms);
 	}
 
-	public void setIncoterms(com.tools20022.repository.msg.Incoterms4 incoterms) {
+	public LineItem15 setIncoterms(Incoterms4 incoterms) {
 		this.incoterms = incoterms;
+		return this;
 	}
 }

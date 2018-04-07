@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.ExtendOrPayQuery2;
 import com.tools20022.repository.msg.PartyAndSignature2;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -72,15 +73,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "ExtendOrPayResponseV01", propOrder = {"extendOrPayResponseDetails", "digitalSignature"})
 public class ExtendOrPayResponseV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "XtndOrPayRspnDtls", required = true)
 	protected ExtendOrPayQuery2 extendOrPayResponseDetails;
 	/**
-	 * Details of the extend or pay response.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -101,7 +103,7 @@ public class ExtendOrPayResponseV01 {
 	 * definition} = "Details of the extend or pay response."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmExtendOrPayResponseDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ExtendOrPayResponseV01, ExtendOrPayQuery2> mmExtendOrPayResponseDetails = new MMMessageBuildingBlock<ExtendOrPayResponseV01, ExtendOrPayQuery2>() {
 		{
 			xmlTag = "XtndOrPayRspnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -112,18 +114,21 @@ public class ExtendOrPayResponseV01 {
 			complexType_lazy = () -> ExtendOrPayQuery2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ExtendOrPayResponseV01.class.getMethod("getExtendOrPayResponseDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ExtendOrPayQuery2 getValue(ExtendOrPayResponseV01 obj) {
+			return obj.getExtendOrPayResponseDetails();
+		}
+
+		@Override
+		public void setValue(ExtendOrPayResponseV01 obj, ExtendOrPayQuery2 value) {
+			obj.setExtendOrPayResponseDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the response.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -144,7 +149,7 @@ public class ExtendOrPayResponseV01 {
 	 * definition} = "Digital signature of the response."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ExtendOrPayResponseV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<ExtendOrPayResponseV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -155,12 +160,14 @@ public class ExtendOrPayResponseV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ExtendOrPayResponseV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(ExtendOrPayResponseV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(ExtendOrPayResponseV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -192,25 +199,25 @@ public class ExtendOrPayResponseV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "XtndOrPayRspnDtls", required = true)
 	public ExtendOrPayQuery2 getExtendOrPayResponseDetails() {
 		return extendOrPayResponseDetails;
 	}
 
-	public void setExtendOrPayResponseDetails(ExtendOrPayQuery2 extendOrPayResponseDetails) {
-		this.extendOrPayResponseDetails = extendOrPayResponseDetails;
+	public ExtendOrPayResponseV01 setExtendOrPayResponseDetails(ExtendOrPayQuery2 extendOrPayResponseDetails) {
+		this.extendOrPayResponseDetails = Objects.requireNonNull(extendOrPayResponseDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public ExtendOrPayResponseV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.015.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.015.001.01")
 	static public class Document {
 		@XmlElement(name = "XtndOrPayRspn", required = true)
 		public ExtendOrPayResponseV01 messageBody;

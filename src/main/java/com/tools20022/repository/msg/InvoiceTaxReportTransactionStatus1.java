@@ -25,9 +25,13 @@ import com.tools20022.repository.area.auth.InvoiceTaxReportStatusAdviceV01;
 import com.tools20022.repository.codeset.TaxReportingStatus2Code;
 import com.tools20022.repository.datatype.Max35Text;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.GenericValidationRuleIdentification1;
+import com.tools20022.repository.msg.SupplementaryData1;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -68,8 +72,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -81,16 +85,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Provides the details of each individual invoice tax report transaction."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceTaxReportTransactionStatus1", propOrder = {"taxReportIdentification", "status", "validationRule", "supplementaryData"})
 public class InvoiceTaxReportTransactionStatus1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "TaxRptId", required = true)
 	protected Max35Text taxReportIdentification;
 	/**
-	 * Report identification, for example invoice number or report number from
-	 * point of sales system.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -117,9 +121,9 @@ public class InvoiceTaxReportTransactionStatus1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmTaxReportIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InvoiceTaxReportTransactionStatus1, Max35Text> mmTaxReportIdentification = new MMMessageAttribute<InvoiceTaxReportTransactionStatus1, Max35Text>() {
 		{
-			componentContext_lazy = () -> InvoiceTaxReportTransactionStatus1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmObject();
 			isDerived = false;
 			xmlTag = "TaxRptId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -129,11 +133,22 @@ public class InvoiceTaxReportTransactionStatus1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(InvoiceTaxReportTransactionStatus1 obj) {
+			return obj.getTaxReportIdentification();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportTransactionStatus1 obj, Max35Text value) {
+			obj.setTaxReportIdentification(value);
+		}
 	};
+	@XmlElement(name = "Sts", required = true)
 	protected TaxReportingStatus2Code status;
 	/**
-	 * Defines status of the reported transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -159,9 +174,9 @@ public class InvoiceTaxReportTransactionStatus1 {
 	 * definition} = "Defines status of the reported transaction."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmStatus = new MMMessageAttribute() {
+	public static final MMMessageAttribute<InvoiceTaxReportTransactionStatus1, TaxReportingStatus2Code> mmStatus = new MMMessageAttribute<InvoiceTaxReportTransactionStatus1, TaxReportingStatus2Code>() {
 		{
-			componentContext_lazy = () -> InvoiceTaxReportTransactionStatus1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmObject();
 			isDerived = false;
 			xmlTag = "Sts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -171,11 +186,22 @@ public class InvoiceTaxReportTransactionStatus1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> TaxReportingStatus2Code.mmObject();
 		}
+
+		@Override
+		public TaxReportingStatus2Code getValue(InvoiceTaxReportTransactionStatus1 obj) {
+			return obj.getStatus();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportTransactionStatus1 obj, TaxReportingStatus2Code value) {
+			obj.setStatus(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.GenericValidationRuleIdentification1> validationRule;
+	@XmlElement(name = "VldtnRule")
+	protected List<GenericValidationRuleIdentification1> validationRule;
 	/**
-	 * Provides the details of the rule which could not be validated.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -201,9 +227,9 @@ public class InvoiceTaxReportTransactionStatus1 {
 	 * "Provides the details of the rule which could not be validated."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmValidationRule = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceTaxReportTransactionStatus1, List<GenericValidationRuleIdentification1>> mmValidationRule = new MMMessageAssociationEnd<InvoiceTaxReportTransactionStatus1, List<GenericValidationRuleIdentification1>>() {
 		{
-			componentContext_lazy = () -> InvoiceTaxReportTransactionStatus1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmObject();
 			isDerived = false;
 			xmlTag = "VldtnRule";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -211,14 +237,24 @@ public class InvoiceTaxReportTransactionStatus1 {
 			definition = "Provides the details of the rule which could not be validated.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.GenericValidationRuleIdentification1.mmObject();
+			type_lazy = () -> GenericValidationRuleIdentification1.mmObject();
+		}
+
+		@Override
+		public List<GenericValidationRuleIdentification1> getValue(InvoiceTaxReportTransactionStatus1 obj) {
+			return obj.getValidationRule();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportTransactionStatus1 obj, List<GenericValidationRuleIdentification1> value) {
+			obj.setValidationRule(value);
 		}
 	};
-	protected List<com.tools20022.repository.msg.SupplementaryData1> supplementaryData;
+	@XmlElement(name = "SplmtryData")
+	protected List<SupplementaryData1> supplementaryData;
 	/**
-	 * Additional information that can not be captured in the structured fields
-	 * and/or any other specific block.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -244,9 +280,9 @@ public class InvoiceTaxReportTransactionStatus1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmSupplementaryData = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<InvoiceTaxReportTransactionStatus1, List<SupplementaryData1>> mmSupplementaryData = new MMMessageAssociationEnd<InvoiceTaxReportTransactionStatus1, List<SupplementaryData1>>() {
 		{
-			componentContext_lazy = () -> InvoiceTaxReportTransactionStatus1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmObject();
 			isDerived = false;
 			xmlTag = "SplmtryData";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -254,17 +290,27 @@ public class InvoiceTaxReportTransactionStatus1 {
 			definition = "Additional information that can not be captured in the structured fields and/or any other specific block.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.SupplementaryData1.mmObject();
+			type_lazy = () -> SupplementaryData1.mmObject();
+		}
+
+		@Override
+		public List<SupplementaryData1> getValue(InvoiceTaxReportTransactionStatus1 obj) {
+			return obj.getSupplementaryData();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportTransactionStatus1 obj, List<SupplementaryData1> value) {
+			obj.setSupplementaryData(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(InvoiceTaxReportTransactionStatus1.mmTaxReportIdentification, InvoiceTaxReportTransactionStatus1.mmStatus, InvoiceTaxReportTransactionStatus1.mmValidationRule,
-						InvoiceTaxReportTransactionStatus1.mmSupplementaryData);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmTaxReportIdentification, com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmStatus,
+						com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmValidationRule, com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1.mmSupplementaryData);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InvoiceTaxReportStatusAdviceV01.mmTransactionStatus);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InvoiceTaxReportTransactionStatus1";
 				definition = "Provides the details of each individual invoice tax report transaction.";
@@ -273,39 +319,39 @@ public class InvoiceTaxReportTransactionStatus1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "TaxRptId", required = true)
 	public Max35Text getTaxReportIdentification() {
 		return taxReportIdentification;
 	}
 
-	public void setTaxReportIdentification(Max35Text taxReportIdentification) {
-		this.taxReportIdentification = taxReportIdentification;
+	public InvoiceTaxReportTransactionStatus1 setTaxReportIdentification(Max35Text taxReportIdentification) {
+		this.taxReportIdentification = Objects.requireNonNull(taxReportIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "Sts", required = true)
 	public TaxReportingStatus2Code getStatus() {
 		return status;
 	}
 
-	public void setStatus(TaxReportingStatus2Code status) {
-		this.status = status;
+	public InvoiceTaxReportTransactionStatus1 setStatus(TaxReportingStatus2Code status) {
+		this.status = Objects.requireNonNull(status);
+		return this;
 	}
 
-	@XmlElement(name = "VldtnRule")
 	public List<GenericValidationRuleIdentification1> getValidationRule() {
-		return validationRule;
+		return validationRule == null ? validationRule = new ArrayList<>() : validationRule;
 	}
 
-	public void setValidationRule(List<com.tools20022.repository.msg.GenericValidationRuleIdentification1> validationRule) {
-		this.validationRule = validationRule;
+	public InvoiceTaxReportTransactionStatus1 setValidationRule(List<GenericValidationRuleIdentification1> validationRule) {
+		this.validationRule = Objects.requireNonNull(validationRule);
+		return this;
 	}
 
-	@XmlElement(name = "SplmtryData")
 	public List<SupplementaryData1> getSupplementaryData() {
-		return supplementaryData;
+		return supplementaryData == null ? supplementaryData = new ArrayList<>() : supplementaryData;
 	}
 
-	public void setSupplementaryData(List<com.tools20022.repository.msg.SupplementaryData1> supplementaryData) {
-		this.supplementaryData = supplementaryData;
+	public InvoiceTaxReportTransactionStatus1 setSupplementaryData(List<SupplementaryData1> supplementaryData) {
+		this.supplementaryData = Objects.requireNonNull(supplementaryData);
+		return this;
 	}
 }

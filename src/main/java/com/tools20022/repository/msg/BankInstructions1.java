@@ -23,9 +23,8 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.datatype.ISODate;
 import com.tools20022.repository.datatype.Max2000Text;
 import com.tools20022.repository.GeneratedRepository;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,8 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -62,15 +61,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details of the instructions from the bank."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "BankInstructions1", propOrder = {"text", "lastDateForResponse"})
 public class BankInstructions1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Txt")
 	protected List<Max2000Text> text;
 	/**
-	 * Instructions from the bank.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -95,9 +95,9 @@ public class BankInstructions1 {
 	 * definition} = "Instructions from the bank."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmText = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BankInstructions1, List<Max2000Text>> mmText = new MMMessageAttribute<BankInstructions1, List<Max2000Text>>() {
 		{
-			componentContext_lazy = () -> BankInstructions1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BankInstructions1.mmObject();
 			isDerived = false;
 			xmlTag = "Txt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -107,11 +107,22 @@ public class BankInstructions1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max2000Text.mmObject();
 		}
+
+		@Override
+		public List<Max2000Text> getValue(BankInstructions1 obj) {
+			return obj.getText();
+		}
+
+		@Override
+		public void setValue(BankInstructions1 obj, List<Max2000Text> value) {
+			obj.setText(value);
+		}
 	};
+	@XmlElement(name = "LastDtForRspn")
 	protected ISODate lastDateForResponse;
 	/**
-	 * Last date for a response to the bank instructions.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -136,9 +147,9 @@ public class BankInstructions1 {
 	 * definition} = "Last date for a response to the bank instructions."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmLastDateForResponse = new MMMessageAttribute() {
+	public static final MMMessageAttribute<BankInstructions1, Optional<ISODate>> mmLastDateForResponse = new MMMessageAttribute<BankInstructions1, Optional<ISODate>>() {
 		{
-			componentContext_lazy = () -> BankInstructions1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.BankInstructions1.mmObject();
 			isDerived = false;
 			xmlTag = "LastDtForRspn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -148,13 +159,23 @@ public class BankInstructions1 {
 			minOccurs = 0;
 			simpleType_lazy = () -> ISODate.mmObject();
 		}
+
+		@Override
+		public Optional<ISODate> getValue(BankInstructions1 obj) {
+			return obj.getLastDateForResponse();
+		}
+
+		@Override
+		public void setValue(BankInstructions1 obj, Optional<ISODate> value) {
+			obj.setLastDateForResponse(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(BankInstructions1.mmText, BankInstructions1.mmLastDateForResponse);
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.BankInstructions1.mmText, com.tools20022.repository.msg.BankInstructions1.mmLastDateForResponse);
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "BankInstructions1";
 				definition = "Details of the instructions from the bank.";
@@ -163,21 +184,21 @@ public class BankInstructions1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Txt")
 	public List<Max2000Text> getText() {
-		return text;
+		return text == null ? text = new ArrayList<>() : text;
 	}
 
-	public void setText(List<Max2000Text> text) {
-		this.text = text;
+	public BankInstructions1 setText(List<Max2000Text> text) {
+		this.text = Objects.requireNonNull(text);
+		return this;
 	}
 
-	@XmlElement(name = "LastDtForRspn")
-	public ISODate getLastDateForResponse() {
-		return lastDateForResponse;
+	public Optional<ISODate> getLastDateForResponse() {
+		return lastDateForResponse == null ? Optional.empty() : Optional.of(lastDateForResponse);
 	}
 
-	public void setLastDateForResponse(ISODate lastDateForResponse) {
+	public BankInstructions1 setLastDateForResponse(ISODate lastDateForResponse) {
 		this.lastDateForResponse = lastDateForResponse;
+		return this;
 	}
 }

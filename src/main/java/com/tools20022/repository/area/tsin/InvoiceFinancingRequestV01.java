@@ -24,10 +24,11 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesInitiationLatestVersion;
 import com.tools20022.repository.msg.InvoiceRequestInformation1;
 import com.tools20022.repository.msg.RequestGroupInformation1;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -94,6 +95,20 @@ import javax.xml.bind.annotation.*;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMMessageDefinition#getMessageDefinitionIdentifier
  * messageDefinitionIdentifier} = {@code tsin.001.001.01}</li>
+ * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getConstraint
+ * constraint} =
+ * <ul>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintMandatory1Rule#for_tsin_InvoiceFinancingRequestV01
+ * ConstraintMandatory1Rule.for_tsin_InvoiceFinancingRequestV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintMandatory2Rule#for_tsin_InvoiceFinancingRequestV01
+ * ConstraintMandatory2Rule.for_tsin_InvoiceFinancingRequestV01}</li>
+ * <li>
+ * {@linkplain com.tools20022.repository.constraints.ConstraintHomogeneity1Rule#for_tsin_InvoiceFinancingRequestV01
+ * ConstraintHomogeneity1Rule.for_tsin_InvoiceFinancingRequestV01}</li>
+ * </ul>
+ * </li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -106,17 +121,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceFinancingRequestV01", propOrder = {"requestGroupInformation", "invoiceRequestInformation"})
 public class InvoiceFinancingRequestV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqGrpInf", required = true)
 	protected RequestGroupInformation1 requestGroupInformation;
 	/**
-	 * Specifies a set of characteristics that unambiguously identify the
-	 * invoice financing request, such as group identification, creation date
-	 * time, number of single invoice financing requests.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -139,7 +153,7 @@ public class InvoiceFinancingRequestV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestGroupInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingRequestV01, RequestGroupInformation1> mmRequestGroupInformation = new MMMessageBuildingBlock<InvoiceFinancingRequestV01, RequestGroupInformation1>() {
 		{
 			xmlTag = "ReqGrpInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -150,21 +164,21 @@ public class InvoiceFinancingRequestV01 {
 			complexType_lazy = () -> RequestGroupInformation1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingRequestV01.class.getMethod("getRequestGroupInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public RequestGroupInformation1 getValue(InvoiceFinancingRequestV01 obj) {
+			return obj.getRequestGroupInformation();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingRequestV01 obj, RequestGroupInformation1 value) {
+			obj.setRequestGroupInformation(value);
 		}
 	};
+	@XmlElement(name = "InvcReqInf", required = true)
 	protected List<InvoiceRequestInformation1> invoiceRequestInformation;
 	/**
-	 * Set of characteristics that unambiguously identify the single invoice
-	 * financing request related to the entire invoice or a specific instalment
-	 * of the invoice settlement, such as actors involved, invoice totals or
-	 * payment method.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -187,7 +201,7 @@ public class InvoiceFinancingRequestV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmInvoiceRequestInformation = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceFinancingRequestV01, List<InvoiceRequestInformation1>> mmInvoiceRequestInformation = new MMMessageBuildingBlock<InvoiceFinancingRequestV01, List<InvoiceRequestInformation1>>() {
 		{
 			xmlTag = "InvcReqInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -197,18 +211,22 @@ public class InvoiceFinancingRequestV01 {
 			complexType_lazy = () -> InvoiceRequestInformation1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceFinancingRequestV01.class.getMethod("getInvoiceRequestInformation", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<InvoiceRequestInformation1> getValue(InvoiceFinancingRequestV01 obj) {
+			return obj.getInvoiceRequestInformation();
+		}
+
+		@Override
+		public void setValue(InvoiceFinancingRequestV01 obj, List<InvoiceRequestInformation1> value) {
+			obj.setInvoiceRequestInformation(value);
 		}
 	};
 
 	final static public MMMessageDefinition mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageDefinition() {
 			{
+				constraint_lazy = () -> Arrays.asList(com.tools20022.repository.constraints.ConstraintMandatory1Rule.for_tsin_InvoiceFinancingRequestV01,
+						com.tools20022.repository.constraints.ConstraintMandatory2Rule.for_tsin_InvoiceFinancingRequestV01, com.tools20022.repository.constraints.ConstraintHomogeneity1Rule.for_tsin_InvoiceFinancingRequestV01);
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "InvoiceFinancingRequestV01";
 				definition = "Scope\r\nThe InvoiceFinancingRequest message is sent by Financing Requestor to the Intermediary Agent or First agent. It is used to request financing of a set of invoices, referenced in the request message itself. If the whole financing request (or a selection of single invoice requests included) is accepted, the amount financed by the First Agent will be credited either to the account specified in the financing request or to another account held by Financing Requestor to First Agent.\r\nUsage\r\nThe InvoiceFinancingRequest message is issued by the Financing Requestor and represents a bulk financing request since it can contain one or more single financing requests, each request related to an invoice.\r\nFor every invoice it is always possible to identify a supplier and a buyer.\r\nThe subject playing the role of supplier can be different from the Financing Requestor; in this case the Financing Requestor is allowed to send the request message on behalf of the supplier itself.\r\nThis caters for example in the scenario of a collection agency initiating all requests on behalf of a large corporate.\r\nIn instances where an invoice is going to be paid by means of instalments, the Financing Requestor can request financing for one or more instalments related to the invoice payment. In this case, together with the general information related to the invoice, references about instalments to be financed are specified into the request message. The request message must contain information only about the instalments that the Financing Requestor wants to be financed.\r\nThe InvoiceFinancingRequest message is used to exchange:\r\n- One instance of general information related to the invoice financing request;\r\n- One instance of information for each single invoice financing request;\r\n- Optionally, one instance of information for each single instalment to be financed.\r\nThe message can be used in a direct or a relay scenario:\r\n- In a direct scenario, the message is sent directly to the First Agent. The First Agent is the account servicer of the Financing Requestor;\r\n- In a relay scenario, the message is sent to an Intermediary Agent. The Intermediary Agent acts as an access point that will forward the InvoiceFinancingRequest message to the First Agent.";
@@ -235,25 +253,25 @@ public class InvoiceFinancingRequestV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqGrpInf", required = true)
 	public RequestGroupInformation1 getRequestGroupInformation() {
 		return requestGroupInformation;
 	}
 
-	public void setRequestGroupInformation(RequestGroupInformation1 requestGroupInformation) {
-		this.requestGroupInformation = requestGroupInformation;
+	public InvoiceFinancingRequestV01 setRequestGroupInformation(RequestGroupInformation1 requestGroupInformation) {
+		this.requestGroupInformation = Objects.requireNonNull(requestGroupInformation);
+		return this;
 	}
 
-	@XmlElement(name = "InvcReqInf", required = true)
 	public List<InvoiceRequestInformation1> getInvoiceRequestInformation() {
-		return invoiceRequestInformation;
+		return invoiceRequestInformation == null ? invoiceRequestInformation = new ArrayList<>() : invoiceRequestInformation;
 	}
 
-	public void setInvoiceRequestInformation(List<InvoiceRequestInformation1> invoiceRequestInformation) {
-		this.invoiceRequestInformation = invoiceRequestInformation;
+	public InvoiceFinancingRequestV01 setInvoiceRequestInformation(List<InvoiceRequestInformation1> invoiceRequestInformation) {
+		this.invoiceRequestInformation = Objects.requireNonNull(invoiceRequestInformation);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.001.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsin.001.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcFincgReq", required = true)
 		public InvoiceFinancingRequestV01 messageBody;

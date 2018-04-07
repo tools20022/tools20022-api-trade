@@ -38,28 +38,28 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#Accepted
- * TaxReportingStatus1Code.mmAccepted}</li>
+ * TaxReportingStatus1Code.Accepted}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#Received
- * TaxReportingStatus1Code.mmReceived}</li>
+ * TaxReportingStatus1Code.Received}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#Rejected
- * TaxReportingStatus1Code.mmRejected}</li>
+ * TaxReportingStatus1Code.Rejected}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#IncorrectFilename
- * TaxReportingStatus1Code.mmIncorrectFilename}</li>
+ * TaxReportingStatus1Code.IncorrectFilename}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#CorruptedFile
- * TaxReportingStatus1Code.mmCorruptedFile}</li>
+ * TaxReportingStatus1Code.CorruptedFile}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#Warning
- * TaxReportingStatus1Code.mmWarning}</li>
+ * TaxReportingStatus1Code.Warning}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#AcceptedTechnicalValidation
- * TaxReportingStatus1Code.mmAcceptedTechnicalValidation}</li>
+ * TaxReportingStatus1Code.AcceptedTechnicalValidation}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TaxReportingStatus1Code#PartiallyAccepted
- * TaxReportingStatus1Code.mmPartiallyAccepted}</li>
+ * TaxReportingStatus1Code.PartiallyAccepted}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -68,8 +68,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -285,7 +285,7 @@ public class TaxReportingStatus1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TaxReportingStatus1Code";
 				definition = "Specifies the status of a group of tax reporting transactions.";

@@ -27,10 +27,8 @@ import com.tools20022.repository.datatype.Max15NumericText;
 import com.tools20022.repository.msg.BusinessLetter1;
 import com.tools20022.repository.msg.EncapsulatedBusinessMessage1;
 import com.tools20022.repository.msg.ReconciliationList1;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -91,16 +89,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoicePaymentReconciliationAdviceV01", propOrder = {"header", "reconciliationList", "reconciliationCount", "itemCount", "controlSum", "attachedMessage"})
 public class InvoicePaymentReconciliationAdviceV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Hdr", required = true)
 	protected BusinessLetter1 header;
 	/**
-	 * Set of characteristics that unambiguously identify the letter, common
-	 * parameters, documents and identifications.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -122,7 +120,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, BusinessLetter1> mmHeader = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, BusinessLetter1>() {
 		{
 			xmlTag = "Hdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -133,18 +131,21 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			complexType_lazy = () -> BusinessLetter1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BusinessLetter1 getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getHeader();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, BusinessLetter1 value) {
+			obj.setHeader(value);
 		}
 	};
+	@XmlElement(name = "RcncltnList", required = true)
 	protected List<ReconciliationList1> reconciliationList;
 	/**
-	 * List of payment reconciliation information.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -165,7 +166,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * definition} = "List of payment reconciliation information."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReconciliationList = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, List<ReconciliationList1>> mmReconciliationList = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, List<ReconciliationList1>>() {
 		{
 			xmlTag = "RcncltnList";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -175,18 +176,21 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			complexType_lazy = () -> ReconciliationList1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getReconciliationList", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<ReconciliationList1> getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getReconciliationList();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, List<ReconciliationList1> value) {
+			obj.setReconciliationList(value);
 		}
 	};
+	@XmlElement(name = "RcncltnCnt")
 	protected Max15NumericText reconciliationCount;
 	/**
-	 * Number of reconciliation lists as control value.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -207,7 +211,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * definition} = "Number of reconciliation lists as control value."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReconciliationCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<Max15NumericText>> mmReconciliationCount = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "RcncltnCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -218,18 +222,21 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getReconciliationCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getReconciliationCount();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, Optional<Max15NumericText> value) {
+			obj.setReconciliationCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "ItmCnt")
 	protected Max15NumericText itemCount;
 	/**
-	 * Total number of individual items in all lists.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -250,7 +257,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * definition} = "Total number of individual items in all lists."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmItemCount = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<Max15NumericText>> mmItemCount = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<Max15NumericText>>() {
 		{
 			xmlTag = "ItmCnt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -261,19 +268,21 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			simpleType_lazy = () -> Max15NumericText.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getItemCount", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<Max15NumericText> getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getItemCount();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, Optional<Max15NumericText> value) {
+			obj.setItemCount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "CtrlSum")
 	protected DecimalNumber controlSum;
 	/**
-	 * Total of all individual amounts included in all lists, irrespective of
-	 * currencies or direction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -296,7 +305,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmControlSum = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<DecimalNumber>> mmControlSum = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, Optional<DecimalNumber>>() {
 		{
 			xmlTag = "CtrlSum";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -307,18 +316,21 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			simpleType_lazy = () -> DecimalNumber.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getControlSum", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<DecimalNumber> getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getControlSum();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, Optional<DecimalNumber> value) {
+			obj.setControlSum(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "AttchdMsg")
 	protected List<EncapsulatedBusinessMessage1> attachedMessage;
 	/**
-	 * Referenced or related business message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -339,7 +351,7 @@ public class InvoicePaymentReconciliationAdviceV01 {
 	 * definition} = "Referenced or related business message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmAttachedMessage = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, List<EncapsulatedBusinessMessage1>> mmAttachedMessage = new MMMessageBuildingBlock<InvoicePaymentReconciliationAdviceV01, List<EncapsulatedBusinessMessage1>>() {
 		{
 			xmlTag = "AttchdMsg";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -349,12 +361,14 @@ public class InvoicePaymentReconciliationAdviceV01 {
 			complexType_lazy = () -> EncapsulatedBusinessMessage1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoicePaymentReconciliationAdviceV01.class.getMethod("getAttachedMessage", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<EncapsulatedBusinessMessage1> getValue(InvoicePaymentReconciliationAdviceV01 obj) {
+			return obj.getAttachedMessage();
+		}
+
+		@Override
+		public void setValue(InvoicePaymentReconciliationAdviceV01 obj, List<EncapsulatedBusinessMessage1> value) {
+			obj.setAttachedMessage(value);
 		}
 	};
 
@@ -389,61 +403,61 @@ public class InvoicePaymentReconciliationAdviceV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Hdr", required = true)
 	public BusinessLetter1 getHeader() {
 		return header;
 	}
 
-	public void setHeader(BusinessLetter1 header) {
-		this.header = header;
+	public InvoicePaymentReconciliationAdviceV01 setHeader(BusinessLetter1 header) {
+		this.header = Objects.requireNonNull(header);
+		return this;
 	}
 
-	@XmlElement(name = "RcncltnList", required = true)
 	public List<ReconciliationList1> getReconciliationList() {
-		return reconciliationList;
+		return reconciliationList == null ? reconciliationList = new ArrayList<>() : reconciliationList;
 	}
 
-	public void setReconciliationList(List<ReconciliationList1> reconciliationList) {
-		this.reconciliationList = reconciliationList;
+	public InvoicePaymentReconciliationAdviceV01 setReconciliationList(List<ReconciliationList1> reconciliationList) {
+		this.reconciliationList = Objects.requireNonNull(reconciliationList);
+		return this;
 	}
 
-	@XmlElement(name = "RcncltnCnt")
-	public Max15NumericText getReconciliationCount() {
-		return reconciliationCount;
+	public Optional<Max15NumericText> getReconciliationCount() {
+		return reconciliationCount == null ? Optional.empty() : Optional.of(reconciliationCount);
 	}
 
-	public void setReconciliationCount(Max15NumericText reconciliationCount) {
+	public InvoicePaymentReconciliationAdviceV01 setReconciliationCount(Max15NumericText reconciliationCount) {
 		this.reconciliationCount = reconciliationCount;
+		return this;
 	}
 
-	@XmlElement(name = "ItmCnt")
-	public Max15NumericText getItemCount() {
-		return itemCount;
+	public Optional<Max15NumericText> getItemCount() {
+		return itemCount == null ? Optional.empty() : Optional.of(itemCount);
 	}
 
-	public void setItemCount(Max15NumericText itemCount) {
+	public InvoicePaymentReconciliationAdviceV01 setItemCount(Max15NumericText itemCount) {
 		this.itemCount = itemCount;
+		return this;
 	}
 
-	@XmlElement(name = "CtrlSum")
-	public DecimalNumber getControlSum() {
-		return controlSum;
+	public Optional<DecimalNumber> getControlSum() {
+		return controlSum == null ? Optional.empty() : Optional.of(controlSum);
 	}
 
-	public void setControlSum(DecimalNumber controlSum) {
+	public InvoicePaymentReconciliationAdviceV01 setControlSum(DecimalNumber controlSum) {
 		this.controlSum = controlSum;
+		return this;
 	}
 
-	@XmlElement(name = "AttchdMsg")
 	public List<EncapsulatedBusinessMessage1> getAttachedMessage() {
-		return attachedMessage;
+		return attachedMessage == null ? attachedMessage = new ArrayList<>() : attachedMessage;
 	}
 
-	public void setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
-		this.attachedMessage = attachedMessage;
+	public InvoicePaymentReconciliationAdviceV01 setAttachedMessage(List<EncapsulatedBusinessMessage1> attachedMessage) {
+		this.attachedMessage = Objects.requireNonNull(attachedMessage);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.053.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.053.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcPmtRcncltnAdvc", required = true)
 		public InvoicePaymentReconciliationAdviceV01 messageBody;

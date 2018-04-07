@@ -24,9 +24,9 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.MessageIdentification1;
 import com.tools20022.repository.msg.UTCOffset1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -79,15 +79,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "ActivityReportSetUpRequestV02", propOrder = {"requestIdentification", "UTCOffset"})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(name = "ActivityReportSetUpRequestV02", propOrder = {"requestIdentification", "uTCOffset"})
 public class ActivityReportSetUpRequestV02 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "ReqId", required = true)
 	protected MessageIdentification1 requestIdentification;
 	/**
-	 * Identifies the request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -108,7 +109,7 @@ public class ActivityReportSetUpRequestV02 {
 	 * definition} = "Identifies the request message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActivityReportSetUpRequestV02, MessageIdentification1> mmRequestIdentification = new MMMessageBuildingBlock<ActivityReportSetUpRequestV02, MessageIdentification1>() {
 		{
 			xmlTag = "ReqId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -119,18 +120,21 @@ public class ActivityReportSetUpRequestV02 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActivityReportSetUpRequestV02.class.getMethod("getRequestIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(ActivityReportSetUpRequestV02 obj) {
+			return obj.getRequestIdentification();
+		}
+
+		@Override
+		public void setValue(ActivityReportSetUpRequestV02 obj, MessageIdentification1 value) {
+			obj.setRequestIdentification(value);
 		}
 	};
+	@XmlElement(name = "UTCOffset", required = true)
 	protected UTCOffset1 uTCOffset;
 	/**
-	 * Specifies the parameters to calculate the local reporting time.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -151,7 +155,7 @@ public class ActivityReportSetUpRequestV02 {
 	 * "Specifies the parameters to calculate the local reporting time."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUTCOffset = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<ActivityReportSetUpRequestV02, UTCOffset1> mmUTCOffset = new MMMessageBuildingBlock<ActivityReportSetUpRequestV02, UTCOffset1>() {
 		{
 			xmlTag = "UTCOffset";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -162,12 +166,14 @@ public class ActivityReportSetUpRequestV02 {
 			complexType_lazy = () -> UTCOffset1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return ActivityReportSetUpRequestV02.class.getMethod("getUTCOffset", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UTCOffset1 getValue(ActivityReportSetUpRequestV02 obj) {
+			return obj.getUTCOffset();
+		}
+
+		@Override
+		public void setValue(ActivityReportSetUpRequestV02 obj, UTCOffset1 value) {
+			obj.setUTCOffset(value);
 		}
 	};
 
@@ -199,25 +205,25 @@ public class ActivityReportSetUpRequestV02 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "ReqId", required = true)
 	public MessageIdentification1 getRequestIdentification() {
 		return requestIdentification;
 	}
 
-	public void setRequestIdentification(MessageIdentification1 requestIdentification) {
-		this.requestIdentification = requestIdentification;
+	public ActivityReportSetUpRequestV02 setRequestIdentification(MessageIdentification1 requestIdentification) {
+		this.requestIdentification = Objects.requireNonNull(requestIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "UTCOffset", required = true)
 	public UTCOffset1 getUTCOffset() {
 		return uTCOffset;
 	}
 
-	public void setUTCOffset(UTCOffset1 uTCOffset) {
-		this.uTCOffset = uTCOffset;
+	public ActivityReportSetUpRequestV02 setUTCOffset(UTCOffset1 uTCOffset) {
+		this.uTCOffset = Objects.requireNonNull(uTCOffset);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.004.02.02")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.004.001.02")
 	static public class Document {
 		@XmlElement(name = "ActvtyRptSetUpReq", required = true)
 		public ActivityReportSetUpRequestV02 messageBody;

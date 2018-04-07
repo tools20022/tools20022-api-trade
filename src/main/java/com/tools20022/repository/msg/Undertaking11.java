@@ -24,8 +24,10 @@ import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.entity.Presentation;
 import com.tools20022.repository.entity.Undertaking;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.*;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -62,8 +64,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -74,15 +76,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Details related to the local undertaking."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Undertaking11", propOrder = {"newUndertakingAmount", "newExpiryDetails", "newBeneficiary", "newUndertakingTermsAndConditions", "deliveryChannel"})
 public class Undertaking11 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "NewUdrtkgAmt")
 	protected UndertakingAmount2 newUndertakingAmount;
 	/**
-	 * Details related to the requested new amount for the local undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -113,10 +116,10 @@ public class Undertaking11 {
 	 * "Details related to the requested new amount for the local undertaking."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewUndertakingAmount = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking11, Optional<UndertakingAmount2>> mmNewUndertakingAmount = new MMMessageAttribute<Undertaking11, Optional<UndertakingAmount2>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmUndertakingAmount;
-			componentContext_lazy = () -> Undertaking11.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking11.mmObject();
 			isDerived = false;
 			xmlTag = "NewUdrtkgAmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -124,14 +127,24 @@ public class Undertaking11 {
 			definition = "Details related to the requested new amount for the local undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.UndertakingAmount2.mmObject();
+			complexType_lazy = () -> UndertakingAmount2.mmObject();
+		}
+
+		@Override
+		public Optional<UndertakingAmount2> getValue(Undertaking11 obj) {
+			return obj.getNewUndertakingAmount();
+		}
+
+		@Override
+		public void setValue(Undertaking11 obj, Optional<UndertakingAmount2> value) {
+			obj.setNewUndertakingAmount(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "NewXpryDtls")
 	protected ExpiryDetails1 newExpiryDetails;
 	/**
-	 * Details related to the requested new expiry terms for the local
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -162,10 +175,10 @@ public class Undertaking11 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewExpiryDetails = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking11, Optional<ExpiryDetails1>> mmNewExpiryDetails = new MMMessageAttribute<Undertaking11, Optional<ExpiryDetails1>>() {
 		{
 			businessElementTrace_lazy = () -> Undertaking.mmExpiry;
-			componentContext_lazy = () -> Undertaking11.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking11.mmObject();
 			isDerived = false;
 			xmlTag = "NewXpryDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -173,14 +186,24 @@ public class Undertaking11 {
 			definition = "Details related to the requested new expiry terms for the local undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.ExpiryDetails1.mmObject();
+			complexType_lazy = () -> ExpiryDetails1.mmObject();
+		}
+
+		@Override
+		public Optional<ExpiryDetails1> getValue(Undertaking11 obj) {
+			return obj.getNewExpiryDetails();
+		}
+
+		@Override
+		public void setValue(Undertaking11 obj, Optional<ExpiryDetails1> value) {
+			obj.setNewExpiryDetails(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "NewBnfcry")
 	protected PartyIdentification43 newBeneficiary;
 	/**
-	 * Details related to the requested new beneficiary for the local
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -212,10 +235,10 @@ public class Undertaking11 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewBeneficiary = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking11, Optional<PartyIdentification43>> mmNewBeneficiary = new MMMessageAttribute<Undertaking11, Optional<PartyIdentification43>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> Undertaking11.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking11.mmObject();
 			isDerived = false;
 			xmlTag = "NewBnfcry";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -223,14 +246,24 @@ public class Undertaking11 {
 			definition = "Details related to the requested new beneficiary for the local undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.PartyIdentification43.mmObject();
+			complexType_lazy = () -> PartyIdentification43.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentification43> getValue(Undertaking11 obj) {
+			return obj.getNewBeneficiary();
+		}
+
+		@Override
+		public void setValue(Undertaking11 obj, Optional<PartyIdentification43> value) {
+			obj.setNewBeneficiary(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "NewUdrtkgTermsAndConds")
 	protected Narrative1 newUndertakingTermsAndConditions;
 	/**
-	 * Details related to the requested new terms and conditions for the local
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -256,9 +289,9 @@ public class Undertaking11 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmNewUndertakingTermsAndConditions = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking11, Optional<Narrative1>> mmNewUndertakingTermsAndConditions = new MMMessageAttribute<Undertaking11, Optional<Narrative1>>() {
 		{
-			componentContext_lazy = () -> Undertaking11.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking11.mmObject();
 			isDerived = false;
 			xmlTag = "NewUdrtkgTermsAndConds";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -266,14 +299,24 @@ public class Undertaking11 {
 			definition = "Details related to the requested new terms and conditions for the local undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.Narrative1.mmObject();
+			complexType_lazy = () -> Narrative1.mmObject();
+		}
+
+		@Override
+		public Optional<Narrative1> getValue(Undertaking11 obj) {
+			return obj.getNewUndertakingTermsAndConditions();
+		}
+
+		@Override
+		public void setValue(Undertaking11 obj, Optional<Narrative1> value) {
+			obj.setNewUndertakingTermsAndConditions(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "DlvryChanl")
 	protected CommunicationChannel1 deliveryChannel;
 	/**
-	 * Details related to the delivery channel for the amended local
-	 * undertaking.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -305,10 +348,10 @@ public class Undertaking11 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDeliveryChannel = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Undertaking11, Optional<CommunicationChannel1>> mmDeliveryChannel = new MMMessageAttribute<Undertaking11, Optional<CommunicationChannel1>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmCommunicationMethod;
-			componentContext_lazy = () -> Undertaking11.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Undertaking11.mmObject();
 			isDerived = false;
 			xmlTag = "DlvryChanl";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -316,17 +359,27 @@ public class Undertaking11 {
 			definition = "Details related to the delivery channel for the amended local undertaking.";
 			maxOccurs = 1;
 			minOccurs = 0;
-			complexType_lazy = () -> com.tools20022.repository.msg.CommunicationChannel1.mmObject();
+			complexType_lazy = () -> CommunicationChannel1.mmObject();
+		}
+
+		@Override
+		public Optional<CommunicationChannel1> getValue(Undertaking11 obj) {
+			return obj.getDeliveryChannel();
+		}
+
+		@Override
+		public void setValue(Undertaking11 obj, Optional<CommunicationChannel1> value) {
+			obj.setDeliveryChannel(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Undertaking11.mmNewUndertakingAmount, Undertaking11.mmNewExpiryDetails, Undertaking11.mmNewBeneficiary, Undertaking11.mmNewUndertakingTermsAndConditions,
-						Undertaking11.mmDeliveryChannel);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Undertaking11.mmNewUndertakingAmount, com.tools20022.repository.msg.Undertaking11.mmNewExpiryDetails,
+						com.tools20022.repository.msg.Undertaking11.mmNewBeneficiary, com.tools20022.repository.msg.Undertaking11.mmNewUndertakingTermsAndConditions, com.tools20022.repository.msg.Undertaking11.mmDeliveryChannel);
 				trace_lazy = () -> Undertaking.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Undertaking11";
 				definition = "Details related to the local undertaking.";
@@ -335,48 +388,48 @@ public class Undertaking11 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "NewUdrtkgAmt")
-	public UndertakingAmount2 getNewUndertakingAmount() {
-		return newUndertakingAmount;
+	public Optional<UndertakingAmount2> getNewUndertakingAmount() {
+		return newUndertakingAmount == null ? Optional.empty() : Optional.of(newUndertakingAmount);
 	}
 
-	public void setNewUndertakingAmount(com.tools20022.repository.msg.UndertakingAmount2 newUndertakingAmount) {
+	public Undertaking11 setNewUndertakingAmount(UndertakingAmount2 newUndertakingAmount) {
 		this.newUndertakingAmount = newUndertakingAmount;
+		return this;
 	}
 
-	@XmlElement(name = "NewXpryDtls")
-	public ExpiryDetails1 getNewExpiryDetails() {
-		return newExpiryDetails;
+	public Optional<ExpiryDetails1> getNewExpiryDetails() {
+		return newExpiryDetails == null ? Optional.empty() : Optional.of(newExpiryDetails);
 	}
 
-	public void setNewExpiryDetails(com.tools20022.repository.msg.ExpiryDetails1 newExpiryDetails) {
+	public Undertaking11 setNewExpiryDetails(ExpiryDetails1 newExpiryDetails) {
 		this.newExpiryDetails = newExpiryDetails;
+		return this;
 	}
 
-	@XmlElement(name = "NewBnfcry")
-	public PartyIdentification43 getNewBeneficiary() {
-		return newBeneficiary;
+	public Optional<PartyIdentification43> getNewBeneficiary() {
+		return newBeneficiary == null ? Optional.empty() : Optional.of(newBeneficiary);
 	}
 
-	public void setNewBeneficiary(com.tools20022.repository.msg.PartyIdentification43 newBeneficiary) {
+	public Undertaking11 setNewBeneficiary(PartyIdentification43 newBeneficiary) {
 		this.newBeneficiary = newBeneficiary;
+		return this;
 	}
 
-	@XmlElement(name = "NewUdrtkgTermsAndConds")
-	public Narrative1 getNewUndertakingTermsAndConditions() {
-		return newUndertakingTermsAndConditions;
+	public Optional<Narrative1> getNewUndertakingTermsAndConditions() {
+		return newUndertakingTermsAndConditions == null ? Optional.empty() : Optional.of(newUndertakingTermsAndConditions);
 	}
 
-	public void setNewUndertakingTermsAndConditions(com.tools20022.repository.msg.Narrative1 newUndertakingTermsAndConditions) {
+	public Undertaking11 setNewUndertakingTermsAndConditions(Narrative1 newUndertakingTermsAndConditions) {
 		this.newUndertakingTermsAndConditions = newUndertakingTermsAndConditions;
+		return this;
 	}
 
-	@XmlElement(name = "DlvryChanl")
-	public CommunicationChannel1 getDeliveryChannel() {
-		return deliveryChannel;
+	public Optional<CommunicationChannel1> getDeliveryChannel() {
+		return deliveryChannel == null ? Optional.empty() : Optional.of(deliveryChannel);
 	}
 
-	public void setDeliveryChannel(com.tools20022.repository.msg.CommunicationChannel1 deliveryChannel) {
+	public Undertaking11 setDeliveryChannel(CommunicationChannel1 deliveryChannel) {
 		this.deliveryChannel = deliveryChannel;
+		return this;
 	}
 }

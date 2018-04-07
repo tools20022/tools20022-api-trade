@@ -38,50 +38,50 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#CashPayment
- * CashAccountType4Code.mmCashPayment}</li>
+ * CashAccountType4Code.CashPayment}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Charges
- * CashAccountType4Code.mmCharges}</li>
+ * CashAccountType4Code.Charges}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Commission
- * CashAccountType4Code.mmCommission}</li>
+ * CashAccountType4Code.Commission}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Tax
- * CashAccountType4Code.mmTax}</li>
+ * CashAccountType4Code.Tax}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#CashIncome
- * CashAccountType4Code.mmCashIncome}</li>
+ * CashAccountType4Code.CashIncome}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#CashTrading
- * CashAccountType4Code.mmCashTrading}</li>
+ * CashAccountType4Code.CashTrading}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Settlement
- * CashAccountType4Code.mmSettlement}</li>
+ * CashAccountType4Code.Settlement}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Current
- * CashAccountType4Code.mmCurrent}</li>
+ * CashAccountType4Code.Current}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Savings
- * CashAccountType4Code.mmSavings}</li>
+ * CashAccountType4Code.Savings}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#OverNightDeposit
- * CashAccountType4Code.mmOverNightDeposit}</li>
+ * CashAccountType4Code.OverNightDeposit}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#MarginalLending
- * CashAccountType4Code.mmMarginalLending}</li>
+ * CashAccountType4Code.MarginalLending}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#NonResidentExternal
- * CashAccountType4Code.mmNonResidentExternal}</li>
+ * CashAccountType4Code.NonResidentExternal}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#MoneyMarket
- * CashAccountType4Code.mmMoneyMarket}</li>
+ * CashAccountType4Code.MoneyMarket}</li>
  * <li>{@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Loan
- * CashAccountType4Code.mmLoan}</li>
+ * CashAccountType4Code.Loan}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Salary
- * CashAccountType4Code.mmSalary}</li>
+ * CashAccountType4Code.Salary}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.CashAccountType4Code#Overdraft
- * CashAccountType4Code.mmOverdraft}</li>
+ * CashAccountType4Code.Overdraft}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -90,8 +90,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -504,7 +504,7 @@ public class CashAccountType4Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("CASH");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "CashAccountType4Code";

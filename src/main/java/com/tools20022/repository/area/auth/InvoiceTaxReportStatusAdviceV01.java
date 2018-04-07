@@ -25,10 +25,11 @@ import com.tools20022.repository.area.AuthoritiesLatestVersion;
 import com.tools20022.repository.msg.InvoiceTaxReportTransactionStatus1;
 import com.tools20022.repository.msg.InvoiceTaxStatusReportHeader1;
 import com.tools20022.repository.msg.SupplementaryData1;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -76,15 +77,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "InvoiceTaxReportStatusAdviceV01", propOrder = {"statusReportHeader", "transactionStatus", "supplementaryData"})
 public class InvoiceTaxReportStatusAdviceV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "StsRptHdr", required = true)
 	protected InvoiceTaxStatusReportHeader1 statusReportHeader;
 	/**
-	 * Provides the status on the InvoiceTaxReport.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -105,7 +107,7 @@ public class InvoiceTaxReportStatusAdviceV01 {
 	 * definition} = "Provides the status on the InvoiceTaxReport."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmStatusReportHeader = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, InvoiceTaxStatusReportHeader1> mmStatusReportHeader = new MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, InvoiceTaxStatusReportHeader1>() {
 		{
 			xmlTag = "StsRptHdr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -116,19 +118,21 @@ public class InvoiceTaxReportStatusAdviceV01 {
 			complexType_lazy = () -> InvoiceTaxStatusReportHeader1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportStatusAdviceV01.class.getMethod("getStatusReportHeader", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public InvoiceTaxStatusReportHeader1 getValue(InvoiceTaxReportStatusAdviceV01 obj) {
+			return obj.getStatusReportHeader();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportStatusAdviceV01 obj, InvoiceTaxStatusReportHeader1 value) {
+			obj.setStatusReportHeader(value);
 		}
 	};
+	@XmlElement(name = "TxSts")
 	protected List<InvoiceTaxReportTransactionStatus1> transactionStatus;
 	/**
-	 * Provides the status on an individual transaction and the related reason
-	 * if required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -151,7 +155,7 @@ public class InvoiceTaxReportStatusAdviceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, List<InvoiceTaxReportTransactionStatus1>> mmTransactionStatus = new MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, List<InvoiceTaxReportTransactionStatus1>>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -161,20 +165,21 @@ public class InvoiceTaxReportStatusAdviceV01 {
 			complexType_lazy = () -> InvoiceTaxReportTransactionStatus1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportStatusAdviceV01.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<InvoiceTaxReportTransactionStatus1> getValue(InvoiceTaxReportStatusAdviceV01 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportStatusAdviceV01 obj, List<InvoiceTaxReportTransactionStatus1> value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "SplmtryData")
 	protected List<SupplementaryData1> supplementaryData;
 	/**
-	 * Additional information that can not be captured in the structured fields
-	 * and/or any other specific<br>
-	 * block.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -197,7 +202,7 @@ public class InvoiceTaxReportStatusAdviceV01 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSupplementaryData = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, List<SupplementaryData1>> mmSupplementaryData = new MMMessageBuildingBlock<InvoiceTaxReportStatusAdviceV01, List<SupplementaryData1>>() {
 		{
 			xmlTag = "SplmtryData";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -207,12 +212,14 @@ public class InvoiceTaxReportStatusAdviceV01 {
 			complexType_lazy = () -> SupplementaryData1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return InvoiceTaxReportStatusAdviceV01.class.getMethod("getSupplementaryData", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<SupplementaryData1> getValue(InvoiceTaxReportStatusAdviceV01 obj) {
+			return obj.getSupplementaryData();
+		}
+
+		@Override
+		public void setValue(InvoiceTaxReportStatusAdviceV01 obj, List<SupplementaryData1> value) {
+			obj.setSupplementaryData(value);
 		}
 	};
 
@@ -245,34 +252,34 @@ public class InvoiceTaxReportStatusAdviceV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "StsRptHdr", required = true)
 	public InvoiceTaxStatusReportHeader1 getStatusReportHeader() {
 		return statusReportHeader;
 	}
 
-	public void setStatusReportHeader(InvoiceTaxStatusReportHeader1 statusReportHeader) {
-		this.statusReportHeader = statusReportHeader;
+	public InvoiceTaxReportStatusAdviceV01 setStatusReportHeader(InvoiceTaxStatusReportHeader1 statusReportHeader) {
+		this.statusReportHeader = Objects.requireNonNull(statusReportHeader);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts")
 	public List<InvoiceTaxReportTransactionStatus1> getTransactionStatus() {
-		return transactionStatus;
+		return transactionStatus == null ? transactionStatus = new ArrayList<>() : transactionStatus;
 	}
 
-	public void setTransactionStatus(List<InvoiceTaxReportTransactionStatus1> transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public InvoiceTaxReportStatusAdviceV01 setTransactionStatus(List<InvoiceTaxReportTransactionStatus1> transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "SplmtryData")
 	public List<SupplementaryData1> getSupplementaryData() {
-		return supplementaryData;
+		return supplementaryData == null ? supplementaryData = new ArrayList<>() : supplementaryData;
 	}
 
-	public void setSupplementaryData(List<SupplementaryData1> supplementaryData) {
-		this.supplementaryData = supplementaryData;
+	public InvoiceTaxReportStatusAdviceV01 setSupplementaryData(List<SupplementaryData1> supplementaryData) {
+		this.supplementaryData = Objects.requireNonNull(supplementaryData);
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:auth.038.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:auth.038.001.01")
 	static public class Document {
 		@XmlElement(name = "InvcTaxRptStsAdvc", required = true)
 		public InvoiceTaxReportStatusAdviceV01 messageBody;

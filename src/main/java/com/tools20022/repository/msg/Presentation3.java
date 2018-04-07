@@ -28,6 +28,7 @@ import com.tools20022.repository.entity.UndertakingDocument;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,8 +57,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -68,15 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * definition} = "Electronic presentation information."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Presentation3", propOrder = {"format", "channel", "address"})
 public class Presentation3 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Frmt")
 	protected DocumentFormat1Choice format;
 	/**
-	 * Format for presentation documents that are submitted electronically.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -107,10 +109,10 @@ public class Presentation3 {
 	 * "Format for presentation documents that are submitted electronically."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmFormat = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Presentation3, Optional<DocumentFormat1Choice>> mmFormat = new MMMessageAttribute<Presentation3, Optional<DocumentFormat1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> UndertakingDocument.mmFormat;
-			componentContext_lazy = () -> Presentation3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation3.mmObject();
 			isDerived = false;
 			xmlTag = "Frmt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,12 +122,22 @@ public class Presentation3 {
 			minOccurs = 0;
 			complexType_lazy = () -> DocumentFormat1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<DocumentFormat1Choice> getValue(Presentation3 obj) {
+			return obj.getFormat();
+		}
+
+		@Override
+		public void setValue(Presentation3 obj, Optional<DocumentFormat1Choice> value) {
+			obj.setFormat(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Chanl")
 	protected Channel1Choice channel;
 	/**
-	 * Channel through which presentation documents are submitted
-	 * electronically, such as SWIFT, Web upload, or secure email.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -153,29 +165,39 @@ public class Presentation3 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Channel through which presentation documents are submitted electronically, such as SWIFT,  Web upload, or secure email.  "
+	 * "Channel through which presentation documents are submitted electronically, such as SWIFT, Web upload, or secure email."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmChannel = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Presentation3, Optional<Channel1Choice>> mmChannel = new MMMessageAttribute<Presentation3, Optional<Channel1Choice>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmCommunicationMethod;
-			componentContext_lazy = () -> Presentation3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation3.mmObject();
 			isDerived = false;
 			xmlTag = "Chanl";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Channel";
-			definition = "Channel through which presentation documents are submitted electronically, such as SWIFT,  Web upload, or secure email.  ";
+			definition = "Channel through which presentation documents are submitted electronically, such as SWIFT, Web upload, or secure email.";
 			maxOccurs = 1;
 			minOccurs = 0;
 			complexType_lazy = () -> Channel1Choice.mmObject();
 		}
+
+		@Override
+		public Optional<Channel1Choice> getValue(Presentation3 obj) {
+			return obj.getChannel();
+		}
+
+		@Override
+		public void setValue(Presentation3 obj, Optional<Channel1Choice> value) {
+			obj.setChannel(value.orElse(null));
+		}
 	};
+	@XmlElement(name = "Adr")
 	protected Max256Text address;
 	/**
-	 * Uniform Resource Identifier (URI), such as a web or an email address,
-	 * specifying where the presentation can be addressed.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -206,10 +228,10 @@ public class Presentation3 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmAddress = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Presentation3, Optional<Max256Text>> mmAddress = new MMMessageAttribute<Presentation3, Optional<Max256Text>>() {
 		{
 			businessElementTrace_lazy = () -> Presentation.mmElectronicPresentationAddress;
-			componentContext_lazy = () -> Presentation3.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Presentation3.mmObject();
 			isDerived = false;
 			xmlTag = "Adr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -219,14 +241,24 @@ public class Presentation3 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max256Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max256Text> getValue(Presentation3 obj) {
+			return obj.getAddress();
+		}
+
+		@Override
+		public void setValue(Presentation3 obj, Optional<Max256Text> value) {
+			obj.setAddress(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Presentation3.mmFormat, Presentation3.mmChannel, Presentation3.mmAddress);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Presentation3.mmFormat, com.tools20022.repository.msg.Presentation3.mmChannel, com.tools20022.repository.msg.Presentation3.mmAddress);
 				trace_lazy = () -> Presentation.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Presentation3";
 				definition = "Electronic presentation information.";
@@ -235,30 +267,30 @@ public class Presentation3 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Frmt")
-	public DocumentFormat1Choice getFormat() {
-		return format;
+	public Optional<DocumentFormat1Choice> getFormat() {
+		return format == null ? Optional.empty() : Optional.of(format);
 	}
 
-	public void setFormat(DocumentFormat1Choice format) {
+	public Presentation3 setFormat(DocumentFormat1Choice format) {
 		this.format = format;
+		return this;
 	}
 
-	@XmlElement(name = "Chanl")
-	public Channel1Choice getChannel() {
-		return channel;
+	public Optional<Channel1Choice> getChannel() {
+		return channel == null ? Optional.empty() : Optional.of(channel);
 	}
 
-	public void setChannel(Channel1Choice channel) {
+	public Presentation3 setChannel(Channel1Choice channel) {
 		this.channel = channel;
+		return this;
 	}
 
-	@XmlElement(name = "Adr")
-	public Max256Text getAddress() {
-		return address;
+	public Optional<Max256Text> getAddress() {
+		return address == null ? Optional.empty() : Optional.of(address);
 	}
 
-	public void setAddress(Max256Text address) {
+	public Presentation3 setAddress(Max256Text address) {
 		this.address = address;
+		return this;
 	}
 }

@@ -24,9 +24,10 @@ import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesLatestVersion;
 import com.tools20022.repository.msg.PartyAndSignature2;
 import com.tools20022.repository.msg.UndertakingNonExtensionStatusAdvice1;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -73,15 +74,16 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "UndertakingNonExtensionNotificationV01", propOrder = {"undertakingNonExtensionNotificationDetails", "digitalSignature"})
 public class UndertakingNonExtensionNotificationV01 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "UdrtkgNonXtnsnNtfctnDtls", required = true)
 	protected UndertakingNonExtensionStatusAdvice1 undertakingNonExtensionNotificationDetails;
 	/**
-	 * Details of the non-extension notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -102,7 +104,7 @@ public class UndertakingNonExtensionNotificationV01 {
 	 * definition} = "Details of the non-extension notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUndertakingNonExtensionNotificationDetails = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingNonExtensionNotificationV01, UndertakingNonExtensionStatusAdvice1> mmUndertakingNonExtensionNotificationDetails = new MMMessageBuildingBlock<UndertakingNonExtensionNotificationV01, UndertakingNonExtensionStatusAdvice1>() {
 		{
 			xmlTag = "UdrtkgNonXtnsnNtfctnDtls";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -113,18 +115,21 @@ public class UndertakingNonExtensionNotificationV01 {
 			complexType_lazy = () -> UndertakingNonExtensionStatusAdvice1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingNonExtensionNotificationV01.class.getMethod("getUndertakingNonExtensionNotificationDetails", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public UndertakingNonExtensionStatusAdvice1 getValue(UndertakingNonExtensionNotificationV01 obj) {
+			return obj.getUndertakingNonExtensionNotificationDetails();
+		}
+
+		@Override
+		public void setValue(UndertakingNonExtensionNotificationV01 obj, UndertakingNonExtensionStatusAdvice1 value) {
+			obj.setUndertakingNonExtensionNotificationDetails(value);
 		}
 	};
+	@XmlElement(name = "DgtlSgntr")
 	protected PartyAndSignature2 digitalSignature;
 	/**
-	 * Digital signature of the notification.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -145,7 +150,7 @@ public class UndertakingNonExtensionNotificationV01 {
 	 * definition} = "Digital signature of the notification."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmDigitalSignature = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<UndertakingNonExtensionNotificationV01, Optional<PartyAndSignature2>> mmDigitalSignature = new MMMessageBuildingBlock<UndertakingNonExtensionNotificationV01, Optional<PartyAndSignature2>>() {
 		{
 			xmlTag = "DgtlSgntr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -156,12 +161,14 @@ public class UndertakingNonExtensionNotificationV01 {
 			complexType_lazy = () -> PartyAndSignature2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return UndertakingNonExtensionNotificationV01.class.getMethod("getDigitalSignature", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PartyAndSignature2> getValue(UndertakingNonExtensionNotificationV01 obj) {
+			return obj.getDigitalSignature();
+		}
+
+		@Override
+		public void setValue(UndertakingNonExtensionNotificationV01 obj, Optional<PartyAndSignature2> value) {
+			obj.setDigitalSignature(value.orElse(null));
 		}
 	};
 
@@ -194,25 +201,25 @@ public class UndertakingNonExtensionNotificationV01 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "UdrtkgNonXtnsnNtfctnDtls", required = true)
 	public UndertakingNonExtensionStatusAdvice1 getUndertakingNonExtensionNotificationDetails() {
 		return undertakingNonExtensionNotificationDetails;
 	}
 
-	public void setUndertakingNonExtensionNotificationDetails(UndertakingNonExtensionStatusAdvice1 undertakingNonExtensionNotificationDetails) {
-		this.undertakingNonExtensionNotificationDetails = undertakingNonExtensionNotificationDetails;
+	public UndertakingNonExtensionNotificationV01 setUndertakingNonExtensionNotificationDetails(UndertakingNonExtensionStatusAdvice1 undertakingNonExtensionNotificationDetails) {
+		this.undertakingNonExtensionNotificationDetails = Objects.requireNonNull(undertakingNonExtensionNotificationDetails);
+		return this;
 	}
 
-	@XmlElement(name = "DgtlSgntr")
-	public PartyAndSignature2 getDigitalSignature() {
-		return digitalSignature;
+	public Optional<PartyAndSignature2> getDigitalSignature() {
+		return digitalSignature == null ? Optional.empty() : Optional.of(digitalSignature);
 	}
 
-	public void setDigitalSignature(PartyAndSignature2 digitalSignature) {
+	public UndertakingNonExtensionNotificationV01 setDigitalSignature(PartyAndSignature2 digitalSignature) {
 		this.digitalSignature = digitalSignature;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.011.01.01")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsrv.011.001.01")
 	static public class Document {
 		@XmlElement(name = "UdrtkgNonXtnsnNtfctn", required = true)
 		public UndertakingNonExtensionNotificationV01 messageBody;

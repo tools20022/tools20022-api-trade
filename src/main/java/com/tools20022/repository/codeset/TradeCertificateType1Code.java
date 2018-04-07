@@ -38,25 +38,25 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <ul>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Analysis
- * TradeCertificateType1Code.mmAnalysis}</li>
+ * TradeCertificateType1Code.Analysis}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Quality
- * TradeCertificateType1Code.mmQuality}</li>
+ * TradeCertificateType1Code.Quality}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Quantity
- * TradeCertificateType1Code.mmQuantity}</li>
+ * TradeCertificateType1Code.Quantity}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Weight
- * TradeCertificateType1Code.mmWeight}</li>
+ * TradeCertificateType1Code.Weight}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Origin
- * TradeCertificateType1Code.mmOrigin}</li>
+ * TradeCertificateType1Code.Origin}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Health
- * TradeCertificateType1Code.mmHealth}</li>
+ * TradeCertificateType1Code.Health}</li>
  * <li>
  * {@linkplain com.tools20022.repository.codeset.TradeCertificateType1Code#Phytosanitary
- * TradeCertificateType1Code.mmPhytosanitary}</li>
+ * TradeCertificateType1Code.Phytosanitary}</li>
  * </ul>
  * </li>
  * <li>{@linkplain com.tools20022.metamodel.MMCodeSet#getTrace trace} =
@@ -65,8 +65,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>{@linkplain com.tools20022.metamodel.MMRepositoryConcept#getExample
  * example} =
  * <ul>
@@ -263,7 +263,7 @@ public class TradeCertificateType1Code extends MMCode {
 	final static public MMCodeSet mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMCodeSet() {
 			{
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				example = Arrays.asList("ANLY");
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TradeCertificateType1Code";

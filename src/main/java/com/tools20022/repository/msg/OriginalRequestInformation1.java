@@ -28,8 +28,14 @@ import com.tools20022.repository.entity.InvoiceFinancingAgreement;
 import com.tools20022.repository.entity.Organisation;
 import com.tools20022.repository.entity.Party;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.CancellationStatusInformation1;
+import com.tools20022.repository.msg.FinancialInstitutionIdentification6;
+import com.tools20022.repository.msg.PartyIdentificationAndAccount6;
+import com.tools20022.repository.msg.ValidationStatusInformation1;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -84,8 +90,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -98,16 +104,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "OriginalRequestInformation1", propOrder = {"identification", "creationDateTime", "financingRequestor", "intermediaryAgent", "firstAgent", "validationStatusInformation", "cancellationStatusInformation"})
 public class OriginalRequestInformation1 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Id", required = true)
 	protected Max35Text identification;
 	/**
-	 * Unique and unambiguous identifier of the original request message as
-	 * assigned by the original sending party.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -134,9 +140,9 @@ public class OriginalRequestInformation1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmIdentification = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalRequestInformation1, Max35Text> mmIdentification = new MMMessageAttribute<OriginalRequestInformation1, Max35Text>() {
 		{
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "Id";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -146,11 +152,22 @@ public class OriginalRequestInformation1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> Max35Text.mmObject();
 		}
+
+		@Override
+		public Max35Text getValue(OriginalRequestInformation1 obj) {
+			return obj.getIdentification();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, Max35Text value) {
+			obj.setIdentification(value);
+		}
 	};
+	@XmlElement(name = "CreDtTm", required = true)
 	protected ISODateTime creationDateTime;
 	/**
-	 * Date and time at which the original request message was created.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -176,9 +193,9 @@ public class OriginalRequestInformation1 {
 	 * "Date and time at which the original request message was created."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmCreationDateTime = new MMMessageAttribute() {
+	public static final MMMessageAttribute<OriginalRequestInformation1, ISODateTime> mmCreationDateTime = new MMMessageAttribute<OriginalRequestInformation1, ISODateTime>() {
 		{
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "CreDtTm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -188,12 +205,22 @@ public class OriginalRequestInformation1 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODateTime.mmObject();
 		}
+
+		@Override
+		public ISODateTime getValue(OriginalRequestInformation1 obj) {
+			return obj.getCreationDateTime();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, ISODateTime value) {
+			obj.setCreationDateTime(value);
+		}
 	};
+	@XmlElement(name = "FincgRqstr")
 	protected PartyIdentificationAndAccount6 financingRequestor;
 	/**
-	 * Party that requests the invoice financing, on behalf of a creditor, as
-	 * indicated in the original request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -225,10 +252,10 @@ public class OriginalRequestInformation1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFinancingRequestor = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalRequestInformation1, Optional<PartyIdentificationAndAccount6>> mmFinancingRequestor = new MMMessageAssociationEnd<OriginalRequestInformation1, Optional<PartyIdentificationAndAccount6>>() {
 		{
 			businessElementTrace_lazy = () -> Party.mmIdentification;
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "FincgRqstr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -237,15 +264,24 @@ public class OriginalRequestInformation1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.PartyIdentificationAndAccount6.mmObject();
+			type_lazy = () -> PartyIdentificationAndAccount6.mmObject();
+		}
+
+		@Override
+		public Optional<PartyIdentificationAndAccount6> getValue(OriginalRequestInformation1 obj) {
+			return obj.getFinancingRequestor();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, Optional<PartyIdentificationAndAccount6> value) {
+			obj.setFinancingRequestor(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "IntrmyAgt")
 	protected FinancialInstitutionIdentification6 intermediaryAgent;
 	/**
-	 * Financial institution that receives the request from the financing
-	 * requestor and forwards it to the first agent for execution, as indicated
-	 * in the original request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -277,10 +313,10 @@ public class OriginalRequestInformation1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmIntermediaryAgent = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalRequestInformation1, Optional<FinancialInstitutionIdentification6>> mmIntermediaryAgent = new MMMessageAssociationEnd<OriginalRequestInformation1, Optional<FinancialInstitutionIdentification6>>() {
 		{
 			businessElementTrace_lazy = () -> Organisation.mmOrganisationIdentification;
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "IntrmyAgt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -289,15 +325,24 @@ public class OriginalRequestInformation1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancialInstitutionIdentification6.mmObject();
+			type_lazy = () -> FinancialInstitutionIdentification6.mmObject();
+		}
+
+		@Override
+		public Optional<FinancialInstitutionIdentification6> getValue(OriginalRequestInformation1 obj) {
+			return obj.getIntermediaryAgent();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, Optional<FinancialInstitutionIdentification6> value) {
+			obj.setIntermediaryAgent(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "FrstAgt")
 	protected FinancialInstitutionIdentification6 firstAgent;
 	/**
-	 * Financial institution of financing requestor to which an invoice
-	 * financing request is addressed, as indicated in the original request
-	 * message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -329,10 +374,10 @@ public class OriginalRequestInformation1 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmFirstAgent = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalRequestInformation1, Optional<FinancialInstitutionIdentification6>> mmFirstAgent = new MMMessageAssociationEnd<OriginalRequestInformation1, Optional<FinancialInstitutionIdentification6>>() {
 		{
 			businessElementTrace_lazy = () -> Organisation.mmOrganisationIdentification;
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "FrstAgt";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -341,13 +386,24 @@ public class OriginalRequestInformation1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.FinancialInstitutionIdentification6.mmObject();
+			type_lazy = () -> FinancialInstitutionIdentification6.mmObject();
+		}
+
+		@Override
+		public Optional<FinancialInstitutionIdentification6> getValue(OriginalRequestInformation1 obj) {
+			return obj.getFirstAgent();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, Optional<FinancialInstitutionIdentification6> value) {
+			obj.setFirstAgent(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "VldtnStsInf", required = true)
 	protected ValidationStatusInformation1 validationStatusInformation;
 	/**
-	 * Information about the validation status of the request message.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -378,10 +434,10 @@ public class OriginalRequestInformation1 {
 	 * "Information about the validation status of the request message."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmValidationStatusInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalRequestInformation1, ValidationStatusInformation1> mmValidationStatusInformation = new MMMessageAssociationEnd<OriginalRequestInformation1, ValidationStatusInformation1>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "VldtnStsInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -390,13 +446,24 @@ public class OriginalRequestInformation1 {
 			maxOccurs = 1;
 			minOccurs = 1;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ValidationStatusInformation1.mmObject();
+			type_lazy = () -> ValidationStatusInformation1.mmObject();
+		}
+
+		@Override
+		public ValidationStatusInformation1 getValue(OriginalRequestInformation1 obj) {
+			return obj.getValidationStatusInformation();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, ValidationStatusInformation1 value) {
+			obj.setValidationStatusInformation(value);
 		}
 	};
+	@XmlElement(name = "CxlStsInf")
 	protected CancellationStatusInformation1 cancellationStatusInformation;
 	/**
-	 * Information on the business status of the cancellation.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -426,10 +493,10 @@ public class OriginalRequestInformation1 {
 	 * definition} = "Information on the business status of the cancellation."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCancellationStatusInformation = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<OriginalRequestInformation1, Optional<CancellationStatusInformation1>> mmCancellationStatusInformation = new MMMessageAssociationEnd<OriginalRequestInformation1, Optional<CancellationStatusInformation1>>() {
 		{
 			businessElementTrace_lazy = () -> InvoiceFinancingAgreement.mmInvoiceFinancingStatus;
-			componentContext_lazy = () -> OriginalRequestInformation1.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.OriginalRequestInformation1.mmObject();
 			isDerived = false;
 			xmlTag = "CxlStsInf";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -438,18 +505,30 @@ public class OriginalRequestInformation1 {
 			maxOccurs = 1;
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.CancellationStatusInformation1.mmObject();
+			type_lazy = () -> CancellationStatusInformation1.mmObject();
+		}
+
+		@Override
+		public Optional<CancellationStatusInformation1> getValue(OriginalRequestInformation1 obj) {
+			return obj.getCancellationStatusInformation();
+		}
+
+		@Override
+		public void setValue(OriginalRequestInformation1 obj, Optional<CancellationStatusInformation1> value) {
+			obj.setCancellationStatusInformation(value.orElse(null));
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(OriginalRequestInformation1.mmIdentification, OriginalRequestInformation1.mmCreationDateTime, OriginalRequestInformation1.mmFinancingRequestor,
-						OriginalRequestInformation1.mmIntermediaryAgent, OriginalRequestInformation1.mmFirstAgent, OriginalRequestInformation1.mmValidationStatusInformation, OriginalRequestInformation1.mmCancellationStatusInformation);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.OriginalRequestInformation1.mmIdentification, com.tools20022.repository.msg.OriginalRequestInformation1.mmCreationDateTime,
+						com.tools20022.repository.msg.OriginalRequestInformation1.mmFinancingRequestor, com.tools20022.repository.msg.OriginalRequestInformation1.mmIntermediaryAgent,
+						com.tools20022.repository.msg.OriginalRequestInformation1.mmFirstAgent, com.tools20022.repository.msg.OriginalRequestInformation1.mmValidationStatusInformation,
+						com.tools20022.repository.msg.OriginalRequestInformation1.mmCancellationStatusInformation);
 				messageBuildingBlock_lazy = () -> Arrays.asList(InvoiceFinancingRequestStatusV01.mmOriginalRequestInformationAndStatus);
 				trace_lazy = () -> InvoiceFinancingAgreement.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "OriginalRequestInformation1";
 				definition = "Set of characteristics that unambiguously identify the original global invoice financing request.";
@@ -458,66 +537,66 @@ public class OriginalRequestInformation1 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Id", required = true)
 	public Max35Text getIdentification() {
 		return identification;
 	}
 
-	public void setIdentification(Max35Text identification) {
-		this.identification = identification;
+	public OriginalRequestInformation1 setIdentification(Max35Text identification) {
+		this.identification = Objects.requireNonNull(identification);
+		return this;
 	}
 
-	@XmlElement(name = "CreDtTm", required = true)
 	public ISODateTime getCreationDateTime() {
 		return creationDateTime;
 	}
 
-	public void setCreationDateTime(ISODateTime creationDateTime) {
-		this.creationDateTime = creationDateTime;
+	public OriginalRequestInformation1 setCreationDateTime(ISODateTime creationDateTime) {
+		this.creationDateTime = Objects.requireNonNull(creationDateTime);
+		return this;
 	}
 
-	@XmlElement(name = "FincgRqstr")
-	public PartyIdentificationAndAccount6 getFinancingRequestor() {
-		return financingRequestor;
+	public Optional<PartyIdentificationAndAccount6> getFinancingRequestor() {
+		return financingRequestor == null ? Optional.empty() : Optional.of(financingRequestor);
 	}
 
-	public void setFinancingRequestor(com.tools20022.repository.msg.PartyIdentificationAndAccount6 financingRequestor) {
+	public OriginalRequestInformation1 setFinancingRequestor(PartyIdentificationAndAccount6 financingRequestor) {
 		this.financingRequestor = financingRequestor;
+		return this;
 	}
 
-	@XmlElement(name = "IntrmyAgt")
-	public FinancialInstitutionIdentification6 getIntermediaryAgent() {
-		return intermediaryAgent;
+	public Optional<FinancialInstitutionIdentification6> getIntermediaryAgent() {
+		return intermediaryAgent == null ? Optional.empty() : Optional.of(intermediaryAgent);
 	}
 
-	public void setIntermediaryAgent(com.tools20022.repository.msg.FinancialInstitutionIdentification6 intermediaryAgent) {
+	public OriginalRequestInformation1 setIntermediaryAgent(FinancialInstitutionIdentification6 intermediaryAgent) {
 		this.intermediaryAgent = intermediaryAgent;
+		return this;
 	}
 
-	@XmlElement(name = "FrstAgt")
-	public FinancialInstitutionIdentification6 getFirstAgent() {
-		return firstAgent;
+	public Optional<FinancialInstitutionIdentification6> getFirstAgent() {
+		return firstAgent == null ? Optional.empty() : Optional.of(firstAgent);
 	}
 
-	public void setFirstAgent(com.tools20022.repository.msg.FinancialInstitutionIdentification6 firstAgent) {
+	public OriginalRequestInformation1 setFirstAgent(FinancialInstitutionIdentification6 firstAgent) {
 		this.firstAgent = firstAgent;
+		return this;
 	}
 
-	@XmlElement(name = "VldtnStsInf", required = true)
 	public ValidationStatusInformation1 getValidationStatusInformation() {
 		return validationStatusInformation;
 	}
 
-	public void setValidationStatusInformation(com.tools20022.repository.msg.ValidationStatusInformation1 validationStatusInformation) {
-		this.validationStatusInformation = validationStatusInformation;
+	public OriginalRequestInformation1 setValidationStatusInformation(ValidationStatusInformation1 validationStatusInformation) {
+		this.validationStatusInformation = Objects.requireNonNull(validationStatusInformation);
+		return this;
 	}
 
-	@XmlElement(name = "CxlStsInf")
-	public CancellationStatusInformation1 getCancellationStatusInformation() {
-		return cancellationStatusInformation;
+	public Optional<CancellationStatusInformation1> getCancellationStatusInformation() {
+		return cancellationStatusInformation == null ? Optional.empty() : Optional.of(cancellationStatusInformation);
 	}
 
-	public void setCancellationStatusInformation(com.tools20022.repository.msg.CancellationStatusInformation1 cancellationStatusInformation) {
+	public OriginalRequestInformation1 setCancellationStatusInformation(CancellationStatusInformation1 cancellationStatusInformation) {
 		this.cancellationStatusInformation = cancellationStatusInformation;
+		return this;
 	}
 }

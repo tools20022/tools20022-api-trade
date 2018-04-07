@@ -31,6 +31,8 @@ import com.tools20022.repository.entity.Status;
 import com.tools20022.repository.GeneratedRepository;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
+import java.util.Optional;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -77,8 +79,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -91,15 +93,16 @@ import javax.xml.bind.annotation.XmlType;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "TransactionStatus5", propOrder = {"status", "changeDateTime", "description"})
 public class TransactionStatus5 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Sts", required = true)
 	protected BaselineStatus3Code status;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -131,10 +134,10 @@ public class TransactionStatus5 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmStatus = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransactionStatus5, BaselineStatus3Code> mmStatus = new MMMessageAttribute<TransactionStatus5, BaselineStatus3Code>() {
 		{
 			businessElementTrace_lazy = () -> BaselineStatus.mmStatus;
-			componentContext_lazy = () -> TransactionStatus5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransactionStatus5.mmObject();
 			isDerived = false;
 			xmlTag = "Sts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -144,11 +147,22 @@ public class TransactionStatus5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> BaselineStatus3Code.mmObject();
 		}
+
+		@Override
+		public BaselineStatus3Code getValue(TransactionStatus5 obj) {
+			return obj.getStatus();
+		}
+
+		@Override
+		public void setValue(TransactionStatus5 obj, BaselineStatus3Code value) {
+			obj.setStatus(value);
+		}
 	};
+	@XmlElement(name = "ChngDtTm", required = true)
 	protected ISODateTime changeDateTime;
 	/**
-	 * Date and time at which the current status will change.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -178,10 +192,10 @@ public class TransactionStatus5 {
 	 * definition} = "Date and time at which the current status will change."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmChangeDateTime = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransactionStatus5, ISODateTime> mmChangeDateTime = new MMMessageAttribute<TransactionStatus5, ISODateTime>() {
 		{
 			businessElementTrace_lazy = () -> Status.mmStatusDateTime;
-			componentContext_lazy = () -> TransactionStatus5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransactionStatus5.mmObject();
 			isDerived = false;
 			xmlTag = "ChngDtTm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -191,11 +205,22 @@ public class TransactionStatus5 {
 			minOccurs = 1;
 			simpleType_lazy = () -> ISODateTime.mmObject();
 		}
+
+		@Override
+		public ISODateTime getValue(TransactionStatus5 obj) {
+			return obj.getChangeDateTime();
+		}
+
+		@Override
+		public void setValue(TransactionStatus5 obj, ISODateTime value) {
+			obj.setChangeDateTime(value);
+		}
 	};
+	@XmlElement(name = "Desc")
 	protected Max140Text description;
 	/**
-	 * Additional information on the reason for the time-out.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -220,9 +245,9 @@ public class TransactionStatus5 {
 	 * definition} = "Additional information on the reason for the time-out."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmDescription = new MMMessageAttribute() {
+	public static final MMMessageAttribute<TransactionStatus5, Optional<Max140Text>> mmDescription = new MMMessageAttribute<TransactionStatus5, Optional<Max140Text>>() {
 		{
-			componentContext_lazy = () -> TransactionStatus5.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.TransactionStatus5.mmObject();
 			isDerived = false;
 			xmlTag = "Desc";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -232,15 +257,26 @@ public class TransactionStatus5 {
 			minOccurs = 0;
 			simpleType_lazy = () -> Max140Text.mmObject();
 		}
+
+		@Override
+		public Optional<Max140Text> getValue(TransactionStatus5 obj) {
+			return obj.getDescription();
+		}
+
+		@Override
+		public void setValue(TransactionStatus5 obj, Optional<Max140Text> value) {
+			obj.setDescription(value.orElse(null));
+		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(TransactionStatus5.mmStatus, TransactionStatus5.mmChangeDateTime, TransactionStatus5.mmDescription);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.TransactionStatus5.mmStatus, com.tools20022.repository.msg.TransactionStatus5.mmChangeDateTime,
+						com.tools20022.repository.msg.TransactionStatus5.mmDescription);
 				messageBuildingBlock_lazy = () -> Arrays.asList(StatusExtensionNotificationV03.mmExtendedStatus, StatusExtensionRequestV03.mmStatusToBeExtended, StatusExtensionRequestNotificationV03.mmStatusToBeExtended);
 				trace_lazy = () -> BaselineStatus.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "TransactionStatus5";
 				definition = "Identifies the future status of the transaction by means of a code and a period.";
@@ -249,30 +285,30 @@ public class TransactionStatus5 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Sts", required = true)
 	public BaselineStatus3Code getStatus() {
 		return status;
 	}
 
-	public void setStatus(BaselineStatus3Code status) {
-		this.status = status;
+	public TransactionStatus5 setStatus(BaselineStatus3Code status) {
+		this.status = Objects.requireNonNull(status);
+		return this;
 	}
 
-	@XmlElement(name = "ChngDtTm", required = true)
 	public ISODateTime getChangeDateTime() {
 		return changeDateTime;
 	}
 
-	public void setChangeDateTime(ISODateTime changeDateTime) {
-		this.changeDateTime = changeDateTime;
+	public TransactionStatus5 setChangeDateTime(ISODateTime changeDateTime) {
+		this.changeDateTime = Objects.requireNonNull(changeDateTime);
+		return this;
 	}
 
-	@XmlElement(name = "Desc")
-	public Max140Text getDescription() {
-		return description;
+	public Optional<Max140Text> getDescription() {
+		return description == null ? Optional.empty() : Optional.of(description);
 	}
 
-	public void setDescription(Max140Text description) {
+	public TransactionStatus5 setDescription(Max140Text description) {
 		this.description = description;
+		return this;
 	}
 }

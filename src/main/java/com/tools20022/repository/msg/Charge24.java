@@ -25,9 +25,12 @@ import com.tools20022.repository.codeset.FreightCharges1Code;
 import com.tools20022.repository.entity.Charges;
 import com.tools20022.repository.entity.Transport;
 import com.tools20022.repository.GeneratedRepository;
+import com.tools20022.repository.msg.ChargesDetails3;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
@@ -53,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
  * <li>
  * {@linkplain com.tools20022.metamodel.MMTopLevelDictionaryEntry#getDataDictionary
  * dataDictionary} =
- * {@linkplain com.tools20022.repository.GeneratedRepository#mmdataDict
- * GeneratedRepository.mmdataDict}</li>
+ * {@linkplain com.tools20022.repository.GeneratedRepository#dataDict
+ * GeneratedRepository.dataDict}</li>
  * <li>
  * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getRegistrationStatus
  * registrationStatus} =
@@ -66,16 +69,16 @@ import javax.xml.bind.annotation.XmlType;
  * "Identifies the different types of freight charges associated with goods."</li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "Charge24", propOrder = {"type", "charges"})
 public class Charge24 {
 
 	final static private AtomicReference<MMMessageComponent> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "Tp", required = true)
 	protected FreightCharges1Code type;
 	/**
-	 * Identifies whether the freight charges associated with the goods are
-	 * "prepaid" or "collect".
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -107,10 +110,10 @@ public class Charge24 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageAttribute mmType = new MMMessageAttribute() {
+	public static final MMMessageAttribute<Charge24, FreightCharges1Code> mmType = new MMMessageAttribute<Charge24, FreightCharges1Code>() {
 		{
 			businessElementTrace_lazy = () -> Transport.mmFreightChargesPrepaidOrCollect;
-			componentContext_lazy = () -> Charge24.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charge24.mmObject();
 			isDerived = false;
 			xmlTag = "Tp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -120,11 +123,22 @@ public class Charge24 {
 			minOccurs = 1;
 			simpleType_lazy = () -> FreightCharges1Code.mmObject();
 		}
+
+		@Override
+		public FreightCharges1Code getValue(Charge24 obj) {
+			return obj.getType();
+		}
+
+		@Override
+		public void setValue(Charge24 obj, FreightCharges1Code value) {
+			obj.setType(value);
+		}
 	};
-	protected List<com.tools20022.repository.msg.ChargesDetails3> charges;
+	@XmlElement(name = "Chrgs")
+	protected List<ChargesDetails3> charges;
 	/**
-	 * Amount of money associated with a service.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>{@linkplain com.tools20022.metamodel.MMMessageAssociationEnd#getType
@@ -151,10 +165,10 @@ public class Charge24 {
 	 * definition} = "Amount of money associated with a service."</li>
 	 * </ul>
 	 */
-	public static final MMMessageAssociationEnd mmCharges = new MMMessageAssociationEnd() {
+	public static final MMMessageAssociationEnd<Charge24, List<ChargesDetails3>> mmCharges = new MMMessageAssociationEnd<Charge24, List<ChargesDetails3>>() {
 		{
 			businessComponentTrace_lazy = () -> Charges.mmObject();
-			componentContext_lazy = () -> Charge24.mmObject();
+			componentContext_lazy = () -> com.tools20022.repository.msg.Charge24.mmObject();
 			isDerived = false;
 			xmlTag = "Chrgs";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -162,16 +176,26 @@ public class Charge24 {
 			definition = "Amount of money associated with a service.";
 			minOccurs = 0;
 			isComposite = true;
-			type_lazy = () -> com.tools20022.repository.msg.ChargesDetails3.mmObject();
+			type_lazy = () -> ChargesDetails3.mmObject();
+		}
+
+		@Override
+		public List<ChargesDetails3> getValue(Charge24 obj) {
+			return obj.getCharges();
+		}
+
+		@Override
+		public void setValue(Charge24 obj, List<ChargesDetails3> value) {
+			obj.setCharges(value);
 		}
 	};
 
 	final static public MMMessageComponent mmObject() {
 		mmObject_lazy.compareAndSet(null, new MMMessageComponent() {
 			{
-				messageElement_lazy = () -> Arrays.asList(Charge24.mmType, Charge24.mmCharges);
+				messageElement_lazy = () -> Arrays.asList(com.tools20022.repository.msg.Charge24.mmType, com.tools20022.repository.msg.Charge24.mmCharges);
 				trace_lazy = () -> Charges.mmObject();
-				dataDictionary_lazy = () -> GeneratedRepository.mmdataDict;
+				dataDictionary_lazy = () -> GeneratedRepository.dataDict;
 				registrationStatus = MMRegistrationStatus.REGISTERED;
 				name = "Charge24";
 				definition = "Identifies the different types of freight charges associated with goods.";
@@ -180,21 +204,21 @@ public class Charge24 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "Tp", required = true)
 	public FreightCharges1Code getType() {
 		return type;
 	}
 
-	public void setType(FreightCharges1Code type) {
-		this.type = type;
+	public Charge24 setType(FreightCharges1Code type) {
+		this.type = Objects.requireNonNull(type);
+		return this;
 	}
 
-	@XmlElement(name = "Chrgs")
 	public List<ChargesDetails3> getCharges() {
-		return charges;
+		return charges == null ? charges = new ArrayList<>() : charges;
 	}
 
-	public void setCharges(List<com.tools20022.repository.msg.ChargesDetails3> charges) {
-		this.charges = charges;
+	public Charge24 setCharges(List<ChargesDetails3> charges) {
+		this.charges = Objects.requireNonNull(charges);
+		return this;
 	}
 }

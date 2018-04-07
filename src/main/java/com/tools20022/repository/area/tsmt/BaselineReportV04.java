@@ -23,10 +23,8 @@ import com.tools20022.metamodel.MMMessageDefinitionIdentifier;
 import com.tools20022.metamodel.MMRegistrationStatus;
 import com.tools20022.repository.area.TradeServicesManagementLatestVersion;
 import com.tools20022.repository.msg.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -135,16 +133,17 @@ import javax.xml.bind.annotation.*;
  * </li>
  * </ul>
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name = "BaselineReportV04", propOrder = {"reportIdentification", "relatedMessageReference", "reportType", "transactionIdentification", "establishedBaselineIdentification", "transactionStatus", "userTransactionReference", "buyer",
 		"seller", "buyerBank", "sellerBank", "reportedLineItem", "requestForAction"})
 public class BaselineReportV04 {
 
 	final static private AtomicReference<MMMessageDefinition> mmObject_lazy = new AtomicReference<>();
+	@XmlElement(name = "RptId", required = true)
 	protected MessageIdentification1 reportIdentification;
 	/**
-	 * Identifies the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -162,33 +161,35 @@ public class BaselineReportV04 {
 	 * name} = "ReportIdentification"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Identifies the report. "</li>
+	 * definition} = "Identifies the report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, MessageIdentification1> mmReportIdentification = new MMMessageBuildingBlock<BaselineReportV04, MessageIdentification1>() {
 		{
 			xmlTag = "RptId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ReportIdentification";
-			definition = "Identifies the report. ";
+			definition = "Identifies the report.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getReportIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public MessageIdentification1 getValue(BaselineReportV04 obj) {
+			return obj.getReportIdentification();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, MessageIdentification1 value) {
+			obj.setReportIdentification(value);
 		}
 	};
+	@XmlElement(name = "RltdMsgRef")
 	protected MessageIdentification1 relatedMessageReference;
 	/**
-	 * Reference to the related message at the origin of the report or sent at
-	 * the same time than the report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -211,7 +212,7 @@ public class BaselineReportV04 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRelatedMessageReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, Optional<MessageIdentification1>> mmRelatedMessageReference = new MMMessageBuildingBlock<BaselineReportV04, Optional<MessageIdentification1>>() {
 		{
 			xmlTag = "RltdMsgRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -222,18 +223,21 @@ public class BaselineReportV04 {
 			complexType_lazy = () -> MessageIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getRelatedMessageReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<MessageIdentification1> getValue(BaselineReportV04 obj) {
+			return obj.getRelatedMessageReference();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, Optional<MessageIdentification1> value) {
+			obj.setRelatedMessageReference(value.orElse(null));
 		}
 	};
+	@XmlElement(name = "RptTp", required = true)
 	protected ReportType2 reportType;
 	/**
-	 * Type of baseline report.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -253,7 +257,7 @@ public class BaselineReportV04 {
 	 * definition} = "Type of baseline report."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportType = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, ReportType2> mmReportType = new MMMessageBuildingBlock<BaselineReportV04, ReportType2>() {
 		{
 			xmlTag = "RptTp";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -264,20 +268,21 @@ public class BaselineReportV04 {
 			complexType_lazy = () -> ReportType2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getReportType", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public ReportType2 getValue(BaselineReportV04 obj) {
+			return obj.getReportType();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, ReportType2 value) {
+			obj.setReportType(value);
 		}
 	};
+	@XmlElement(name = "TxId", required = true)
 	protected SimpleIdentificationInformation transactionIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * transaction. This identification is to be used in any communication
-	 * between the parties.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -296,34 +301,36 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n"
+	 * "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, SimpleIdentificationInformation> mmTransactionIdentification = new MMMessageBuildingBlock<BaselineReportV04, SimpleIdentificationInformation>() {
 		{
 			xmlTag = "TxId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "TransactionIdentification";
-			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n";
+			definition = "Unique identification assigned by the matching application to the transaction.\nThis identification is to be used in any communication between the parties.\n.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> SimpleIdentificationInformation.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getTransactionIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public SimpleIdentificationInformation getValue(BaselineReportV04 obj) {
+			return obj.getTransactionIdentification();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, SimpleIdentificationInformation value) {
+			obj.setTransactionIdentification(value);
 		}
 	};
+	@XmlElement(name = "EstblishdBaselnId", required = true)
 	protected DocumentIdentification6 establishedBaselineIdentification;
 	/**
-	 * Unique identification assigned by the matching application to the
-	 * baseline when it is established.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -342,33 +349,36 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Unique identification assigned by the matching application to the baseline when it is established.  "
+	 * "Unique identification assigned by the matching application to the baseline when it is established."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmEstablishedBaselineIdentification = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, DocumentIdentification6> mmEstablishedBaselineIdentification = new MMMessageBuildingBlock<BaselineReportV04, DocumentIdentification6>() {
 		{
 			xmlTag = "EstblishdBaselnId";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "EstablishedBaselineIdentification";
-			definition = "Unique identification assigned by the matching application to the baseline when it is established.  ";
+			definition = "Unique identification assigned by the matching application to the baseline when it is established.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> DocumentIdentification6.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getEstablishedBaselineIdentification", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public DocumentIdentification6 getValue(BaselineReportV04 obj) {
+			return obj.getEstablishedBaselineIdentification();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, DocumentIdentification6 value) {
+			obj.setEstablishedBaselineIdentification(value);
 		}
 	};
+	@XmlElement(name = "TxSts", required = true)
 	protected TransactionStatus4 transactionStatus;
 	/**
-	 * Identifies the status of the transaction by means of a code.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -390,7 +400,7 @@ public class BaselineReportV04 {
 	 * "Identifies the status of the transaction by means of a code."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmTransactionStatus = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, TransactionStatus4> mmTransactionStatus = new MMMessageBuildingBlock<BaselineReportV04, TransactionStatus4>() {
 		{
 			xmlTag = "TxSts";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -401,19 +411,21 @@ public class BaselineReportV04 {
 			complexType_lazy = () -> TransactionStatus4.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getTransactionStatus", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public TransactionStatus4 getValue(BaselineReportV04 obj) {
+			return obj.getTransactionStatus();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, TransactionStatus4 value) {
+			obj.setTransactionStatus(value);
 		}
 	};
+	@XmlElement(name = "UsrTxRef")
 	protected List<DocumentIdentification5> userTransactionReference;
 	/**
-	 * Reference to the transaction for each financial institution which is a
-	 * party to the transaction.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -436,7 +448,7 @@ public class BaselineReportV04 {
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmUserTransactionReference = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, List<DocumentIdentification5>> mmUserTransactionReference = new MMMessageBuildingBlock<BaselineReportV04, List<DocumentIdentification5>>() {
 		{
 			xmlTag = "UsrTxRef";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -447,18 +459,21 @@ public class BaselineReportV04 {
 			complexType_lazy = () -> DocumentIdentification5.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getUserTransactionReference", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public List<DocumentIdentification5> getValue(BaselineReportV04 obj) {
+			return obj.getUserTransactionReference();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, List<DocumentIdentification5> value) {
+			obj.setUserTransactionReference(value);
 		}
 	};
+	@XmlElement(name = "Buyr", required = true)
 	protected PartyIdentification26 buyer;
 	/**
-	 * Party that buys goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -477,32 +492,35 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Party that buys goods or services, or a financial instrument. "</li>
+	 * "Party that buys goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyer = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, PartyIdentification26> mmBuyer = new MMMessageBuildingBlock<BaselineReportV04, PartyIdentification26>() {
 		{
 			xmlTag = "Buyr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Buyer";
-			definition = "Party that buys goods or services, or a financial instrument. ";
+			definition = "Party that buys goods or services, or a financial instrument.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> PartyIdentification26.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getBuyer", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PartyIdentification26 getValue(BaselineReportV04 obj) {
+			return obj.getBuyer();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, PartyIdentification26 value) {
+			obj.setBuyer(value);
 		}
 	};
+	@XmlElement(name = "Sellr", required = true)
 	protected PartyIdentification26 seller;
 	/**
-	 * Party that sells goods or services, or a financial instrument.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -521,32 +539,35 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "Party that sells goods or services, or a financial instrument. "</li>
+	 * "Party that sells goods or services, or a financial instrument."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSeller = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, PartyIdentification26> mmSeller = new MMMessageBuildingBlock<BaselineReportV04, PartyIdentification26>() {
 		{
 			xmlTag = "Sellr";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "Seller";
-			definition = "Party that sells goods or services, or a financial instrument. ";
+			definition = "Party that sells goods or services, or a financial instrument.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> PartyIdentification26.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getSeller", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public PartyIdentification26 getValue(BaselineReportV04 obj) {
+			return obj.getSeller();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, PartyIdentification26 value) {
+			obj.setSeller(value);
 		}
 	};
+	@XmlElement(name = "BuyrBk", required = true)
 	protected BICIdentification1 buyerBank;
 	/**
-	 * The financial institution of the buyer, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -565,33 +586,36 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the buyer, uniquely identified by its BIC. "
+	 * "The financial institution of the buyer, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmBuyerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, BICIdentification1> mmBuyerBank = new MMMessageBuildingBlock<BaselineReportV04, BICIdentification1>() {
 		{
 			xmlTag = "BuyrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "BuyerBank";
-			definition = "The financial institution of the buyer, uniquely identified by its BIC. ";
+			definition = "The financial institution of the buyer, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getBuyerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(BaselineReportV04 obj) {
+			return obj.getBuyerBank();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, BICIdentification1 value) {
+			obj.setBuyerBank(value);
 		}
 	};
+	@XmlElement(name = "SellrBk", required = true)
 	protected BICIdentification1 sellerBank;
 	/**
-	 * The financial institution of the seller, uniquely identified by its BIC.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -610,33 +634,36 @@ public class BaselineReportV04 {
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
 	 * definition} =
-	 * "The financial institution of the seller, uniquely identified by its BIC. "
+	 * "The financial institution of the seller, uniquely identified by its BIC."
 	 * </li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmSellerBank = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, BICIdentification1> mmSellerBank = new MMMessageBuildingBlock<BaselineReportV04, BICIdentification1>() {
 		{
 			xmlTag = "SellrBk";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "SellerBank";
-			definition = "The financial institution of the seller, uniquely identified by its BIC. ";
+			definition = "The financial institution of the seller, uniquely identified by its BIC.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> BICIdentification1.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getSellerBank", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public BICIdentification1 getValue(BaselineReportV04 obj) {
+			return obj.getSellerBank();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, BICIdentification1 value) {
+			obj.setSellerBank(value);
 		}
 	};
+	@XmlElement(name = "RptdLineItm", required = true)
 	protected LineItem14 reportedLineItem;
 	/**
-	 * Information on the goods
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -653,32 +680,35 @@ public class BaselineReportV04 {
 	 * name} = "ReportedLineItem"</li>
 	 * <li>
 	 * {@linkplain com.tools20022.metamodel.MMRepositoryConcept#getDefinition
-	 * definition} = "Information on the goods"</li>
+	 * definition} = "Information on the goods."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmReportedLineItem = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, LineItem14> mmReportedLineItem = new MMMessageBuildingBlock<BaselineReportV04, LineItem14>() {
 		{
 			xmlTag = "RptdLineItm";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
 			name = "ReportedLineItem";
-			definition = "Information on the goods";
+			definition = "Information on the goods.";
 			maxOccurs = 1;
 			minOccurs = 1;
 			complexType_lazy = () -> LineItem14.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getReportedLineItem", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public LineItem14 getValue(BaselineReportV04 obj) {
+			return obj.getReportedLineItem();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, LineItem14 value) {
+			obj.setReportedLineItem(value);
 		}
 	};
+	@XmlElement(name = "ReqForActn")
 	protected PendingActivity2 requestForAction;
 	/**
-	 * Information on the next processing step required.
-	 * <p>
+	 * 
+	 <p>
 	 * <strong>Constant fields:</strong>
 	 * <ul>
 	 * <li>
@@ -699,7 +729,7 @@ public class BaselineReportV04 {
 	 * definition} = "Information on the next processing step required."</li>
 	 * </ul>
 	 */
-	public static final MMMessageBuildingBlock mmRequestForAction = new MMMessageBuildingBlock() {
+	public static final MMMessageBuildingBlock<BaselineReportV04, Optional<PendingActivity2>> mmRequestForAction = new MMMessageBuildingBlock<BaselineReportV04, Optional<PendingActivity2>>() {
 		{
 			xmlTag = "ReqForActn";
 			registrationStatus = MMRegistrationStatus.PROVISIONALLY_REGISTERED;
@@ -710,12 +740,14 @@ public class BaselineReportV04 {
 			complexType_lazy = () -> PendingActivity2.mmObject();
 		}
 
-		public Method getGetterMethod() {
-			try {
-				return BaselineReportV04.class.getMethod("getRequestForAction", new Class[]{});
-			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
-			}
+		@Override
+		public Optional<PendingActivity2> getValue(BaselineReportV04 obj) {
+			return obj.getRequestForAction();
+		}
+
+		@Override
+		public void setValue(BaselineReportV04 obj, Optional<PendingActivity2> value) {
+			obj.setRequestForAction(value.orElse(null));
 		}
 	};
 
@@ -752,124 +784,124 @@ public class BaselineReportV04 {
 		return mmObject_lazy.get();
 	}
 
-	@XmlElement(name = "RptId", required = true)
 	public MessageIdentification1 getReportIdentification() {
 		return reportIdentification;
 	}
 
-	public void setReportIdentification(MessageIdentification1 reportIdentification) {
-		this.reportIdentification = reportIdentification;
+	public BaselineReportV04 setReportIdentification(MessageIdentification1 reportIdentification) {
+		this.reportIdentification = Objects.requireNonNull(reportIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "RltdMsgRef")
-	public MessageIdentification1 getRelatedMessageReference() {
-		return relatedMessageReference;
+	public Optional<MessageIdentification1> getRelatedMessageReference() {
+		return relatedMessageReference == null ? Optional.empty() : Optional.of(relatedMessageReference);
 	}
 
-	public void setRelatedMessageReference(MessageIdentification1 relatedMessageReference) {
+	public BaselineReportV04 setRelatedMessageReference(MessageIdentification1 relatedMessageReference) {
 		this.relatedMessageReference = relatedMessageReference;
+		return this;
 	}
 
-	@XmlElement(name = "RptTp", required = true)
 	public ReportType2 getReportType() {
 		return reportType;
 	}
 
-	public void setReportType(ReportType2 reportType) {
-		this.reportType = reportType;
+	public BaselineReportV04 setReportType(ReportType2 reportType) {
+		this.reportType = Objects.requireNonNull(reportType);
+		return this;
 	}
 
-	@XmlElement(name = "TxId", required = true)
 	public SimpleIdentificationInformation getTransactionIdentification() {
 		return transactionIdentification;
 	}
 
-	public void setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
-		this.transactionIdentification = transactionIdentification;
+	public BaselineReportV04 setTransactionIdentification(SimpleIdentificationInformation transactionIdentification) {
+		this.transactionIdentification = Objects.requireNonNull(transactionIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "EstblishdBaselnId", required = true)
 	public DocumentIdentification6 getEstablishedBaselineIdentification() {
 		return establishedBaselineIdentification;
 	}
 
-	public void setEstablishedBaselineIdentification(DocumentIdentification6 establishedBaselineIdentification) {
-		this.establishedBaselineIdentification = establishedBaselineIdentification;
+	public BaselineReportV04 setEstablishedBaselineIdentification(DocumentIdentification6 establishedBaselineIdentification) {
+		this.establishedBaselineIdentification = Objects.requireNonNull(establishedBaselineIdentification);
+		return this;
 	}
 
-	@XmlElement(name = "TxSts", required = true)
 	public TransactionStatus4 getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(TransactionStatus4 transactionStatus) {
-		this.transactionStatus = transactionStatus;
+	public BaselineReportV04 setTransactionStatus(TransactionStatus4 transactionStatus) {
+		this.transactionStatus = Objects.requireNonNull(transactionStatus);
+		return this;
 	}
 
-	@XmlElement(name = "UsrTxRef")
 	public List<DocumentIdentification5> getUserTransactionReference() {
-		return userTransactionReference;
+		return userTransactionReference == null ? userTransactionReference = new ArrayList<>() : userTransactionReference;
 	}
 
-	public void setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
-		this.userTransactionReference = userTransactionReference;
+	public BaselineReportV04 setUserTransactionReference(List<DocumentIdentification5> userTransactionReference) {
+		this.userTransactionReference = Objects.requireNonNull(userTransactionReference);
+		return this;
 	}
 
-	@XmlElement(name = "Buyr", required = true)
 	public PartyIdentification26 getBuyer() {
 		return buyer;
 	}
 
-	public void setBuyer(PartyIdentification26 buyer) {
-		this.buyer = buyer;
+	public BaselineReportV04 setBuyer(PartyIdentification26 buyer) {
+		this.buyer = Objects.requireNonNull(buyer);
+		return this;
 	}
 
-	@XmlElement(name = "Sellr", required = true)
 	public PartyIdentification26 getSeller() {
 		return seller;
 	}
 
-	public void setSeller(PartyIdentification26 seller) {
-		this.seller = seller;
+	public BaselineReportV04 setSeller(PartyIdentification26 seller) {
+		this.seller = Objects.requireNonNull(seller);
+		return this;
 	}
 
-	@XmlElement(name = "BuyrBk", required = true)
 	public BICIdentification1 getBuyerBank() {
 		return buyerBank;
 	}
 
-	public void setBuyerBank(BICIdentification1 buyerBank) {
-		this.buyerBank = buyerBank;
+	public BaselineReportV04 setBuyerBank(BICIdentification1 buyerBank) {
+		this.buyerBank = Objects.requireNonNull(buyerBank);
+		return this;
 	}
 
-	@XmlElement(name = "SellrBk", required = true)
 	public BICIdentification1 getSellerBank() {
 		return sellerBank;
 	}
 
-	public void setSellerBank(BICIdentification1 sellerBank) {
-		this.sellerBank = sellerBank;
+	public BaselineReportV04 setSellerBank(BICIdentification1 sellerBank) {
+		this.sellerBank = Objects.requireNonNull(sellerBank);
+		return this;
 	}
 
-	@XmlElement(name = "RptdLineItm", required = true)
 	public LineItem14 getReportedLineItem() {
 		return reportedLineItem;
 	}
 
-	public void setReportedLineItem(LineItem14 reportedLineItem) {
-		this.reportedLineItem = reportedLineItem;
+	public BaselineReportV04 setReportedLineItem(LineItem14 reportedLineItem) {
+		this.reportedLineItem = Objects.requireNonNull(reportedLineItem);
+		return this;
 	}
 
-	@XmlElement(name = "ReqForActn")
-	public PendingActivity2 getRequestForAction() {
-		return requestForAction;
+	public Optional<PendingActivity2> getRequestForAction() {
+		return requestForAction == null ? Optional.empty() : Optional.of(requestForAction);
 	}
 
-	public void setRequestForAction(PendingActivity2 requestForAction) {
+	public BaselineReportV04 setRequestForAction(PendingActivity2 requestForAction) {
 		this.requestForAction = requestForAction;
+		return this;
 	}
 
-	@XmlRootElement(namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.011.04.04")
+	@XmlRootElement(name = "Document", namespace = "urn:iso:std:iso:20022:tech:xsd:tsmt.011.001.04")
 	static public class Document {
 		@XmlElement(name = "BaselnRpt", required = true)
 		public BaselineReportV04 messageBody;
